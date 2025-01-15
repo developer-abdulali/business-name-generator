@@ -14,11 +14,8 @@ const userSchema = new mongoose.Schema(
     phoneNumber: {
       type: Number,
       required: true,
-      validate: {
-        validator: (value) => value.toString().length === 11,
-        message: "Phone Number must be 11 digits!",
-      },
     },
+
     password: { type: String, required: true },
     role: {
       type: String,
