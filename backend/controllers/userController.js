@@ -6,6 +6,12 @@ export const registerUser = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, password, role } = req.body;
 
+    if (!fullname || !email || !phoneNumber || !password || !role) {
+      return res
+        .status(400)
+        .json({ success: false, error: "All fields are required" });
+    }
+
     let user = await User.findOne({ email });
     if (user) {
       return res
@@ -21,6 +27,7 @@ export const registerUser = async (req, res) => {
       phoneNumber,
       password: hashedPassword,
       role,
+      profileImage: req.file ? req.file.path : null,
     });
 
     await newUser.save();
@@ -31,12 +38,48 @@ export const registerUser = async (req, res) => {
       user: newUser,
     });
   } catch (error) {
-    console.error(error);
+    console.error("Error in registerUser:", error);
     return res
       .status(500)
       .json({ success: false, error: error.message || "An error occurred!" });
   }
 };
+
+// export const registerUser = async (req, res) => {
+//   try {
+//     const { fullname, email, phoneNumber, password, role } = req.body;
+
+//     let user = await User.findOne({ email });
+//     if (user) {
+//       return res
+//         .status(400)
+//         .json({ success: false, error: "Email already exists" });
+//     }
+
+//     const hashedPassword = await bcrypt.hash(password, 10);
+
+//     const newUser = new User({
+//       fullname,
+//       email,
+//       phoneNumber,
+//       password: hashedPassword,
+//       role,
+//     });
+
+//     await newUser.save();
+
+//     return res.json({
+//       success: true,
+//       message: "User registered successfully",
+//       user: newUser,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     return res
+//       .status(500)
+//       .json({ success: false, error: error.message || "An error occurred!" });
+//   }
+// };
 
 export const loginUser = async (req, res) => {
   try {

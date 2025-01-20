@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
       resume: { type: String },
       resumeOriginalName: { type: String },
       company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" },
-      profilePhoto: {
+      profileImage: {
         type: String,
         default:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU8VYISu01SXKdXQ8LQrBvFCPG4w1H58GXqHBdCJp_Kv5TY_MuObEw9FI&s",

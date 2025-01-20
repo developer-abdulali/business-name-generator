@@ -12,6 +12,8 @@ backend/node_modules
 frontend/node_modules
 bower_components
 
+backend/uploads
+
 *.sublime*
 
 backend/.env
