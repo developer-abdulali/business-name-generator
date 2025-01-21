@@ -12,6 +12,7 @@ backend/node_modules
 frontend/node_modules
 bower_components
 
+### ignore upload files
 backend/uploads
 
 *.sublime*
