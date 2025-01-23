@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.wrapper {
+  @apply max-w-7xl mx-auto;
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
