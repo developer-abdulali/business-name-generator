@@ -8,18 +8,22 @@ import { LogOut, User2, Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const user = false;
+  const { user } = useSelector((state) => state.auth);
 
   return (
-    <div className="bg-white shadow-sm">
+    <div className="sticky top-0 z-50 bg-white shadow-sm ">
       <div className="flex items-center justify-between px-4 mx-auto max-w-7xl h-16">
         {/* Logo */}
-        <h1 className="text-2xl font-bold">
-          Job<span className="text-[#F83002]">Portal</span>
-        </h1>
+
+        <Link to="/">
+          <h1 className="text-2xl font-bold">
+            Job<span className="text-[#F83002]">Portal</span>
+          </h1>
+        </Link>
 
         {/* Menu icon for mobile */}
         <button
@@ -116,7 +120,9 @@ const Navbar = () => {
                 <div className="flex flex-col my-2 text-gray-600">
                   <div className="flex w-fit items-center gap-2 cursor-pointer">
                     <User2 />
-                    <Button variant="link">Profile</Button>
+                    <Button variant="link">
+                      <Link to={"/profile"}>Profile</Link>
+                    </Button>
                   </div>
                   <div className="flex w-fit items-center gap-2 cursor-pointer">
                     <LogOut />

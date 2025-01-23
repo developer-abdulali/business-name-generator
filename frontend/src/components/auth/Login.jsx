@@ -1,4 +1,4 @@
-import { setLoading } from "@/redux/slices/authSlice";
+import { setLoading, setUser } from "@/redux/slices/authSlice";
 import { USER_API_ENDPOINT } from "@/utils/constant";
 import axios from "axios";
 import { useState } from "react";
@@ -34,6 +34,7 @@ const Login = () => {
       });
 
       if (res.data.success) {
+        dispatch(setUser(res.data.user));
         navigate("/");
         toast.success(res.data.message);
       }
