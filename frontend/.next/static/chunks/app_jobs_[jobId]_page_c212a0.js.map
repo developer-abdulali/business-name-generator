@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/abali/Desktop/job-portal/frontend/app/jobs/%5BjobId%5D/page.js"],"sourcesContent":["\"use client\";\r\nimport { useRouter } from \"next/router\";\r\n\r\nconst JobDetails = () => {\r\n  const router = useRouter();\r\n  const { jobId } = router.query;\r\n\r\n  // Fetch job details using the jobId if needed\r\n  // Example: const { data, isLoading, error } = useQuery(['job', jobId], fetchJobDetails);\r\n\r\n  return (\r\n    <div className=\"p-6\">\r\n      <h1 className=\"text-2xl font-bold\">Job Details for ID: {jobId}</h1>\r\n      {/* Replace this with actual job details */}\r\n      <p className=\"text-gray-700\">\r\n        Detailed information about the job will go here.\r\n      </p>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default JobDetails;\r\n"],"names":[],"mappings":";;;;AACA;;;AADA;;AAGA,MAAM,aAAa;;IACjB,MAAM,SAAS,CAAA,GAAA,iIAAA,CAAA,YAAS,AAAD;IACvB,MAAM,EAAE,KAAK,EAAE,GAAG,OAAO,KAAK;IAE9B,8CAA8C;IAC9C,yFAAyF;IAEzF,qBACE,6LAAC;QAAI,WAAU;;0BACb,6LAAC;gBAAG,WAAU;;oBAAqB;oBAAqB;;;;;;;0BAExD,6LAAC;gBAAE,WAAU;0BAAgB;;;;;;;;;;;;AAKnC;GAhBM;;QACW,iIAAA,CAAA,YAAS;;;KADpB;uCAkBS"}},
+    {"offset": {"line": 63, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
