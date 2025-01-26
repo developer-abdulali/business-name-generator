@@ -6,21 +6,19 @@ import { useState, useEffect } from "react";
 const Jobs = () => {
   const [showFilters, setShowFilters] = useState(false);
 
-  // Ensure filters are always visible on large screens
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setShowFilters(true); // Show filters on `lg` and above
+        setShowFilters(true);
       } else {
-        setShowFilters(false); // Hide filters on smaller screens
+        setShowFilters(false);
       }
     };
 
-    // Initial check and add resize listener
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Cleanup on unmount
+    // cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -30,7 +28,7 @@ const Jobs = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="container mx-auto px-4 py-8">
+      <div className="wrapper px-4 xl:px-0 py-8">
         <div className="flex items-center justify-between">
           <p className="text-3xl font-bold mb-6 text-gray-800">Job Listings</p>
           {/* Toggle button for smaller screens */}
@@ -61,7 +59,7 @@ const Jobs = () => {
               </div>
             ) : (
               <div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 overflow-auto"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 overflow-auto scrollable-content"
                 style={{ maxHeight: "calc(100vh - 200px)" }}
               >
                 {jobsArray?.map((job, i) => (

@@ -12,7 +12,7 @@ const HeroSection = () => {
       {/* Main heading */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
         Search, Apply & <br /> Get Your{" "}
-        <span className="text-[#6A38C2]">Dream Jobs</span>
+        <span className="text-customColor">Dream Jobs</span>
       </h1>
 
       {/* Subheading */}
@@ -28,7 +28,7 @@ const HeroSection = () => {
           placeholder="Find your dream job"
           className="outline-none border-none w-full text-sm sm:text-base"
         />
-        <Button className="rounded-r-full bg-[#6A38C2] hover:bg-black">
+        <Button className="rounded-r-full bg-customColor hover:bg-black">
           <Search className="w-5 h-5 text-white" />
         </Button>
       </div>

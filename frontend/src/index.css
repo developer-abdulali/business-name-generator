@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 .wrapper {
-  @apply max-w-7xl mx-auto;
+  @apply container mx-auto 
+  /* @apply max-w-7xl mx-auto; */;
+}
+.scrollable-content::-webkit-scrollbar {
+  display: none;
 }
 
 /* :root {
@@ -14,7 +18,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
+s
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
