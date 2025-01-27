@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -23,22 +23,22 @@ const Footer = () => {
           <h3 className="text-lg font-medium mb-4">Quick Links</h3>
           <ul className="space-y-2">
             <li>
-              <Link to="/home" className="text-gray-400 hover:text-white">
+              <Link href="/home" className="text-gray-400 hover:text-white">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/jobs" className="text-gray-400 hover:text-white">
+              <Link href="/jobs" className="text-gray-400 hover:text-white">
                 Jobs
               </Link>
             </li>
             <li>
-              <Link to="/browse" className="text-gray-400 hover:text-white">
+              <Link href="/browse" className="text-gray-400 hover:text-white">
                 Browse
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-gray-400 hover:text-white">
+              <Link href="/about" className="text-gray-400 hover:text-white">
                 About Us
               </Link>
             </li>
@@ -50,22 +50,22 @@ const Footer = () => {
           <h3 className="text-lg font-medium mb-4">Resources</h3>
           <ul className="space-y-2">
             <li>
-              <Link to="/help" className="text-gray-400 hover:text-white">
+              <Link href="/help" className="text-gray-400 hover:text-white">
                 Help Center
               </Link>
             </li>
             <li>
-              <Link to="/privacy" className="text-gray-400 hover:text-white">
+              <Link href="/privacy" className="text-gray-400 hover:text-white">
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link to="/terms" className="text-gray-400 hover:text-white">
+              <Link href="/terms" className="text-gray-400 hover:text-white">
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link to="/faq" className="text-gray-400 hover:text-white">
+              <Link href="/faq" className="text-gray-400 hover:text-white">
                 FAQ
               </Link>
             </li>
