@@ -17,30 +17,30 @@
 // import { setUser } from "@/redux/slices/authSlice";
 
 // const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
-//   const [loading, setLoading] = useState(false);
 //   const { user } = useSelector((state) => state.auth);
-
 //   const dispatch = useDispatch();
+
 //   const [input, setInput] = useState({
-//     fullname: user?.fullname,
-//     email: user?.email,
-//     number: user?.phoneNumber,
-//     bio: user?.profile?.bio,
-//     skills: user?.profile?.skills?.map((skill) => skill),
-//     file: user?.profile?.resume,
+//     fullname: user?.fullname || "",
+//     email: user?.email || "",
+//     number: user?.phoneNumber || "",
+//     bio: user?.profile?.bio || "",
+//     skills: user?.profile?.skills?.join(", ") || "",
 //   });
 
-//   const changeEventHandler = (e) => {
+//   const [loading, setLoading] = useState(false);
+
+//   const handleInputChange = (e) => {
 //     setInput({ ...input, [e.target.name]: e.target.value });
 //   };
 
-//   const fileChangeHandler = (e) => {
-//     const file = e.target.file?.[0];
-//     setInput({ ...input, file });
+//   const handleFileChange = (e) => {
+//     setInput({ ...input, file: e.target.files[0] });
 //   };
 
-//   const submitHandler = async (e) => {
+//   const handleSubmit = async (e) => {
 //     e.preventDefault();
+//     setLoading(true);
 
 //     const formData = new FormData();
 //     formData.append("fullname", input.fullname);
@@ -51,127 +51,121 @@
 //     if (input.file) formData.append("file", input.file);
 
 //     try {
-//       const res = await axios.put(
+//       const response = await axios.post(
 //         `${USER_API_ENDPOINT}/profile/update`,
 //         formData,
 //         {
-//           headers: {
-//             "Content-Type": "multipart/form-data",
-//           },
+//           headers: { "Content-Type": "multipart/form-data" },
 //           withCredentials: true,
 //         }
 //       );
 
-//       if (res.data.success) {
-//         dispatch(setUser(res.data.user));
-//         toast.success(res.data.message);
+//       if (response.data.success) {
+//         dispatch(setUser(response.data.user));
+//         toast.success(response.data.message);
+//         setModalOpen(false);
+//       } else {
+//         toast.error(response.data.error);
 //       }
 //     } catch (error) {
-//       console.log(error);
-//       toast.error(error.response.data.message);
+//       toast.error(error.response?.data?.error || "Something went wrong!");
+//     } finally {
+//       setLoading(false);
 //     }
-
-//     setModalOpen(false);
-//     console.log(input);
 //   };
 
 //   return (
 //     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-//       <DialogContent
-//         className="sm:max-w-[425px]"
-//         onInteractOutside={() => setModalOpen(false)}
-//       >
+//       <DialogContent onInteractOutside={() => setModalOpen(false)}>
 //         <DialogHeader>
 //           <DialogTitle>Update Profile</DialogTitle>
 //         </DialogHeader>
-//         <form onSubmit={submitHandler}>
-//           {/* Add form fields here */}
-//           <p className="text-gray-600">Update your profile information.</p>
-
+//         <form onSubmit={handleSubmit}>
 //           <div className="grid gap-4 py-4">
+//             {/* Fullname */}
 //             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="name" className="text-right font-semibold">
-//                 Name
-//               </Label>
+//               <Label htmlFor="fullname">Full Name</Label>
 //               <Input
-//                 type="text"
-//                 id="name"
-//                 name="name"
+//                 id="fullname"
+//                 name="fullname"
 //                 value={input.fullname}
-//                 onChange={changeEventHandler}
+//                 onChange={handleInputChange}
 //                 className="col-span-3"
 //               />
 //             </div>
+//             {/* Email */}
 //             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="email" className="text-right font-semibold">
-//                 Email
-//               </Label>
+//               <Label htmlFor="email">Email</Label>
 //               <Input
-//                 type="email"
 //                 id="email"
 //                 name="email"
+//                 type="email"
 //                 value={input.email}
-//                 onChange={changeEventHandler}
+//                 onChange={handleInputChange}
 //                 className="col-span-3"
 //               />
 //             </div>
+//             {/* Phone */}
 //             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="number" className="text-right font-semibold">
-//                 Number
-//               </Label>
+//               <Label htmlFor="number">Phone Number</Label>
 //               <Input
 //                 id="number"
 //                 name="number"
 //                 value={input.number}
-//                 onChange={changeEventHandler}
+//                 onChange={handleInputChange}
 //                 className="col-span-3"
 //               />
 //             </div>
+//             {/* Bio */}
 //             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="bio" className="text-right font-semibold">
-//                 Bio
-//               </Label>
+//               <Label htmlFor="bio">Bio</Label>
 //               <Input
 //                 id="bio"
 //                 name="bio"
 //                 value={input.bio}
-//                 onChange={changeEventHandler}
+//                 onChange={handleInputChange}
 //                 className="col-span-3"
 //               />
 //             </div>
+//             {/* Skills */}
 //             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="skills" className="text-right font-semibold">
-//                 Skills
-//               </Label>
+//               <Label htmlFor="skills">Skills</Label>
 //               <Input
 //                 id="skills"
 //                 name="skills"
 //                 value={input.skills}
-//                 onChange={changeEventHandler}
+//                 onChange={handleInputChange}
 //                 className="col-span-3"
+//                 placeholder="Comma-separated skills"
 //               />
 //             </div>
+//             {/* Resume */}
 //             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="file" className="text-right font-semibold">
-//                 File
-//               </Label>
+//               <Label htmlFor="file">Resume</Label>
 //               <Input
-//                 type="file"
 //                 id="file"
 //                 name="file"
-//                 onChange={fileChangeHandler}
+//                 type="file"
 //                 accept="application/pdf"
+//                 onChange={handleFileChange}
 //                 className="col-span-3"
 //               />
 //             </div>
 //           </div>
+//           <DialogFooter>
+//             <Button
+//               type="button"
+//               variant="secondary"
+//               onClick={() => setModalOpen(false)}
+//               disabled={loading}
+//             >
+//               Close
+//             </Button>
+//             <Button type="submit" disabled={loading}>
+//               {loading ? "Saving..." : "Save Changes"}
+//             </Button>
+//           </DialogFooter>
 //         </form>
-//         <DialogFooter>
-//           <Button variant="secondary" onClick={() => setModalOpen(false)}>
-//             Close
-//           </Button>
-//           <Button>Save Changes</Button>
-//         </DialogFooter>
 //       </DialogContent>
 //     </Dialog>
 //   );
@@ -198,153 +192,182 @@ import { USER_API_ENDPOINT } from "@/lib/constant";
 import { setUser } from "@/redux/slices/authSlice";
 
 const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
-  const [loading, setLoading] = useState(false);
   const { user } = useSelector((state) => state.auth);
-
   const dispatch = useDispatch();
+
   const [input, setInput] = useState({
     fullname: user?.fullname || "",
     email: user?.email || "",
     number: user?.phoneNumber || "",
     bio: user?.profile?.bio || "",
     skills: user?.profile?.skills?.join(", ") || "",
-    file: null,
+    profileImage: null,
+    resume: null,
   });
 
-  const changeEventHandler = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState(
+    user?.profile?.profileImage || ""
+  );
+  const [resumePreview, setResumePreview] = useState(
+    user?.profile?.resumeOriginalName || ""
+  );
+
+  const handleInputChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const fileChangeHandler = (e) => {
-    const file = e.target.files?.[0]; // Fixed `file` to `files`
-    setInput({ ...input, file });
+  const handleFileChange = (e, type) => {
+    const file = e.target.files[0];
+    if (type === "profileImage") {
+      setInput({ ...input, profileImage: file });
+      setImagePreview(URL.createObjectURL(file));
+    } else if (type === "resume") {
+      setInput({ ...input, resume: file });
+      setResumePreview(file.name);
+    }
   };
 
-  const submitHandler = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
+
     const formData = new FormData();
     formData.append("fullname", input.fullname);
     formData.append("email", input.email);
     formData.append("phoneNumber", input.number);
     formData.append("bio", input.bio);
     formData.append("skills", input.skills);
-    if (input.file) formData.append("file", input.file);
+    if (input.profileImage) formData.append("profileImage", input.profileImage);
+    if (input.resume) formData.append("resume", input.resume);
+
+    // Log FormData contents
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
 
     try {
-      const res = await axios.post(
+      const response = await axios.post(
         `${USER_API_ENDPOINT}/profile/update`,
         formData,
         {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+          headers: { "Content-Type": "multipart/form-data" },
           withCredentials: true,
+          timeout: 60000, // Increase timeout to 60 seconds
         }
       );
 
-      if (res.data.success) {
-        dispatch(setUser(res.data.user));
-        toast.success(res.data.message);
+      if (response.data.success) {
+        dispatch(setUser(response.data.user));
+        toast.success(response.data.message);
         setModalOpen(false);
+      } else {
+        toast.error(response.data.error);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.response?.data?.message || "Something went wrong!");
+      toast.error(error.response?.data?.error || "Something went wrong!");
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-      <DialogContent
-        className="sm:max-w-[425px]"
-        onInteractOutside={() => setModalOpen(false)}
-      >
+      <DialogContent onInteractOutside={() => setModalOpen(false)}>
         <DialogHeader>
           <DialogTitle>Update Profile</DialogTitle>
         </DialogHeader>
-        <form onSubmit={submitHandler}>
-          <p className="text-gray-600">Update your profile information.</p>
-
+        <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">
+            {/* Fullname */}
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="fullname" className="text-right font-semibold">
-                Name
-              </Label>
+              <Label htmlFor="fullname">Full Name</Label>
               <Input
-                type="text"
                 id="fullname"
                 name="fullname"
                 value={input.fullname}
-                onChange={changeEventHandler}
+                onChange={handleInputChange}
                 className="col-span-3"
               />
             </div>
+            {/* Email */}
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="email" className="text-right font-semibold">
-                Email
-              </Label>
+              <Label htmlFor="email">Email</Label>
               <Input
-                type="email"
                 id="email"
                 name="email"
+                type="email"
                 value={input.email}
-                onChange={changeEventHandler}
+                onChange={handleInputChange}
                 className="col-span-3"
               />
             </div>
+            {/* Phone */}
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="number" className="text-right font-semibold">
-                Number
-              </Label>
+              <Label htmlFor="number">Phone Number</Label>
               <Input
                 id="number"
                 name="number"
                 value={input.number}
-                onChange={changeEventHandler}
+                onChange={handleInputChange}
                 className="col-span-3"
               />
             </div>
+            {/* Bio */}
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="bio" className="text-right font-semibold">
-                Bio
-              </Label>
+              <Label htmlFor="bio">Bio</Label>
               <Input
                 id="bio"
                 name="bio"
                 value={input.bio}
-                onChange={changeEventHandler}
+                onChange={handleInputChange}
                 className="col-span-3"
               />
             </div>
+            {/* Skills */}
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="skills" className="text-right font-semibold">
-                Skills
-              </Label>
+              <Label htmlFor="skills">Skills</Label>
               <Input
                 id="skills"
                 name="skills"
                 value={input.skills}
-                onChange={changeEventHandler}
-                placeholder="Comma-separated skills"
+                onChange={handleInputChange}
                 className="col-span-3"
+                placeholder="Comma-separated skills"
               />
             </div>
+            {/* Profile Image */}
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="file" className="text-right font-semibold">
-                Resume
-              </Label>
+              <Label htmlFor="profileImage">Profile Image</Label>
               <Input
+                id="profileImage"
+                name="profileImage"
                 type="file"
-                id="file"
-                name="file"
-                onChange={fileChangeHandler}
-                accept="application/pdf"
+                accept="image/*"
+                onChange={(e) => handleFileChange(e, "profileImage")}
                 className="col-span-3"
               />
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Profile Preview"
+                  className="mt-2 w-24 h-24 object-cover rounded-full"
+                />
+              )}
+            </div>
+            {/* Resume */}
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="resume">Resume</Label>
+              <Input
+                id="resume"
+                name="resume"
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => handleFileChange(e, "resume")}
+                className="col-span-3"
+              />
+              {resumePreview && (
+                <span className="mt-2 text-gray-700">{resumePreview}</span>
+              )}
             </div>
           </div>
           <DialogFooter>

@@ -967,8 +967,6 @@ const authSlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modul
     name: "auth",
     initialState: {
         user: null,
-        // token: null,
-        // error: null,
         loading: false
     },
     reducers: {

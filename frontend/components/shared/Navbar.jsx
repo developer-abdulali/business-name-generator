@@ -8,15 +8,40 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { LogOut, User2, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { USER_API_ENDPOINT } from "@/lib/constant";
+import { setUser } from "@/redux/slices/authSlice";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
+
+  const logoutHandler = async () => {
+    try {
+      const res = await axios.get(`${USER_API_ENDPOINT}/logout`, {
+        withCredentials: true,
+      });
+      if (res.data.success) {
+        dispatch(setUser(null));
+        router.push("/login");
+        toast.success(res.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
 
   return (
     <div className="sticky top-0 z-50 bg-white shadow-sm">
@@ -125,7 +150,10 @@ const Navbar = () => {
                       <Link href="/profile">Profile</Link>
                     </Button>
                   </div>
-                  <div className="flex w-fit items-center gap-2 cursor-pointer">
+                  <div
+                    onClick={logoutHandler}
+                    className="flex w-fit items-center gap-2 cursor-pointer"
+                  >
                     <LogOut />
                     <Button variant="link">Logout</Button>
                   </div>
