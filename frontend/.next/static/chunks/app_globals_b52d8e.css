@@ -583,6 +583,14 @@ body {
   margin-top: 2rem;
 }
 
+.-mt-1 {
+  margin-top: -.25rem;
+}
+
+.-mt-2 {
+  margin-top: -.5rem;
+}
+
 .block {
   display: block;
 }
@@ -934,6 +942,30 @@ body {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0px * var(--tw-space-y-reverse));
+}
+
+.space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
+.-space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(-.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(-.5rem * var(--tw-space-y-reverse));
+}
+
+.-space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(-.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(-.25rem * var(--tw-space-y-reverse));
 }
 
 .overflow-auto {
@@ -1330,10 +1362,6 @@ body {
 .text-\[\#7209b7\] {
   --tw-text-opacity: 1;
   color: rgb(114 9 183 / var(--tw-text-opacity, 1));
-}
-
-.text-\[\] {
-  color: ;
 }
 
 .text-black {
@@ -2056,10 +2084,6 @@ body {
 
   .sm\:w-2\/4 {
     width: 50%;
-  }
-
-  .sm\:max-w-\[425px\] {
-    max-width: 425px;
   }
 
   .sm\:max-w-\[70\%\] {

@@ -32,7 +32,7 @@ const Navbar = () => {
       });
       if (res.data.success) {
         dispatch(setUser(null));
-        router.push("/login");
+        router.push("/");
         toast.success(res.data.message);
       } else {
         toast.error(response.data.message);
@@ -49,7 +49,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/">
           <h1 className="text-2xl font-bold">
-            Job<span className="text-[]">Portal</span>
+            Job<span className="text-customRedColor">Portal</span>
           </h1>
         </Link>
 
@@ -131,15 +131,17 @@ const Navbar = () => {
                 </Avatar>
               </PopoverTrigger>
               <PopoverContent className="w-80">
-                <div className="flex gap-4">
+                <div className="flex items-center gap-4">
                   <Avatar className="cursor-pointer">
                     <AvatarImage src="https://github.com/shadcn.png" />
                   </Avatar>
                   <div>
-                    <h4 className="font-medium">Ali</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Lorem ipsum dolor sit amet.
-                    </p>
+                    <h4 className="font-medium">{user?.fullname}</h4>
+                    {user?.profile?.bio?.trim() && (
+                      <p className="-mt-1 text-sm text-muted-foreground">
+                        {user.profile.bio}
+                      </p>
+                    )}
                   </div>
                 </div>
 

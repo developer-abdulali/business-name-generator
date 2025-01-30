@@ -1,29 +1,8 @@
-// import LatestJobCard from "./LatestJobCard";
-
-// const LatestJobs = () => {
-//   const randomJobs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-//   return (
-//     <div className="wrapper my-20">
-//       <h1 className="text-4xl font-bold">
-//         Latest <span className="text-customColor">Job Openings</span>
-//       </h1>
-
-//       {/* card */}
-//       <div className="grid grid-cols-3 gap-4 my-5">
-//         {randomJobs.slice(0, 6)?.map((job, i) => (
-//           <LatestJobCard />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-// export default LatestJobs;
-
+import { useSelector } from "react-redux";
 import LatestJobCard from "./LatestJobCard";
 
 const LatestJobs = () => {
-  const randomJobs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const allJobs = useSelector((state) => state.job.allJobs);
 
   return (
     <div className="wrapper my-20 px-4">
@@ -33,9 +12,13 @@ const LatestJobs = () => {
 
       {/* Card Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {randomJobs.slice(0, 6)?.map((job, i) => (
-          <LatestJobCard key={i} />
-        ))}
+        {allJobs?.length <= 0 ? (
+          <span>No jobs found</span>
+        ) : (
+          allJobs
+            ?.slice(0, 6)
+            ?.map((job) => <LatestJobCard key={job?._id} job={job} />)
+        )}
       </div>
     </div>
   );

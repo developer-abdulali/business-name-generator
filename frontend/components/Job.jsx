@@ -1,99 +1,30 @@
-// import { Bookmark } from "lucide-react";
-// import { Button } from "./ui/button";
-// import { Avatar, AvatarImage } from "./ui/avatar";
-// import { Badge } from "./ui/badge";
-// import { useRouter } from "next/navigation";
-
-// const Job = ({ job }) => {
-//   const {
-//     id,
-//     title,
-//     companyName,
-//     location,
-//     description,
-//     positions,
-//     type,
-//     salary,
-//   } = job;
-//   const router = useRouter();
-
-//   return (
-//     <div
-//       onClick={() => router.push(`/job/${id}`)}
-//       className="p-5 rounded-lg shadow-lg bg-white border border-gray-100 hover:shadow-xl cursor-pointer hover:scale-105 transition-all duration-300"
-//     >
-//       <div className="flex items-center justify-between">
-//         <p className="text-sm text-gray-500">2 days ago</p>
-//         {/* Prevent navigation when clicking the button */}
-//         <Button
-//           title="Save For Later"
-//           className="rounded-full"
-//           size="icon"
-//           onClick={(e) => e.stopPropagation()}
-//         >
-//           <Bookmark />
-//         </Button>
-//       </div>
-
-//       <div className="flex items-center gap-4 my-4">
-//         <Avatar>
-//           <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5ar2jfvrUv7Ljjxpfu8UkQ0wNho_x8hRVHA&s" />
-//         </Avatar>
-//         <div>
-//           <p className="font-medium text-lg">Company Name</p>
-//           <p className="text-sm text-gray-500">Pakistan</p>
-//         </div>
-//       </div>
-
-//       <div>
-//         <p className="font-bold text-lg mb-2">Title</p>
-//         <p className="text-sm text-gray-600 leading-relaxed">
-//           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-//           quam quidem quisquam debitis dolorum ut ipsa expedita, iusto aliquam
-//           consectetur!
-//         </p>
-//       </div>
-
-//       <div className="flex flex-wrap items-center gap-2 mt-4">
-//         <Badge className="text-blue-700 font-medium bg-blue-50 px-3 py-1 rounded-full">
-//           12 Positions
-//         </Badge>
-//         <Badge className="text-customRedColor font-medium bg-red-50 px-3 py-1 rounded-full">
-//           Full Time
-//         </Badge>
-//         <Badge className="text-[#7209b7] font-medium bg-purple-50 px-3 py-1 rounded-full">
-//           PKR: 66,000
-//         </Badge>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Job;
-
 "use client";
+import { useRouter } from "next/navigation";
 import { Bookmark } from "lucide-react";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
-import { useRouter } from "next/navigation";
+import daysAgoFunction from "@/lib/daysAgoFunction";
 
 const Job = ({ job }) => {
-  console.log(job);
-  const { id } = job;
   const router = useRouter();
 
   return (
     <div
-      onClick={() => router.push(`/jobs/${id}`)}
+      onClick={() => router.push(`/jobs/${job?._id}`)}
       className="p-5 rounded-lg shadow-lg bg-white border border-gray-100 hover:shadow-xl cursor-pointer hover:scale-105 transition-all duration-300"
     >
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500">2 days ago</p>
+        <p className="text-sm text-gray-500">
+          {daysAgoFunction(job?.createdAt) === 0
+            ? "Today"
+            : `${daysAgoFunction(job?.createdAt)} days ago`}
+        </p>
         {/* Prevent navigation when clicking the button */}
         <Button
           title="Save For Later"
           className="rounded-full"
+          variant="outline"
           size="icon"
           onClick={(e) => e.stopPropagation()}
         >
@@ -106,29 +37,36 @@ const Job = ({ job }) => {
           <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5ar2jfvrUv7Ljjxpfu8UkQ0wNho_x8hRVHA&s" />
         </Avatar>
         <div>
-          <p className="font-medium text-lg">Company Name</p>
-          <p className="text-sm text-gray-500">Pakistan</p>
+          <p className="font-medium text-lg">{job?.company?.name}</p>
+          <p className="text-sm text-gray-500">{job?.location}</p>
         </div>
       </div>
 
       <div>
-        <p className="font-bold text-lg mb-2">Title</p>
+        <p className="font-bold text-lg mb-2">{job?.title}</p>
         <p className="text-sm text-gray-600 leading-relaxed">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          quam quidem quisquam debitis dolorum ut ipsa expedita, iusto aliquam
-          consectetur!
+          {job?.description}
         </p>
       </div>
 
       <div className="flex flex-wrap items-center gap-2 mt-4">
-        <Badge className="text-blue-700 font-medium bg-blue-50 px-3 py-1 rounded-full">
-          12 Positions
+        <Badge
+          variant="secondary"
+          className="text-blue-700 font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
+        >
+          {job?.position} Positions
         </Badge>
-        <Badge className="text-customRedColor font-medium bg-red-50 px-3 py-1 rounded-full">
-          Full Time
+        <Badge
+          variant="secondary"
+          className="text-customRedColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
+        >
+          {job?.jobType}
         </Badge>
-        <Badge className="text-[#7209b7] font-medium bg-purple-50 px-3 py-1 rounded-full">
-          PKR: 50,000
+        <Badge
+          variant="secondary"
+          className="text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
+        >
+          {job?.salary} PKR
         </Badge>
       </div>
     </div>

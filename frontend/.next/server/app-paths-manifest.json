@@ -1,9 +1,10 @@
 {
   "/page": "app/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/jobs/page": "app/jobs/page.js",
-  "/browse/page": "app/browse/page.js",
   "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/browse/page": "app/browse/page.js",
+  "/jobs/page": "app/jobs/page.js",
+  "/jobs/[jobId]/page": "app/jobs/[jobId]/page.js",
   "/profile/page": "app/profile/page.js",
   "/(auth)/signup/page": "app/(auth)/signup/page.js"
 }
