@@ -30,8 +30,7 @@ const userSchema = new mongoose.Schema(
       company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" },
       profileImage: {
         type: String,
-        default:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU8VYISu01SXKdXQ8LQrBvFCPG4w1H58GXqHBdCJp_Kv5TY_MuObEw9FI&s",
+        default: "https://cdn-icons-png.flaticon.com/128/15339/15339256.png",
       },
     },
   },

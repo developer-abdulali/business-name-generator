@@ -29,7 +29,6 @@ export const registerCompany = async (req, res) => {
       company,
     });
   } catch (error) {
-    console.log(error);
     return res
       .status(500)
       .json({ success: false, message: "Error while registering company." });
@@ -53,7 +52,6 @@ export const getCompany = async (req, res) => {
       companies,
     });
   } catch (error) {
-    console.log(error);
     return res
       .status(500)
       .json({ success: false, message: "Error while getting company." });
@@ -76,7 +74,6 @@ export const getCompanyById = async (req, res) => {
       company,
     });
   } catch (err) {
-    console.error(err);
     return res.status(500).json({ success: false, message: "Server Error" });
   }
 };
@@ -84,6 +81,7 @@ export const getCompanyById = async (req, res) => {
 export const updateCompany = async (req, res) => {
   try {
     const { name, description, website, location } = req.body;
+
     const file = req.files;
 
     // cloudinary setup here...
@@ -106,7 +104,6 @@ export const updateCompany = async (req, res) => {
       company,
     });
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ success: false, message: "Server Error" });
   }
 };
@@ -141,7 +138,6 @@ export const deleteCompany = async (req, res) => {
       message: "Company deleted successfully.",
     });
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ success: false, message: "Server Error" });
   }
 };

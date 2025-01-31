@@ -11,8 +11,8 @@ const jobRouter = express.Router();
 
 // routes for applicants
 jobRouter.post("/post", isAuthenticated, postJob);
-jobRouter.get("/get", isAuthenticated, getAllJobs);
-jobRouter.get("/get/:id", isAuthenticated, getJobById);
+jobRouter.get("/get", getAllJobs);
+jobRouter.get("/get/:id", getJobById);
 
 // routes for recruiters
 jobRouter.get("/getrecruiterjobs", isAuthenticated, getRecruiterJobs);

@@ -522,10 +522,6 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
         formData.append("skills", input.skills);
         if (input.profileImage) formData.append("profileImage", input.profileImage);
         if (input.resume) formData.append("resume", input.resume);
-        // Log FormData contents
-        for (let [key, value] of formData.entries()){
-            console.log(key, value);
-        }
         try {
             const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constant$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USER_API_ENDPOINT"]}/profile/update`, formData, {
                 headers: {
@@ -558,12 +554,12 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                         children: "Update Profile"
                     }, void 0, false, {
                         fileName: "[project]/components/UpdateProfileModal.jsx",
-                        lineNumber: 277,
+                        lineNumber: 273,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                    lineNumber: 276,
+                    lineNumber: 272,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -580,7 +576,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Full Name"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 283,
+                                            lineNumber: 279,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -591,13 +587,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 284,
+                                            lineNumber: 280,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 282,
+                                    lineNumber: 278,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -608,7 +604,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 294,
+                                            lineNumber: 290,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -620,13 +616,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 295,
+                                            lineNumber: 291,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 293,
+                                    lineNumber: 289,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -637,7 +633,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Phone Number"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 306,
+                                            lineNumber: 302,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -648,13 +644,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 307,
+                                            lineNumber: 303,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 305,
+                                    lineNumber: 301,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -665,7 +661,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Bio"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 317,
+                                            lineNumber: 313,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -676,13 +672,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 318,
+                                            lineNumber: 314,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 316,
+                                    lineNumber: 312,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -693,7 +689,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Skills"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 328,
+                                            lineNumber: 324,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -705,13 +701,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             placeholder: "Comma-separated skills"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 329,
+                                            lineNumber: 325,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 327,
+                                    lineNumber: 323,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -722,7 +718,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Profile Image"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 340,
+                                            lineNumber: 336,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -734,7 +730,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 341,
+                                            lineNumber: 337,
                                             columnNumber: 15
                                         }, this),
                                         imagePreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -743,13 +739,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "mt-2 w-24 h-24 object-cover rounded-full"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 350,
+                                            lineNumber: 346,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 339,
+                                    lineNumber: 335,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -760,7 +756,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Resume"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 359,
+                                            lineNumber: 355,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -772,7 +768,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 360,
+                                            lineNumber: 356,
                                             columnNumber: 15
                                         }, this),
                                         resumePreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -780,19 +776,19 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: resumePreview
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 369,
+                                            lineNumber: 365,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 358,
+                                    lineNumber: 354,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                            lineNumber: 280,
+                            lineNumber: 276,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogFooter"], {
@@ -805,7 +801,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                     children: "Close"
                                 }, void 0, false, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 374,
+                                    lineNumber: 370,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -814,30 +810,30 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                     children: loading ? "Saving..." : "Save Changes"
                                 }, void 0, false, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 382,
+                                    lineNumber: 378,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                            lineNumber: 373,
+                            lineNumber: 369,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                    lineNumber: 279,
+                    lineNumber: 275,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/UpdateProfileModal.jsx",
-            lineNumber: 275,
+            lineNumber: 271,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/UpdateProfileModal.jsx",
-        lineNumber: 274,
+        lineNumber: 270,
         columnNumber: 5
     }, this);
 };
@@ -854,6 +850,212 @@ __turbopack_refresh__.register(_c, "UpdateProfileModal");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
+ // "use client";
+ // import {
+ //   Dialog,
+ //   DialogContent,
+ //   DialogHeader,
+ //   DialogTitle,
+ //   DialogFooter,
+ // } from "@/components/ui/dialog";
+ // import { Button } from "./ui/button";
+ // import { Label } from "./ui/label";
+ // import { Input } from "./ui/input";
+ // import { useState } from "react";
+ // import { useDispatch, useSelector } from "react-redux";
+ // import { toast } from "sonner";
+ // import axios from "axios";
+ // import { USER_API_ENDPOINT } from "@/lib/constant";
+ // import { setUser } from "@/redux/slices/authSlice";
+ // const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
+ //   const { user } = useSelector((state) => state.auth);
+ //   const dispatch = useDispatch();
+ //   const [input, setInput] = useState({
+ //     fullname: user?.fullname || "",
+ //     email: user?.email || "",
+ //     number: user?.phoneNumber || "",
+ //     bio: user?.profile?.bio || "",
+ //     skills: user?.profile?.skills?.join(", ") || "",
+ //     profileImage: null,
+ //     resume: null,
+ //   });
+ //   const [loading, setLoading] = useState(false);
+ //   const [imagePreview, setImagePreview] = useState(
+ //     user?.profile?.profileImage || ""
+ //   );
+ //   const [resumePreview, setResumePreview] = useState(
+ //     user?.profile?.resumeOriginalName || ""
+ //   );
+ //   const handleInputChange = (e) => {
+ //     setInput({ ...input, [e.target.name]: e.target.value });
+ //   };
+ //   const handleFileChange = (e, type) => {
+ //     const file = e.target.files[0];
+ //     if (type === "profileImage") {
+ //       setInput({ ...input, profileImage: file });
+ //       setImagePreview(URL.createObjectURL(file));
+ //     } else if (type === "resume") {
+ //       setInput({ ...input, resume: file });
+ //       setResumePreview(file.name);
+ //     }
+ //   };
+ //   const handleSubmit = async (e) => {
+ //     e.preventDefault();
+ //     setLoading(true);
+ //     const formData = new FormData();
+ //     formData.append("fullname", input.fullname);
+ //     formData.append("email", input.email);
+ //     formData.append("phoneNumber", input.number);
+ //     formData.append("bio", input.bio);
+ //     formData.append("skills", input.skills);
+ //     if (input.profileImage) formData.append("profileImage", input.profileImage);
+ //     if (input.resume) formData.append("resume", input.resume);
+ //     // Log FormData contents
+ //     for (let [key, value] of formData.entries()) {
+ //       console.log(key, value);
+ //     }
+ //     try {
+ //       const response = await axios.post(
+ //         `${USER_API_ENDPOINT}/profile/update`,
+ //         formData,
+ //         {
+ //           headers: { "Content-Type": "multipart/form-data" },
+ //           withCredentials: true,
+ //           timeout: 60000, // Increase timeout to 60 seconds
+ //         }
+ //       );
+ //       if (response.data.success) {
+ //         dispatch(setUser(response.data.user));
+ //         toast.success(response.data.message);
+ //         setModalOpen(false);
+ //       } else {
+ //         toast.error(response.data.error);
+ //       }
+ //     } catch (error) {
+ //       toast.error(error.response?.data?.error || "Something went wrong!");
+ //     } finally {
+ //       setLoading(false);
+ //     }
+ //   };
+ //   return (
+ //     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+ //       <DialogContent onInteractOutside={() => setModalOpen(false)}>
+ //         <DialogHeader>
+ //           <DialogTitle>Update Profile</DialogTitle>
+ //         </DialogHeader>
+ //         <form onSubmit={handleSubmit}>
+ //           <div className="grid gap-4 py-4">
+ //             {/* Fullname */}
+ //             <div className="grid grid-cols-4 items-center gap-4">
+ //               <Label htmlFor="fullname">Full Name</Label>
+ //               <Input
+ //                 id="fullname"
+ //                 name="fullname"
+ //                 value={input.fullname}
+ //                 onChange={handleInputChange}
+ //                 className="col-span-3"
+ //               />
+ //             </div>
+ //             {/* Email */}
+ //             <div className="grid grid-cols-4 items-center gap-4">
+ //               <Label htmlFor="email">Email</Label>
+ //               <Input
+ //                 id="email"
+ //                 name="email"
+ //                 type="email"
+ //                 value={input.email}
+ //                 onChange={handleInputChange}
+ //                 className="col-span-3"
+ //               />
+ //             </div>
+ //             {/* Phone */}
+ //             <div className="grid grid-cols-4 items-center gap-4">
+ //               <Label htmlFor="number">Phone Number</Label>
+ //               <Input
+ //                 id="number"
+ //                 name="number"
+ //                 value={input.number}
+ //                 onChange={handleInputChange}
+ //                 className="col-span-3"
+ //               />
+ //             </div>
+ //             {/* Bio */}
+ //             <div className="grid grid-cols-4 items-center gap-4">
+ //               <Label htmlFor="bio">Bio</Label>
+ //               <Input
+ //                 id="bio"
+ //                 name="bio"
+ //                 value={input.bio}
+ //                 onChange={handleInputChange}
+ //                 className="col-span-3"
+ //               />
+ //             </div>
+ //             {/* Skills */}
+ //             <div className="grid grid-cols-4 items-center gap-4">
+ //               <Label htmlFor="skills">Skills</Label>
+ //               <Input
+ //                 id="skills"
+ //                 name="skills"
+ //                 value={input.skills}
+ //                 onChange={handleInputChange}
+ //                 className="col-span-3"
+ //                 placeholder="Comma-separated skills"
+ //               />
+ //             </div>
+ //             {/* Profile Image */}
+ //             <div className="grid grid-cols-4 items-center gap-4">
+ //               <Label htmlFor="profileImage">Profile Image</Label>
+ //               <Input
+ //                 id="profileImage"
+ //                 name="profileImage"
+ //                 type="file"
+ //                 accept="image/*"
+ //                 onChange={(e) => handleFileChange(e, "profileImage")}
+ //                 className="col-span-3"
+ //               />
+ //               {imagePreview && (
+ //                 <img
+ //                   src={imagePreview}
+ //                   alt="Profile Preview"
+ //                   className="mt-2 w-24 h-24 object-cover rounded-full"
+ //                 />
+ //               )}
+ //             </div>
+ //             {/* Resume */}
+ //             <div className="grid grid-cols-4 items-center gap-4">
+ //               <Label htmlFor="resume">Resume</Label>
+ //               <Input
+ //                 id="resume"
+ //                 name="resume"
+ //                 type="file"
+ //                 accept="application/pdf"
+ //                 onChange={(e) => handleFileChange(e, "resume")}
+ //                 className="col-span-3"
+ //               />
+ //               {resumePreview && (
+ //                 <span className="mt-2 text-gray-700">{resumePreview}</span>
+ //               )}
+ //             </div>
+ //           </div>
+ //           <DialogFooter>
+ //             <Button
+ //               type="button"
+ //               variant="secondary"
+ //               onClick={() => setModalOpen(false)}
+ //               disabled={loading}
+ //             >
+ //               Close
+ //             </Button>
+ //             <Button type="submit" disabled={loading}>
+ //               {loading ? "Saving..." : "Save Changes"}
+ //             </Button>
+ //           </DialogFooter>
+ //         </form>
+ //       </DialogContent>
+ //     </Dialog>
+ //   );
+ // };
+ // export default UpdateProfileModal;
 }}),
 "[project]/components/ui/table.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -1139,6 +1341,103 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
+// "use client";
+// import { Contact, Mail, Pen } from "lucide-react";
+// import { Avatar, AvatarImage } from "./ui/avatar";
+// import { Button } from "./ui/button";
+// import { Badge } from "./ui/badge";
+// import { Label } from "./ui/label";
+// import { useState } from "react";
+// import UpdateProfileModal from "./UpdateProfileModal";
+// import AppliedJobsTable from "./AppliedJobsTable";
+// import { useSelector } from "react-redux";
+// const Profile = () => {
+//   const [modalOpen, setModalOpen] = useState(false);
+//   const { user } = useSelector((state) => state.auth);
+//   const haveResume = user?.profile?.resume || false;
+//   console.log("haveResume", haveResume);
+//   return (
+//     <div className="px-4 py-8 bg-gray-50">
+//       {/* Profile Card */}
+//       <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg shadow-md p-6 sm:p-8">
+//         <div className="flex flex-col sm:flex-row sm:justify-between">
+//           <div className="flex items-center gap-4">
+//             <Avatar className="h-24 w-24">
+//               <AvatarImage
+//                 src={
+//                   user?.profile?.profileImage ||
+//                   "https://cdn-icons-png.flaticon.com/128/15339/15339256.png"
+//                 }
+//                 alt="profile img"
+//               />
+//             </Avatar>
+//             <div>
+//               <h2 className="text-2xl font-semibold text-gray-800">
+//                 {user?.fullname}
+//               </h2>
+//               <p className="text-sm text-gray-600 mt-1">{user?.role}</p>
+//             </div>
+//           </div>
+//           <Button variant="secondary" onClick={() => setModalOpen(true)}>
+//             <Pen className="w-5 h-5" />
+//           </Button>
+//         </div>
+//         <div className="mt-6">
+//           <div className="flex items-center gap-3 my-2">
+//             <Mail className="text-gray-500 w-5 h-5" />
+//             <span className="text-gray-700">{user?.email}</span>
+//           </div>
+//           <div className="flex items-center gap-3">
+//             <Contact className="text-gray-500 w-5 h-5" />
+//             <span className="text-gray-700">{user?.phoneNumber}</span>
+//           </div>
+//         </div>
+//         <div className="mt-6">
+//           <p className="font-semibold text-gray-800">Skills</p>
+//           <div className="flex flex-wrap gap-2 mt-2">
+//             {user?.profile?.skills?.length !== 0 ? (
+//               user?.profile?.skills?.map((item, i) => (
+//                 <Badge
+//                   key={i}
+//                   variant="secondary"
+//                   className="bg-gray-100 text-gray-800 px-3 py-1 rounded-lg"
+//                 >
+//                   {item}
+//                 </Badge>
+//               ))
+//             ) : (
+//               <span className="text-gray-600"> NA</span>
+//             )}
+//           </div>
+//         </div>
+//         {/* Resume Section */}
+//         <div className="mt-6">
+//           <Label className="text-md font-semibold text-gray-800">Resume</Label>
+//           {haveResume ? (
+//             <a
+//               href="/"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="block mt-1 text-blue-500 hover:underline"
+//             >
+//               Download Resume
+//             </a>
+//           ) : (
+//             <span className="text-gray-600"> NA</span>
+//           )}
+//         </div>
+//       </div>
+//       {/* Applied Jobs Section */}
+//       <div className="max-w-4xl mx-auto bg-white mt-8 rounded-lg shadow-md p-6 sm:p-8">
+//         <p className="font-bold text-lg text-gray-800 mb-4">Applied Jobs</p>
+//         <AppliedJobsTable />
+//       </div>
+//       {/* Update profile modal */}
+//       <UpdateProfileModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+//     </div>
+//   );
+// };
+// export default Profile;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -1166,14 +1465,14 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-// const skillsData = ["HTML", "CSS", "JavaScript", "TypeScript", "React"];
 const Profile = ()=>{
     _s();
     const [modalOpen, setModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
         "Profile.useSelector": (state)=>state.auth
     }["Profile.useSelector"]);
-    const haveResume = false;
+    const haveResume = user?.profile?.resume || false;
+    console.log("haveResume", haveResume);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "px-4 py-8 bg-gray-50",
         children: [
@@ -1189,16 +1488,16 @@ const Profile = ()=>{
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Avatar"], {
                                         className: "h-24 w-24",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AvatarImage"], {
-                                            src: user?.profile?.profileImage,
+                                            src: user?.profile?.profileImage || "https://cdn-icons-png.flaticon.com/128/15339/15339256.png",
                                             alt: "profile img"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Profile.jsx",
-                                            lineNumber: 26,
+                                            lineNumber: 135,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Profile.jsx",
-                                        lineNumber: 25,
+                                        lineNumber: 134,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1208,27 +1507,27 @@ const Profile = ()=>{
                                                 children: user?.fullname
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Profile.jsx",
-                                                lineNumber: 33,
+                                                lineNumber: 145,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-sm text-gray-600 mt-1",
-                                                children: user?.profile.bio
+                                                children: user?.role
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Profile.jsx",
-                                                lineNumber: 36,
+                                                lineNumber: 148,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Profile.jsx",
-                                        lineNumber: 32,
+                                        lineNumber: 144,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Profile.jsx",
-                                lineNumber: 24,
+                                lineNumber: 133,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1238,18 +1537,18 @@ const Profile = ()=>{
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Profile.jsx",
-                                    lineNumber: 41,
+                                    lineNumber: 153,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Profile.jsx",
-                                lineNumber: 40,
+                                lineNumber: 152,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Profile.jsx",
-                        lineNumber: 23,
+                        lineNumber: 132,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1262,7 +1561,7 @@ const Profile = ()=>{
                                         className: "text-gray-500 w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/Profile.jsx",
-                                        lineNumber: 47,
+                                        lineNumber: 159,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1270,13 +1569,13 @@ const Profile = ()=>{
                                         children: user?.email
                                     }, void 0, false, {
                                         fileName: "[project]/components/Profile.jsx",
-                                        lineNumber: 48,
+                                        lineNumber: 160,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Profile.jsx",
-                                lineNumber: 46,
+                                lineNumber: 158,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1286,7 +1585,7 @@ const Profile = ()=>{
                                         className: "text-gray-500 w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/Profile.jsx",
-                                        lineNumber: 51,
+                                        lineNumber: 163,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1294,19 +1593,19 @@ const Profile = ()=>{
                                         children: user?.phoneNumber
                                     }, void 0, false, {
                                         fileName: "[project]/components/Profile.jsx",
-                                        lineNumber: 52,
+                                        lineNumber: 164,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Profile.jsx",
-                                lineNumber: 50,
+                                lineNumber: 162,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Profile.jsx",
-                        lineNumber: 45,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1317,7 +1616,7 @@ const Profile = ()=>{
                                 children: "Skills"
                             }, void 0, false, {
                                 fileName: "[project]/components/Profile.jsx",
-                                lineNumber: 57,
+                                lineNumber: 169,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1328,25 +1627,25 @@ const Profile = ()=>{
                                         children: item
                                     }, i, false, {
                                         fileName: "[project]/components/Profile.jsx",
-                                        lineNumber: 61,
+                                        lineNumber: 173,
                                         columnNumber: 17
                                     }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "text-gray-600",
                                     children: " NA"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Profile.jsx",
-                                    lineNumber: 70,
+                                    lineNumber: 182,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Profile.jsx",
-                                lineNumber: 58,
+                                lineNumber: 170,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Profile.jsx",
-                        lineNumber: 56,
+                        lineNumber: 168,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1357,27 +1656,38 @@ const Profile = ()=>{
                                 children: "Resume"
                             }, void 0, false, {
                                 fileName: "[project]/components/Profile.jsx",
-                                lineNumber: 77,
+                                lineNumber: 189,
                                 columnNumber: 11
                             }, this),
-                            ("TURBOPACK compile-time falsy", 0) ? ("TURBOPACK unreachable", undefined) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            haveResume ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: user?.profile?.resume,
+                                download: true,
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                className: "block mt-1 text-blue-500 hover:underline",
+                                children: "Download Resume"
+                            }, void 0, false, {
+                                fileName: "[project]/components/Profile.jsx",
+                                lineNumber: 191,
+                                columnNumber: 13
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "text-gray-600",
                                 children: " NA"
                             }, void 0, false, {
                                 fileName: "[project]/components/Profile.jsx",
-                                lineNumber: 88,
+                                lineNumber: 201,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Profile.jsx",
-                        lineNumber: 76,
+                        lineNumber: 188,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Profile.jsx",
-                lineNumber: 22,
+                lineNumber: 131,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1388,18 +1698,18 @@ const Profile = ()=>{
                         children: "Applied Jobs"
                     }, void 0, false, {
                         fileName: "[project]/components/Profile.jsx",
-                        lineNumber: 95,
+                        lineNumber: 208,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$AppliedJobsTable$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/components/Profile.jsx",
-                        lineNumber: 96,
+                        lineNumber: 209,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Profile.jsx",
-                lineNumber: 94,
+                lineNumber: 207,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$UpdateProfileModal$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1407,13 +1717,13 @@ const Profile = ()=>{
                 setModalOpen: setModalOpen
             }, void 0, false, {
                 fileName: "[project]/components/Profile.jsx",
-                lineNumber: 100,
+                lineNumber: 213,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Profile.jsx",
-        lineNumber: 20,
+        lineNumber: 129,
         columnNumber: 5
     }, this);
 };

@@ -142,7 +142,6 @@ export const getJobById = async (req, res) => {
       .status(200)
       .json({ success: true, job, message: "Job fetched successfully" });
   } catch (error) {
-    console.error(error);
     return res
       .status(500)
       .json({ success: false, message: "Error while getting job." });
@@ -167,7 +166,6 @@ export const getRecruiterJobs = async (req, res) => {
       .status(200)
       .json({ success: true, jobs, message: "Jobs fetched successfully" });
   } catch (error) {
-    console.log(error);
     return res
       .status(500)
       .json({ success: false, message: "Error while getting jobs." });
