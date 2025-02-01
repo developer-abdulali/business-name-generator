@@ -76,14 +76,14 @@ const Navbar = () => {
           {user && user?.role === "recruiter" ? (
             <>
               <Link
-                href="/admin/companies"
+                href="/recruiter/companies"
                 className={`hover:text-customRedColor cursor-pointer`}
               >
                 Companies
               </Link>
 
               <Link
-                href="/admin/jobs"
+                href="/recruiter/jobs"
                 className={`hover:text-customRedColor cursor-pointer`}
               >
                 Jobs

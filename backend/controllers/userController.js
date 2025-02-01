@@ -53,7 +53,6 @@ export const registerUser = async (req, res) => {
       user: newUser,
     });
   } catch (error) {
-    console.error("Error in registerUser:", error);
     return res
       .status(500)
       .json({ success: false, error: error.message || "An error occurred!" });
@@ -111,16 +110,24 @@ export const loginUser = async (req, res) => {
       profile: user.profile,
     };
 
+    // return res
+    //   .status(200)
+    //   .cookie("token", token, {
+    //     maxAge: 1 * 24 * 60 * 60 * 1000,
+    //     httpsOnly: true,
+    //     sameSite: "strict",
+    //   })
+    //   .json({ success: true, message: `Welcome back ${user.fullname}`, user });
+
     return res
       .status(200)
       .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
-        httpsOnly: true,
+        httpOnly: true,
         sameSite: "strict",
       })
       .json({ success: true, message: `Welcome back ${user.fullname}`, user });
   } catch (error) {
-    console.error(error);
     return res
       .status(500)
       .json({ success: false, error: "Error while logging in!" });

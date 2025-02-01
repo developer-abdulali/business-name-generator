@@ -28,12 +28,6 @@ const Jobs = () => {
     };
   }, []);
 
-  // const jobsArray = [
-  //   { id: "1", title: "Software Engineer" },
-  //   { id: "2", title: "Product Manager" },
-  //   { id: "3", title: "Designer" },
-  // ];
-
   return (
     <section className="bg-gray-50 min-h-screen">
       <div className="wrapper px-4 xl:px-0 py-8">

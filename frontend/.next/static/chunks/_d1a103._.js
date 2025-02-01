@@ -731,7 +731,7 @@ const Navbar = ()=>{
                         user && user?.role === "recruiter" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/admin/companies",
+                                    href: "/recruiter/companies",
                                     className: `hover:text-customRedColor cursor-pointer`,
                                     children: "Companies"
                                 }, void 0, false, {
@@ -740,7 +740,7 @@ const Navbar = ()=>{
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/admin/jobs",
+                                    href: "/recruiter/jobs",
                                     className: `hover:text-customRedColor cursor-pointer`,
                                     children: "Jobs"
                                 }, void 0, false, {
@@ -1051,6 +1051,8 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__),
     "setAllJobs": (()=>setAllJobs),
+    "setAllRecruiterJobs": (()=>setAllRecruiterJobs),
+    "setSearchJobByText": (()=>setSearchJobByText),
     "setSingleJob": (()=>setSingleJob)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_import__("[project]/node_modules/@reduxjs/toolkit/dist/redux-toolkit.modern.mjs [app-client] (ecmascript) <locals>");
@@ -1059,19 +1061,27 @@ const jobSlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_module
     name: "job",
     initialState: {
         allJobs: [],
-        singleJob: null
+        allRecruiterJobs: [],
+        singleJob: null,
+        searchJobByText: ""
     },
     reducers: {
         // actions
         setAllJobs: (state, action)=>{
             state.allJobs = action.payload;
         },
+        setAllRecruiterJobs: (state, action)=>{
+            state.allRecruiterJobs = action.payload;
+        },
         setSingleJob: (state, action)=>{
             state.singleJob = action.payload;
+        },
+        setSearchJobByText: (state, action)=>{
+            state.searchJobByText = action.payload;
         }
     }
 });
-const { setAllJobs, setSingleJob } = jobSlice.actions;
+const { setAllJobs, setSingleJob, setAllRecruiterJobs, setSearchJobByText } = jobSlice.actions;
 const __TURBOPACK__default__export__ = jobSlice.reducer;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
@@ -1084,6 +1094,10 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 {
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__),
+    "deleteCompany": (()=>deleteCompany),
+    "setCompanies": (()=>setCompanies),
+    "setSearchCompanyByLocation": (()=>setSearchCompanyByLocation),
+    "setSearchCompanyByText": (()=>setSearchCompanyByText),
     "setSingleCompany": (()=>setSingleCompany)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_import__("[project]/node_modules/@reduxjs/toolkit/dist/redux-toolkit.modern.mjs [app-client] (ecmascript) <locals>");
@@ -1091,16 +1105,31 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f
 const companySlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$reduxjs$2f$toolkit$2f$dist$2f$redux$2d$toolkit$2e$modern$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createSlice"])({
     name: "company",
     initialState: {
-        singleCompany: null
+        singleCompany: null,
+        companies: [],
+        searchCompanyByText: "",
+        searchCompanyByLocation: ""
     },
     reducers: {
         // actions
         setSingleCompany: (state, action)=>{
             state.singleCompany = action.payload;
+        },
+        setCompanies: (state, action)=>{
+            state.companies = action.payload;
+        },
+        deleteCompany: (state, action)=>{
+            state.companies = state.companies.filter((company)=>company._id !== action.payload);
+        },
+        setSearchCompanyByText: (state, action)=>{
+            state.searchCompanyByText = action.payload;
+        },
+        setSearchCompanyByLocation: (state, action)=>{
+            state.searchCompanyByLocation = action.payload;
         }
     }
 });
-const { setSingleCompany } = companySlice.actions;
+const { setSingleCompany, setCompanies, deleteCompany, setSearchCompanyByText, setSearchCompanyByLocation } = companySlice.actions;
 const __TURBOPACK__default__export__ = companySlice.reducer;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
@@ -1111,22 +1140,12 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// import { configureStore } from "@reduxjs/toolkit";
-// import authSlice from "./slices/authSlice";
-// import jobSlice from "./slices/jobSlice";
-// const store = configureStore({
-//   reducer: {
-//     auth: authSlice,
-//     job: jobSlice,
-//   },
-// });
-// export default store;
 __turbopack_esm__({
     "persistor": (()=>persistor),
     "store": (()=>store)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$redux$2d$persist$2f$es$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/node_modules/redux-persist/es/index.js [app-client] (ecmascript) <module evaluation>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$redux$2d$persist$2f$lib$2f$storage$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/redux-persist/lib/storage/index.js [app-client] (ecmascript)"); // defaults to localStorage for web
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$redux$2d$persist$2f$lib$2f$storage$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/redux-persist/lib/storage/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$authSlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/redux/slices/authSlice.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/redux/slices/jobSlice.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/redux/slices/companySlice.js [app-client] (ecmascript)");

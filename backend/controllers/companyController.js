@@ -1,4 +1,5 @@
 import { Company } from "../models/companyModel.js";
+import { uploadToCloudinary } from "../utils/cloudinaryConfig.js";
 
 export const registerCompany = async (req, res) => {
   try {
@@ -81,12 +82,21 @@ export const getCompanyById = async (req, res) => {
 export const updateCompany = async (req, res) => {
   try {
     const { name, description, website, location } = req.body;
+    let logoUrl = null;
 
-    const file = req.files;
+    // const file = req.files;
 
-    // cloudinary setup here...
+    if (req.file) {
+      logoUrl = await uploadToCloudinary(req.file, "company_logos");
+    }
 
-    const updateCompanyData = { name, description, website, location };
+    const updateCompanyData = {
+      name,
+      description,
+      website,
+      location,
+      logo: logoUrl,
+    };
 
     const company = await Company.findByIdAndUpdate(
       req.params.id,
@@ -111,7 +121,7 @@ export const updateCompany = async (req, res) => {
 export const deleteCompany = async (req, res) => {
   try {
     const userId = req.id; // User ID from authentication middleware
-    const companyId = req.params.id; // Company ID from request parameters
+    const companyId = req.params.id;
 
     // Find the company by its ID
     const company = await Company.findById(companyId);

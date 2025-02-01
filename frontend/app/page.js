@@ -13,7 +13,7 @@ const Home = () => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    if (user?.role === "recruiter") redirect("/admin/companies");
+    if (user?.role === "recruiter") redirect("/recruiter/companies");
   }, []);
 
   return (

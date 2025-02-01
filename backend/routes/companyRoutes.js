@@ -7,13 +7,21 @@ import {
   registerCompany,
   updateCompany,
 } from "../controllers/companyController.js";
+import multer from "multer";
+
+const upload = multer();
 
 const companyRouter = express.Router();
 
 companyRouter.post("/register", isAuthenticated, registerCompany);
 companyRouter.get("/get", isAuthenticated, getCompany);
 companyRouter.get("/get/:id", isAuthenticated, getCompanyById);
-companyRouter.put("/update/:id", isAuthenticated, updateCompany);
+companyRouter.post(
+  "/update/:id",
+  isAuthenticated,
+  upload.single("logo"),
+  updateCompany
+);
 companyRouter.delete("/delete/:id", isAuthenticated, deleteCompany);
 
 export default companyRouter;

@@ -1,19 +1,6 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import authSlice from "./slices/authSlice";
-// import jobSlice from "./slices/jobSlice";
-
-// const store = configureStore({
-//   reducer: {
-//     auth: authSlice,
-//     job: jobSlice,
-//   },
-// });
-
-// export default store;
-
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import storage from "redux-persist/lib/storage";
 import authSlice from "./slices/authSlice";
 import jobSlice from "./slices/jobSlice";
 import companySlice from "./slices/companySlice";

@@ -152,9 +152,13 @@ export const getJobById = async (req, res) => {
 export const getRecruiterJobs = async (req, res) => {
   try {
     const recruiterId = req.id;
-    const jobs = await Job.find({ created_by: recruiterId }).sort({
-      createdAt: -1,
-    });
+    const jobs = await Job.find({ created_by: recruiterId })
+      .populate({
+        path: "company",
+      })
+      .sort({
+        createdAt: -1,
+      });
 
     if (!jobs) {
       return res

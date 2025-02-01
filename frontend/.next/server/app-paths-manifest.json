@@ -1,10 +1,10 @@
 {
   "/page": "app/page.js",
-  "/(admin)/admin/companies/page": "app/(admin)/admin/companies/page.js",
-  "/(admin)/admin/companies/register-company/page": "app/(admin)/admin/companies/register-company/page.js",
-  "/(admin)/admin/companies/[companyId]/page": "app/(admin)/admin/companies/[companyId]/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/profile/page": "app/profile/page.js",
-  "/(auth)/signup/page": "app/(auth)/signup/page.js"
+  "/recruiter/companies/page": "app/recruiter/companies/page.js",
+  "/recruiter/companies/register-company/page": "app/recruiter/companies/register-company/page.js",
+  "/recruiter/jobs/page": "app/recruiter/jobs/page.js",
+  "/recruiter/companies/[companyId]/page": "app/recruiter/companies/[companyId]/page.js"
 }
