@@ -100,35 +100,6 @@ export const getAllJobs = async (req, res) => {
   }
 };
 
-// export const getAllJobs = async (req, res) => {
-//   try {
-//     const keyword = req.query.keyword || "";
-//     const query = {
-//       $or: [
-//         { title: { $regex: keyword, $options: "i" } },
-//         { description: { $regex: keyword, $options: "i" } },
-//         { position: { $regex: keyword, $options: "i" } },
-//       ],
-//     };
-
-//     const jobs = await Job.find(query).sort({ createdAt: -1 });
-//     if (!jobs) {
-//       return res
-//         .status(404)
-//         .json({ success: false, message: "Jobs not found." });
-//     }
-
-//     res
-//       .status(200)
-//       .json({ success: true, jobs, message: "Jobs fetched successfully" });
-//   } catch (error) {
-//     console.error(error);
-//     return res
-//       .status(500)
-//       .json({ success: false, message: "Error while getting jobs." });
-//   }
-// };
-
 export const getJobById = async (req, res) => {
   try {
     const jobId = req.params.id;

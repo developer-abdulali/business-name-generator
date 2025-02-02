@@ -622,11 +622,6 @@ const Jobs = ()=>{
             })["Jobs.useEffect"];
         }
     }["Jobs.useEffect"], []);
-    // const jobsArray = [
-    //   { id: "1", title: "Software Engineer" },
-    //   { id: "2", title: "Product Manager" },
-    //   { id: "3", title: "Designer" },
-    // ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: "bg-gray-50 min-h-screen",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -640,7 +635,7 @@ const Jobs = ()=>{
                             children: "Job Listings"
                         }, void 0, false, {
                             fileName: "[project]/components/Jobs.jsx",
-                            lineNumber: 41,
+                            lineNumber: 35,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -650,18 +645,18 @@ const Jobs = ()=>{
                                 size: 28
                             }, void 0, false, {
                                 fileName: "[project]/components/Jobs.jsx",
-                                lineNumber: 47,
+                                lineNumber: 41,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/Jobs.jsx",
-                            lineNumber: 43,
+                            lineNumber: 37,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Jobs.jsx",
-                    lineNumber: 40,
+                    lineNumber: 34,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -671,12 +666,12 @@ const Jobs = ()=>{
                             className: `transform transition-all duration-300 ease-in-out ${showFilters ? "opacity-100 translate-x-0 block" : "opacity-0 -translate-x-full hidden lg:block"} w-full lg:w-1/4 bg-white p-4 rounded-lg shadow-md border`,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Filters$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                 fileName: "[project]/components/Jobs.jsx",
-                                lineNumber: 59,
+                                lineNumber: 53,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/Jobs.jsx",
-                            lineNumber: 52,
+                            lineNumber: 46,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -688,12 +683,12 @@ const Jobs = ()=>{
                                     children: "No jobs found"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Jobs.jsx",
-                                    lineNumber: 66,
+                                    lineNumber: 60,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Jobs.jsx",
-                                lineNumber: 65,
+                                lineNumber: 59,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 overflow-auto scrollable-content",
@@ -704,34 +699,34 @@ const Jobs = ()=>{
                                         job: job
                                     }, job?._id, false, {
                                         fileName: "[project]/components/Jobs.jsx",
-                                        lineNumber: 74,
+                                        lineNumber: 68,
                                         columnNumber: 19
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/Jobs.jsx",
-                                lineNumber: 69,
+                                lineNumber: 63,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/Jobs.jsx",
-                            lineNumber: 63,
+                            lineNumber: 57,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Jobs.jsx",
-                    lineNumber: 50,
+                    lineNumber: 44,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/Jobs.jsx",
-            lineNumber: 39,
+            lineNumber: 33,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/Jobs.jsx",
-        lineNumber: 38,
+        lineNumber: 32,
         columnNumber: 5
     }, this);
 };

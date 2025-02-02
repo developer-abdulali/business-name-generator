@@ -6,8 +6,11 @@
   "path": "static/chunks/app_layout_61af54.js",
   "chunks": [
     "static/chunks/[root of the server]__501b62._.css",
-    "static/chunks/node_modules_b7243c._.js",
-    "static/chunks/_d1a103._.js"
+    "static/chunks/node_modules_next_e7ae3d._.js",
+    "static/chunks/node_modules_@reduxjs_toolkit_dist_c19f2f._.js",
+    "static/chunks/node_modules_axios_lib_c4c49c._.js",
+    "static/chunks/node_modules_ba359f._.js",
+    "static/chunks/_d4e311._.js"
   ],
   "source": "dynamic"
 });

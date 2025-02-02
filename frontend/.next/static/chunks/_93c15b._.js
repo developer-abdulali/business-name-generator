@@ -281,169 +281,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// "use client";
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogFooter,
-// } from "@/components/ui/dialog";
-// import { Button } from "./ui/button";
-// import { Label } from "./ui/label";
-// import { Input } from "./ui/input";
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { toast } from "sonner";
-// import axios from "axios";
-// import { USER_API_ENDPOINT } from "@/lib/constant";
-// import { setUser } from "@/redux/slices/authSlice";
-// const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
-//   const { user } = useSelector((state) => state.auth);
-//   const dispatch = useDispatch();
-//   const [input, setInput] = useState({
-//     fullname: user?.fullname || "",
-//     email: user?.email || "",
-//     number: user?.phoneNumber || "",
-//     bio: user?.profile?.bio || "",
-//     skills: user?.profile?.skills?.join(", ") || "",
-//   });
-//   const [loading, setLoading] = useState(false);
-//   const handleInputChange = (e) => {
-//     setInput({ ...input, [e.target.name]: e.target.value });
-//   };
-//   const handleFileChange = (e) => {
-//     setInput({ ...input, file: e.target.files[0] });
-//   };
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     const formData = new FormData();
-//     formData.append("fullname", input.fullname);
-//     formData.append("email", input.email);
-//     formData.append("phoneNumber", input.number);
-//     formData.append("bio", input.bio);
-//     formData.append("skills", input.skills);
-//     if (input.file) formData.append("file", input.file);
-//     try {
-//       const response = await axios.post(
-//         `${USER_API_ENDPOINT}/profile/update`,
-//         formData,
-//         {
-//           headers: { "Content-Type": "multipart/form-data" },
-//           withCredentials: true,
-//         }
-//       );
-//       if (response.data.success) {
-//         dispatch(setUser(response.data.user));
-//         toast.success(response.data.message);
-//         setModalOpen(false);
-//       } else {
-//         toast.error(response.data.error);
-//       }
-//     } catch (error) {
-//       toast.error(error.response?.data?.error || "Something went wrong!");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-//   return (
-//     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-//       <DialogContent onInteractOutside={() => setModalOpen(false)}>
-//         <DialogHeader>
-//           <DialogTitle>Update Profile</DialogTitle>
-//         </DialogHeader>
-//         <form onSubmit={handleSubmit}>
-//           <div className="grid gap-4 py-4">
-//             {/* Fullname */}
-//             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="fullname">Full Name</Label>
-//               <Input
-//                 id="fullname"
-//                 name="fullname"
-//                 value={input.fullname}
-//                 onChange={handleInputChange}
-//                 className="col-span-3"
-//               />
-//             </div>
-//             {/* Email */}
-//             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="email">Email</Label>
-//               <Input
-//                 id="email"
-//                 name="email"
-//                 type="email"
-//                 value={input.email}
-//                 onChange={handleInputChange}
-//                 className="col-span-3"
-//               />
-//             </div>
-//             {/* Phone */}
-//             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="number">Phone Number</Label>
-//               <Input
-//                 id="number"
-//                 name="number"
-//                 value={input.number}
-//                 onChange={handleInputChange}
-//                 className="col-span-3"
-//               />
-//             </div>
-//             {/* Bio */}
-//             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="bio">Bio</Label>
-//               <Input
-//                 id="bio"
-//                 name="bio"
-//                 value={input.bio}
-//                 onChange={handleInputChange}
-//                 className="col-span-3"
-//               />
-//             </div>
-//             {/* Skills */}
-//             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="skills">Skills</Label>
-//               <Input
-//                 id="skills"
-//                 name="skills"
-//                 value={input.skills}
-//                 onChange={handleInputChange}
-//                 className="col-span-3"
-//                 placeholder="Comma-separated skills"
-//               />
-//             </div>
-//             {/* Resume */}
-//             <div className="grid grid-cols-4 items-center gap-4">
-//               <Label htmlFor="file">Resume</Label>
-//               <Input
-//                 id="file"
-//                 name="file"
-//                 type="file"
-//                 accept="application/pdf"
-//                 onChange={handleFileChange}
-//                 className="col-span-3"
-//               />
-//             </div>
-//           </div>
-//           <DialogFooter>
-//             <Button
-//               type="button"
-//               variant="secondary"
-//               onClick={() => setModalOpen(false)}
-//               disabled={loading}
-//             >
-//               Close
-//             </Button>
-//             <Button type="submit" disabled={loading}>
-//               {loading ? "Saving..." : "Save Changes"}
-//             </Button>
-//           </DialogFooter>
-//         </form>
-//       </DialogContent>
-//     </Dialog>
-//   );
-// };
-// export default UpdateProfileModal;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -554,12 +391,12 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                         children: "Update Profile"
                     }, void 0, false, {
                         fileName: "[project]/components/UpdateProfileModal.jsx",
-                        lineNumber: 273,
+                        lineNumber: 98,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                    lineNumber: 272,
+                    lineNumber: 97,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -576,7 +413,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Full Name"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 279,
+                                            lineNumber: 104,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -587,13 +424,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 280,
+                                            lineNumber: 105,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 278,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -604,7 +441,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 290,
+                                            lineNumber: 115,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -616,13 +453,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 291,
+                                            lineNumber: 116,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 289,
+                                    lineNumber: 114,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -633,7 +470,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Phone Number"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 302,
+                                            lineNumber: 127,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -644,13 +481,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 303,
+                                            lineNumber: 128,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 301,
+                                    lineNumber: 126,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -661,7 +498,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Bio"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 313,
+                                            lineNumber: 138,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -672,13 +509,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 314,
+                                            lineNumber: 139,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 312,
+                                    lineNumber: 137,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -689,7 +526,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Skills"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 324,
+                                            lineNumber: 149,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -701,13 +538,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             placeholder: "Comma-separated skills"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 325,
+                                            lineNumber: 150,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 323,
+                                    lineNumber: 148,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -718,7 +555,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Profile Image"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 336,
+                                            lineNumber: 161,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -730,7 +567,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 337,
+                                            lineNumber: 162,
                                             columnNumber: 15
                                         }, this),
                                         imagePreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -739,13 +576,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "mt-2 w-24 h-24 object-cover rounded-full"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 346,
+                                            lineNumber: 171,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 335,
+                                    lineNumber: 160,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -756,7 +593,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: "Resume"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 355,
+                                            lineNumber: 180,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -768,7 +605,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             className: "col-span-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 356,
+                                            lineNumber: 181,
                                             columnNumber: 15
                                         }, this),
                                         resumePreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -776,19 +613,19 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                             children: resumePreview
                                         }, void 0, false, {
                                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                                            lineNumber: 365,
+                                            lineNumber: 190,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 354,
+                                    lineNumber: 179,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                            lineNumber: 276,
+                            lineNumber: 101,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogFooter"], {
@@ -801,7 +638,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                     children: "Close"
                                 }, void 0, false, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 370,
+                                    lineNumber: 195,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -810,30 +647,30 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen })=>{
                                     children: loading ? "Saving..." : "Save Changes"
                                 }, void 0, false, {
                                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                                    lineNumber: 378,
+                                    lineNumber: 203,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/UpdateProfileModal.jsx",
-                            lineNumber: 369,
+                            lineNumber: 194,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/UpdateProfileModal.jsx",
-                    lineNumber: 275,
+                    lineNumber: 100,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/UpdateProfileModal.jsx",
-            lineNumber: 271,
+            lineNumber: 96,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/UpdateProfileModal.jsx",
-        lineNumber: 270,
+        lineNumber: 95,
         columnNumber: 5
     }, this);
 };
@@ -850,212 +687,6 @@ __turbopack_refresh__.register(_c, "UpdateProfileModal");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
- // "use client";
- // import {
- //   Dialog,
- //   DialogContent,
- //   DialogHeader,
- //   DialogTitle,
- //   DialogFooter,
- // } from "@/components/ui/dialog";
- // import { Button } from "./ui/button";
- // import { Label } from "./ui/label";
- // import { Input } from "./ui/input";
- // import { useState } from "react";
- // import { useDispatch, useSelector } from "react-redux";
- // import { toast } from "sonner";
- // import axios from "axios";
- // import { USER_API_ENDPOINT } from "@/lib/constant";
- // import { setUser } from "@/redux/slices/authSlice";
- // const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
- //   const { user } = useSelector((state) => state.auth);
- //   const dispatch = useDispatch();
- //   const [input, setInput] = useState({
- //     fullname: user?.fullname || "",
- //     email: user?.email || "",
- //     number: user?.phoneNumber || "",
- //     bio: user?.profile?.bio || "",
- //     skills: user?.profile?.skills?.join(", ") || "",
- //     profileImage: null,
- //     resume: null,
- //   });
- //   const [loading, setLoading] = useState(false);
- //   const [imagePreview, setImagePreview] = useState(
- //     user?.profile?.profileImage || ""
- //   );
- //   const [resumePreview, setResumePreview] = useState(
- //     user?.profile?.resumeOriginalName || ""
- //   );
- //   const handleInputChange = (e) => {
- //     setInput({ ...input, [e.target.name]: e.target.value });
- //   };
- //   const handleFileChange = (e, type) => {
- //     const file = e.target.files[0];
- //     if (type === "profileImage") {
- //       setInput({ ...input, profileImage: file });
- //       setImagePreview(URL.createObjectURL(file));
- //     } else if (type === "resume") {
- //       setInput({ ...input, resume: file });
- //       setResumePreview(file.name);
- //     }
- //   };
- //   const handleSubmit = async (e) => {
- //     e.preventDefault();
- //     setLoading(true);
- //     const formData = new FormData();
- //     formData.append("fullname", input.fullname);
- //     formData.append("email", input.email);
- //     formData.append("phoneNumber", input.number);
- //     formData.append("bio", input.bio);
- //     formData.append("skills", input.skills);
- //     if (input.profileImage) formData.append("profileImage", input.profileImage);
- //     if (input.resume) formData.append("resume", input.resume);
- //     // Log FormData contents
- //     for (let [key, value] of formData.entries()) {
- //       console.log(key, value);
- //     }
- //     try {
- //       const response = await axios.post(
- //         `${USER_API_ENDPOINT}/profile/update`,
- //         formData,
- //         {
- //           headers: { "Content-Type": "multipart/form-data" },
- //           withCredentials: true,
- //           timeout: 60000, // Increase timeout to 60 seconds
- //         }
- //       );
- //       if (response.data.success) {
- //         dispatch(setUser(response.data.user));
- //         toast.success(response.data.message);
- //         setModalOpen(false);
- //       } else {
- //         toast.error(response.data.error);
- //       }
- //     } catch (error) {
- //       toast.error(error.response?.data?.error || "Something went wrong!");
- //     } finally {
- //       setLoading(false);
- //     }
- //   };
- //   return (
- //     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
- //       <DialogContent onInteractOutside={() => setModalOpen(false)}>
- //         <DialogHeader>
- //           <DialogTitle>Update Profile</DialogTitle>
- //         </DialogHeader>
- //         <form onSubmit={handleSubmit}>
- //           <div className="grid gap-4 py-4">
- //             {/* Fullname */}
- //             <div className="grid grid-cols-4 items-center gap-4">
- //               <Label htmlFor="fullname">Full Name</Label>
- //               <Input
- //                 id="fullname"
- //                 name="fullname"
- //                 value={input.fullname}
- //                 onChange={handleInputChange}
- //                 className="col-span-3"
- //               />
- //             </div>
- //             {/* Email */}
- //             <div className="grid grid-cols-4 items-center gap-4">
- //               <Label htmlFor="email">Email</Label>
- //               <Input
- //                 id="email"
- //                 name="email"
- //                 type="email"
- //                 value={input.email}
- //                 onChange={handleInputChange}
- //                 className="col-span-3"
- //               />
- //             </div>
- //             {/* Phone */}
- //             <div className="grid grid-cols-4 items-center gap-4">
- //               <Label htmlFor="number">Phone Number</Label>
- //               <Input
- //                 id="number"
- //                 name="number"
- //                 value={input.number}
- //                 onChange={handleInputChange}
- //                 className="col-span-3"
- //               />
- //             </div>
- //             {/* Bio */}
- //             <div className="grid grid-cols-4 items-center gap-4">
- //               <Label htmlFor="bio">Bio</Label>
- //               <Input
- //                 id="bio"
- //                 name="bio"
- //                 value={input.bio}
- //                 onChange={handleInputChange}
- //                 className="col-span-3"
- //               />
- //             </div>
- //             {/* Skills */}
- //             <div className="grid grid-cols-4 items-center gap-4">
- //               <Label htmlFor="skills">Skills</Label>
- //               <Input
- //                 id="skills"
- //                 name="skills"
- //                 value={input.skills}
- //                 onChange={handleInputChange}
- //                 className="col-span-3"
- //                 placeholder="Comma-separated skills"
- //               />
- //             </div>
- //             {/* Profile Image */}
- //             <div className="grid grid-cols-4 items-center gap-4">
- //               <Label htmlFor="profileImage">Profile Image</Label>
- //               <Input
- //                 id="profileImage"
- //                 name="profileImage"
- //                 type="file"
- //                 accept="image/*"
- //                 onChange={(e) => handleFileChange(e, "profileImage")}
- //                 className="col-span-3"
- //               />
- //               {imagePreview && (
- //                 <img
- //                   src={imagePreview}
- //                   alt="Profile Preview"
- //                   className="mt-2 w-24 h-24 object-cover rounded-full"
- //                 />
- //               )}
- //             </div>
- //             {/* Resume */}
- //             <div className="grid grid-cols-4 items-center gap-4">
- //               <Label htmlFor="resume">Resume</Label>
- //               <Input
- //                 id="resume"
- //                 name="resume"
- //                 type="file"
- //                 accept="application/pdf"
- //                 onChange={(e) => handleFileChange(e, "resume")}
- //                 className="col-span-3"
- //               />
- //               {resumePreview && (
- //                 <span className="mt-2 text-gray-700">{resumePreview}</span>
- //               )}
- //             </div>
- //           </div>
- //           <DialogFooter>
- //             <Button
- //               type="button"
- //               variant="secondary"
- //               onClick={() => setModalOpen(false)}
- //               disabled={loading}
- //             >
- //               Close
- //             </Button>
- //             <Button type="submit" disabled={loading}>
- //               {loading ? "Saving..." : "Save Changes"}
- //             </Button>
- //           </DialogFooter>
- //         </form>
- //       </DialogContent>
- //     </Dialog>
- //   );
- // };
- // export default UpdateProfileModal;
 }}),
 "[project]/components/ui/table.jsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";

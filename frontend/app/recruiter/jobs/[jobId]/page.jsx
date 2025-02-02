@@ -43,7 +43,7 @@ const RecruiterJobDetails = () => {
     e.preventDefault();
 
     if (!hasChanges) {
-      router.push("/admin/companies");
+      router.push("/recruiter/companies");
       return;
     }
 
@@ -67,7 +67,7 @@ const RecruiterJobDetails = () => {
 
       if (res.data.success) {
         toast.success(res.data.message);
-        router.push("/admin/companies");
+        router.push("/recruiter/companies");
       }
     } catch (error) {
       console.log(error);
@@ -91,7 +91,7 @@ const RecruiterJobDetails = () => {
       <form onSubmit={submitHandler} className="space-y-6">
         <div className="flex items-center justify-between">
           <Button
-            onClick={() => router.push("/admin/companies")}
+            onClick={() => router.push("/recruiter/companies")}
             variant={"ghost"}
             className="flex items-center gap-2 text-gray-500 font-semibold"
           >

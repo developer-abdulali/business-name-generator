@@ -33,7 +33,6 @@ const PostAJobPage = () => {
   });
 
   const { companies } = useSelector((state) => state.company);
-  const [loading, setLoading] = useState(false);
 
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -50,20 +49,17 @@ const PostAJobPage = () => {
     e.preventDefault();
 
     try {
-      setLoading(true);
       const res = await axios.post(`${JOB_API_ENDPOINT}/post`, input, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
       if (res.data.success) {
         toast.success(res.data.message);
-        router.push("/admin/jobs");
+        router.push("/recruiter/jobs");
       }
     } catch (error) {
       console.log("error from submitHandler", error);
       toast.error(error.response.data.message);
-    } finally {
-      setLoading(false);
     }
   };
 

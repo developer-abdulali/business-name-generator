@@ -68,7 +68,7 @@ const RecruiterJobsTable = () => {
           ) : (
             filterJobs.map((job) => (
               <TableRow
-                onClick={() => router.push(`/admin/jobs/${job?._id}`)}
+                onClick={() => router.push(`/recruiter/jobs/${job?._id}`)}
                 key={job?._id}
                 className="cursor-pointer hover:bg-gray-50"
               >
@@ -83,12 +83,12 @@ const RecruiterJobsTable = () => {
                     <PopoverTrigger onClick={(e) => e.stopPropagation()}>
                       <MoreHorizontal className="hover:text-blue-500" />
                     </PopoverTrigger>
-                    <PopoverContent className="w-32 p-2">
+                    <PopoverContent className="w-fit p-2">
                       <div
                         className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
                         onClick={(e) => {
                           e.stopPropagation();
-                          router.push(`/admin/jobs/${job?._id}`);
+                          // router.push(`/recruiter/jobs/${job?._id}`);
                         }}
                       >
                         <Edit2 className="w-4" />
@@ -97,7 +97,7 @@ const RecruiterJobsTable = () => {
                       <div
                         onClick={(e) => {
                           e.stopPropagation();
-                          router.push(`/admin/jobs/${job?._id}`);
+                          router.push(`/recruiter/jobs/${job?._id}/applicants`);
                         }}
                         className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
                       >

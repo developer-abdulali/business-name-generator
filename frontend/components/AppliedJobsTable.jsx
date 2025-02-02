@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Badge } from "./ui/badge";
 import {
   Table,
@@ -8,10 +9,13 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import moment from "moment";
 
 const AppliedJobsTable = () => {
+  const { allAppliedJobs } = useSelector((state) => state.job);
+
   return (
-    <div>
+    <section>
       <Table>
         <TableCaption>Applied Jobs List</TableCaption>
         <TableHeader>
@@ -24,19 +28,35 @@ const AppliedJobsTable = () => {
         </TableHeader>
 
         <TableBody>
-          {[1, 2].map((item, i) => (
-            <TableRow key={i}>
-              <TableCell>12-12-2024</TableCell>
-              <TableCell>Software Developer</TableCell>
-              <TableCell>XYZ Corp.</TableCell>
-              <TableCell className="text-right">
-                <Badge className="text-right">Applied</Badge>
-              </TableCell>
-            </TableRow>
-          ))}
+          {allAppliedJobs.length === 0 ? (
+            <span>{`You haven't applied any job yet`}</span>
+          ) : (
+            allAppliedJobs.map((appliedJob) => (
+              <TableRow key={appliedJob?._id}>
+                <TableCell>
+                  {moment(appliedJob?.createdAt).format("DD-MM-YY")}
+                </TableCell>
+                <TableCell>{appliedJob?.job?.title}</TableCell>
+                <TableCell>{appliedJob?.job?.company?.name}</TableCell>
+                <TableCell className="text-right">
+                  <Badge
+                    className={`text-right ${
+                      appliedJob?.status === "rejected"
+                        ? "bg-red-400"
+                        : appliedJob?.status === "pending"
+                        ? "bg-gray-400"
+                        : "bg-green-400"
+                    }`}
+                  >
+                    {appliedJob?.status.toUpperCase()}
+                  </Badge>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
-    </div>
+    </section>
   );
 };
 export default AppliedJobsTable;

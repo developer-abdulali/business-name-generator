@@ -72,7 +72,7 @@ export const getAppliedJobs = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      appliedJobs,
+      application: appliedJobs,
       message: "Applied jobs fetched successfully.",
     });
   } catch (error) {

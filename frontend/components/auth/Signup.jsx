@@ -1,25 +1,31 @@
 "use client";
 
-import { USER_API_ENDPOINT } from "@/lib/constant";
-import axios from "axios";
 import { useState } from "react";
-import { toast } from "sonner";
-import Loading from "../shared/Loading";
-import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "@/redux/slices/authSlice";
-import { useRouter } from "next/navigation";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { USER_API_ENDPOINT } from "@/lib/constant";
+import { setLoading } from "@/redux/slices/authSlice";
+import axios from "axios";
+import { toast } from "sonner";
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const { loading } = useSelector((state) => state.auth);
   const router = useRouter();
   const dispatch = useDispatch();
+
   const [input, setInput] = useState({
     fullname: "",
     email: "",
     phoneNumber: "",
     password: "",
-    role: "",
+    role: "applicant",
     file: null,
   });
 
@@ -40,11 +46,10 @@ const Signup = () => {
     formData.append("phoneNumber", input.phoneNumber);
     formData.append("password", input.password);
     formData.append("role", input.role);
-    if (input.file) formData.append("file", input.file);
+    if (input.file) formData.append("profileImage", input.file);
 
     try {
       dispatch(setLoading(true));
-      // API call
       const res = await axios.post(`${USER_API_ENDPOINT}/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
@@ -63,172 +68,167 @@ const Signup = () => {
   };
 
   return (
-    <section className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="mx-3 sm:mx-5 xl:mx-0 flex flex-col md:flex-row w-full max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="w-full md:w-1/2 px-8 py-10">
-          <div className="flex flex-col items-center mb-8">
-            <div className="text-2xl font-bold">
+    <div className="grid min-h-screen lg:grid-cols-2 gap-6">
+      {/* Left Section */}
+      <div className="flex flex-col gap-6 p-6 md:p-10 justify-center">
+        {/* Logo */}
+        <div className="flex justify-center gap-2 md:justify-start mb-6">
+          <Link href="/">
+            <h1 className="text-2xl font-bold text-center md:text-left">
               Job<span className="text-customRedColor">Portal</span>
-            </div>
-          </div>
-          <h2 className="mb-4 text-2xl font-bold text-center text-gray-800">
-            Sign Up to your account
-          </h2>
+            </h1>
+          </Link>
+        </div>
 
-          <form onSubmit={submitHandler} className="space-y-4">
-            <div>
-              <label
-                htmlFor="fullname"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
+        {/* Form Section */}
+        <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
+          <form onSubmit={submitHandler} className="flex flex-col gap-6 w-full">
+            {/* Heading */}
+            <div className="flex flex-col items-center gap-2 text-center mb-8">
+              <h1 className="text-2xl font-bold text-primary">
+                Create an account
+              </h1>
+              <p className="text-sm text-muted-foreground">
+                Enter your details to create an account
+              </p>
+            </div>
+
+            {/* Full Name Field */}
+            <div className="grid gap-2 w-full">
+              <Label htmlFor="fullname">Full Name</Label>
+              <Input
                 id="fullname"
+                type="text"
                 name="fullname"
-                placeholder="John"
+                placeholder="John Doe"
                 value={input.fullname}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border rounded-lg"
+                className="input-field"
               />
             </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Email
-              </label>
-              <input
-                type="email"
+
+            {/* Email Field */}
+            <div className="grid gap-2 w-full">
+              <Label htmlFor="email">Email</Label>
+              <Input
                 id="email"
+                type="email"
                 name="email"
-                placeholder="example@example.com"
+                placeholder="@example.com"
                 value={input.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border rounded-lg"
+                className="input-field"
               />
             </div>
-            <div>
-              <label
-                htmlFor="phoneNumber"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Phone Number
-              </label>
-              <input
-                type="number"
+
+            {/* Phone Number Field */}
+            <div className="grid gap-2 w-full">
+              <Label htmlFor="phoneNumber">Contact Number</Label>
+              <Input
                 id="phoneNumber"
+                type="number"
                 name="phoneNumber"
-                placeholder="0333-xxxxxxx"
+                placeholder="333-xxxxxxx"
                 value={input.phoneNumber}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border rounded-lg"
+                className="input-field"
               />
             </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="********"
-                value={input.password}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border rounded-lg"
-              />
-            </div>
-            <div className="flex justify-end">
-              <a href="#" className="text-sm text-indigo-600">
-                Forgot password?
-              </a>
-            </div>
-            <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-              <div className="flex-1">
-                <label
-                  htmlFor="role"
-                  className="block mb-1 text-sm font-medium text-gray-700"
+
+            {/* Password Field with Toggle Visibility */}
+            <div className="grid gap-2 w-full">
+              <Label htmlFor="password">Password</Label>
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter your password"
+                  value={input.password}
+                  onChange={handleChange}
+                  className="input-field pr-10"
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
+                  onClick={() => setShowPassword(!showPassword)}
                 >
-                  Role
-                </label>
-                <div className="flex space-x-4">
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="radio"
-                      name="role"
-                      value="applicant"
-                      checked={input.role === "applicant"}
-                      onChange={handleChange}
-                      className="text-indigo-600 border-gray-300 rounded"
-                    />
-                    <span>Applicant</span>
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="radio"
-                      name="role"
-                      value="recruiter"
-                      checked={input.role === "recruiter"}
-                      onChange={handleChange}
-                      className="text-indigo-600 border-gray-300 rounded"
-                    />
-                    <span>Recruiter</span>
-                  </label>
-                </div>
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
-              <div className="flex-1">
-                <label
-                  htmlFor="profileImg"
-                  className="block mb-1 text-sm font-medium text-gray-700"
-                >
-                  Profile Image
-                </label>
-                <input
+            </div>
+
+            {/* Role Selection */}
+            <div className="grid gap-2 w-full">
+              <Label>Role</Label>
+              <RadioGroup
+                value={input.role}
+                onValueChange={(value) =>
+                  setInput((prev) => ({ ...prev, role: value }))
+                }
+                className="flex gap-4"
+              >
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="applicant" id="applicant" />
+                  <Label htmlFor="applicant">Applicant</Label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="recruiter" id="recruiter" />
+                  <Label htmlFor="recruiter">Recruiter</Label>
+                </div>
+              </RadioGroup>
+            </div>
+
+            {/* Profile Image Upload */}
+            <div className="grid gap-2 w-full">
+              <Label htmlFor="profileImage">Profile Image</Label>
+              <div className="relative flex items-center gap-2">
+                <Input
+                  id="profileImage"
                   type="file"
-                  id="profileImg"
                   accept="image/*"
                   onChange={changeFileHandler}
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="input-field"
                 />
+                {input.file && (
+                  <img
+                    src={URL.createObjectURL(input.file)}
+                    alt="Profile Preview"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                )}
               </div>
             </div>
 
-            {loading ? (
-              <Loading />
-            ) : (
-              <button
-                type="submit"
-                className="w-full px-3 py-2 font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800"
-              >
-                Sign Up
-              </button>
-            )}
+            {/* Submit Button */}
+            <Button
+              type="submit"
+              className="w-full mt-6 py-3 text-sm"
+              disabled={loading}
+            >
+              {loading ? "Signing up..." : "Sign Up"}
+            </Button>
 
-            <div className="text-center">
-              <span className="text-sm text-gray-700">
-                Already have an account?{" "}
-              </span>
-              <Link href="/login" className="text-sm text-indigo-600">
-                Log in
+            {/* Login Link */}
+            <div className="text-center text-sm mt-6">
+              Already have an account?{" "}
+              <Link href="/login" className="underline text-primary">
+                Login
               </Link>
             </div>
           </form>
         </div>
-        <div className="hidden md:flex md:w-1/2">
-          <img
-            src="/authimg.png"
-            alt="Desk setup"
-            className="object-cover w-full h-full rounded-r-lg"
-          />
-        </div>
       </div>
-    </section>
+
+      {/* Right Section with Background Image */}
+      <div className="relative hidden lg:block bg-muted">
+        <img
+          src="/authimg.png"
+          alt="Signup Image"
+          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+        />
+      </div>
+    </div>
   );
 };
 

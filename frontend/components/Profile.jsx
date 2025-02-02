@@ -8,11 +8,12 @@ import { useState } from "react";
 import UpdateProfileModal from "./UpdateProfileModal";
 import AppliedJobsTable from "./AppliedJobsTable";
 import { useSelector } from "react-redux";
+import useGetAppliedJobs from "@/hooks/useGetAppliedJobs";
 
 const Profile = () => {
+  useGetAppliedJobs();
   const [modalOpen, setModalOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
   const haveResume = user?.profile?.resume || false;
 
   return (

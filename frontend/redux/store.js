@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import authSlice from "./slices/authSlice";
 import jobSlice from "./slices/jobSlice";
 import companySlice from "./slices/companySlice";
+import applicationSlice from "./slices/applicationSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -20,11 +21,20 @@ const companyPersistConfig = {
   storage,
 };
 
+const applicationPersistConfig = {
+  key: "application",
+  storage,
+};
+
 const persistedAuthReducer = persistReducer(authPersistConfig, authSlice);
 const persistedJobReducer = persistReducer(jobPersistConfig, jobSlice);
 const persistedCompanyReducer = persistReducer(
   companyPersistConfig,
   companySlice
+);
+const persistedApplicationReducer = persistReducer(
+  applicationPersistConfig,
+  applicationSlice
 );
 
 const store = configureStore({
@@ -32,6 +42,7 @@ const store = configureStore({
     auth: persistedAuthReducer,
     job: persistedJobReducer,
     company: persistedCompanyReducer,
+    application: persistedApplicationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
