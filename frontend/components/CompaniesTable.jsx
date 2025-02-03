@@ -1,5 +1,11 @@
 "use client";
-import { Edit2, MoreHorizontal, Trash2 } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Edit2,
+  MoreHorizontal,
+  Trash2,
+} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import {
@@ -19,14 +25,20 @@ import { COMPANY_API_ENDPOINT } from "@/lib/constant";
 import { toast } from "sonner";
 import { deleteCompany } from "@/redux/slices/companySlice";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 
 const CompaniesTable = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
   const { companies, searchCompanyByText } = useSelector(
     (state) => state.company
   );
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const router = useRouter();
   const dispatch = useDispatch();
+  const totalPages = Math.ceil(companies.length / itemsPerPage);
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   const handleDeleteCompany = async (companyId) => {
     try {
@@ -39,7 +51,6 @@ const CompaniesTable = () => {
 
       if (res.data.success) {
         toast.success(res.data.message);
-        // Dispatch the action to update the state
         dispatch(deleteCompany(companyId));
       } else {
         toast.error(res.data.message);
@@ -63,13 +74,18 @@ const CompaniesTable = () => {
             return nameMatch || locationMatch;
           })
         : [];
-    setFilteredCompanies(filteredCompany);
-  }, [companies, searchCompanyByText]);
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedCompanies = filteredCompany.slice(startIndex, endIndex);
+
+    setFilteredCompanies(paginatedCompanies);
+  }, [companies, searchCompanyByText, currentPage]);
 
   return (
     <section className="p-4">
       <Table className="w-full bg-white shadow-md rounded-lg overflow-hidden">
-        <TableCaption className="p-4 text-lg font-semibold">
+        <TableCaption className="p-4 text-lg font-normal">
           A list of your recent registered companies
         </TableCaption>
         <TableHeader>
@@ -77,6 +93,7 @@ const CompaniesTable = () => {
             <TableHead className="p-4">Logo</TableHead>
             <TableHead className="p-4">Name</TableHead>
             <TableHead className="p-4">Location</TableHead>
+            <TableHead className="p-4">Jobs Posted</TableHead>
             <TableHead className="p-4">Date</TableHead>
             <TableHead className="p-4 text-right">Action</TableHead>
           </TableRow>
@@ -115,8 +132,12 @@ const CompaniesTable = () => {
                   {company.location || "N/A"}
                 </TableCell>
                 <TableCell className="p-4">
+                  {company?.jobs?.length || 0}
+                </TableCell>
+                <TableCell className="p-4">
                   {moment(company.createdAt).format("DD-MM-YY")}
                 </TableCell>
+
                 <TableCell title="actions" className="p-4 text-right">
                   <Popover>
                     <PopoverTrigger onClick={(e) => e.stopPropagation()}>
@@ -151,6 +172,39 @@ const CompaniesTable = () => {
           )}
         </TableBody>
       </Table>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-4 space-x-2">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          <ChevronLeft />
+        </Button>
+        {pageNumbers.map((page) => (
+          <Button
+            key={page}
+            variant="outline"
+            size="icon"
+            onClick={() => setCurrentPage(page)}
+            className={`px-4 py-2 ${currentPage === page ? "bg-gray-200" : ""}`}
+          >
+            {page}
+          </Button>
+        ))}
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+        >
+          <ChevronRight />
+        </Button>
+      </div>
     </section>
   );
 };

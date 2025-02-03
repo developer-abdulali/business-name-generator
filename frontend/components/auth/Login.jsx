@@ -13,6 +13,7 @@ import { USER_API_ENDPOINT } from "@/lib/constant";
 import { setLoading, setUser } from "@/redux/slices/authSlice";
 import axios from "axios";
 import { toast } from "sonner";
+import Image from "next/image";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -57,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <div className="grid min-h-screen lg:grid-cols-2">
+    <section className="grid min-h-screen lg:grid-cols-2">
       {/* Left Section */}
       <div className="flex flex-col gap-6 p-6 md:p-10">
         {/* Logo */}
@@ -103,7 +104,7 @@ const Login = () => {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   name="password"
-                  placeholder="Enter your password"
+                  placeholder="********"
                   value={input.password}
                   onChange={handleChange}
                   className="focus:ring-2 focus:ring-customRedColor focus:outline-none p-3 rounded-md border w-full"
@@ -139,7 +140,12 @@ const Login = () => {
             </div>
 
             {/* Submit Button */}
-            <Button type="submit" className="w-full py-3" disabled={loading}>
+            <Button
+              variant="outline"
+              type="submit"
+              className="w-full py-3"
+              disabled={loading}
+            >
               {loading ? "Logging in..." : "Login"}
             </Button>
 
@@ -156,13 +162,15 @@ const Login = () => {
 
       {/* Right Section with Background Image */}
       <div className="relative hidden bg-muted lg:block">
-        <img
+        <Image
           src="/authimg.png"
           alt="Login Image"
+          width={200}
+          height={200}
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

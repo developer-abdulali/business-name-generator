@@ -25,7 +25,7 @@ const RecruiterJobsPage = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto my-10">
+    <section className="max-w-screen-2xl mx-auto my-10">
       <div className="flex items-start justify-between my-5">
         <div className="relative w-fit mr-4">
           <Input
@@ -43,7 +43,10 @@ const RecruiterJobsPage = () => {
             </button>
           )}
         </div>
-        <Button onClick={() => router.push("/admin/jobs/post-job")}>
+        <Button
+          variant="outline"
+          onClick={() => router.push("/recruiter/jobs/post-job")}
+        >
           New Job
         </Button>
       </div>

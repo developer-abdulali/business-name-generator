@@ -202,7 +202,11 @@ const PostAJobPage = () => {
 
           {/* Submit Button */}
           <div className="flex justify-end">
-            <Button type="submit" className="w-full md:w-auto">
+            <Button
+              variant="outline"
+              type="submit"
+              className="w-full md:w-auto"
+            >
               Post Job
             </Button>
           </div>

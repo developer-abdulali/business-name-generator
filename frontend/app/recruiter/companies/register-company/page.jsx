@@ -35,7 +35,7 @@ const RegisterCompanyPage = () => {
   };
 
   return (
-    <section className="max-w-4xl mx-auto">
+    <section className="max-w-screen-2xl mx-auto px-4">
       <div className="my-10">
         <h1 className="font-bold text-2xl">Your Company Name</h1>
         <p className="text-gray-500">
@@ -57,7 +57,9 @@ const RegisterCompanyPage = () => {
         >
           Cancel
         </Button>
-        <Button onClick={registerCompanyHandler}>Continue</Button>
+        <Button variant="outline" onClick={registerCompanyHandler}>
+          Continue
+        </Button>
       </div>
     </section>
   );

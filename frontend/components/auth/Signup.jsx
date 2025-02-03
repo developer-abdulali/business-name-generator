@@ -13,6 +13,7 @@ import { USER_API_ENDPOINT } from "@/lib/constant";
 import { setLoading } from "@/redux/slices/authSlice";
 import axios from "axios";
 import { toast } from "sonner";
+import Image from "next/image";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -114,7 +115,7 @@ const Signup = () => {
                 id="email"
                 type="email"
                 name="email"
-                placeholder="@example.com"
+                placeholder="xyz@example.com"
                 value={input.email}
                 onChange={handleChange}
                 className="input-field"
@@ -128,7 +129,8 @@ const Signup = () => {
                 id="phoneNumber"
                 type="number"
                 name="phoneNumber"
-                placeholder="333-xxxxxxx"
+                placeholder="+92333-xxxxxxx"
+                // placeholder="333-xxxxxxx"
                 value={input.phoneNumber}
                 onChange={handleChange}
                 className="input-field"
@@ -143,7 +145,7 @@ const Signup = () => {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   name="password"
-                  placeholder="Enter your password"
+                  placeholder="********"
                   value={input.password}
                   onChange={handleChange}
                   className="input-field pr-10"
@@ -191,9 +193,11 @@ const Signup = () => {
                   className="input-field"
                 />
                 {input.file && (
-                  <img
+                  <Image
                     src={URL.createObjectURL(input.file)}
                     alt="Profile Preview"
+                    width={30}
+                    height={30}
                     className="w-10 h-10 rounded-full object-cover"
                   />
                 )}
@@ -202,15 +206,16 @@ const Signup = () => {
 
             {/* Submit Button */}
             <Button
+              variant="outline"
               type="submit"
-              className="w-full mt-6 py-3 text-sm"
+              className="w-full py-3 text-sm"
               disabled={loading}
             >
               {loading ? "Signing up..." : "Sign Up"}
             </Button>
 
             {/* Login Link */}
-            <div className="text-center text-sm mt-6">
+            <div className="text-center text-sm">
               Already have an account?{" "}
               <Link href="/login" className="underline text-primary">
                 Login
@@ -222,9 +227,11 @@ const Signup = () => {
 
       {/* Right Section with Background Image */}
       <div className="relative hidden lg:block bg-muted">
-        <img
+        <Image
           src="/authimg.png"
           alt="Signup Image"
+          width={200}
+          height={200}
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />
       </div>

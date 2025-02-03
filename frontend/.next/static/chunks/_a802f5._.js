@@ -316,60 +316,10 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// "use client";
-// import { useState } from "react";
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "./ui/carousel";
-// import { useDispatch } from "react-redux";
-// import { useRouter } from "next/navigation";
-// import { setSearchedQuery } from "@/redux/slices/jobSlice";
-// const CategoryCarousel = () => {
-//   const dispatch = useDispatch();
-//   const router = useRouter();
-//   const category = [
-//     "Frontend Developer",
-//     "Backend Developer",
-//     "Data Science",
-//     "Graphic Designer",
-//     "FullStack Developer",
-//   ];
-//   const searchJobHandler = (query) => {
-//     dispatch(setSearchedQuery(query));
-//     router.push(`/browse`);
-//     // router.push(`/browse?search=${query}`);
-//   };
-//   return (
-//     <section>
-//       <Carousel className="w-full max-w-xl mx-auto my-20">
-//         <CarouselContent>
-//           {category?.map((cat, index) => (
-//             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-//               <button
-//                 onClick={() => searchJobHandler(cat)}
-//                 className="rounded-full py-2 px-3 hover:bg-gray-100 border"
-//               >
-//                 {cat}
-//               </button>
-//             </CarouselItem>
-//           ))}
-//         </CarouselContent>
-//         <CarouselPrevious />
-//         <CarouselNext />
-//       </Carousel>
-//     </section>
-//   );
-// };
-// export default CategoryCarousel;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$carousel$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/carousel.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/redux/slices/jobSlice.js [app-client] (ecmascript)");
@@ -377,7 +327,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$red
 ;
 var _s = __turbopack_refresh__.signature();
 "use client";
-;
 ;
 ;
 ;
@@ -410,38 +359,38 @@ const CategoryCarousel = ()=>{
                                 children: cat
                             }, void 0, false, {
                                 fileName: "[project]/components/CategoryCarousel.jsx",
-                                lineNumber: 91,
+                                lineNumber: 36,
                                 columnNumber: 15
                             }, this)
                         }, index, false, {
                             fileName: "[project]/components/CategoryCarousel.jsx",
-                            lineNumber: 90,
+                            lineNumber: 35,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/CategoryCarousel.jsx",
-                    lineNumber: 88,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$carousel$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CarouselPrevious"], {}, void 0, false, {
                     fileName: "[project]/components/CategoryCarousel.jsx",
-                    lineNumber: 100,
+                    lineNumber: 45,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$carousel$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CarouselNext"], {}, void 0, false, {
                     fileName: "[project]/components/CategoryCarousel.jsx",
-                    lineNumber: 101,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/CategoryCarousel.jsx",
-            lineNumber: 87,
+            lineNumber: 32,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/CategoryCarousel.jsx",
-        lineNumber: 86,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 };
@@ -464,6 +413,53 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
+// "use client";
+// import { Search } from "lucide-react";
+// import { Button } from "./ui/button";
+// import { useDispatch } from "react-redux";
+// import { setSearchedQuery } from "@/redux/slices/jobSlice";
+// import { useRouter } from "next/navigation";
+// import { useState } from "react";
+// const HeroSection = () => {
+//   const [query, setQuery] = useState("");
+//   const dispatch = useDispatch();
+//   const router = useRouter();
+//   const searchJobHandler = () => {
+//     dispatch(setSearchedQuery(query));
+//     router.push(`/browse`);
+//   };
+//   return (
+//     <section className="flex flex-col text-center my-10 gap-5 px-4">
+//       <span className="mx-auto px-4 py-2 rounded-full bg-gray-100 text-customRedColor font-medium text-sm sm:text-base">
+//         No. 1 Job Hunt
+//       </span>
+//       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+//         Search, Apply & <br /> Get Your{" "}
+//         <span className="text-customColor">Dream Jobs</span>
+//       </h1>
+//       <p className="text-sm sm:text-base max-w-[90%] md:max-w-[70%] mx-auto">
+//         Discover the best job opportunities in your area. Apply quickly, secure
+//         your job, and get the job you deserve.
+//       </p>
+//       <div className="flex w-full max-w-[90%] sm:max-w-[70%] lg:max-w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto">
+//         <input
+//           type="text"
+//           value={query}
+//           onChange={(e) => setQuery(e.target.value)}
+//           placeholder="Find your dream job"
+//           className="outline-none border-none w-full text-sm sm:text-base"
+//         />
+//         <Button
+//           onClick={searchJobHandler}
+//           className="rounded-r-full bg-customColor hover:bg-black"
+//         >
+//           <Search className="w-5 h-5 text-white" />
+//         </Button>
+//       </div>
+//     </section>
+//   );
+// };
+// export default HeroSection;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -493,88 +489,87 @@ const HeroSection = ()=>{
         router.push(`/browse`);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "flex flex-col text-center my-10 gap-5 px-4",
+        className: "flex flex-col items-center text-center my-12 px-4",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "mx-auto px-4 py-2 rounded-full bg-gray-100 text-customRedColor font-medium text-sm sm:text-base",
+                className: "px-4 py-2 rounded-full bg-gray-100 text-customRedColor font-medium text-sm sm:text-base",
                 children: "No. 1 Job Hunt"
             }, void 0, false, {
                 fileName: "[project]/components/HeroSection.jsx",
-                lineNumber: 21,
+                lineNumber: 73,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-3xl sm:text-4xl md:text-5xl font-bold",
+                className: "text-3xl sm:text-5xl font-bold leading-tight mt-3",
                 children: [
                     "Search, Apply & ",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                         fileName: "[project]/components/HeroSection.jsx",
-                        lineNumber: 25,
+                        lineNumber: 77,
                         columnNumber: 25
                     }, this),
-                    " Get Your",
-                    " ",
+                    "Get Your ",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "text-customColor",
-                        children: "Dream Jobs"
+                        children: "Dream Job"
                     }, void 0, false, {
                         fileName: "[project]/components/HeroSection.jsx",
-                        lineNumber: 26,
-                        columnNumber: 9
+                        lineNumber: 78,
+                        columnNumber: 18
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/HeroSection.jsx",
-                lineNumber: 24,
+                lineNumber: 76,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-sm sm:text-base max-w-[90%] md:max-w-[70%] mx-auto",
-                children: "Discover the best job opportunities in your area. Apply quickly, secure your job, and get the job you deserve."
+                className: "text-sm sm:text-lg max-w-[85%] md:max-w-[60%] text-gray-600 mt-2",
+                children: "Discover the best job opportunities in your area. Apply quickly, secure your job, and get hired faster."
             }, void 0, false, {
                 fileName: "[project]/components/HeroSection.jsx",
-                lineNumber: 28,
+                lineNumber: 80,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex w-full max-w-[90%] sm:max-w-[70%] lg:max-w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto",
+                className: "relative flex w-full max-w-lg sm:max-w-xl lg:max-w-2xl items-center gap-2 mt-6 p-1 bg-white border border-gray-300 rounded-full shadow-md",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                         type: "text",
                         value: query,
                         onChange: (e)=>setQuery(e.target.value),
-                        placeholder: "Find your dream job",
-                        className: "outline-none border-none w-full text-sm sm:text-base"
+                        placeholder: "Find your dream job...",
+                        className: "w-full text-sm sm:text-base px-4 py-2 border-none outline-none bg-transparent"
                     }, void 0, false, {
                         fileName: "[project]/components/HeroSection.jsx",
-                        lineNumber: 33,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                         onClick: searchJobHandler,
-                        className: "rounded-r-full bg-customColor hover:bg-black",
+                        className: "px-3 py-2 rounded-full bg-customColor hover:bg-black transition-all",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__["Search"], {
                             className: "w-5 h-5 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/HeroSection.jsx",
-                            lineNumber: 44,
+                            lineNumber: 98,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/HeroSection.jsx",
-                        lineNumber: 40,
+                        lineNumber: 94,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/HeroSection.jsx",
-                lineNumber: 32,
+                lineNumber: 86,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/HeroSection.jsx",
-        lineNumber: 20,
+        lineNumber: 72,
         columnNumber: 5
     }, this);
 };

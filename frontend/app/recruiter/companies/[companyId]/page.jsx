@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import useGetCompanyById from "@/hooks/useGetCompanyById";
 import { COMPANY_API_ENDPOINT } from "@/lib/constant";
 import axios from "axios";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -27,6 +27,7 @@ const CompanyDescription = () => {
   });
 
   const [hasChanges, setHasChanges] = useState(false);
+  const [showRemoveIcon, setShowRemoveIcon] = useState(false);
 
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -35,8 +36,16 @@ const CompanyDescription = () => {
 
   const changeFileHandler = (e) => {
     const file = e.target.files?.[0];
-    setInput({ ...input, file });
-    setHasChanges(true);
+    if (file) {
+      setInput({ ...input, file });
+      setHasChanges(true);
+      setShowRemoveIcon(true);
+    }
+  };
+
+  const removeFileHandler = () => {
+    setInput({ ...input, file: null });
+    setShowRemoveIcon(false);
   };
 
   const submitHandler = async (e) => {
@@ -53,6 +62,7 @@ const CompanyDescription = () => {
     formData.append("website", input.website);
     formData.append("location", input.location);
     if (input.file) formData.append("logo", input.file);
+
     try {
       const res = await axios.post(
         `${COMPANY_API_ENDPOINT}/update/${params.companyId}`,
@@ -84,10 +94,11 @@ const CompanyDescription = () => {
       file: singleCompany?.file || null,
     });
     setHasChanges(false);
+    setShowRemoveIcon(!!singleCompany?.file);
   }, [singleCompany]);
 
   return (
-    <section className="max-w-xl mx-auto my-10 p-6 bg-white shadow-md rounded-lg">
+    <section className="max-w-screen-2xl mx-auto my-10 p-6 bg-white shadow-md rounded-lg">
       <form onSubmit={submitHandler} className="space-y-6">
         <div className="flex items-center justify-between">
           <Button
@@ -110,6 +121,7 @@ const CompanyDescription = () => {
               name="name"
               value={input.name}
               onChange={changeEventHandler}
+              placeholder="Company Name"
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -120,6 +132,7 @@ const CompanyDescription = () => {
               name="description"
               value={input.description}
               onChange={changeEventHandler}
+              placeholder="Company description"
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -130,6 +143,7 @@ const CompanyDescription = () => {
               name="website"
               value={input.website}
               onChange={changeEventHandler}
+              placeholder="Company website"
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -140,20 +154,34 @@ const CompanyDescription = () => {
               name="location"
               value={input.location}
               onChange={changeEventHandler}
+              placeholder="Company location"
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 relative">
             <Label className="block mb-2">Logo</Label>
-            <Input
-              type="file"
-              accept="image/*"
-              onChange={changeFileHandler}
-              className="w-full p-2 border border-gray-300 rounded"
-            />
+            <div className="relative">
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={changeFileHandler}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              {showRemoveIcon && (
+                <button
+                  type="button"
+                  onClick={removeFileHandler}
+                  className="absolute top-1/2 right-3 transform -translate-y-1/2 text-red-500 hover:text-red-700"
+                >
+                  <X size={20} />
+                </button>
+              )}
+            </div>
           </div>
         </div>
-        <Button type="submit">Save</Button>
+        <Button variant="outline" type="submit">
+          Save
+        </Button>
       </form>
     </section>
   );

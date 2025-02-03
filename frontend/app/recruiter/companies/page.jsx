@@ -25,7 +25,7 @@ const CompaniesPage = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto my-10">
+    <section className="max-w-screen-2xl mx-auto my-10">
       <div className="flex items-start justify-between my-5">
         <div className="relative w-fit mr-4">
           <Input
@@ -44,6 +44,7 @@ const CompaniesPage = () => {
           )}
         </div>
         <Button
+          variant="outline"
           onClick={() => router.push("/recruiter/companies/register-company")}
         >
           New Company
