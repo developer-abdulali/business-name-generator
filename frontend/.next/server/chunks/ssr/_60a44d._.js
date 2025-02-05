@@ -267,31 +267,6 @@ const __TURBOPACK__default__export__ = Job;
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// "use client";
-// import { JOB_API_ENDPOINT } from "@/lib/constant";
-// import { setAllJobs } from "@/redux/slices/jobSlice";
-// import axios from "axios";
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// const useGetAllJobs = () => {
-//   const { searchedQuery } = useSelector((state) => state.job);
-//   const dispatch = useDispatch();
-//   useEffect(() => {
-//     const fetchAllJobs = async () => {
-//       try {
-//         const res = await axios.get(`${JOB_API_ENDPOINT}/get`, {
-//           withCredentials: true,
-//         });
-//         console.log("All JOBS", res);
-//         if (res.data.success) dispatch(setAllJobs(res.data.jobs));
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     };
-//     fetchAllJobs();
-//   }, [searchedQuery, dispatch]);
-// };
-// export default useGetAllJobs;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -309,24 +284,31 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib
 const useGetAllJobs = ()=>{
     const { searchedQuery } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.job);
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const fetchAllJobs = async ()=>{
-            try {
-                dispatch(clearAllJobs()); // Clear the jobs state
-                const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constant$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["JOB_API_ENDPOINT"]}/get`, {
-                    withCredentials: true
-                });
-                console.log("All JOBS", res);
-                if (res.data.success) dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setAllJobs"])(res.data.jobs));
-            } catch (error) {
-                console.log(error);
+    const fetchAllJobs = async ()=>{
+        try {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constant$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["JOB_API_ENDPOINT"]}/get`, {
+                withCredentials: true
+            });
+            console.log("All JOBS", res);
+            if (res.data.success) {
+                dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setAllJobs"])(res.data.jobs));
+            } else {
+                dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setAllJobs"])([])); // If no jobs, update state accordingly
             }
-        };
+        } catch (error) {
+            console.log(error);
+            dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setAllJobs"])([])); // Handle errors by clearing jobs
+        }
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         fetchAllJobs();
     }, [
         searchedQuery,
         dispatch
     ]);
+    return {
+        fetchAllJobs
+    };
 };
 const __TURBOPACK__default__export__ = useGetAllJobs;
 }}),

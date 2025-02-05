@@ -2,6 +2,7 @@ import express from "express";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
 import {
   deleteCompany,
+  getAllCompanies,
   getCompany,
   getCompanyById,
   registerCompany,
@@ -15,6 +16,7 @@ const companyRouter = express.Router();
 
 companyRouter.post("/register", isAuthenticated, registerCompany);
 companyRouter.get("/get", isAuthenticated, getCompany);
+companyRouter.get("/companies", getAllCompanies);
 companyRouter.get("/get/:id", isAuthenticated, getCompanyById);
 companyRouter.post(
   "/update/:id",

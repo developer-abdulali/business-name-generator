@@ -19,11 +19,10 @@ const useGetAllJobs = () => {
       if (res.data.success) {
         dispatch(setAllJobs(res.data.jobs));
       } else {
-        dispatch(setAllJobs([])); // If no jobs, update state accordingly
+        dispatch(setAllJobs([]));
       }
     } catch (error) {
-      console.log(error);
-      dispatch(setAllJobs([])); // Handle errors by clearing jobs
+      dispatch(setAllJobs([]));
     }
   };
 

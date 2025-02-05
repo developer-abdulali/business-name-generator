@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -15,39 +18,56 @@ import axios from "axios";
 import { toast } from "sonner";
 import Image from "next/image";
 
+// Define the validation schema using yup
+const schema = yup.object().shape({
+  fullname: yup.string().required("Full name is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  phoneNumber: yup.string().required("Phone number is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+    .matches(/[0-9]/, "Password must contain at least one number")
+    .matches(
+      /[^A-Za-z0-9]/,
+      "Password must contain at least one special character"
+    )
+    .required("Password is required"),
+  role: yup.string().required("Role is required"),
+  file: yup.mixed().notRequired(),
+});
+
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loading } = useSelector((state) => state.auth);
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const [input, setInput] = useState({
-    fullname: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    role: "applicant",
-    file: null,
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const handleChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
+  const role = watch("role");
 
   const changeFileHandler = (e) => {
-    setInput({ ...input, file: e.target.files?.[0] });
+    setValue("file", e.target.files?.[0]);
   };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-
+  const submitHandler = async (data) => {
     const formData = new FormData();
-    formData.append("fullname", input.fullname);
-    formData.append("email", input.email);
-    formData.append("phoneNumber", input.phoneNumber);
-    formData.append("password", input.password);
-    formData.append("role", input.role);
-    if (input.file) formData.append("profileImage", input.file);
+    formData.append("fullname", data.fullname);
+    formData.append("email", data.email);
+    formData.append("phoneNumber", data.phoneNumber);
+    formData.append("password", data.password);
+    formData.append("role", data.role);
+    if (data.file) formData.append("profileImage", data.file);
 
     try {
       dispatch(setLoading(true));
@@ -75,20 +95,23 @@ const Signup = () => {
         {/* Logo */}
         <div className="flex justify-center gap-2 md:justify-start mb-6">
           <Link href="/">
-            <h1 className="text-2xl font-bold text-center md:text-left">
+            <p className="text-2xl font-bold text-center md:text-left">
               Job<span className="text-customRedColor">Portal</span>
-            </h1>
+            </p>
           </Link>
         </div>
 
         {/* Form Section */}
         <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
-          <form onSubmit={submitHandler} className="flex flex-col gap-6 w-full">
+          <form
+            onSubmit={handleSubmit(submitHandler)}
+            className="flex flex-col gap-6 w-full"
+          >
             {/* Heading */}
             <div className="flex flex-col items-center gap-2 text-center mb-8">
-              <p className="text-2xl font-bold text-primary">
+              <h1 className="text-2xl font-bold text-primary">
                 Create an account
-              </p>
+              </h1>
               <p className="text-sm text-muted-foreground">
                 Enter your details to create an account
               </p>
@@ -103,8 +126,8 @@ const Signup = () => {
                   type="text"
                   name="fullname"
                   placeholder="John Doe"
-                  value={input.fullname}
-                  onChange={handleChange}
+                  {...register("fullname")}
+                  error={errors.fullname}
                   className="input-field pl-10"
                 />
                 <User
@@ -112,6 +135,9 @@ const Signup = () => {
                   size={18}
                 />
               </div>
+              {errors.fullname && (
+                <p className="text-red-500">{errors.fullname.message}</p>
+              )}
             </div>
 
             {/* Email Field */}
@@ -123,8 +149,8 @@ const Signup = () => {
                   type="email"
                   name="email"
                   placeholder="xyz@example.com"
-                  value={input.email}
-                  onChange={handleChange}
+                  {...register("email")}
+                  error={errors.email}
                   className="input-field pl-10"
                 />
                 <Mail
@@ -132,6 +158,9 @@ const Signup = () => {
                   size={18}
                 />
               </div>
+              {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Phone Number Field */}
@@ -142,9 +171,9 @@ const Signup = () => {
                   id="phoneNumber"
                   type="text"
                   name="phoneNumber"
-                  placeholder="03xx-xxxxxxx"
-                  value={input.phoneNumber}
-                  onChange={handleChange}
+                  placeholder="0333-xxxxxxx"
+                  {...register("phoneNumber")}
+                  error={errors.phoneNumber}
                   className="input-field pl-10"
                 />
                 <Phone
@@ -152,6 +181,9 @@ const Signup = () => {
                   size={18}
                 />
               </div>
+              {errors.phoneNumber && (
+                <p className="text-red-500">{errors.phoneNumber.message}</p>
+              )}
             </div>
 
             {/* Password Field with Toggle Visibility */}
@@ -163,8 +195,8 @@ const Signup = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="********"
-                  value={input.password}
-                  onChange={handleChange}
+                  {...register("password")}
+                  error={errors.password}
                   className="input-field pr-10 pl-10"
                 />
                 <Lock
@@ -179,15 +211,16 @@ const Signup = () => {
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
+              {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
             </div>
 
             {/* Role Selection */}
             <div className="grid gap-2 w-full">
               <RadioGroup
-                value={input.role}
-                onValueChange={(value) =>
-                  setInput((prev) => ({ ...prev, role: value }))
-                }
+                value={role}
+                onValueChange={(value) => setValue("role", value)}
                 className="flex gap-4"
               >
                 <div className="flex items-center space-x-2">
@@ -199,6 +232,9 @@ const Signup = () => {
                   <Label htmlFor="recruiter">Recruiter</Label>
                 </div>
               </RadioGroup>
+              {errors.role && (
+                <p className="text-red-500">{errors.role.message}</p>
+              )}
             </div>
 
             {/* Profile Image Upload */}
@@ -212,9 +248,9 @@ const Signup = () => {
                   onChange={changeFileHandler}
                   className="input-field"
                 />
-                {input.file && (
+                {watch("file") && (
                   <Image
-                    src={URL.createObjectURL(input.file)}
+                    src={URL.createObjectURL(watch("file"))}
                     alt="Profile Preview"
                     width={30}
                     height={30}

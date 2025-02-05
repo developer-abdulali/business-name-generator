@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -15,33 +18,40 @@ import axios from "axios";
 import { toast } from "sonner";
 import Image from "next/image";
 
+// Define the validation schema using yup
+const schema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup.string().required("Password is required"),
+  role: yup.string().required("Role is required"),
+});
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.auth);
 
-  const [input, setInput] = useState({
-    email: "",
-    password: "",
-    role: "applicant",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInput((prev) => ({ ...prev, [name]: value }));
-  };
+  const role = watch("role");
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const submitHandler = async (data) => {
     dispatch(setLoading(true));
 
     try {
-      const res = await axios.post(`${USER_API_ENDPOINT}/login`, input, {
+      const res = await axios.post(`${USER_API_ENDPOINT}/login`, data, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
-      console.log(res);
+
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         toast.success(res.data.message);
@@ -70,7 +80,7 @@ const Login = () => {
         {/* Form Section */}
         <div className="flex flex-1 items-center justify-center">
           <form
-            onSubmit={submitHandler}
+            onSubmit={handleSubmit(submitHandler)}
             className="flex flex-col gap-6 w-full md:w-96"
           >
             {/* Heading */}
@@ -81,7 +91,7 @@ const Login = () => {
               </p>
             </div>
 
-            {/* Form Inputs */}
+            {/* Email Field */}
             <div className="grid space-y-2 w-full">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
@@ -90,15 +100,18 @@ const Login = () => {
                   type="email"
                   name="email"
                   placeholder="xyz@example.com"
-                  value={input.email}
-                  onChange={handleChange}
-                  className="input-field pl-10"
+                  {...register("email")}
+                  error={errors.email}
+                  className="pl-10"
                 />
                 <Mail
                   className="absolute left-3 top-3 text-gray-500"
                   size={18}
                 />
               </div>
+              {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Password Field with Toggle Visibility */}
@@ -110,9 +123,9 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="********"
-                  value={input.password}
-                  onChange={handleChange}
-                  className="input-field pl-10"
+                  {...register("password")}
+                  error={errors.password}
+                  className="pl-10"
                 />
                 <button
                   type="button"
@@ -126,15 +139,16 @@ const Login = () => {
                   size={18}
                 />
               </div>
+              {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
             </div>
 
             {/* Role Selection - Applicant or Recruiter */}
             <div className="grid gap-2">
               <RadioGroup
-                value={input.role}
-                onValueChange={(value) =>
-                  setInput((prev) => ({ ...prev, role: value }))
-                }
+                value={role}
+                onValueChange={(value) => setValue("role", value)}
                 className="flex gap-4"
               >
                 <div className="flex items-center space-x-2">
@@ -146,6 +160,9 @@ const Login = () => {
                   <Label htmlFor="recruiter">Recruiter</Label>
                 </div>
               </RadioGroup>
+              {errors.role && (
+                <p className="text-red-500">{errors.role.message}</p>
+              )}
             </div>
 
             {/* Submit Button */}

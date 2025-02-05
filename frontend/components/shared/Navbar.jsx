@@ -164,7 +164,7 @@ const Navbar = () => {
         {/* Login & Signup Buttons for large screens */}
         <div className="hidden lg:flex gap-2">
           {!user ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center space-x-2">
               <Link href="/login">
                 <Button variant="outline">Login</Button>
               </Link>

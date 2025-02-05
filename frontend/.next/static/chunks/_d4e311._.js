@@ -460,7 +460,7 @@ const AvatarImage = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2
         ...props
     }, void 0, false, {
         fileName: "[project]/components/ui/avatar.jsx",
-        lineNumber: 17,
+        lineNumber: 21,
         columnNumber: 3
     }, this));
 _c3 = AvatarImage;
@@ -471,7 +471,7 @@ const AvatarFallback = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$
         ...props
     }, void 0, false, {
         fileName: "[project]/components/ui/avatar.jsx",
-        lineNumber: 25,
+        lineNumber: 30,
         columnNumber: 3
     }, this));
 _c5 = AvatarFallback;
@@ -973,7 +973,7 @@ const Navbar = ()=>{
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "hidden lg:flex gap-2",
                     children: !user ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-center gap-3",
+                        className: "flex items-center space-x-2",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/login",
@@ -1262,6 +1262,7 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__),
     "deleteCompany": (()=>deleteCompany),
+    "setAllCompanies": (()=>setAllCompanies),
     "setCompanies": (()=>setCompanies),
     "setSearchCompanyByLocation": (()=>setSearchCompanyByLocation),
     "setSearchCompanyByText": (()=>setSearchCompanyByText),
@@ -1274,6 +1275,7 @@ const companySlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
     initialState: {
         singleCompany: null,
         companies: [],
+        allCompanies: [],
         searchCompanyByText: "",
         searchCompanyByLocation: ""
     },
@@ -1293,10 +1295,13 @@ const companySlice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
         },
         setSearchCompanyByLocation: (state, action)=>{
             state.searchCompanyByLocation = action.payload;
+        },
+        setAllCompanies: (state, action)=>{
+            state.allCompanies = action.payload;
         }
     }
 });
-const { setSingleCompany, setCompanies, deleteCompany, setSearchCompanyByText, setSearchCompanyByLocation } = companySlice.actions;
+const { setSingleCompany, setCompanies, deleteCompany, setSearchCompanyByText, setSearchCompanyByLocation, setAllCompanies } = companySlice.actions;
 const __TURBOPACK__default__export__ = companySlice.reducer;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);

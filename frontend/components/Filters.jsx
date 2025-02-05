@@ -9,7 +9,6 @@ const filterData = [
     options: [
       "Shikarpur",
       "Sukkur",
-      "Larkana",
       "Hyderabad",
       "Karachi",
       "Islamabad",
@@ -17,7 +16,6 @@ const filterData = [
       "Lahore",
       "Multan",
       "Peshawar",
-      "Quetta",
       "Bahawalpur",
       "Sargodha",
     ],

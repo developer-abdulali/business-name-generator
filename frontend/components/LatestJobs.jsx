@@ -5,8 +5,8 @@ const LatestJobs = () => {
   const allJobs = useSelector((state) => state.job.allJobs);
 
   return (
-    <div className="wrapper my-20 px-4">
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-10">
+    <div className="wrapper my-20 px-2 xl:px-0">
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-10">
         Latest <span className="text-customColor">Job Openings</span>
       </h1>
 
