@@ -12,14 +12,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { JOB_API_ENDPOINT } from "@/lib/constant";
+import { setSingleJob } from "@/redux/slices/jobSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 
 const PostAJobPage = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [input, setInput] = useState({
     title: "",
     description: "",
@@ -53,8 +55,11 @@ const PostAJobPage = () => {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
+      // console.log("res", res);
       if (res.data.success) {
         toast.success(res.data.message);
+
+        dispatch(setSingleJob(res.data.job));
         router.push("/recruiter/jobs");
       }
     } catch (error) {
@@ -201,7 +206,15 @@ const PostAJobPage = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-end">
+          <div className="flex items-center justify-between">
+            <Button
+              variant="outline"
+              type="submit"
+              onClick={() => router.back()}
+              className="w-full md:w-auto"
+            >
+              Cancel
+            </Button>
             <Button
               variant="outline"
               type="submit"

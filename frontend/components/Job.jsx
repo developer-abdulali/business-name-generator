@@ -9,8 +9,15 @@ import daysAgoFunction from "@/lib/daysAgoFunction";
 const Job = ({ job }) => {
   const router = useRouter();
 
+  const truncateDescription = (description, maxLength) => {
+    if (description.length <= maxLength) {
+      return description;
+    }
+    return description.substring(0, maxLength) + "...";
+  };
+
   return (
-    <div
+    <section
       onClick={() => router.push(`/jobs/${job?._id}`)}
       className="p-5 rounded-lg shadow-lg bg-white border border-gray-100 hover:shadow-xl cursor-pointer hover:scale-105 transition-all duration-300"
     >
@@ -33,9 +40,15 @@ const Job = ({ job }) => {
       </div>
 
       <div className="flex items-center gap-4 my-4">
-        <Avatar>
-          <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5ar2jfvrUv7Ljjxpfu8UkQ0wNho_x8hRVHA&s" />
-        </Avatar>
+        {job?.company?.logo === null ? (
+          <Avatar>
+            <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_dnoBTEnG6YrkmO5hSZwEykg1w6cjdO1gFg&s" />
+          </Avatar>
+        ) : (
+          <Avatar>
+            <AvatarImage src={job?.company?.logo} />
+          </Avatar>
+        )}
         <div>
           <p className="font-medium text-lg">{job?.company?.name}</p>
           <p className="text-sm text-gray-500">{job?.location}</p>
@@ -45,7 +58,7 @@ const Job = ({ job }) => {
       <div>
         <p className="font-bold text-lg mb-2">{job?.title}</p>
         <p className="text-sm text-gray-600 leading-relaxed">
-          {job?.description}
+          {truncateDescription(job?.description, 100)}
         </p>
       </div>
 
@@ -69,7 +82,7 @@ const Job = ({ job }) => {
           {job?.salary} PKR
         </Badge>
       </div>
-    </div>
+    </section>
   );
 };
 

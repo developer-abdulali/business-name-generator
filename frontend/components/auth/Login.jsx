@@ -5,7 +5,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -41,17 +41,14 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
-
+      console.log(res);
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         toast.success(res.data.message);
         router.push("/");
-      } else {
-        toast.error(res.data.message || "Login failed");
       }
     } catch (error) {
       toast.error(error.response?.data?.error || "An error occurred");
-      console.error("API Error:", error.response?.data?.error || error.message);
     } finally {
       dispatch(setLoading(false));
     }
@@ -85,21 +82,29 @@ const Login = () => {
             </div>
 
             {/* Form Inputs */}
-            <div className="grid gap-4">
+            <div className="grid space-y-2 w-full">
               <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="xyz@example.com"
-                value={input.email}
-                onChange={handleChange}
-              />
+              <div className="relative">
+                <Input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="xyz@example.com"
+                  value={input.email}
+                  onChange={handleChange}
+                  className="input-field pl-10"
+                />
+                <Mail
+                  className="absolute left-3 top-3 text-gray-500"
+                  size={18}
+                />
+              </div>
             </div>
 
-            <div>
+            {/* Password Field with Toggle Visibility */}
+            <div className="grid space-y-2 w-full">
               <Label htmlFor="password">Password</Label>
-              <div className="relative my-2">
+              <div className="relative">
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
@@ -107,7 +112,7 @@ const Login = () => {
                   placeholder="********"
                   value={input.password}
                   onChange={handleChange}
-                  className="focus:ring-2 focus:ring-customRedColor focus:outline-none p-3 rounded-md border w-full"
+                  className="input-field pl-10"
                 />
                 <button
                   type="button"
@@ -116,6 +121,10 @@ const Login = () => {
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
+                <Lock
+                  className="absolute left-3 top-3 text-gray-500"
+                  size={18}
+                />
               </div>
             </div>
 
@@ -128,11 +137,11 @@ const Login = () => {
                 }
                 className="flex gap-4"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="applicant" id="applicant" />
                   <Label htmlFor="applicant">Applicant</Label>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="recruiter" id="recruiter" />
                   <Label htmlFor="recruiter">Recruiter</Label>
                 </div>

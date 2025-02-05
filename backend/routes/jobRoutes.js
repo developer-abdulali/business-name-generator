@@ -1,6 +1,7 @@
 import express from "express";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
 import {
+  deleteJob,
   getAllJobs,
   getJobById,
   getRecruiterJobs,
@@ -16,5 +17,6 @@ jobRouter.get("/get/:id", getJobById);
 
 // routes for recruiters
 jobRouter.get("/getrecruiterjobs", isAuthenticated, getRecruiterJobs);
+jobRouter.delete("/delete", isAuthenticated, deleteJob);
 
 export default jobRouter;

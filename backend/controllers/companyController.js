@@ -45,7 +45,7 @@ export const getCompany = async (req, res) => {
       model: Job,
     });
 
-    if (!companies || companies.length === 0) {
+    if (!companies) {
       return res
         .status(404)
         .json({ success: false, message: "Company not found." });
@@ -62,29 +62,6 @@ export const getCompany = async (req, res) => {
       .json({ success: false, message: "Error while getting company." });
   }
 };
-
-// export const getCompany = async (req, res) => {
-//   try {
-//     const userId = req.id;
-//     const companies = await Company.find({ userId });
-
-//     if (!companies) {
-//       return res
-//         .status(404)
-//         .json({ success: false, message: "Company not found." });
-//     }
-
-//     return res.status(200).json({
-//       success: true,
-//       message: "Company found successfully.",
-//       companies,
-//     });
-//   } catch (error) {
-//     return res
-//       .status(500)
-//       .json({ success: false, message: "Error while getting company." });
-//   }
-// };
 
 export const getCompanyById = async (req, res) => {
   try {

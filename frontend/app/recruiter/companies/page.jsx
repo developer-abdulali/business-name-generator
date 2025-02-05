@@ -26,13 +26,13 @@ const CompaniesPage = () => {
 
   return (
     <section className="max-w-screen-2xl mx-auto my-10">
-      <div className="flex items-start justify-between my-5">
-        <div className="relative w-fit mr-4">
+      <div className="flex items-center gap-3 sm:justify-between mx-3 my-5 2xl:mx-0">
+        <div className="relative w-fit">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="w-fit pr-10"
-            placeholder="Search by name or location"
+            className="pr-10"
+            placeholder="Search by name, location"
           />
           {input && (
             <button
@@ -46,6 +46,7 @@ const CompaniesPage = () => {
         <Button
           variant="outline"
           onClick={() => router.push("/recruiter/companies/register-company")}
+          className="w-auto"
         >
           New Company
         </Button>

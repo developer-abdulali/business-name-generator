@@ -1,6 +1,13 @@
 import { Badge } from "./ui/badge";
 
 const LatestJobCard = ({ job }) => {
+  const truncateDescription = (description, maxLength) => {
+    if (description.length <= maxLength) {
+      return description;
+    }
+    return description.substring(0, maxLength) + "...";
+  };
+
   return (
     <div className="p-6 rounded-lg shadow-lg bg-white border border-gray-200 cursor-pointer transform transition-transform hover:scale-105 duration-300 max-w-md sm:max-w-lg lg:max-w-xl mx-auto">
       {/* Header Section */}
@@ -19,7 +26,7 @@ const LatestJobCard = ({ job }) => {
           {job?.title}
         </p>
         <p className="text-sm sm:text-base text-gray-600 mt-2">
-          {job?.description}
+          {truncateDescription(job?.description, 100)}
         </p>
       </div>
 

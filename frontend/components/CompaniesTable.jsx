@@ -83,7 +83,7 @@ const CompaniesTable = () => {
   }, [companies, searchCompanyByText, currentPage]);
 
   return (
-    <section className="p-4">
+    <section className="my-5 mx-3 2xl:mx-0">
       <Table className="w-full bg-white shadow-md rounded-lg overflow-hidden">
         <TableCaption className="p-4 text-lg font-normal">
           A list of your recent registered companies
@@ -102,7 +102,7 @@ const CompaniesTable = () => {
           {filteredCompanies.length === 0 ? (
             <TableRow>
               <TableCell colSpan="5" className="text-center p-4">
-                No companies found.
+                <p>No companies found.</p>
               </TableCell>
             </TableRow>
           ) : (

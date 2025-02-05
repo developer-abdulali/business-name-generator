@@ -60,38 +60,19 @@ export const postJob = async (req, res) => {
 
 export const getAllJobs = async (req, res) => {
   try {
-    const keyword = req.query.keyword;
+    const allJobs = await Job.find().populate({
+      path: "company",
+    });
 
-    let query = {};
-
-    // If a keyword is provided, apply regex search to string fields
-    if (keyword) {
-      query = {
-        $or: [
-          { title: { $regex: keyword, $options: "i" } },
-          { description: { $regex: keyword, $options: "i" } },
-          // Add regex search only to string fields, not to `position`
-        ],
-      };
-    }
-
-    // Fetch jobs from the database
-    const jobs = await Job.find(query)
-      .populate({
-        path: "company",
-      })
-      .sort({ createdAt: -1 });
-
-    // If no jobs found, return a 404 response
-    if (!jobs || jobs.length === 0) {
+    // Check if there are any jobs
+    if (!allJobs || allJobs.length === 0) {
       return res
         .status(404)
         .json({ success: false, message: "No jobs found." });
     }
 
-    res
-      .status(200)
-      .json({ success: true, jobs, message: "Jobs fetched successfully" });
+    // Return the jobs as a JSON response
+    return res.status(200).json({ success: true, jobs: allJobs });
   } catch (error) {
     console.error(error);
     return res
@@ -144,5 +125,34 @@ export const getRecruiterJobs = async (req, res) => {
     return res
       .status(500)
       .json({ success: false, message: "Error while getting jobs." });
+  }
+};
+
+export const deleteJob = async (req, res) => {
+  try {
+    const userId = req.id;
+    const jobId = req.params.id;
+
+    // Check if the user is the owner of the company
+    if (created_by.toString() !== userId) {
+      return res.status(403).json({
+        success: false,
+        message: "You do not have permission to delete this company.",
+      });
+    }
+
+    const deletedJob = await Job.findByIdAndDelete(jobId);
+    if (!deletedJob) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Job not found." });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "Job deleted successfully" });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, message: "Error while deleting job." });
   }
 };

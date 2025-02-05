@@ -59,14 +59,14 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const HeroSection = () => {
-  const [query, setQuery] = useState("");
-  const dispatch = useDispatch();
-  const router = useRouter();
+  // const [query, setQuery] = useState("");
+  // const dispatch = useDispatch();
+  // const router = useRouter();
 
-  const searchJobHandler = () => {
-    dispatch(setSearchedQuery(query));
-    router.push(`/browse`);
-  };
+  // const searchJobHandler = () => {
+  //   dispatch(setSearchedQuery(query));
+  //   router.push(`/browse`);
+  // };
 
   return (
     <section className="flex flex-col items-center text-center my-12 px-4">
@@ -86,13 +86,13 @@ const HeroSection = () => {
       <div className="relative flex w-full max-w-lg sm:max-w-xl lg:max-w-2xl items-center gap-2 mt-6 p-1 bg-white border border-gray-300 rounded-full shadow-md">
         <input
           type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          // value={query}
+          // onChange={(e) => setQuery(e.target.value)}
           placeholder="Find your dream job..."
           className="w-full text-sm sm:text-base px-4 py-2 border-none outline-none bg-transparent"
         />
         <Button
-          onClick={searchJobHandler}
+          // onClick={searchJobHandler}
           className="px-3 py-2 rounded-full bg-customColor hover:bg-black transition-all"
         >
           <Search className="w-5 h-5 text-white" />

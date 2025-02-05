@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <section className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="flex items-center justify-between max-w-screen-2xl mx-auto px-4 xl:px-0 h-16">
+      <div className="flex items-center justify-between max-w-screen-2xl mx-auto px-2 2xl:px-0 h-16">
         {/* Logo */}
         <Link href="/">
           <h1 className="text-2xl font-bold">
@@ -139,6 +139,7 @@ const Navbar = () => {
             <Link
               key={link.href}
               href={link.href}
+              onClick={() => setIsMenuOpen(false)}
               className={cn(
                 "hover:text-customRedColor cursor-pointer p-2 lg:p-0",
                 pathname === link.href && "border-b-2 border-customRedColor"
@@ -163,14 +164,14 @@ const Navbar = () => {
         {/* Login & Signup Buttons for large screens */}
         <div className="hidden lg:flex gap-2">
           {!user ? (
-            <>
+            <div className="flex items-center gap-3">
               <Link href="/login">
                 <Button variant="outline">Login</Button>
               </Link>
               <Link href="/signup">
                 <Button variant="outline">Signup</Button>
               </Link>
-            </>
+            </div>
           ) : (
             <Popover>
               <PopoverTrigger>

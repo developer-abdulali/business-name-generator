@@ -9,10 +9,17 @@ const filterData = [
     options: [
       "Shikarpur",
       "Sukkur",
+      "Larkana",
       "Hyderabad",
       "Karachi",
       "Islamabad",
       "Rawalpindi",
+      "Lahore",
+      "Multan",
+      "Peshawar",
+      "Quetta",
+      "Bahawalpur",
+      "Sargodha",
     ],
   },
   {

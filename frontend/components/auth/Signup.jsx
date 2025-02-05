@@ -5,7 +5,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, User, Mail, Phone, Lock } from "lucide-react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -86,59 +86,76 @@ const Signup = () => {
           <form onSubmit={submitHandler} className="flex flex-col gap-6 w-full">
             {/* Heading */}
             <div className="flex flex-col items-center gap-2 text-center mb-8">
-              <h1 className="text-2xl font-bold text-primary">
+              <p className="text-2xl font-bold text-primary">
                 Create an account
-              </h1>
+              </p>
               <p className="text-sm text-muted-foreground">
                 Enter your details to create an account
               </p>
             </div>
 
             {/* Full Name Field */}
-            <div className="grid gap-2 w-full">
+            <div className="grid space-y-2 w-full">
               <Label htmlFor="fullname">Full Name</Label>
-              <Input
-                id="fullname"
-                type="text"
-                name="fullname"
-                placeholder="John Doe"
-                value={input.fullname}
-                onChange={handleChange}
-                className="input-field"
-              />
+              <div className="relative">
+                <Input
+                  id="fullname"
+                  type="text"
+                  name="fullname"
+                  placeholder="John Doe"
+                  value={input.fullname}
+                  onChange={handleChange}
+                  className="input-field pl-10"
+                />
+                <User
+                  className="absolute left-3 top-3 text-gray-500"
+                  size={18}
+                />
+              </div>
             </div>
 
             {/* Email Field */}
-            <div className="grid gap-2 w-full">
+            <div className="grid space-y-2 w-full">
               <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="xyz@example.com"
-                value={input.email}
-                onChange={handleChange}
-                className="input-field"
-              />
+              <div className="relative">
+                <Input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="xyz@example.com"
+                  value={input.email}
+                  onChange={handleChange}
+                  className="input-field pl-10"
+                />
+                <Mail
+                  className="absolute left-3 top-3 text-gray-500"
+                  size={18}
+                />
+              </div>
             </div>
 
             {/* Phone Number Field */}
-            <div className="grid gap-2 w-full">
+            <div className="grid space-y-2 w-full">
               <Label htmlFor="phoneNumber">Contact Number</Label>
-              <Input
-                id="phoneNumber"
-                type="number"
-                name="phoneNumber"
-                placeholder="+92333-xxxxxxx"
-                // placeholder="333-xxxxxxx"
-                value={input.phoneNumber}
-                onChange={handleChange}
-                className="input-field"
-              />
+              <div className="relative">
+                <Input
+                  id="phoneNumber"
+                  type="text"
+                  name="phoneNumber"
+                  placeholder="03xx-xxxxxxx"
+                  value={input.phoneNumber}
+                  onChange={handleChange}
+                  className="input-field pl-10"
+                />
+                <Phone
+                  className="absolute left-3 top-3 text-gray-500"
+                  size={18}
+                />
+              </div>
             </div>
 
             {/* Password Field with Toggle Visibility */}
-            <div className="grid gap-2 w-full">
+            <div className="grid space-y-2 w-full">
               <Label htmlFor="password">Password</Label>
               <div className="relative">
                 <Input
@@ -148,7 +165,11 @@ const Signup = () => {
                   placeholder="********"
                   value={input.password}
                   onChange={handleChange}
-                  className="input-field pr-10"
+                  className="input-field pr-10 pl-10"
+                />
+                <Lock
+                  className="absolute left-3 top-3 text-gray-500"
+                  size={18}
                 />
                 <button
                   type="button"
@@ -162,7 +183,6 @@ const Signup = () => {
 
             {/* Role Selection */}
             <div className="grid gap-2 w-full">
-              <Label>Role</Label>
               <RadioGroup
                 value={input.role}
                 onValueChange={(value) =>
@@ -170,11 +190,11 @@ const Signup = () => {
                 }
                 className="flex gap-4"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="applicant" id="applicant" />
                   <Label htmlFor="applicant">Applicant</Label>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="recruiter" id="recruiter" />
                   <Label htmlFor="recruiter">Recruiter</Label>
                 </div>
@@ -182,9 +202,9 @@ const Signup = () => {
             </div>
 
             {/* Profile Image Upload */}
-            <div className="grid gap-2 w-full">
+            <div className="grid space-y-2 w-full">
               <Label htmlFor="profileImage">Profile Image</Label>
-              <div className="relative flex items-center gap-2">
+              <div className="relative flex items-center space-x-2">
                 <Input
                   id="profileImage"
                   type="file"

@@ -18,6 +18,7 @@ const JobDescription = () => {
   const { user } = useSelector((state) => state.auth);
   const { singleJob } = useSelector((state) => state.job);
   const jobId = params.jobId;
+  // console.log("singleJob", singleJob);
   const isInitiallyApplied = singleJob?.applications?.some(
     (applications) => applications.applicant === user?._id || false
   );
