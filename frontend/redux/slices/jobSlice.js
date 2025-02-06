@@ -17,6 +17,7 @@ const jobSlice = createSlice({
     setAllRecruiterJobs: (state, action) => {
       state.allRecruiterJobs = action.payload;
     },
+
     setSingleJob: (state, action) => {
       state.singleJob = action.payload;
     },

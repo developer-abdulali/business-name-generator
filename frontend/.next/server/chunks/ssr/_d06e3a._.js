@@ -300,7 +300,8 @@ const CompaniesTable = ()=>{
                                         children: company?.logo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Avatar"], {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarImage"], {
-                                                    src: company?.logo
+                                                    src: company?.logo,
+                                                    className: "object-contain"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/CompaniesTable.jsx",
                                                     lineNumber: 120,
@@ -310,7 +311,7 @@ const CompaniesTable = ()=>{
                                                     children: company?.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                    lineNumber: 121,
+                                                    lineNumber: 124,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
@@ -324,20 +325,20 @@ const CompaniesTable = ()=>{
                                                     src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_dnoBTEnG6YrkmO5hSZwEykg1w6cjdO1gFg&s"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                    lineNumber: 125,
+                                                    lineNumber: 128,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                                     children: company?.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                    lineNumber: 126,
+                                                    lineNumber: 129,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/CompaniesTable.jsx",
-                                            lineNumber: 124,
+                                            lineNumber: 127,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
@@ -350,7 +351,7 @@ const CompaniesTable = ()=>{
                                         children: company?.name
                                     }, void 0, false, {
                                         fileName: "[project]/components/CompaniesTable.jsx",
-                                        lineNumber: 130,
+                                        lineNumber: 133,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -358,7 +359,7 @@ const CompaniesTable = ()=>{
                                         children: company.location || "N/A"
                                     }, void 0, false, {
                                         fileName: "[project]/components/CompaniesTable.jsx",
-                                        lineNumber: 131,
+                                        lineNumber: 134,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -366,7 +367,7 @@ const CompaniesTable = ()=>{
                                         children: company?.jobs?.length || 0
                                     }, void 0, false, {
                                         fileName: "[project]/components/CompaniesTable.jsx",
-                                        lineNumber: 134,
+                                        lineNumber: 137,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -374,7 +375,7 @@ const CompaniesTable = ()=>{
                                         children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$moment$2f$moment$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(company.createdAt).format("DD-MM-YY")
                                     }, void 0, false, {
                                         fileName: "[project]/components/CompaniesTable.jsx",
-                                        lineNumber: 137,
+                                        lineNumber: 140,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -388,12 +389,12 @@ const CompaniesTable = ()=>{
                                                         className: "hover:text-blue-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/CompaniesTable.jsx",
-                                                        lineNumber: 144,
+                                                        lineNumber: 147,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                    lineNumber: 143,
+                                                    lineNumber: 146,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$popover$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PopoverContent"], {
@@ -410,20 +411,20 @@ const CompaniesTable = ()=>{
                                                                     className: "w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                                    lineNumber: 154,
+                                                                    lineNumber: 157,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Edit"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                                    lineNumber: 155,
+                                                                    lineNumber: 158,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/CompaniesTable.jsx",
-                                                            lineNumber: 147,
+                                                            lineNumber: 150,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -437,37 +438,37 @@ const CompaniesTable = ()=>{
                                                                     className: "w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                                    lineNumber: 164,
+                                                                    lineNumber: 167,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Delete"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                                    lineNumber: 165,
+                                                                    lineNumber: 168,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/CompaniesTable.jsx",
-                                                            lineNumber: 157,
+                                                            lineNumber: 160,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/CompaniesTable.jsx",
-                                                    lineNumber: 146,
+                                                    lineNumber: 149,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/CompaniesTable.jsx",
-                                            lineNumber: 142,
+                                            lineNumber: 145,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/CompaniesTable.jsx",
-                                        lineNumber: 141,
+                                        lineNumber: 144,
                                         columnNumber: 17
                                     }, this)
                                 ]
@@ -497,12 +498,12 @@ const CompaniesTable = ()=>{
                         disabled: currentPage === 1,
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__["ChevronLeft"], {}, void 0, false, {
                             fileName: "[project]/components/CompaniesTable.jsx",
-                            lineNumber: 184,
+                            lineNumber: 187,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/CompaniesTable.jsx",
-                        lineNumber: 178,
+                        lineNumber: 181,
                         columnNumber: 9
                     }, this),
                     pageNumbers.map((page)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -513,7 +514,7 @@ const CompaniesTable = ()=>{
                             children: page
                         }, page, false, {
                             fileName: "[project]/components/CompaniesTable.jsx",
-                            lineNumber: 187,
+                            lineNumber: 190,
                             columnNumber: 11
                         }, this)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -523,18 +524,18 @@ const CompaniesTable = ()=>{
                         disabled: currentPage === totalPages,
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {}, void 0, false, {
                             fileName: "[project]/components/CompaniesTable.jsx",
-                            lineNumber: 205,
+                            lineNumber: 208,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/CompaniesTable.jsx",
-                        lineNumber: 197,
+                        lineNumber: 200,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/CompaniesTable.jsx",
-                lineNumber: 177,
+                lineNumber: 180,
                 columnNumber: 7
             }, this)
         ]

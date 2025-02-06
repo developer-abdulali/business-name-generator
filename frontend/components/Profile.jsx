@@ -9,6 +9,7 @@ import UpdateProfileModal from "./UpdateProfileModal";
 import AppliedJobsTable from "./AppliedJobsTable";
 import { useSelector } from "react-redux";
 import useGetAppliedJobs from "@/hooks/useGetAppliedJobs";
+import Link from "next/link";
 
 const Profile = () => {
   useGetAppliedJobs();
@@ -70,7 +71,7 @@ const Profile = () => {
                 </Badge>
               ))
             ) : (
-              <span className="text-gray-600"> NA</span>
+              <span className="text-gray-600">NA</span>
             )}
           </div>
         </div>
@@ -96,7 +97,12 @@ const Profile = () => {
 
       {/* Applied Jobs Section */}
       <div className="max-w-4xl mx-auto bg-white mt-8 rounded-lg shadow-md p-6 sm:p-8">
-        <p className="font-bold text-lg text-gray-800 mb-4">Applied Jobs</p>
+        <div className="flex items-center justify-between mb-3">
+          <p className="font-bold text-lg text-gray-800 mb-4">Applied Jobs</p>
+          <Link href="/jobs">
+            <Button variant="outline">View All Jobs</Button>
+          </Link>
+        </div>
         <AppliedJobsTable />
       </div>
 

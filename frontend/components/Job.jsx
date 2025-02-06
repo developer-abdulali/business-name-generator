@@ -46,7 +46,7 @@ const Job = ({ job }) => {
           </Avatar>
         ) : (
           <Avatar>
-            <AvatarImage src={job?.company?.logo} />
+            <AvatarImage src={job?.company?.logo} className="object-contain" />
           </Avatar>
         )}
         <div>

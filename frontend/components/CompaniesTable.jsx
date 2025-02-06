@@ -117,7 +117,10 @@ const CompaniesTable = () => {
                 <TableCell className="p-4">
                   {company?.logo ? (
                     <Avatar>
-                      <AvatarImage src={company?.logo} />
+                      <AvatarImage
+                        src={company?.logo}
+                        className="object-contain"
+                      />
                       <AvatarFallback>{company?.name}</AvatarFallback>
                     </Avatar>
                   ) : (

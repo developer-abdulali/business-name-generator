@@ -1101,7 +1101,6 @@ const useGetAllJobs = ()=>{
             const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constant$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["JOB_API_ENDPOINT"]}/get`, {
                 withCredentials: true
             });
-            console.log("All JOBS", res);
             if (res.data.success) {
                 dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setAllJobs"])(res.data.jobs));
             } else {

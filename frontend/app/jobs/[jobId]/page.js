@@ -13,16 +13,16 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 const JobDescription = () => {
-  const dispatch = useDispatch();
-  const params = useParams();
-  const { user } = useSelector((state) => state.auth);
   const { singleJob } = useSelector((state) => state.job);
-  const jobId = params.jobId;
-  // console.log("singleJob", singleJob);
+  const { user } = useSelector((state) => state.auth);
   const isInitiallyApplied = singleJob?.applications?.some(
-    (applications) => applications.applicant === user?._id || false
+    (application) => application.applicant === user?._id || false
   );
   const [isApplied, setIsApplied] = useState(isInitiallyApplied);
+
+  const params = useParams();
+  const jobId = params.jobId;
+  const dispatch = useDispatch();
 
   const applyJobHandler = async () => {
     try {
@@ -30,23 +30,24 @@ const JobDescription = () => {
         `${APPLICATION_API_ENDPOINT}/apply/${jobId}`,
         { withCredentials: true }
       );
+      console.log("applyJobHandler", res);
       if (res.data.success) {
-        setIsApplied(true);
-        const updatedSingleJob = {
+        setIsApplied(true); // update the local state
+        const updateSingleJob = {
           ...singleJob,
           applications: [...singleJob.applications, { applicant: user?._id }],
         };
-        dispatch(setSingleJob(updatedSingleJob));
+        dispatch(setSingleJob(updateSingleJob)); // update the redux state
         toast.success(res.data.message);
       }
     } catch (error) {
       console.log(error);
-      toast.success(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
   useEffect(() => {
-    const getJobDetail = async () => {
+    const fetchSingleJob = async () => {
       try {
         const res = await axios.get(`${JOB_API_ENDPOINT}/get/${jobId}`, {
           withCredentials: true,
@@ -54,23 +55,18 @@ const JobDescription = () => {
 
         if (res.data.success) {
           dispatch(setSingleJob(res.data.job));
-
-          // Ensure job data is set before checking applications
-          const hasApplied = res.data.job.applications?.some(
-            (application) => application.applicant === user?._id
+          setIsApplied(
+            res.data.job.applications.some(
+              (application) => application.applicant === user?._id
+            )
           );
-
-          setIsApplied(hasApplied);
         }
       } catch (error) {
         console.log(error);
       }
     };
-
-    if (jobId && user?._id) {
-      getJobDetail();
-    }
-  }, [jobId, user?._id, dispatch]);
+    fetchSingleJob();
+  }, [jobId, dispatch, user?._id]);
 
   return (
     <div className="wrapper my-10 px-4 xl:px-0">
@@ -105,24 +101,6 @@ const JobDescription = () => {
 
         {/* Apply Now Button */}
         <Button
-          onClick={() => {
-            if (!user) {
-              toast.error("You must be logged in to apply for the job.");
-            } else if (!isApplied) {
-              applyJobHandler();
-            }
-          }}
-          disabled={isApplied}
-          className={`rounded-lg px-6 py-2 text-white transition-all ${
-            isApplied
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-purple-700 hover:bg-purple-800"
-          }`}
-        >
-          {isApplied ? "Already Applied" : "Apply Now"}
-        </Button>
-
-        {/* <Button
           onClick={isApplied ? null : applyJobHandler}
           disabled={isApplied}
           className={`rounded-lg px-6 py-2 text-white transition-all ${
@@ -132,7 +110,7 @@ const JobDescription = () => {
           }`}
         >
           {isApplied ? "Already Applied" : "Apply Now"}
-        </Button> */}
+        </Button>
       </div>
 
       {/* Job Details */}
@@ -174,7 +152,6 @@ const JobDescription = () => {
           <p className="font-semibold text-gray-700">
             Total Applications:
             <span className="pl-4 font-normal text-gray-800">
-              {" "}
               {singleJob?.applications?.length}
             </span>
           </p>

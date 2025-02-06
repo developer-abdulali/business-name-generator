@@ -18,11 +18,11 @@ export default function ClientProvider({ children }) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Toaster />
         {!shouldHideNavbar && <Navbar />}
         {children}
         <Footer />
       </PersistGate>
+      <Toaster />
     </Provider>
   );
 }

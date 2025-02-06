@@ -7,27 +7,51 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-backend/node_modules
+# Dependencies
+backend/node_modules/
+frontend/node_modules/
+bower_components/
 
-frontend/node_modules
-bower_components
-
-backend/uploads
-
-dist
-dist-ssr
+# Build files
+backend/dist/
+frontend/dist/
+dist-ssr/
 *.local
 
-# Editor directories and files
-.vscode/*
+# Uploaded files (if using uploads for user content)
+backend/uploads/
+frontend/uploads/
+
+# Environment variables
+backend/.env
+frontend/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache & Temp files
+backend/.cache/
+frontend/.cache/
+.tmp/
+.cache/
+coverage/
+*.pid
+*.seed
+*.pid.lock
+
+# Editor & OS-specific files
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.iml
 
-backend/.env
-frontend/.env
+# Git related
+.git/

@@ -194,13 +194,13 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
           <DialogFooter>
             <Button
               type="button"
-              variant="secondary"
+              variant="outline"
               onClick={() => setModalOpen(false)}
               disabled={loading}
             >
               Close
             </Button>
-            <Button type="submit" disabled={loading}>
+            <Button variant="outline" type="submit" disabled={loading}>
               {loading ? "Saving..." : "Save Changes"}
             </Button>
           </DialogFooter>
