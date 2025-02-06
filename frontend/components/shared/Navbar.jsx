@@ -18,6 +18,7 @@ import { USER_API_ENDPOINT } from "@/lib/constant";
 import { setUser } from "@/redux/slices/authSlice";
 import { useRouter, usePathname } from "next/navigation";
 import axios from "axios";
+import { clearAllAppliedJobs } from "@/redux/slices/jobSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,8 @@ const Navbar = () => {
       });
       if (res.data.success) {
         dispatch(setUser(null));
+        dispatch(clearAllAppliedJobs());
+
         router.push("/");
         toast.success(res.data.message);
       } else {

@@ -3,28 +3,33 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import { APPLICATION_API_ENDPOINT, JOB_API_ENDPOINT } from "@/lib/constant";
-
-import { setSingleJob } from "@/redux/slices/jobSlice";
-import { useParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useParams, useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { setSingleJob } from "@/redux/slices/jobSlice";
 
 const JobDescription = () => {
   const { singleJob } = useSelector((state) => state.job);
   const { user } = useSelector((state) => state.auth);
-  const isInitiallyApplied = singleJob?.applications?.some(
-    (application) => application.applicant === user?._id || false
-  );
+  const isInitiallyApplied =
+    singleJob?.applications?.some(
+      (application) => application.applicant === user?._id
+    ) || false;
   const [isApplied, setIsApplied] = useState(isInitiallyApplied);
 
   const params = useParams();
   const jobId = params.jobId;
+
+  const router = useRouter();
+
   const dispatch = useDispatch();
 
   const applyJobHandler = async () => {
+    if (!user) {
+      router.push("/login");
+    }
     try {
       const res = await axios.get(
         `${APPLICATION_API_ENDPOINT}/apply/${jobId}`,
@@ -32,12 +37,12 @@ const JobDescription = () => {
       );
       console.log("applyJobHandler", res);
       if (res.data.success) {
-        setIsApplied(true); // update the local state
+        setIsApplied(true);
         const updateSingleJob = {
           ...singleJob,
           applications: [...singleJob.applications, { applicant: user?._id }],
         };
-        dispatch(setSingleJob(updateSingleJob)); // update the redux state
+        dispatch(setSingleJob(updateSingleJob));
         toast.success(res.data.message);
       }
     } catch (error) {
@@ -56,9 +61,9 @@ const JobDescription = () => {
         if (res.data.success) {
           dispatch(setSingleJob(res.data.job));
           setIsApplied(
-            res.data.job.applications.some(
+            res.data.job.applications?.some(
               (application) => application.applicant === user?._id
-            )
+            ) || false
           );
         }
       } catch (error) {
@@ -67,6 +72,10 @@ const JobDescription = () => {
     };
     fetchSingleJob();
   }, [jobId, dispatch, user?._id]);
+
+  if (!singleJob) {
+    return <div>Loading...</div>; // Handle loading state
+  }
 
   return (
     <div className="wrapper my-10 px-4 xl:px-0">
@@ -152,7 +161,7 @@ const JobDescription = () => {
           <p className="font-semibold text-gray-700">
             Total Applications:
             <span className="pl-4 font-normal text-gray-800">
-              {singleJob?.applications?.length}
+              {singleJob?.applications?.length || 0}
             </span>
           </p>
           <p className="font-semibold text-gray-700">

@@ -22,7 +22,11 @@ import Image from "next/image";
 const schema = yup.object().shape({
   fullname: yup.string().required("Full name is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
-  phoneNumber: yup.string().required("Phone number is required"),
+  phoneNumber: yup
+    .string()
+    .length(11, "Phone number must be exactly 11 digits")
+    .matches(/^\d+$/, "Phone number must contain only digits")
+    .required("Phone number is required"),
   password: yup
     .string()
     .min(6, "Password must be at least 6 characters")

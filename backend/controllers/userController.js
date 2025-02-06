@@ -15,6 +15,13 @@ export const registerUser = async (req, res) => {
         .json({ success: false, error: "All fields are required" });
     }
 
+    // Check if phoneNumber is exactly 11 digits
+    if (phoneNumber.length !== 11 || !/^\d+$/.test(phoneNumber)) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Phone number must be 11 digits" });
+    }
+
     let user = await User.findOne({ email });
     if (user) {
       return res

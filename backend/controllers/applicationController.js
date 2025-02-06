@@ -6,6 +6,8 @@ export const applyJob = async (req, res) => {
     const userId = req.id;
     const jobId = req.params.id;
 
+    console.log("Applying for job:", jobId, "by user:", userId);
+
     if (!jobId) {
       return res
         .status(400)
@@ -39,14 +41,22 @@ export const applyJob = async (req, res) => {
       applicant: userId,
     });
 
+    // Ensure job has an applications array before pushing to it
+    if (!job.applications) {
+      job.applications = [];
+    }
+
     job.applications.push(newApplication._id);
     await job.save();
+
+    console.log("Application created:", newApplication);
+    console.log("Job updated:", job); // Log the updated job document
 
     return res
       .status(201)
       .json({ success: true, message: "Application submitted successfully." });
   } catch (error) {
-    console.error(error);
+    console.error("Error applying for job:", error);
     return res
       .status(500)
       .json({ success: false, message: "Error while applying for the job." });
@@ -61,7 +71,7 @@ export const getAppliedJobs = async (req, res) => {
       .sort({ createdAt: -1 })
       .populate({
         path: "job",
-        populate: { path: "company", select: "name location" }, // Populate company details
+        populate: { path: "company", select: "name location" },
       });
 
     if (!appliedJobs || appliedJobs.length === 0) {

@@ -18,7 +18,7 @@ const Profile = () => {
   const haveResume = user?.profile?.resume || false;
 
   return (
-    <div className="px-4 py-8 bg-gray-50">
+    <section className="px-4 py-8 bg-gray-50">
       {/* Profile Card */}
       <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg shadow-md p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:justify-between">
@@ -108,7 +108,7 @@ const Profile = () => {
 
       {/* Update profile modal */}
       <UpdateProfileModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
-    </div>
+    </section>
   );
 };
 

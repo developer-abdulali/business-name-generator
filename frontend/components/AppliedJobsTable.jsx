@@ -16,6 +16,8 @@ const AppliedJobsTable = () => {
   const router = useRouter();
   const { allAppliedJobs } = useSelector((state) => state.job);
 
+  console.log("All Applied Jobs:", allAppliedJobs); // Log the applied jobs
+
   return (
     <section>
       <Table>
@@ -33,7 +35,7 @@ const AppliedJobsTable = () => {
           {allAppliedJobs?.length === 0 ? (
             <TableRow>
               <TableCell colSpan={4} className="text-center py-4">
-                {`You haven't applied any job yet.`}
+                {`You haven't applied for any jobs yet.`}
               </TableCell>
             </TableRow>
           ) : (

@@ -50,8 +50,8 @@ const AllCompanies = () => {
             >
               <div className="flex flex-col items-center w-full">
                 <Image
-                  src={company.logo}
-                  alt={company.name}
+                  src={company?.logo}
+                  alt={company?.name}
                   width={200}
                   height={200}
                   className="mb-5 h-[15rem] object-contain"

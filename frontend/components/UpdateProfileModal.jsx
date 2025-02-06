@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import axios from "axios";
 import { USER_API_ENDPOINT } from "@/lib/constant";
 import { setUser } from "@/redux/slices/authSlice";
+import Image from "next/image";
 
 const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
   const { user } = useSelector((state) => state.auth);
@@ -168,9 +169,11 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
                 className="col-span-3"
               />
               {imagePreview && (
-                <img
+                <Image
                   src={imagePreview}
                   alt="Profile Preview"
+                  width={30}
+                  height={30}
                   className="mt-2 w-24 h-24 object-cover rounded-full"
                 />
               )}

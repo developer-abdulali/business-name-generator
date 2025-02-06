@@ -116,8 +116,8 @@ const AllCompanies = ()=>{
                                 className: "flex flex-col items-center w-full",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                        src: company.logo,
-                                        alt: company.name,
+                                        src: company?.logo,
+                                        alt: company?.name,
                                         width: 200,
                                         height: 200,
                                         className: "mb-5 h-[15rem] object-contain"
@@ -482,67 +482,13 @@ const __TURBOPACK__default__export__ = CategoryCarousel;
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// "use client";
-// import { Search } from "lucide-react";
-// import { Button } from "./ui/button";
-// import { useDispatch } from "react-redux";
-// import { setSearchedQuery } from "@/redux/slices/jobSlice";
-// import { useRouter } from "next/navigation";
-// import { useState } from "react";
-// const HeroSection = () => {
-//   const [query, setQuery] = useState("");
-//   const dispatch = useDispatch();
-//   const router = useRouter();
-//   const searchJobHandler = () => {
-//     dispatch(setSearchedQuery(query));
-//     router.push(`/browse`);
-//   };
-//   return (
-//     <section className="flex flex-col text-center my-10 gap-5 px-4">
-//       <span className="mx-auto px-4 py-2 rounded-full bg-gray-100 text-customRedColor font-medium text-sm sm:text-base">
-//         No. 1 Job Hunt
-//       </span>
-//       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-//         Search, Apply & <br /> Get Your{" "}
-//         <span className="text-customColor">Dream Jobs</span>
-//       </h1>
-//       <p className="text-sm sm:text-base max-w-[90%] md:max-w-[70%] mx-auto">
-//         Discover the best job opportunities in your area. Apply quickly, secure
-//         your job, and get the job you deserve.
-//       </p>
-//       <div className="flex w-full max-w-[90%] sm:max-w-[70%] lg:max-w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto">
-//         <input
-//           type="text"
-//           value={query}
-//           onChange={(e) => setQuery(e.target.value)}
-//           placeholder="Find your dream job"
-//           className="outline-none border-none w-full text-sm sm:text-base"
-//         />
-//         <Button
-//           onClick={searchJobHandler}
-//           className="rounded-r-full bg-customColor hover:bg-black"
-//         >
-//           <Search className="w-5 h-5 text-white" />
-//         </Button>
-//       </div>
-//     </section>
-//   );
-// };
-// export default HeroSection;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/button.jsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/redux/slices/jobSlice.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/search.js [app-ssr] (ecmascript) <export default as Search>");
 "use client";
-;
-;
-;
-;
 ;
 ;
 ;
@@ -562,7 +508,7 @@ const HeroSection = ()=>{
                 children: "No. 1 Job Hunt"
             }, void 0, false, {
                 fileName: "[project]/components/HeroSection.jsx",
-                lineNumber: 73,
+                lineNumber: 17,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -571,7 +517,7 @@ const HeroSection = ()=>{
                     "Search, Apply & ",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                         fileName: "[project]/components/HeroSection.jsx",
-                        lineNumber: 77,
+                        lineNumber: 21,
                         columnNumber: 25
                     }, this),
                     "Get Your ",
@@ -580,13 +526,13 @@ const HeroSection = ()=>{
                         children: "Dream Job"
                     }, void 0, false, {
                         fileName: "[project]/components/HeroSection.jsx",
-                        lineNumber: 78,
+                        lineNumber: 22,
                         columnNumber: 18
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/HeroSection.jsx",
-                lineNumber: 76,
+                lineNumber: 20,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -594,7 +540,7 @@ const HeroSection = ()=>{
                 children: "Discover the best job opportunities in your area. Apply quickly, secure your job, and get hired faster."
             }, void 0, false, {
                 fileName: "[project]/components/HeroSection.jsx",
-                lineNumber: 80,
+                lineNumber: 24,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -608,7 +554,7 @@ const HeroSection = ()=>{
                         className: "w-full text-sm sm:text-base px-4 py-2 border-none outline-none bg-transparent"
                     }, void 0, false, {
                         fileName: "[project]/components/HeroSection.jsx",
-                        lineNumber: 87,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -618,24 +564,24 @@ const HeroSection = ()=>{
                             className: "w-5 h-5 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/HeroSection.jsx",
-                            lineNumber: 98,
+                            lineNumber: 42,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/HeroSection.jsx",
-                        lineNumber: 94,
+                        lineNumber: 38,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/HeroSection.jsx",
-                lineNumber: 86,
+                lineNumber: 30,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/HeroSection.jsx",
-        lineNumber: 72,
+        lineNumber: 16,
         columnNumber: 5
     }, this);
 };
