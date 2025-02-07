@@ -353,30 +353,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// "use client";
-// import Job from "@/components/Job";
-// import { useSelector } from "react-redux";
-// // const randomJobs = [
-// //   { id: "1", title: "Software Engineer" },
-// //   { id: "2", title: "Product Manager" },
-// //   { id: "3", title: "Designer" },
-// // ];
-// const BrowseJobs = () => {
-//   const { allJobs } = useSelector((state) => state.job);
-//   return (
-//     <div className="wrapper my-10">
-//       <h2 className="font-bold text-xl my-10">
-//         Search Results ({allJobs.length})
-//       </h2>
-//       <div className="grid grid-cols-3 gap-4">
-//         {allJobs?.map((job) => {
-//           return <Job key={job?._id} job={job} />;
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
-// export default BrowseJobs;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -408,7 +384,7 @@ const BrowseJobs = ()=>{
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/browse/page.jsx",
-                lineNumber: 40,
+                lineNumber: 12,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -418,19 +394,19 @@ const BrowseJobs = ()=>{
                         job: job
                     }, job?._id, false, {
                         fileName: "[project]/app/browse/page.jsx",
-                        lineNumber: 45,
+                        lineNumber: 17,
                         columnNumber: 18
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/app/browse/page.jsx",
-                lineNumber: 43,
+                lineNumber: 15,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/browse/page.jsx",
-        lineNumber: 39,
+        lineNumber: 11,
         columnNumber: 5
     }, this);
 };

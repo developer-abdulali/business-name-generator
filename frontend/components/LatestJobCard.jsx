@@ -9,7 +9,7 @@ const LatestJobCard = ({ job }) => {
   };
 
   return (
-    <div className="p-6 rounded-lg shadow-lg bg-white border border-gray-200 cursor-pointer transform transition-transform hover:scale-105 duration-300 max-w-md sm:max-w-lg lg:max-w-xl mx-auto">
+    <section className="p-6 rounded-lg shadow-lg bg-white border border-gray-200 cursor-pointer transform transition-transform hover:scale-105 duration-300 max-w-md sm:max-w-lg lg:max-w-xl mx-auto">
       {/* Header Section */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h1 className="font-semibold text-lg sm:text-xl lg:text-2xl text-gray-800">
@@ -51,7 +51,7 @@ const LatestJobCard = ({ job }) => {
           {job?.salary} PKR
         </Badge>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -28,6 +28,7 @@ const CompanyDescription = () => {
 
   const [hasChanges, setHasChanges] = useState(false);
   const [showRemoveIcon, setShowRemoveIcon] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -55,6 +56,7 @@ const CompanyDescription = () => {
       router.push("/recruiter/companies");
       return;
     }
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("name", input.name);
@@ -82,6 +84,8 @@ const CompanyDescription = () => {
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -91,7 +95,7 @@ const CompanyDescription = () => {
       description: singleCompany?.description || "",
       website: singleCompany?.website || "",
       location: singleCompany?.location || "",
-      file: singleCompany?.file || null,
+      file: singleCompany?.logo || null,
     });
     setHasChanges(false);
     setShowRemoveIcon(!!singleCompany?.file);
@@ -122,6 +126,7 @@ const CompanyDescription = () => {
               value={input.name}
               onChange={changeEventHandler}
               placeholder="Company Name"
+              disabled={loading}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -133,6 +138,7 @@ const CompanyDescription = () => {
               value={input.description}
               onChange={changeEventHandler}
               placeholder="Company description"
+              disabled={loading}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -144,6 +150,7 @@ const CompanyDescription = () => {
               value={input.website}
               onChange={changeEventHandler}
               placeholder="Company website"
+              disabled={loading}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -155,6 +162,7 @@ const CompanyDescription = () => {
               value={input.location}
               onChange={changeEventHandler}
               placeholder="Company location"
+              disabled={loading}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -179,8 +187,8 @@ const CompanyDescription = () => {
             </div>
           </div>
         </div>
-        <Button variant="outline" type="submit">
-          Save
+        <Button variant="outline" type="submit" disabled={loading}>
+          {loading ? "Saving..." : "Save"}
         </Button>
       </form>
     </section>

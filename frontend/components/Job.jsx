@@ -19,7 +19,7 @@ const Job = ({ job }) => {
   return (
     <section
       onClick={() => router.push(`/jobs/${job?._id}`)}
-      className="p-5 rounded-lg shadow-lg bg-white border border-gray-100 hover:shadow-xl cursor-pointer hover:scale-105 transition-all duration-300"
+      className="p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer hover:scale-105 transition-all duration-300"
     >
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">

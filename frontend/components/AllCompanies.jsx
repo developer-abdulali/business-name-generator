@@ -12,58 +12,64 @@ const AllCompanies = () => {
 
   return (
     <section className="slider-container max-w-screen-2xl mx-auto px-2 2xl:px-0 relative">
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-10">
+      <h1 className="text-center text-2xl sm:text-left sm:text-3xl lg:text-4xl font-semibold mb-10">
         All <span className="text-customColor">Companies</span>
       </h1>
 
-      {/* Custom Navigation Buttons */}
-      <button className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/1 z-10 p-2 rounded-full shadow-md">
-        <ChevronLeft className="text-gray-600" />
-      </button>
-      <button className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/1 z-10 p-2 rounded-full shadow-md">
-        <ChevronRight className="text-gray-600" />
-      </button>
+      {/* Check if there are no companies */}
+      {allCompanies.length === 0 ? (
+        <p className="text-center text-lg text-gray-500">No companies found.</p>
+      ) : (
+        <>
+          {/* Custom Navigation Buttons */}
+          <button className="swiper-button-prev absolute -left-8 top-1/2 translate-y-1/2 z-10 p-2">
+            <ChevronLeft className="text-gray-600" />
+          </button>
+          <button className="swiper-button-next absolute -right-8 top-1/2 translate-y-1/2 z-10 p-2">
+            <ChevronRight className="text-gray-600" />
+          </button>
 
-      <div className="custom-slider max-h-[25rem]">
-        <Swiper
-          modules={[Navigation]}
-          slidesPerView={4}
-          spaceBetween={10}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          }} // Link to buttons
-          breakpoints={{
-            1536: { slidesPerView: 4 },
-            1280: { slidesPerView: 3 },
-            1024: { slidesPerView: 3 },
-            768: { slidesPerView: 2 },
-            640: { slidesPerView: 2 },
-            480: { slidesPerView: 1 },
-          }}
-          className="swiper-container"
-        >
-          {allCompanies?.map((company) => (
-            <SwiperSlide
-              key={company._id}
-              className="border border-gray-200 rounded-lg w-full p-4"
+          <div className="custom-slider max-h-[25rem]">
+            <Swiper
+              modules={[Navigation]}
+              slidesPerView={1} // Default to 1 slide per view for mobile
+              spaceBetween={10}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }} // Link to buttons
+              breakpoints={{
+                640: { slidesPerView: 2 }, // Two slides for small screens
+                768: { slidesPerView: 2 }, // Two slides for tablets
+                1024: { slidesPerView: 3 }, // Three slides for medium screens
+                1280: { slidesPerView: 3 }, // Three slides for large screens
+                1536: { slidesPerView: 4 }, // Four slides for extra-large screens
+              }}
+              className="swiper-container"
             >
-              <div className="flex flex-col items-center w-full">
-                <Image
-                  src={company?.logo}
-                  alt={company?.name}
-                  width={200}
-                  height={200}
-                  className="mb-5 h-[15rem] object-contain"
-                />
-                <h3 className="mb-2 text-2xl font-semibold text-center w-full">
-                  {company.name}
-                </h3>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+              {allCompanies.map((company) => (
+                <SwiperSlide
+                  key={company._id}
+                  className="cursor-pointer border border-gray-200 rounded-lg w-full p-4 hover:bg-gray-50"
+                >
+                  <div className="flex flex-col items-center w-full">
+                    <Image
+                      src={company?.logo || "/companyIcon.png"}
+                      alt={company?.name}
+                      width={200}
+                      height={200}
+                      className="mb-5 h-[15rem] object-contain"
+                    />
+                    <h3 className="mb-2 text-xl sm:text-2xl font-semibold text-center w-full">
+                      {company.name}
+                    </h3>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </>
+      )}
     </section>
   );
 };

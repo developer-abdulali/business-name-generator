@@ -99,7 +99,7 @@ const RecruiterJobsTable = () => {
         <TableBody>
           {filterJobs.length === 0 ? (
             <TableRow>
-              <TableCell colSpan="5" className="text-center p-4">
+              <TableCell colSpan="5" className="text-center p-4 text-gray-500">
                 No jobs found.
               </TableCell>
             </TableRow>

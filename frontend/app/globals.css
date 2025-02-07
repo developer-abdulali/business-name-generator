@@ -6,13 +6,10 @@ body {
   font-family: var(--font-outfit), sans-serif;
 }
 
-.custom-slider .slick-list {
-  margin: 0 -0px;
-}
 .wrapper {
-  @apply max-w-screen-2xl mx-auto
-  /* @apply max-w-7xl mx-auto; */;
+  @apply max-w-screen-2xl mx-auto;
 }
+
 .scrollable-content::-webkit-scrollbar {
   display: none;
 }

@@ -566,6 +566,7 @@ const Login = ()=>{
                     alt: "Login Image",
                     width: 200,
                     height: 200,
+                    priority: true,
                     className: "absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
                 }, void 0, false, {
                     fileName: "[project]/components/auth/Login.jsx",

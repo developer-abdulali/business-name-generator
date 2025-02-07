@@ -1,3 +1,4 @@
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 
 const Footer = () => {
@@ -82,7 +83,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="p-3 bg-gray-800 rounded-full hover:bg-gray-700"
             >
-              <i className="fab fa-facebook-f text-white"></i>
+              <Facebook />
             </a>
             <a
               href="https://twitter.com"
@@ -90,7 +91,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="p-3 bg-gray-800 rounded-full hover:bg-gray-700"
             >
-              <i className="fab fa-twitter text-white"></i>
+              <Twitter />
             </a>
             <a
               href="https://linkedin.com"
@@ -98,7 +99,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="p-3 bg-gray-800 rounded-full hover:bg-gray-700"
             >
-              <i className="fab fa-linkedin-in text-white"></i>
+              <Linkedin />
             </a>
             <a
               href="https://instagram.com"
@@ -106,7 +107,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="p-3 bg-gray-800 rounded-full hover:bg-gray-700"
             >
-              <i className="fab fa-instagram text-white"></i>
+              <Instagram />
             </a>
           </div>
         </div>

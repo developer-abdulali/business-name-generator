@@ -101,7 +101,7 @@ const CompaniesTable = () => {
         <TableBody>
           {filteredCompanies.length === 0 ? (
             <TableRow>
-              <TableCell colSpan="5" className="text-center p-4">
+              <TableCell colSpan="6" className="text-center p-4 text-gray-500">
                 <p>No companies found.</p>
               </TableCell>
             </TableRow>
@@ -125,7 +125,7 @@ const CompaniesTable = () => {
                     </Avatar>
                   ) : (
                     <Avatar>
-                      <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_dnoBTEnG6YrkmO5hSZwEykg1w6cjdO1gFg&s" />
+                      <AvatarImage src="/companyIcon.png" />
                       <AvatarFallback>{company?.name}</AvatarFallback>
                     </Avatar>
                   )}
