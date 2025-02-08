@@ -1,5 +1,5 @@
+"use client";
 import { useState } from "react";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -21,16 +21,12 @@ const filterData = [
     ],
   },
   {
-    filterType: "Industry",
-    options: ["IT", "Finance", "Marketing", "Engineering", "Healthcare"],
-  },
-  {
     filterType: "Job Type",
-    options: ["Full Time", "Part Time", "Contract", "Internship"],
+    options: ["Full Time", "Part Time", "Contractual", "Internship"],
   },
   {
     filterType: "Experience",
-    options: ["0-3 years", "3-5 years", "5-10 years", "10+ years"],
+    options: ["0-1 years", "1-2 years", "2-3 years", "3+ years"],
   },
   {
     filterType: "Salary",
@@ -38,8 +34,9 @@ const filterData = [
   },
 ];
 
-const Filters = () => {
+const Filters = ({ onFilterChange }) => {
   const [openFilters, setOpenFilters] = useState({});
+  const [selectedFilters, setSelectedFilters] = useState({});
 
   const toggleFilter = (filterType) => {
     setOpenFilters((prev) => ({
@@ -48,47 +45,67 @@ const Filters = () => {
     }));
   };
 
+  const handleSelection = (filterType, value) => {
+    setSelectedFilters((prev) => {
+      const currentValues = prev[filterType] || [];
+      const updatedValues = currentValues.includes(value)
+        ? currentValues.filter((v) => v !== value)
+        : [...currentValues, value];
+
+      const updatedFilters = { ...prev, [filterType]: updatedValues };
+      onFilterChange(updatedFilters); // Pass selected filters to `Jobs`
+      return updatedFilters;
+    });
+  };
+
   return (
-    <div className="p-4">
+    <section className="p-4">
       <p className="text-xl font-bold mb-3 text-gray-800">Filters</p>
       <hr className="mb-4" />
 
-      <RadioGroup>
-        {filterData.map((data, i) => (
-          <div key={i} className="mb-4">
-            <div
-              className="flex justify-between items-center cursor-pointer"
-              onClick={() => toggleFilter(data.filterType)}
-            >
-              <p className="font-semibold text-lg">{data.filterType}</p>
-              {openFilters[data.filterType] ? (
-                <ChevronUp className="text-gray-600" />
-              ) : (
-                <ChevronDown className="text-gray-600" />
-              )}
-            </div>
-
-            <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                openFilters[data.filterType] ? "max-h-screen" : "max-h-0"
-              }`}
-            >
-              <div className="mt-2 space-y-2">
-                {data?.options?.map((item, index) => (
-                  <div
-                    key={`${data.filterType}-${index}`}
-                    className="flex items-center space-x-2"
-                  >
-                    <RadioGroupItem value={item} />
-                    <Label>{item}</Label>
-                  </div>
-                ))}
-              </div>
-            </div>
+      {filterData.map((data, i) => (
+        <div key={i} className="mb-4">
+          <div
+            className="flex justify-between items-center cursor-pointer"
+            onClick={() => toggleFilter(data.filterType)}
+          >
+            <p className="font-semibold text-lg">{data.filterType}</p>
+            {openFilters[data.filterType] ? (
+              <ChevronUp className="text-gray-600" />
+            ) : (
+              <ChevronDown className="text-gray-600" />
+            )}
           </div>
-        ))}
-      </RadioGroup>
-    </div>
+
+          {openFilters[data.filterType] && (
+            <div className="mt-2 space-y-2">
+              {data.options.map((item, index) => (
+                <div
+                  key={`${data.filterType}-${index}`}
+                  className="flex items-center space-x-2 space-y-2"
+                >
+                  <input
+                    type="checkbox"
+                    id={`${data.filterType}-${item}`}
+                    checked={
+                      selectedFilters[data.filterType]?.includes(item) ?? false
+                    }
+                    onChange={() => handleSelection(data.filterType, item)}
+                    className="mt-2"
+                  />
+                  <Label
+                    htmlFor={`${data.filterType}-${item}`}
+                    className="cursor-pointer"
+                  >
+                    {item}
+                  </Label>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </section>
   );
 };
 

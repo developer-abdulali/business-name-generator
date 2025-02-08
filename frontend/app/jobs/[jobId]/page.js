@@ -35,7 +35,6 @@ const JobDescription = () => {
         `${APPLICATION_API_ENDPOINT}/apply/${jobId}`,
         { withCredentials: true }
       );
-      console.log("applyJobHandler", res);
       if (res.data.success) {
         setIsApplied(true);
         const updateSingleJob = {

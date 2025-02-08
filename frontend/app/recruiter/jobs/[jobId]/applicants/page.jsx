@@ -20,7 +20,6 @@ const ApplicantsPage = () => {
           `${APPLICATION_API_ENDPOINT}/${jobId}/applicants`,
           { withCredentials: true }
         );
-        console.log(res);
         if (res.data.success) {
           dispatch(setAllApplicants(res.data.job));
         }

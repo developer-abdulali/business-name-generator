@@ -16,8 +16,6 @@ const AppliedJobsTable = () => {
   const router = useRouter();
   const { allAppliedJobs } = useSelector((state) => state.job);
 
-  console.log("All Applied Jobs:", allAppliedJobs); // Log the applied jobs
-
   return (
     <section>
       <Table>

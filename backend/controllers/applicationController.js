@@ -6,8 +6,6 @@ export const applyJob = async (req, res) => {
     const userId = req.id;
     const jobId = req.params.id;
 
-    console.log("Applying for job:", jobId, "by user:", userId);
-
     if (!jobId) {
       return res
         .status(400)
@@ -48,9 +46,6 @@ export const applyJob = async (req, res) => {
 
     job.applications.push(newApplication._id);
     await job.save();
-
-    console.log("Application created:", newApplication);
-    console.log("Job updated:", job); // Log the updated job document
 
     return res
       .status(201)

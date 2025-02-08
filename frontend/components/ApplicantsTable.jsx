@@ -19,7 +19,6 @@ const shortlistingStatus = ["Accepted", "Rejected"];
 
 const ApplicantsTable = () => {
   const { applicants } = useSelector((state) => state.application);
-  console.log("applicants", applicants);
 
   // Ensure applicants.applications is an array
   const applicantsArray = Array.isArray(applicants?.applications)

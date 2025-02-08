@@ -55,7 +55,6 @@ const PostAJobPage = () => {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
-      // console.log("res", res);
       if (res.data.success) {
         toast.success(res.data.message);
 

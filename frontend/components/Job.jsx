@@ -19,7 +19,7 @@ const Job = ({ job }) => {
   return (
     <section
       onClick={() => router.push(`/jobs/${job?._id}`)}
-      className="p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer hover:scale-105 transition-all duration-300"
+      className="p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer "
     >
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">
@@ -80,6 +80,12 @@ const Job = ({ job }) => {
           className="text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
         >
           {job?.salary} PKR
+        </Badge>
+        <Badge
+          variant="secondary"
+          className="text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
+        >
+          {job?.experienceLevel} Experience
         </Badge>
       </div>
     </section>
