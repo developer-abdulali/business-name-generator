@@ -66,6 +66,94 @@ const __TURBOPACK__default__export__ = daysAgoFunction;
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
+// "use client";
+// import { useRouter } from "next/navigation";
+// import { Bookmark } from "lucide-react";
+// import { Button } from "./ui/button";
+// import { Avatar, AvatarImage } from "./ui/avatar";
+// import { Badge } from "./ui/badge";
+// import daysAgoFunction from "@/lib/daysAgoFunction";
+// const Job = ({ job }) => {
+//   const router = useRouter();
+//   const truncateDescription = (description, maxLength) => {
+//     if (description.length <= maxLength) {
+//       return description;
+//     }
+//     return description.substring(0, maxLength) + "...";
+//   };
+//   return (
+//     <section
+//       onClick={() => router.push(`/jobs/${job?._id}`)}
+//       className="p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer "
+//     >
+//       <div className="flex items-center justify-between">
+//         <p className="text-sm text-gray-500">
+//           {daysAgoFunction(job?.createdAt) === 0
+//             ? "Today"
+//             : `${daysAgoFunction(job?.createdAt)} days ago`}
+//         </p>
+//         {/* Prevent navigation when clicking the button */}
+//         <Button
+//           title="Save For Later"
+//           className="rounded-full"
+//           variant="outline"
+//           size="icon"
+//           onClick={(e) => e.stopPropagation()}
+//         >
+//           <Bookmark />
+//         </Button>
+//       </div>
+//       <div className="flex items-center gap-4 my-4">
+//         {job?.company?.logo === null ? (
+//           <Avatar>
+//             <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_dnoBTEnG6YrkmO5hSZwEykg1w6cjdO1gFg&s" />
+//           </Avatar>
+//         ) : (
+//           <Avatar>
+//             <AvatarImage src={job?.company?.logo} className="object-contain" />
+//           </Avatar>
+//         )}
+//         <div>
+//           <p className="font-medium text-lg">{job?.company?.name}</p>
+//           <p className="text-sm text-gray-500">{job?.location}</p>
+//         </div>
+//       </div>
+//       <div>
+//         <p className="font-bold text-lg mb-2">{job?.title}</p>
+//         <p className="text-sm text-gray-600 leading-relaxed">
+//           {truncateDescription(job?.description, 100)}
+//         </p>
+//       </div>
+//       <div className="flex flex-wrap items-center gap-2 mt-4">
+//         <Badge
+//           variant="secondary"
+//           className="text-blue-700 font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
+//         >
+//           {job?.position} Positions
+//         </Badge>
+//         <Badge
+//           variant="secondary"
+//           className="text-customRedColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
+//         >
+//           {job?.jobType}
+//         </Badge>
+//         <Badge
+//           variant="secondary"
+//           className="text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
+//         >
+//           {job?.salary} PKR
+//         </Badge>
+//         <Badge
+//           variant="secondary"
+//           className="text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
+//         >
+//           {job?.experienceLevel} Experience
+//         </Badge>
+//       </div>
+//     </section>
+//   );
+// };
+// export default Job;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -92,172 +180,178 @@ const Job = ({ job })=>{
         }
         return description.substring(0, maxLength) + "...";
     };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         onClick: ()=>router.push(`/jobs/${job?._id}`),
-        className: "p-5 rounded-lg shadow-lg bg-white border border-gray-100 hover:shadow-xl cursor-pointer hover:scale-105 transition-all duration-300",
+        className: "p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center justify-between",
+                className: "flex justify-between items-center mb-4",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm text-gray-500",
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "text-gray-500 text-sm",
                         children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$daysAgoFunction$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(job?.createdAt) === 0 ? "Today" : `${(0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$daysAgoFunction$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(job?.createdAt)} days ago`
                     }, void 0, false, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 25,
+                        lineNumber: 121,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                        title: "Save For Later",
-                        className: "rounded-full",
-                        variant: "outline",
-                        size: "icon",
                         onClick: (e)=>e.stopPropagation(),
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bookmark$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bookmark$3e$__["Bookmark"], {}, void 0, false, {
-                            fileName: "[project]/components/Job.jsx",
-                            lineNumber: 38,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
+                        variant: "outline",
+                        className: "px-3 py-1 text-gray-700",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bookmark$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bookmark$3e$__["Bookmark"], {
+                                className: "mr-1"
+                            }, void 0, false, {
+                                fileName: "[project]/components/Job.jsx",
+                                lineNumber: 131,
+                                columnNumber: 11
+                            }, this),
+                            " Save"
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 31,
+                        lineNumber: 126,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 24,
+                lineNumber: 120,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center gap-4 my-4",
+                className: "flex items-center mb-4",
                 children: [
-                    job?.company?.logo === null ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Avatar"], {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarImage"], {
-                            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_dnoBTEnG6YrkmO5hSZwEykg1w6cjdO1gFg&s"
-                        }, void 0, false, {
-                            fileName: "[project]/components/Job.jsx",
-                            lineNumber: 45,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/Job.jsx",
-                        lineNumber: 44,
-                        columnNumber: 11
-                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Avatar"], {
+                    job?.company?.logo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Avatar"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AvatarImage"], {
                             src: job?.company?.logo,
+                            alt: job?.company?.name,
                             className: "object-contain"
                         }, void 0, false, {
                             fileName: "[project]/components/Job.jsx",
-                            lineNumber: 49,
+                            lineNumber: 137,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 48,
+                        lineNumber: 136,
+                        columnNumber: 11
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Avatar"], {
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "text-xl font-semibold",
+                            children: job?.company?.name.charAt(0)
+                        }, void 0, false, {
+                            fileName: "[project]/components/Job.jsx",
+                            lineNumber: 145,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/components/Job.jsx",
+                        lineNumber: 144,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "ml-4",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "font-medium text-lg",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: "text-lg font-semibold",
                                 children: job?.company?.name
                             }, void 0, false, {
                                 fileName: "[project]/components/Job.jsx",
-                                lineNumber: 53,
+                                lineNumber: 151,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-sm text-gray-500",
+                                className: "text-gray-600",
                                 children: job?.location
                             }, void 0, false, {
                                 fileName: "[project]/components/Job.jsx",
-                                lineNumber: 54,
+                                lineNumber: 152,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 52,
+                        lineNumber: 150,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 42,
+                lineNumber: 134,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "font-bold text-lg mb-2",
-                        children: job?.title
-                    }, void 0, false, {
-                        fileName: "[project]/components/Job.jsx",
-                        lineNumber: 59,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm text-gray-600 leading-relaxed",
-                        children: truncateDescription(job?.description, 100)
-                    }, void 0, false, {
-                        fileName: "[project]/components/Job.jsx",
-                        lineNumber: 60,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                className: "text-xl font-bold mb-2",
+                children: job?.title
+            }, void 0, false, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 58,
+                lineNumber: 155,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "text-gray-700 mb-4",
+                children: truncateDescription(job?.description, 100)
+            }, void 0, false, {
+                fileName: "[project]/components/Job.jsx",
+                lineNumber: 156,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex flex-wrap items-center gap-2 mt-4",
+                className: "flex flex-wrap gap-2",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
-                        variant: "secondary",
-                        className: "text-blue-700 font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none",
+                        className: "bg-blue-100 text-blue-800",
                         children: [
                             job?.position,
                             " Positions"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 66,
+                        lineNumber: 160,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
-                        variant: "secondary",
-                        className: "text-customRedColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none",
+                        className: "bg-green-100 text-green-800",
                         children: job?.jobType
                     }, void 0, false, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 72,
+                        lineNumber: 163,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
-                        variant: "secondary",
-                        className: "text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none",
+                        className: "bg-yellow-100 text-yellow-800",
                         children: [
                             job?.salary,
                             " PKR"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 78,
+                        lineNumber: 164,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                        className: "bg-purple-100 text-purple-800",
+                        children: [
+                            job?.experienceLevel,
+                            " Experience"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/Job.jsx",
+                        lineNumber: 167,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 65,
+                lineNumber: 159,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Job.jsx",
-        lineNumber: 20,
+        lineNumber: 116,
         columnNumber: 5
     }, this);
 };
@@ -332,10 +426,10 @@ const BrowseJobs = ()=>{
     const { allJobs } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.job);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllJobs$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(); // Use the hook to fetch jobs
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "wrapper my-10",
+        className: "wrapper my-10 px-2 xl:px-0",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: "font-bold text-xl my-10",
+                className: "font-bold text-2xl md:text-3xl my-10 text-center md:text-left",
                 children: [
                     "Search Results (",
                     allJobs.length,
@@ -347,16 +441,14 @@ const BrowseJobs = ()=>{
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "grid grid-cols-3 gap-4",
-                children: allJobs?.map((job)=>{
-                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Job$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
+                children: allJobs?.map((job)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Job$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         job: job
                     }, job?._id, false, {
                         fileName: "[project]/app/browse/page.jsx",
                         lineNumber: 17,
-                        columnNumber: 18
-                    }, this);
-                })
+                        columnNumber: 11
+                    }, this))
             }, void 0, false, {
                 fileName: "[project]/app/browse/page.jsx",
                 lineNumber: 15,

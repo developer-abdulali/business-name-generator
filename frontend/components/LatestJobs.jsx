@@ -1,28 +1,56 @@
+"use client";
+import React from "react";
 import { useSelector } from "react-redux";
 import LatestJobCard from "./LatestJobCard";
+import { ArrowRight, Briefcase } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const LatestJobs = () => {
+  const router = useRouter();
   const allJobs = useSelector((state) => state.job.allJobs);
 
   return (
-    <div className="wrapper my-20 px-2 xl:px-0">
-      <h1 className="text-center text-2xl sm:text-left sm:text-3xl lg:text-4xl font-semibold mb-10">
-        Latest <span className="text-customColor">Job Openings</span>
-      </h1>
+    <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
+      <div className="wrapper">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-12">
+          <div className="mb-6 md:mb-0">
+            <div className="flex items-center gap-2 mb-2">
+              <Briefcase className="w-6 h-6 text-purple-600" />
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                Latest Job Openings
+              </h2>
+            </div>
+            <p className="text-gray-600">Explore the newest opportunities</p>
+          </div>
 
-      {/* Card Grid */}
-      {allJobs?.length <= 0 ? (
-        <div className="w-full text-center text-lg text-gray-500">
-          No jobs found
+          <button
+            onClick={() => router.push("/jobs")}
+            className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-medium transition-all"
+          >
+            View All Jobs
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allJobs?.slice(0, 6)?.map((job) => (
-            <LatestJobCard key={job?._id} job={job} />
-          ))}
-        </div>
-      )}
-    </div>
+
+        {/* Jobs Grid */}
+        {allJobs?.length <= 0 ? (
+          <div className="flex flex-col items-center justify-center py-16 bg-white rounded-2xl border border-gray-200">
+            <Briefcase className="w-12 h-12 text-gray-400 mb-4" />
+            <p className="text-xl text-gray-600">No jobs found</p>
+            <p className="text-gray-500 mt-2">
+              Check back later for new opportunities
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allJobs?.slice(0, 6)?.map((job) => (
+              <LatestJobCard key={job?._id} job={job} />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 

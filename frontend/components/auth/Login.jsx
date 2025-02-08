@@ -189,12 +189,12 @@ const Login = () => {
       {/* Right Section with Background Image */}
       <div className="relative hidden bg-muted lg:block">
         <Image
-          src="/authimg.png"
+          src="/login.svg"
           alt="Login Image"
           width={200}
           height={200}
           priority
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale scale-x-[-1]"
         />
       </div>
     </section>

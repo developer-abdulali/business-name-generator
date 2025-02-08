@@ -8,16 +8,17 @@ const BrowseJobs = () => {
   useGetAllJobs(); // Use the hook to fetch jobs
 
   return (
-    <div className="wrapper my-10">
-      <h2 className="font-bold text-xl my-10">
+    <div className="wrapper my-10 px-2 xl:px-0">
+      <h2 className="font-bold text-2xl md:text-3xl my-10 text-center md:text-left">
         Search Results ({allJobs.length})
       </h2>
-      <div className="grid grid-cols-3 gap-4">
-        {allJobs?.map((job) => {
-          return <Job key={job?._id} job={job} />;
-        })}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allJobs?.map((job) => (
+          <Job key={job?._id} job={job} />
+        ))}
       </div>
     </div>
   );
 };
+
 export default BrowseJobs;

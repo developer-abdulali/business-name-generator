@@ -10,7 +10,7 @@
     "static/chunks/node_modules_next_e7ae3d._.js",
     "static/chunks/node_modules_@reduxjs_toolkit_dist_c19f2f._.js",
     "static/chunks/node_modules_axios_lib_c4c49c._.js",
-    "static/chunks/node_modules_bac206._.js"
+    "static/chunks/node_modules_aba1a7._.js"
   ],
   "source": "dynamic"
 });

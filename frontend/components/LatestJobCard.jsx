@@ -1,57 +1,73 @@
-import { Badge } from "./ui/badge";
+import {
+  MapPin,
+  Clock,
+  Building,
+  ArrowRight,
+  Users,
+  PiggyBank,
+} from "lucide-react";
+import Link from "next/link";
 
 const LatestJobCard = ({ job }) => {
   const truncateDescription = (description, maxLength) => {
-    if (description.length <= maxLength) {
-      return description;
-    }
-    return description.substring(0, maxLength) + "...";
+    if (description?.length <= maxLength) return description;
+    return description?.substring(0, maxLength) + "...";
   };
 
   return (
-    <section className="p-6 rounded-lg shadow-lg bg-white border border-gray-200 cursor-pointer transform transition-transform hover:scale-105 duration-300 max-w-md sm:max-w-lg lg:max-w-xl mx-auto">
-      {/* Header Section */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="font-semibold text-lg sm:text-xl lg:text-2xl text-gray-800">
-          {job?.company?.name}
-        </h1>
-        <p className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-0">
-          {job?.location}
-        </p>
+    <div className="group relative bg-white rounded-2xl border border-gray-200 p-6 transition-all duration-300 hover:shadow-lg hover:border-purple-200 cursor-pointer">
+      {/* Company Info */}
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-1">
+            <Building className="w-4 h-4 text-gray-400" />
+            <h3 className="font-semibold text-gray-900">
+              {job?.company?.name}
+            </h3>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-gray-500">
+            <MapPin className="w-4 h-4" />
+            <span>{job?.location}</span>
+          </div>
+        </div>
       </div>
 
-      {/* Job Details Section */}
-      <div className="mt-4">
-        <p className="font-bold text-md sm:text-lg lg:text-xl text-gray-900">
-          {job?.title}
-        </p>
-        <p className="text-sm sm:text-base text-gray-600 mt-2">
+      {/* Job Title & Description */}
+      <div className="mb-4">
+        <h4 className="text-lg font-bold text-gray-900 mb-2">{job?.title}</h4>
+        <p className="text-gray-600 text-sm line-clamp-2">
           {truncateDescription(job?.description, 100)}
         </p>
       </div>
 
-      {/* Badges Section */}
-      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-4">
-        <Badge
-          variant="secondary"
-          className="text-blue-700 font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
-        >
-          {job?.position} Positions
-        </Badge>
-        <Badge
-          variant="secondary"
-          className="text-customRedColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
-        >
-          {job?.jobType}
-        </Badge>
-        <Badge
-          variant="secondary"
-          className="text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
-        >
-          {job?.salary} PKR
-        </Badge>
+      {/* Job Details */}
+      <div className="flex items-center justify-between mb-4">
+        {/* <div className="grid grid-cols-2 gap-3 mb-4"> */}
+        <div className="flex items-center gap-2 text-sm">
+          <Users className="w-4 h-4 text-blue-600" />
+          <span className="text-gray-600">{job?.position} Positions</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm">
+          <Clock className="w-4 h-4 text-red-600" />
+          <span className="text-gray-600">{job?.jobType}</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm col-span-2">
+          <PiggyBank className="w-4 h-4 text-green-600" />
+          <span className="text-gray-600">{job?.salary} PKR</span>
+        </div>
       </div>
-    </section>
+
+      {/* Apply Button */}
+      <div className="mt-6">
+        <Link
+          href={`/jobs/${job?._id}`}
+          className="w-full bg-gray-50 text-purple-600 font-medium py-2 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 group-hover:bg-purple-600 group-hover:text-white"
+        >
+          View Details
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </div>
   );
 };
 
