@@ -74,7 +74,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
         {
           headers: { "Content-Type": "multipart/form-data" },
           withCredentials: true,
-          timeout: 60000, // Increase timeout to 60 seconds
+          timeout: 60000,
         }
       );
 
@@ -98,21 +98,20 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
         <DialogHeader>
           <DialogTitle>Update Profile</DialogTitle>
         </DialogHeader>
-        <form onSubmit={handleSubmit}>
-          <div className="grid gap-4 py-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Fullname */}
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col gap-y-2">
               <Label htmlFor="fullname">Full Name</Label>
               <Input
                 id="fullname"
                 name="fullname"
                 value={input.fullname}
                 onChange={handleInputChange}
-                className="col-span-3"
               />
             </div>
             {/* Email */}
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col gap-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -120,45 +119,41 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
                 type="email"
                 value={input.email}
                 onChange={handleInputChange}
-                className="col-span-3"
               />
             </div>
             {/* Phone */}
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col gap-y-2">
               <Label htmlFor="number">Phone Number</Label>
               <Input
                 id="number"
                 name="number"
                 value={input.number}
                 onChange={handleInputChange}
-                className="col-span-3"
               />
             </div>
             {/* Bio */}
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col gap-y-2">
               <Label htmlFor="bio">Bio</Label>
               <Input
                 id="bio"
                 name="bio"
                 value={input.bio}
                 onChange={handleInputChange}
-                className="col-span-3"
               />
             </div>
             {/* Skills */}
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col gap-y-2">
               <Label htmlFor="skills">Skills</Label>
               <Input
                 id="skills"
                 name="skills"
                 value={input.skills}
                 onChange={handleInputChange}
-                className="col-span-3"
                 placeholder="Comma-separated skills"
               />
             </div>
             {/* Profile Image */}
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col gap-y-2">
               <Label htmlFor="profileImage">Profile Image</Label>
               <Input
                 id="profileImage"
@@ -166,20 +161,19 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
                 type="file"
                 accept="image/*"
                 onChange={(e) => handleFileChange(e, "profileImage")}
-                className="col-span-3"
               />
               {imagePreview && (
                 <Image
                   src={imagePreview}
                   alt="Profile Preview"
-                  width={30}
-                  height={30}
+                  width={120}
+                  height={120}
                   className="mt-2 w-24 h-24 object-cover rounded-full"
                 />
               )}
             </div>
             {/* Resume */}
-            <div className="grid grid-cols-4 items-center gap-4">
+            <div className="flex flex-col gap-y-2">
               <Label htmlFor="resume">Resume</Label>
               <Input
                 id="resume"
@@ -187,7 +181,6 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
                 type="file"
                 accept="application/pdf"
                 onChange={(e) => handleFileChange(e, "resume")}
-                className="col-span-3"
               />
               {resumePreview && (
                 <span className="mt-2 text-gray-700">{resumePreview}</span>
@@ -195,17 +188,25 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
             </div>
           </div>
           <DialogFooter>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setModalOpen(false)}
-              disabled={loading}
-            >
-              Close
-            </Button>
-            <Button variant="outline" type="submit" disabled={loading}>
-              {loading ? "Saving..." : "Save Changes"}
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                className="bg-purple-600 text-white hover:bg-gray-100 hover:text-black"
+                onClick={() => setModalOpen(false)}
+                disabled={loading}
+              >
+                Close
+              </Button>
+              <Button
+                variant="outline"
+                type="submit"
+                disabled={loading}
+                className="bg-purple-600 text-white hover:bg-gray-100 hover:text-black"
+              >
+                {loading ? "Saving..." : "Save Changes"}
+              </Button>
+            </div>
           </DialogFooter>
         </form>
       </DialogContent>

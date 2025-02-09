@@ -7,7 +7,6 @@ import * as yup from "yup";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +16,7 @@ import { setLoading, setUser } from "@/redux/slices/authSlice";
 import axios from "axios";
 import { toast } from "sonner";
 import Image from "next/image";
+import { setSavedJobs } from "@/redux/slices/jobSlice";
 
 // Define the validation schema using yup
 const schema = yup.object().shape({
@@ -55,6 +55,18 @@ const Login = () => {
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         toast.success(res.data.message);
+
+        // Fetch saved jobs
+        const savedJobsRes = await axios.get(
+          `${USER_API_ENDPOINT}/fetch-saved-jobs`,
+          {
+            withCredentials: true,
+          }
+        );
+        if (savedJobsRes.data.success) {
+          dispatch(setSavedJobs(savedJobsRes.data.savedJobs));
+        }
+
         router.push("/");
       }
     } catch (error) {
@@ -67,12 +79,15 @@ const Login = () => {
   return (
     <section className="grid min-h-screen lg:grid-cols-2">
       {/* Left Section */}
-      <div className="flex flex-col gap-6 p-6 md:p-10">
+      <div className="flex flex-col gap-6 p-6 md:p-10 lg:px-20 bg-white dark:bg-gray-900">
         {/* Logo */}
-        <div className="flex justify-center gap-2 md:justify-start">
+        <div className="flex justify-center gap-2 mb-6 md:justify-start">
           <Link href="/">
-            <p className="text-2xl font-bold">
-              Job<span className="text-customRedColor">Portal</span>
+            <p className="text-3xl font-bold text-center md:text-left text-gray-900 dark:text-gray-100">
+              Job
+              <span className="text-purple-600 dark:text-purple-400">
+                Portal
+              </span>
             </p>
           </Link>
         </div>
@@ -81,19 +96,26 @@ const Login = () => {
         <div className="flex flex-1 items-center justify-center">
           <form
             onSubmit={handleSubmit(submitHandler)}
-            className="flex flex-col gap-6 w-full md:w-96"
+            className="flex flex-col gap-6 w-full max-w-md"
           >
             {/* Heading */}
-            <div className="flex flex-col items-center gap-2 text-center">
-              <h1 className="text-2xl font-bold">Login to your account</h1>
-              <p className="text-sm text-muted-foreground">
+            <div className="flex flex-col items-center gap-2 text-center mb-8">
+              <h1 className="text-3xl font-bold text-primary dark:text-gray-100">
+                Login to your account
+              </h1>
+              <p className="text-sm text-muted-foreground dark:text-gray-400">
                 Enter your email below to login to your account
               </p>
             </div>
 
             {/* Email Field */}
             <div className="grid space-y-2 w-full">
-              <Label htmlFor="email">Email</Label>
+              <Label
+                htmlFor="email"
+                className="text-gray-900 dark:text-gray-100"
+              >
+                Email
+              </Label>
               <div className="relative">
                 <Input
                   id="email"
@@ -102,10 +124,10 @@ const Login = () => {
                   placeholder="xyz@example.com"
                   {...register("email")}
                   error={errors.email}
-                  className="pl-10"
+                  className="pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 />
                 <Mail
-                  className="absolute left-3 top-3 text-gray-500"
+                  className="absolute left-3 top-3 text-gray-500 dark:text-gray-400"
                   size={18}
                 />
               </div>
@@ -116,7 +138,12 @@ const Login = () => {
 
             {/* Password Field with Toggle Visibility */}
             <div className="grid space-y-2 w-full">
-              <Label htmlFor="password">Password</Label>
+              <Label
+                htmlFor="password"
+                className="text-gray-900 dark:text-gray-100"
+              >
+                Password
+              </Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -125,17 +152,17 @@ const Login = () => {
                   placeholder="********"
                   {...register("password")}
                   error={errors.password}
-                  className="pl-10"
+                  className="pl-10 pr-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 />
                 <button
                   type="button"
-                  className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
+                  className="absolute right-3 top-3 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
                 <Lock
-                  className="absolute left-3 top-3 text-gray-500"
+                  className="absolute left-3 top-3 text-gray-500 dark:text-gray-400"
                   size={18}
                 />
               </div>
@@ -144,22 +171,42 @@ const Login = () => {
               )}
             </div>
 
-            {/* Role Selection - Applicant or Recruiter */}
-            <div className="grid gap-2">
-              <RadioGroup
-                value={role}
-                onValueChange={(value) => setValue("role", value)}
-                className="flex gap-4"
-              >
+            {/* Role Selection */}
+            <div className="grid gap-2 w-full">
+              <div className="flex gap-4">
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="applicant" id="applicant" />
-                  <Label htmlFor="applicant">Applicant</Label>
+                  <input
+                    type="radio"
+                    id="applicant"
+                    value="applicant"
+                    checked={role === "applicant"}
+                    onChange={(e) => setValue("role", e.target.value)}
+                    className="custom-radio appearance-none w-5 h-5 border-2 border-purple-600 dark:border-purple-400 rounded-full flex items-center justify-center cursor-pointer relative"
+                  />
+                  <label
+                    htmlFor="applicant"
+                    className="ml-2 cursor-pointer text-gray-900 dark:text-gray-100"
+                  >
+                    Applicant
+                  </label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="recruiter" id="recruiter" />
-                  <Label htmlFor="recruiter">Recruiter</Label>
+                  <input
+                    type="radio"
+                    id="recruiter"
+                    value="recruiter"
+                    checked={role === "recruiter"}
+                    onChange={(e) => setValue("role", e.target.value)}
+                    className="custom-radio appearance-none w-5 h-5 border-2 border-purple-600 dark:border-purple-400 rounded-full flex items-center justify-center cursor-pointer relative"
+                  />
+                  <label
+                    htmlFor="recruiter"
+                    className="ml-2 cursor-pointer text-gray-900 dark:text-gray-100"
+                  >
+                    Recruiter
+                  </label>
                 </div>
-              </RadioGroup>
+              </div>
               {errors.role && (
                 <p className="text-red-500">{errors.role.message}</p>
               )}
@@ -169,16 +216,19 @@ const Login = () => {
             <Button
               variant="outline"
               type="submit"
-              className="w-full py-3"
+              className="w-full py-3 bg-purple-600 dark:bg-purple-700 text-white hover:text-white hover:bg-purple-700 dark:hover:bg-purple-600"
               disabled={loading}
             >
               {loading ? "Logging in..." : "Login"}
             </Button>
 
             {/* Signup Link */}
-            <div className="text-center text-sm">
+            <div className="text-center text-sm text-gray-900 dark:text-gray-400">
               Don&apos;t have an account?{" "}
-              <Link href="/signup" className="underline text-primary">
+              <Link
+                href="/signup"
+                className="underline text-primary hover:text-purple-600 dark:hover:text-purple-400"
+              >
                 Sign up
               </Link>
             </div>

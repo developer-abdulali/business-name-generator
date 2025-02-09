@@ -7,7 +7,6 @@ import * as yup from "yup";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Eye, EyeOff, User, Mail, Phone, Lock } from "lucide-react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
@@ -93,14 +92,17 @@ const Signup = () => {
   };
 
   return (
-    <div className="grid min-h-screen lg:grid-cols-2 gap-6">
+    <section className="grid min-h-screen lg:grid-cols-2 gap-6 p-6 md:p-10 bg-white dark:bg-gray-900">
       {/* Left Section */}
-      <div className="flex flex-col gap-6 p-6 md:p-10 justify-center">
+      <div className="flex flex-col gap-6 justify-center">
         {/* Logo */}
-        <div className="flex justify-center gap-2 md:justify-start mb-6">
+        <div className="flex justify-center gap-2 md:mb-24 md:ml-10 md:justify-start">
           <Link href="/">
-            <p className="text-2xl font-bold text-center md:text-left">
-              Job<span className="text-customRedColor">Portal</span>
+            <p className="text-3xl font-bold text-center md:text-left text-gray-900 dark:text-gray-100">
+              Job
+              <span className="text-purple-600 dark:text-purple-400">
+                Portal
+              </span>
             </p>
           </Link>
         </div>
@@ -113,17 +115,22 @@ const Signup = () => {
           >
             {/* Heading */}
             <div className="flex flex-col items-center gap-2 text-center mb-8">
-              <h1 className="text-2xl font-bold text-primary">
+              <h1 className="text-3xl font-bold text-primary dark:text-gray-100">
                 Create an account
               </h1>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground dark:text-gray-400">
                 Enter your details to create an account
               </p>
             </div>
 
             {/* Full Name Field */}
             <div className="grid space-y-2 w-full">
-              <Label htmlFor="fullname">Full Name</Label>
+              <Label
+                htmlFor="fullname"
+                className="text-gray-900 dark:text-gray-100"
+              >
+                Full Name
+              </Label>
               <div className="relative">
                 <Input
                   id="fullname"
@@ -132,10 +139,10 @@ const Signup = () => {
                   placeholder="John Doe"
                   {...register("fullname")}
                   error={errors.fullname}
-                  className="input-field pl-10"
+                  className="input-field pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 />
                 <User
-                  className="absolute left-3 top-3 text-gray-500"
+                  className="absolute left-3 top-3 text-gray-500 dark:text-gray-400"
                   size={18}
                 />
               </div>
@@ -146,7 +153,12 @@ const Signup = () => {
 
             {/* Email Field */}
             <div className="grid space-y-2 w-full">
-              <Label htmlFor="email">Email</Label>
+              <Label
+                htmlFor="email"
+                className="text-gray-900 dark:text-gray-100"
+              >
+                Email
+              </Label>
               <div className="relative">
                 <Input
                   id="email"
@@ -155,10 +167,10 @@ const Signup = () => {
                   placeholder="xyz@example.com"
                   {...register("email")}
                   error={errors.email}
-                  className="input-field pl-10"
+                  className="input-field pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 />
                 <Mail
-                  className="absolute left-3 top-3 text-gray-500"
+                  className="absolute left-3 top-3 text-gray-500 dark:text-gray-400"
                   size={18}
                 />
               </div>
@@ -169,7 +181,12 @@ const Signup = () => {
 
             {/* Phone Number Field */}
             <div className="grid space-y-2 w-full">
-              <Label htmlFor="phoneNumber">Contact Number</Label>
+              <Label
+                htmlFor="phoneNumber"
+                className="text-gray-900 dark:text-gray-100"
+              >
+                Contact Number
+              </Label>
               <div className="relative">
                 <Input
                   id="phoneNumber"
@@ -178,10 +195,10 @@ const Signup = () => {
                   placeholder="0333-xxxxxxx"
                   {...register("phoneNumber")}
                   error={errors.phoneNumber}
-                  className="input-field pl-10"
+                  className="input-field pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 />
                 <Phone
-                  className="absolute left-3 top-3 text-gray-500"
+                  className="absolute left-3 top-3 text-gray-500 dark:text-gray-400"
                   size={18}
                 />
               </div>
@@ -192,7 +209,12 @@ const Signup = () => {
 
             {/* Password Field with Toggle Visibility */}
             <div className="grid space-y-2 w-full">
-              <Label htmlFor="password">Password</Label>
+              <Label
+                htmlFor="password"
+                className="text-gray-900 dark:text-gray-100"
+              >
+                Password
+              </Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -201,15 +223,15 @@ const Signup = () => {
                   placeholder="********"
                   {...register("password")}
                   error={errors.password}
-                  className="input-field pr-10 pl-10"
+                  className="input-field pr-10 pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 />
                 <Lock
-                  className="absolute left-3 top-3 text-gray-500"
+                  className="absolute left-3 top-3 text-gray-500 dark:text-gray-400"
                   size={18}
                 />
                 <button
                   type="button"
-                  className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
+                  className="absolute right-3 top-3 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -222,20 +244,40 @@ const Signup = () => {
 
             {/* Role Selection */}
             <div className="grid gap-2 w-full">
-              <RadioGroup
-                value={role}
-                onValueChange={(value) => setValue("role", value)}
-                className="flex gap-4"
-              >
+              <div className="flex gap-4">
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="applicant" id="applicant" />
-                  <Label htmlFor="applicant">Applicant</Label>
+                  <input
+                    type="radio"
+                    id="applicant"
+                    value="applicant"
+                    checked={role === "applicant"}
+                    onChange={(e) => setValue("role", e.target.value)}
+                    className="custom-radio appearance-none w-5 h-5 border-2 border-purple-600 dark:border-purple-400 rounded-full flex items-center justify-center cursor-pointer relative"
+                  />
+                  <label
+                    htmlFor="applicant"
+                    className="ml-2 text-gray-900 dark:text-gray-100"
+                  >
+                    Applicant
+                  </label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="recruiter" id="recruiter" />
-                  <Label htmlFor="recruiter">Recruiter</Label>
+                  <input
+                    type="radio"
+                    id="recruiter"
+                    value="recruiter"
+                    checked={role === "recruiter"}
+                    onChange={(e) => setValue("role", e.target.value)}
+                    className="custom-radio appearance-none w-5 h-5 border-2 border-purple-600 dark:border-purple-400 rounded-full flex items-center justify-center cursor-pointer relative"
+                  />
+                  <label
+                    htmlFor="recruiter"
+                    className="ml-2 text-gray-900 dark:text-gray-100"
+                  >
+                    Recruiter
+                  </label>
                 </div>
-              </RadioGroup>
+              </div>
               {errors.role && (
                 <p className="text-red-500">{errors.role.message}</p>
               )}
@@ -243,14 +285,19 @@ const Signup = () => {
 
             {/* Profile Image Upload */}
             <div className="grid space-y-2 w-full">
-              <Label htmlFor="profileImage">Profile Image</Label>
+              <Label
+                htmlFor="profileImage"
+                className="text-gray-900 dark:text-gray-100"
+              >
+                Profile Image
+              </Label>
               <div className="relative flex items-center space-x-2">
                 <Input
                   id="profileImage"
                   type="file"
                   accept="image/*"
                   onChange={changeFileHandler}
-                  className="input-field"
+                  className="input-field bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 />
                 {watch("file") && (
                   <Image
@@ -268,16 +315,19 @@ const Signup = () => {
             <Button
               variant="outline"
               type="submit"
-              className="w-full py-3 text-sm"
+              className="w-full py-3 text-sm bg-purple-600 dark:bg-purple-700 text-white hover:text-white hover:bg-purple-700 dark:hover:bg-purple-600"
               disabled={loading}
             >
               {loading ? "Signing up..." : "Sign Up"}
             </Button>
 
             {/* Login Link */}
-            <div className="text-center text-sm">
+            <div className="text-center text-sm text-gray-900 dark:text-gray-400">
               Already have an account?{" "}
-              <Link href="/login" className="underline text-primary">
+              <Link
+                href="/login"
+                className="underline text-primary hover:text-purple-600 dark:hover:text-purple-400"
+              >
                 Login
               </Link>
             </div>
@@ -296,7 +346,7 @@ const Signup = () => {
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale scale-x-[-1]"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

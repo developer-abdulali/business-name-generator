@@ -248,13 +248,13 @@ const CompanyDescription = ()=>{
                 file: singleCompany?.logo || null
             });
             setHasChanges(false);
-            setShowRemoveIcon(!!singleCompany?.file);
+            setShowRemoveIcon(!!singleCompany?.logo);
         }
     }["CompanyDescription.useEffect"], [
         singleCompany
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "max-w-screen-2xl mx-auto my-10 p-6 bg-white shadow-md rounded-lg",
+        className: "max-w-screen-2xl mx-auto my-10 p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
             onSubmit: submitHandler,
             className: "space-y-6",
@@ -265,7 +265,7 @@ const CompanyDescription = ()=>{
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                             onClick: ()=>router.push("/recruiter/companies"),
                             variant: "ghost",
-                            className: "flex items-center gap-2 text-gray-500 font-semibold",
+                            className: "flex items-center gap-2 font-semibold bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {}, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
@@ -286,7 +286,7 @@ const CompanyDescription = ()=>{
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                            className: "font-bold text-2xl text-center w-full",
+                            className: "font-bold text-2xl text-center w-full text-gray-900 dark:text-gray-100",
                             children: "Company Setup"
                         }, void 0, false, {
                             fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
@@ -305,7 +305,7 @@ const CompanyDescription = ()=>{
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                    className: "block mb-2",
+                                    className: "block mb-2 text-gray-900 dark:text-gray-100",
                                     children: "Company Name"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
@@ -319,10 +319,10 @@ const CompanyDescription = ()=>{
                                     onChange: changeEventHandler,
                                     placeholder: "Company Name",
                                     disabled: loading,
-                                    className: "w-full p-2 border border-gray-300 rounded"
+                                    className: "w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 123,
+                                    lineNumber: 125,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -334,11 +334,11 @@ const CompanyDescription = ()=>{
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                    className: "block mb-2",
+                                    className: "block mb-2 text-gray-900 dark:text-gray-100",
                                     children: "Description"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 134,
+                                    lineNumber: 136,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -348,26 +348,26 @@ const CompanyDescription = ()=>{
                                     onChange: changeEventHandler,
                                     placeholder: "Company description",
                                     disabled: loading,
-                                    className: "w-full p-2 border border-gray-300 rounded"
+                                    className: "w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 135,
+                                    lineNumber: 139,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                            lineNumber: 133,
+                            lineNumber: 135,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                    className: "block mb-2",
+                                    className: "block mb-2 text-gray-900 dark:text-gray-100",
                                     children: "Website"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 146,
+                                    lineNumber: 150,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -377,26 +377,26 @@ const CompanyDescription = ()=>{
                                     onChange: changeEventHandler,
                                     placeholder: "Company website",
                                     disabled: loading,
-                                    className: "w-full p-2 border border-gray-300 rounded"
+                                    className: "w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 147,
+                                    lineNumber: 153,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                            lineNumber: 145,
+                            lineNumber: 149,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                    className: "block mb-2",
+                                    className: "block mb-2 text-gray-900 dark:text-gray-100",
                                     children: "Location"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 158,
+                                    lineNumber: 164,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -406,27 +406,27 @@ const CompanyDescription = ()=>{
                                     onChange: changeEventHandler,
                                     placeholder: "Company location",
                                     disabled: loading,
-                                    className: "w-full p-2 border border-gray-300 rounded"
+                                    className: "w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 159,
+                                    lineNumber: 167,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                            lineNumber: 157,
+                            lineNumber: 163,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "md:col-span-2 relative",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                    className: "block mb-2",
+                                    className: "block mb-2 text-gray-900 dark:text-gray-100",
                                     children: "Logo"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 170,
+                                    lineNumber: 178,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -436,38 +436,38 @@ const CompanyDescription = ()=>{
                                             type: "file",
                                             accept: "image/*",
                                             onChange: changeFileHandler,
-                                            className: "w-full p-2 border border-gray-300 rounded"
+                                            className: "w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                         }, void 0, false, {
                                             fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                            lineNumber: 172,
+                                            lineNumber: 182,
                                             columnNumber: 15
                                         }, this),
                                         showRemoveIcon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             type: "button",
                                             onClick: removeFileHandler,
-                                            className: "absolute top-1/2 right-3 transform -translate-y-1/2 text-red-500 hover:text-red-700",
+                                            className: "absolute top-1/2 right-3 transform -translate-y-1/2 text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-500",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
                                                 size: 20
                                             }, void 0, false, {
                                                 fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                                lineNumber: 184,
+                                                lineNumber: 194,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                            lineNumber: 179,
+                                            lineNumber: 189,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                                    lineNumber: 171,
+                                    lineNumber: 181,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                            lineNumber: 169,
+                            lineNumber: 177,
                             columnNumber: 11
                         }, this)
                     ]
@@ -479,11 +479,12 @@ const CompanyDescription = ()=>{
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                     variant: "outline",
                     type: "submit",
+                    className: "bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600",
                     disabled: loading,
                     children: loading ? "Saving..." : "Save"
                 }, void 0, false, {
                     fileName: "[project]/app/recruiter/companies/[companyId]/page.jsx",
-                    lineNumber: 190,
+                    lineNumber: 200,
                     columnNumber: 9
                 }, this)
             ]

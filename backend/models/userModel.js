@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
       // type: Number,
       required: true,
     },
-
+    savedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
     password: { type: String, required: true },
     role: {
       type: String,

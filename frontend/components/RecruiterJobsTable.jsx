@@ -26,6 +26,7 @@ import { JOB_API_ENDPOINT } from "@/lib/constant";
 import { toast } from "sonner";
 import axios from "axios";
 import { setDeleteJob } from "@/redux/slices/jobSlice";
+import { useDispatch } from "react-redux";
 
 const RecruiterJobsTable = () => {
   const { allRecruiterJobs, searchJobByText } = useSelector(
@@ -35,6 +36,7 @@ const RecruiterJobsTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const router = useRouter();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const filteredJobs =
@@ -83,47 +85,65 @@ const RecruiterJobsTable = () => {
 
   return (
     <section className="my-5 mx-3 2xl:mx-0">
-      <Table className="w-full bg-white shadow-md rounded-lg overflow-hidden">
-        <TableCaption className="p-4 text-lg font-normal">
+      <Table className="w-full bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+        <TableCaption className="p-4 text-lg font-normal text-gray-900 dark:text-gray-100">
           A list of your recent posted jobs
         </TableCaption>
         <TableHeader>
-          <TableRow className="bg-gray-100">
-            <TableHead className="p-4">Company Name</TableHead>
-            <TableHead className="p-4">Role</TableHead>
-            <TableHead className="p-4">Location</TableHead>
-            <TableHead className="p-4">Date</TableHead>
-            <TableHead className="p-4 text-right">Action</TableHead>
+          <TableRow className="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Company Name
+            </TableHead>
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Role
+            </TableHead>
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Location
+            </TableHead>
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Date
+            </TableHead>
+            <TableHead className="p-4 text-right text-gray-900 dark:text-gray-100">
+              Action
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {filterJobs.length === 0 ? (
             <TableRow>
-              <TableCell colSpan="5" className="text-center p-4 text-gray-500">
+              <TableCell
+                colSpan="5"
+                className="text-center p-4 text-gray-500 dark:text-gray-400"
+              >
                 No jobs found.
               </TableCell>
             </TableRow>
           ) : (
             filterJobs.map((job) => (
               <TableRow
-                // onClick={() => router.push(`/recruiter/jobs/${job?._id}`)}
                 key={job?._id}
-                className="cursor-pointer hover:bg-gray-50"
+                className="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
               >
-                <TableCell className="p-4">{job?.company.name}</TableCell>
-                <TableCell className="p-4">{job?.title}</TableCell>
-                <TableCell className="p-4">{job?.location || "N/A"}</TableCell>
-                <TableCell className="p-4">
+                <TableCell className="p-4 text-gray-900 dark:text-gray-100">
+                  {job?.company.name}
+                </TableCell>
+                <TableCell className="p-4 text-gray-900 dark:text-gray-100">
+                  {job?.title}
+                </TableCell>
+                <TableCell className="p-4 text-gray-900 dark:text-gray-100">
+                  {job?.location || "N/A"}
+                </TableCell>
+                <TableCell className="p-4 text-gray-900 dark:text-gray-100">
                   {moment(job.createdAt).format("DD-MM-YY")}
                 </TableCell>
                 <TableCell title="actions" className="p-4 text-right">
                   <Popover>
                     <PopoverTrigger onClick={(e) => e.stopPropagation()}>
-                      <MoreHorizontal className="hover:text-blue-500" />
+                      <MoreHorizontal className="hover:text-purple-600 dark:hover:text-purple-400" />
                     </PopoverTrigger>
-                    <PopoverContent className="w-fit p-2">
+                    <PopoverContent className="w-fit p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                       <div
-                        className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
+                        className="flex items-center gap-2 cursor-pointer hover:bg-purple-600 dark:hover:bg-purple-700 hover:text-white p-2 rounded"
                         onClick={(e) => {
                           e.stopPropagation();
                         }}
@@ -137,7 +157,7 @@ const RecruiterJobsTable = () => {
                           e.stopPropagation();
                           deleteJobHandler(job?._id);
                         }}
-                        className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
+                        className="flex items-center gap-2 cursor-pointer hover:bg-purple-600 dark:hover:bg-purple-700 hover:text-white p-2 rounded"
                       >
                         <Trash className="w-4" />
                         <span>Delete</span>
@@ -147,9 +167,9 @@ const RecruiterJobsTable = () => {
                           e.stopPropagation();
                           router.push(`/recruiter/jobs/${job?._id}/applicants`);
                         }}
-                        className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
+                        className="flex items-center gap-2 cursor-pointer hover:bg-purple-600 dark:hover:bg-purple-700 hover:text-white p-2 rounded"
                       >
-                        <Eye className="w-4" />
+                        <Eye className="w-5" />
                         <span>Applicants</span>
                       </div>
                     </PopoverContent>
@@ -168,16 +188,21 @@ const RecruiterJobsTable = () => {
           size="icon"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
+          className="text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700"
         >
           <ChevronLeft />
         </Button>
-        {pageNumbers?.map((page) => (
+        {pageNumbers.map((page) => (
           <Button
             key={page}
             variant="outline"
             size="icon"
             onClick={() => setCurrentPage(page)}
-            className={`px-4 py-2 ${currentPage === page ? "bg-gray-200" : ""}`}
+            className={`px-4 py-2 ${
+              currentPage === page
+                ? "bg-purple-600 text-white dark:bg-purple-700"
+                : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            }`}
           >
             {page}
           </Button>
@@ -189,6 +214,7 @@ const RecruiterJobsTable = () => {
             setCurrentPage((prev) => Math.min(prev + 1, totalPages))
           }
           disabled={currentPage === totalPages}
+          className="text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700"
         >
           <ChevronRight />
         </Button>

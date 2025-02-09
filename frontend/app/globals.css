@@ -82,3 +82,20 @@ body {
 input[type="checkbox"] {
   accent-color: #6a38c2;
 }
+
+.custom-radio::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.custom-radio:checked::before {
+  background-color: #9333ea; /* Change this to your desired color */
+}
+
+.svg-icon {
+  fill: currentColor; /* Use the current text color */
+}

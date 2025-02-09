@@ -1,4 +1,5 @@
 import { Job } from "../models/jobSchema.js";
+import { User } from "../models/userModel.js";
 
 export const postJob = async (req, res) => {
   try {
@@ -60,9 +61,19 @@ export const postJob = async (req, res) => {
 
 export const getAllJobs = async (req, res) => {
   try {
-    const allJobs = await Job.find().populate({
-      path: "company",
-    });
+    const keyword = req.query.keyword || "";
+    const query = {
+      $or: [
+        { title: { $regex: keyword, $options: "i" } },
+        { description: { $regex: keyword, $options: "i" } },
+      ],
+    };
+
+    const allJobs = await Job.find(query)
+      .populate({
+        path: "company",
+      })
+      .sort({ createdAt: -1 });
 
     // Check if there are any jobs
     if (!allJobs || allJobs.length === 0) {
@@ -78,6 +89,55 @@ export const getAllJobs = async (req, res) => {
     return res
       .status(500)
       .json({ success: false, message: "Error while getting jobs." });
+  }
+};
+
+export const saveJob = async (req, res) => {
+  const { jobId } = req.body;
+  const userId = req.id;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    if (user.savedJobs.includes(jobId)) {
+      user.savedJobs = user.savedJobs.filter((job) => job.toString() !== jobId);
+    } else {
+      user.savedJobs.push(jobId);
+    }
+
+    await user.save();
+    res.status(200).json({ success: true, savedJobs: user.savedJobs });
+  } catch (error) {
+    console.error("Error saving job:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error saving job",
+      error: error.message,
+    });
+  }
+};
+
+export const getSavedJobs = async (req, res) => {
+  const userId = req.id;
+
+  try {
+    const user = await User.findById(userId).populate("savedJobs");
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    res.status(200).json({ success: true, savedJobs: user.savedJobs });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Error fetching saved jobs" });
   }
 };
 

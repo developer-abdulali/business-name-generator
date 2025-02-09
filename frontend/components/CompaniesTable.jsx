@@ -84,24 +84,39 @@ const CompaniesTable = () => {
 
   return (
     <section className="my-5 mx-3 2xl:mx-0">
-      <Table className="w-full bg-white shadow-md rounded-lg overflow-hidden">
-        <TableCaption className="p-4 text-lg font-normal">
+      <Table className="w-full bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+        <TableCaption className="p-4 text-lg font-normal text-gray-900 dark:text-gray-100">
           A list of your recent registered companies
         </TableCaption>
         <TableHeader>
-          <TableRow className="bg-gray-100">
-            <TableHead className="p-4">Logo</TableHead>
-            <TableHead className="p-4">Name</TableHead>
-            <TableHead className="p-4">Location</TableHead>
-            <TableHead className="p-4">Jobs Posted</TableHead>
-            <TableHead className="p-4">Date</TableHead>
-            <TableHead className="p-4 text-right">Action</TableHead>
+          <TableRow className="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Logo
+            </TableHead>
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Name
+            </TableHead>
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Location
+            </TableHead>
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Jobs Posted
+            </TableHead>
+            <TableHead className="p-4 text-gray-900 dark:text-gray-100">
+              Date
+            </TableHead>
+            <TableHead className="p-4 text-right text-gray-900 dark:text-gray-100">
+              Action
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {filteredCompanies.length === 0 ? (
             <TableRow>
-              <TableCell colSpan="6" className="text-center p-4 text-gray-500">
+              <TableCell
+                colSpan="6"
+                className="text-center p-4 text-gray-500 dark:text-gray-400"
+              >
                 <p>No companies found.</p>
               </TableCell>
             </TableRow>
@@ -112,7 +127,7 @@ const CompaniesTable = () => {
                   router.push(`/recruiter/companies/${company?._id}`)
                 }
                 key={company?._id}
-                className="cursor-pointer hover:bg-gray-50"
+                className="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
               >
                 <TableCell className="p-4">
                   {company?.logo ? (
@@ -125,30 +140,32 @@ const CompaniesTable = () => {
                     </Avatar>
                   ) : (
                     <Avatar>
-                      <AvatarImage src="/companyIcon.png" />
+                      <AvatarImage src="/company.svg" />
                       <AvatarFallback>{company?.name}</AvatarFallback>
                     </Avatar>
                   )}
                 </TableCell>
-                <TableCell className="p-4">{company?.name}</TableCell>
-                <TableCell className="p-4">
+                <TableCell className="p-4 text-gray-900 dark:text-gray-100">
+                  {company?.name}
+                </TableCell>
+                <TableCell className="p-4 text-gray-900 dark:text-gray-100">
                   {company.location || "N/A"}
                 </TableCell>
-                <TableCell className="p-4">
+                <TableCell className="p-4 text-gray-900 dark:text-gray-100">
                   {company?.jobs?.length || 0}
                 </TableCell>
-                <TableCell className="p-4">
+                <TableCell className="p-4 text-gray-900 dark:text-gray-100">
                   {moment(company.createdAt).format("DD-MM-YY")}
                 </TableCell>
 
                 <TableCell title="actions" className="p-4 text-right">
                   <Popover>
                     <PopoverTrigger onClick={(e) => e.stopPropagation()}>
-                      <MoreHorizontal className="hover:text-blue-500" />
+                      <MoreHorizontal className="hover:text-purple-600 dark:hover:text-purple-400" />
                     </PopoverTrigger>
-                    <PopoverContent className="w-32 p-2">
+                    <PopoverContent className="w-32 p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                       <div
-                        className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
+                        className="flex items-center gap-2 cursor-pointer hover:bg-purple-600 dark:hover:bg-purple-700 hover:text-white p-2 rounded"
                         onClick={(e) => {
                           e.stopPropagation();
                           router.push(`/recruiter/companies/${company?._id}`);
@@ -162,7 +179,7 @@ const CompaniesTable = () => {
                           e.stopPropagation();
                           handleDeleteCompany(company?._id);
                         }}
-                        className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
+                        className="flex items-center gap-2 cursor-pointer hover:bg-purple-600 dark:hover:bg-purple-700 hover:text-white p-2 rounded"
                       >
                         <Trash2 className="w-4" />
                         <span>Delete</span>
@@ -183,6 +200,7 @@ const CompaniesTable = () => {
           size="icon"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
+          className="text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700"
         >
           <ChevronLeft />
         </Button>
@@ -192,7 +210,11 @@ const CompaniesTable = () => {
             variant="outline"
             size="icon"
             onClick={() => setCurrentPage(page)}
-            className={`px-4 py-2 ${currentPage === page ? "bg-gray-200" : ""}`}
+            className={`px-4 py-2 ${
+              currentPage === page
+                ? "bg-purple-600 text-white dark:bg-purple-700"
+                : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            }`}
           >
             {page}
           </Button>
@@ -204,6 +226,7 @@ const CompaniesTable = () => {
             setCurrentPage((prev) => Math.min(prev + 1, totalPages))
           }
           disabled={currentPage === totalPages}
+          className="text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700"
         >
           <ChevronRight />
         </Button>

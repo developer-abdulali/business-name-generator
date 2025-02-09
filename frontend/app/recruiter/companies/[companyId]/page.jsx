@@ -98,28 +98,30 @@ const CompanyDescription = () => {
       file: singleCompany?.logo || null,
     });
     setHasChanges(false);
-    setShowRemoveIcon(!!singleCompany?.file);
+    setShowRemoveIcon(!!singleCompany?.logo);
   }, [singleCompany]);
 
   return (
-    <section className="max-w-screen-2xl mx-auto my-10 p-6 bg-white shadow-md rounded-lg">
+    <section className="max-w-screen-2xl mx-auto my-10 p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
       <form onSubmit={submitHandler} className="space-y-6">
         <div className="flex items-center justify-between">
           <Button
             onClick={() => router.push("/recruiter/companies")}
-            variant={"ghost"}
-            className="flex items-center gap-2 text-gray-500 font-semibold"
+            variant="ghost"
+            className="flex items-center gap-2 font-semibold bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
           >
             <ArrowLeft />
             <span>Back</span>
           </Button>
-          <h1 className="font-bold text-2xl text-center w-full">
+          <h1 className="font-bold text-2xl text-center w-full text-gray-900 dark:text-gray-100">
             Company Setup
           </h1>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <Label className="block mb-2">Company Name</Label>
+            <Label className="block mb-2 text-gray-900 dark:text-gray-100">
+              Company Name
+            </Label>
             <Input
               type="text"
               name="name"
@@ -127,11 +129,13 @@ const CompanyDescription = () => {
               onChange={changeEventHandler}
               placeholder="Company Name"
               disabled={loading}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
           </div>
           <div>
-            <Label className="block mb-2">Description</Label>
+            <Label className="block mb-2 text-gray-900 dark:text-gray-100">
+              Description
+            </Label>
             <Input
               type="text"
               name="description"
@@ -139,11 +143,13 @@ const CompanyDescription = () => {
               onChange={changeEventHandler}
               placeholder="Company description"
               disabled={loading}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
           </div>
           <div>
-            <Label className="block mb-2">Website</Label>
+            <Label className="block mb-2 text-gray-900 dark:text-gray-100">
+              Website
+            </Label>
             <Input
               type="text"
               name="website"
@@ -151,11 +157,13 @@ const CompanyDescription = () => {
               onChange={changeEventHandler}
               placeholder="Company website"
               disabled={loading}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
           </div>
           <div>
-            <Label className="block mb-2">Location</Label>
+            <Label className="block mb-2 text-gray-900 dark:text-gray-100">
+              Location
+            </Label>
             <Input
               type="text"
               name="location"
@@ -163,23 +171,25 @@ const CompanyDescription = () => {
               onChange={changeEventHandler}
               placeholder="Company location"
               disabled={loading}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
           </div>
           <div className="md:col-span-2 relative">
-            <Label className="block mb-2">Logo</Label>
+            <Label className="block mb-2 text-gray-900 dark:text-gray-100">
+              Logo
+            </Label>
             <div className="relative">
               <Input
                 type="file"
                 accept="image/*"
                 onChange={changeFileHandler}
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
               {showRemoveIcon && (
                 <button
                   type="button"
                   onClick={removeFileHandler}
-                  className="absolute top-1/2 right-3 transform -translate-y-1/2 text-red-500 hover:text-red-700"
+                  className="absolute top-1/2 right-3 transform -translate-y-1/2 text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-500"
                 >
                   <X size={20} />
                 </button>
@@ -187,7 +197,12 @@ const CompanyDescription = () => {
             </div>
           </div>
         </div>
-        <Button variant="outline" type="submit" disabled={loading}>
+        <Button
+          variant="outline"
+          type="submit"
+          className="bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
+          disabled={loading}
+        >
           {loading ? "Saving..." : "Save"}
         </Button>
       </form>

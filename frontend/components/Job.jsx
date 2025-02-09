@@ -1,111 +1,19 @@
-// "use client";
-// import { useRouter } from "next/navigation";
-// import { Bookmark } from "lucide-react";
-// import { Button } from "./ui/button";
-// import { Avatar, AvatarImage } from "./ui/avatar";
-// import { Badge } from "./ui/badge";
-// import daysAgoFunction from "@/lib/daysAgoFunction";
-
-// const Job = ({ job }) => {
-//   const router = useRouter();
-
-//   const truncateDescription = (description, maxLength) => {
-//     if (description.length <= maxLength) {
-//       return description;
-//     }
-//     return description.substring(0, maxLength) + "...";
-//   };
-
-//   return (
-//     <section
-//       onClick={() => router.push(`/jobs/${job?._id}`)}
-//       className="p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer "
-//     >
-//       <div className="flex items-center justify-between">
-//         <p className="text-sm text-gray-500">
-//           {daysAgoFunction(job?.createdAt) === 0
-//             ? "Today"
-//             : `${daysAgoFunction(job?.createdAt)} days ago`}
-//         </p>
-//         {/* Prevent navigation when clicking the button */}
-//         <Button
-//           title="Save For Later"
-//           className="rounded-full"
-//           variant="outline"
-//           size="icon"
-//           onClick={(e) => e.stopPropagation()}
-//         >
-//           <Bookmark />
-//         </Button>
-//       </div>
-
-//       <div className="flex items-center gap-4 my-4">
-//         {job?.company?.logo === null ? (
-//           <Avatar>
-//             <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_dnoBTEnG6YrkmO5hSZwEykg1w6cjdO1gFg&s" />
-//           </Avatar>
-//         ) : (
-//           <Avatar>
-//             <AvatarImage src={job?.company?.logo} className="object-contain" />
-//           </Avatar>
-//         )}
-//         <div>
-//           <p className="font-medium text-lg">{job?.company?.name}</p>
-//           <p className="text-sm text-gray-500">{job?.location}</p>
-//         </div>
-//       </div>
-
-//       <div>
-//         <p className="font-bold text-lg mb-2">{job?.title}</p>
-//         <p className="text-sm text-gray-600 leading-relaxed">
-//           {truncateDescription(job?.description, 100)}
-//         </p>
-//       </div>
-
-//       <div className="flex flex-wrap items-center gap-2 mt-4">
-//         <Badge
-//           variant="secondary"
-//           className="text-blue-700 font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
-//         >
-//           {job?.position} Positions
-//         </Badge>
-//         <Badge
-//           variant="secondary"
-//           className="text-customRedColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
-//         >
-//           {job?.jobType}
-//         </Badge>
-//         <Badge
-//           variant="secondary"
-//           className="text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
-//         >
-//           {job?.salary} PKR
-//         </Badge>
-//         <Badge
-//           variant="secondary"
-//           className="text-customColor font-medium bg-gray-50 px-3 py-1 rounded-full hover:bg-none"
-//         >
-//           {job?.experienceLevel} Experience
-//         </Badge>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Job;
-
 "use client";
 import { useRouter } from "next/navigation";
-import { Bookmark } from "lucide-react";
+import { Bookmark, BookmarkMinus } from "lucide-react";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import daysAgoFunction from "@/lib/daysAgoFunction";
+import { useSelector } from "react-redux";
 
-const Job = ({ job }) => {
+const Job = ({ job, onSave }) => {
   const router = useRouter();
+  const { savedJobs = [] } = useSelector((state) => state.job);
+  const isSaved = savedJobs.some((savedJob) => savedJob._id === job._id);
 
   const truncateDescription = (description, maxLength) => {
+    if (!description) return "";
     if (description.length <= maxLength) {
       return description;
     }
@@ -113,26 +21,37 @@ const Job = ({ job }) => {
   };
 
   return (
-    <div
-      onClick={() => router.push(`/jobs/${job?._id}`)}
-      className="p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105"
+    <section
+      onClick={() => router.push(`/jobs/${job._id}`)}
+      className="p-5 rounded-lg shadow-md bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105"
     >
       <div className="flex justify-between items-center mb-4">
-        <span className="text-gray-500 text-sm">
+        <span className="text-gray-500 dark:text-gray-400 text-sm">
           {daysAgoFunction(job?.createdAt) === 0
             ? "Today"
             : `${daysAgoFunction(job?.createdAt)} days ago`}
         </span>
         <Button
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation();
+            onSave();
+          }}
           variant="outline"
-          className="px-3 py-1 text-gray-700"
+          className="px-3 py-1 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white"
         >
-          <Bookmark className="mr-1" /> Save
+          {isSaved ? (
+            <>
+              <BookmarkMinus /> Remove
+            </>
+          ) : (
+            <>
+              <Bookmark /> Save
+            </>
+          )}
         </Button>
       </div>
       <div className="flex items-center mb-4">
-        {job?.company?.logo ? (
+        {job.company?.logo ? (
           <Avatar>
             <AvatarImage
               src={job?.company?.logo}
@@ -142,33 +61,41 @@ const Job = ({ job }) => {
           </Avatar>
         ) : (
           <Avatar>
-            <span className="text-xl font-semibold">
+            <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">
               {job?.company?.name.charAt(0)}
             </span>
           </Avatar>
         )}
         <div className="ml-4">
-          <h3 className="text-lg font-semibold">{job?.company?.name}</h3>
-          <p className="text-gray-600">{job?.location}</p>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            {job?.company?.name}
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 -mt-1">
+            {job?.location}
+          </p>
         </div>
       </div>
-      <h2 className="text-xl font-bold mb-2">{job?.title}</h2>
-      <p className="text-gray-700 mb-4">
+      <h2 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+        {job?.title}
+      </h2>
+      <p className="text-gray-700 dark:text-gray-400 mb-4">
         {truncateDescription(job?.description, 100)}
       </p>
       <div className="flex flex-wrap gap-2">
-        <Badge className="bg-blue-100 text-blue-800">
+        <Badge className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-800">
           {job?.position} Positions
         </Badge>
-        <Badge className="bg-green-100 text-green-800">{job?.jobType}</Badge>
-        <Badge className="bg-yellow-100 text-yellow-800">
+        <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 hover:bg-green-100 dark:hover:bg-green-800">
+          {job?.jobType}
+        </Badge>
+        <Badge className="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300 hover:bg-yellow-100 dark:hover:bg-yellow-800">
           {job?.salary} PKR
         </Badge>
-        <Badge className="bg-purple-100 text-purple-800">
+        <Badge className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-800">
           {job?.experienceLevel} Experience
         </Badge>
       </div>
-    </div>
+    </section>
   );
 };
 

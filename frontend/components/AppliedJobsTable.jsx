@@ -17,7 +17,7 @@ const AppliedJobsTable = () => {
   const { allAppliedJobs } = useSelector((state) => state.job);
 
   return (
-    <section>
+    <section className="overflow-x-auto">
       <Table>
         <TableCaption>Applied Jobs List</TableCaption>
         <TableHeader>
@@ -33,7 +33,7 @@ const AppliedJobsTable = () => {
           {allAppliedJobs?.length === 0 ? (
             <TableRow>
               <TableCell colSpan={4} className="text-center py-4">
-                {`You haven't applied for any jobs yet.`}
+                You haven't applied for any jobs yet.
               </TableCell>
             </TableRow>
           ) : (
@@ -72,4 +72,5 @@ const AppliedJobsTable = () => {
     </section>
   );
 };
+
 export default AppliedJobsTable;

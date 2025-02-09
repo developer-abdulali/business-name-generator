@@ -28,13 +28,16 @@ const ApplicantsPage = () => {
       }
     };
     fetchAllApplicants();
-  }, []);
+  }, [dispatch, jobId]);
+
   return (
-    <section className="max-w-7xl mx-auto">
-      <h1 className="font-bold text-xl my-5">
+    <section className="mb-5 max-w-screen-2xl mx-auto px-4 sm:px-6 2xl:px-0">
+      <h1 className="font-bold text-xl my-5 dark:text-white">
         Applicants {applicants?.applications?.length}
       </h1>
-      <ApplicantsTable />
+      <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-md">
+        <ApplicantsTable />
+      </div>
     </section>
   );
 };
