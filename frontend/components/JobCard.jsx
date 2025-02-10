@@ -1,17 +1,12 @@
-"use client";
-import { useRouter } from "next/navigation";
 import { Bookmark, BookmarkMinus } from "lucide-react";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import daysAgoFunction from "@/lib/daysAgoFunction";
-import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
-const Job = ({ job, onSave }) => {
+const JobCard = ({ job }) => {
   const router = useRouter();
-  const { savedJobs = [] } = useSelector((state) => state.job);
-  const isSaved = savedJobs.some((savedJob) => savedJob._id === job._id);
-
   const truncateDescription = (description, maxLength) => {
     if (!description) return "";
     if (description.length <= maxLength) {
@@ -19,6 +14,8 @@ const Job = ({ job, onSave }) => {
     }
     return description.substring(0, maxLength) + "...";
   };
+
+  const isSaved = false;
 
   return (
     <section
@@ -34,7 +31,6 @@ const Job = ({ job, onSave }) => {
         <Button
           onClick={(e) => {
             e.stopPropagation();
-            onSave();
           }}
           variant="outline"
           className="px-3 py-1 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white"
@@ -99,4 +95,4 @@ const Job = ({ job, onSave }) => {
   );
 };
 
-export default Job;
+export default JobCard;

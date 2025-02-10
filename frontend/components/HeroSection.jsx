@@ -17,12 +17,12 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-purple-50 to-white dark:from-gray-900 dark:to-gray-800 py-16 sm:py-24">
+    <section className="h-screen relative overflow-hidden bg-gradient-to-b from-purple-50 to-white dark:from-gray-900 dark:to-gray-800 py-16 sm:py-24">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-4 top-24 h-32 w-32 rounded-full bg-purple-100 dark:bg-purple-900 opacity-50 blur-2xl"></div>
-        <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-blue-100 dark:bg-blue-900 opacity-50 blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/2 h-36 w-36 rounded-full bg-pink-100 dark:bg-pink-900 opacity-50 blur-2xl"></div>
+        <div className="absolute -left-4 top-24 h-32 w-32 rounded-full bg-purple-100 dark:bg-purple-900 opacity-50 blur-2xl" />
+        <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-blue-100 dark:bg-blue-900 opacity-50 blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 h-36 w-36 rounded-full bg-pink-100 dark:bg-pink-900 opacity-50 blur-2xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

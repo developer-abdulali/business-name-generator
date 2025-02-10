@@ -203,7 +203,7 @@ const ApplicantsTable = ()=>{
             className: "min-w-full bg-white dark:bg-gray-900 shadow-md rounded-lg overflow-hidden",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCaption"], {
-                    className: "caption-top dark:text-gray-300",
+                    className: "dark:text-gray-300",
                     children: "A list of your recent applied users"
                 }, void 0, false, {
                     fileName: "[project]/components/ApplicantsTable.jsx",
@@ -274,7 +274,22 @@ const ApplicantsTable = ()=>{
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
-                    children: applicantsArray.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                    children: applicantsArray.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                        className: "border-b dark:border-gray-700",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                            colSpan: "6",
+                            className: "px-4 py-2 text-center dark:text-gray-300",
+                            children: "No applicants found."
+                        }, void 0, false, {
+                            fileName: "[project]/components/ApplicantsTable.jsx",
+                            lineNumber: 75,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/components/ApplicantsTable.jsx",
+                        lineNumber: 74,
+                        columnNumber: 13
+                    }, this) : applicantsArray.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
                             className: "border-b dark:border-gray-700",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -282,24 +297,24 @@ const ApplicantsTable = ()=>{
                                     children: item?.applicant?.fullname
                                 }, void 0, false, {
                                     fileName: "[project]/components/ApplicantsTable.jsx",
-                                    lineNumber: 75,
-                                    columnNumber: 15
+                                    lineNumber: 85,
+                                    columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                     className: "px-4 py-2 dark:text-gray-300",
                                     children: item?.applicant?.email
                                 }, void 0, false, {
                                     fileName: "[project]/components/ApplicantsTable.jsx",
-                                    lineNumber: 78,
-                                    columnNumber: 15
+                                    lineNumber: 88,
+                                    columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                     className: "px-4 py-2 dark:text-gray-300",
                                     children: item?.applicant?.phoneNumber
                                 }, void 0, false, {
                                     fileName: "[project]/components/ApplicantsTable.jsx",
-                                    lineNumber: 81,
-                                    columnNumber: 15
+                                    lineNumber: 91,
+                                    columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                     className: "px-4 py-2",
@@ -311,21 +326,21 @@ const ApplicantsTable = ()=>{
                                         children: item?.applicant?.profile?.resume ? "See resume" : "N/A"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ApplicantsTable.jsx",
-                                        lineNumber: 85,
-                                        columnNumber: 17
+                                        lineNumber: 95,
+                                        columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/ApplicantsTable.jsx",
-                                    lineNumber: 84,
-                                    columnNumber: 15
+                                    lineNumber: 94,
+                                    columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                     className: "px-4 py-2 dark:text-gray-300",
                                     children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$moment$2f$moment$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(item?.createdAt).format("DD-MM-YY")
                                 }, void 0, false, {
                                     fileName: "[project]/components/ApplicantsTable.jsx",
-                                    lineNumber: 94,
-                                    columnNumber: 15
+                                    lineNumber: 104,
+                                    columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                     className: "px-4 py-2 text-right",
@@ -336,13 +351,13 @@ const ApplicantsTable = ()=>{
                                                     className: "cursor-pointer hover:text-purple-600 dark:hover:text-purple-400"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ApplicantsTable.jsx",
-                                                    lineNumber: 100,
-                                                    columnNumber: 21
+                                                    lineNumber: 110,
+                                                    columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ApplicantsTable.jsx",
-                                                lineNumber: 99,
-                                                columnNumber: 19
+                                                lineNumber: 109,
+                                                columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$popover$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PopoverContent"], {
                                                 className: "w-fit bg-white dark:bg-gray-800 dark:text-gray-300 border dark:border-gray-700",
@@ -354,44 +369,44 @@ const ApplicantsTable = ()=>{
                                                                 size: 20
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/ApplicantsTable.jsx",
-                                                                lineNumber: 111,
-                                                                columnNumber: 25
+                                                                lineNumber: 121,
+                                                                columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 className: "px-1",
                                                                 children: status.label
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/ApplicantsTable.jsx",
-                                                                lineNumber: 112,
-                                                                columnNumber: 25
+                                                                lineNumber: 122,
+                                                                columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, index, true, {
                                                         fileName: "[project]/components/ApplicantsTable.jsx",
-                                                        lineNumber: 104,
-                                                        columnNumber: 23
+                                                        lineNumber: 114,
+                                                        columnNumber: 25
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ApplicantsTable.jsx",
-                                                lineNumber: 102,
-                                                columnNumber: 19
+                                                lineNumber: 112,
+                                                columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/ApplicantsTable.jsx",
-                                        lineNumber: 98,
-                                        columnNumber: 17
+                                        lineNumber: 108,
+                                        columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/ApplicantsTable.jsx",
-                                    lineNumber: 97,
-                                    columnNumber: 15
+                                    lineNumber: 107,
+                                    columnNumber: 17
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/components/ApplicantsTable.jsx",
-                            lineNumber: 74,
-                            columnNumber: 13
+                            lineNumber: 84,
+                            columnNumber: 15
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/ApplicantsTable.jsx",

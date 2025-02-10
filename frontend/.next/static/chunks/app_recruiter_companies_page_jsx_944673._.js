@@ -6,7 +6,7 @@
   "path": "static/chunks/app_recruiter_companies_page_jsx_944673._.js",
   "chunks": [
     "static/chunks/node_modules_d8a182._.js",
-    "static/chunks/_6fb4fe._.js"
+    "static/chunks/_f4ac4c._.js"
   ],
   "source": "dynamic"
 });

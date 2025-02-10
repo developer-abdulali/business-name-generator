@@ -132,88 +132,79 @@ const Filters = ({ onFilterChange })=>{
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: "mb-6 lg:mb-0",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: "text-2xl font-semibold mb-4",
-                children: "Filters"
-            }, void 0, false, {
+        children: filterData.map((data)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mb-4",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: ()=>toggleFilter(data.filterType),
+                        className: "flex justify-between items-center w-full py-2 px-4 bg-gray-100 dark:bg-gray-700 rounded-lg",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                className: "text-gray-900 dark:text-gray-100",
+                                children: data.filterType
+                            }, void 0, false, {
+                                fileName: "[project]/components/Filters.jsx",
+                                lineNumber: 69,
+                                columnNumber: 13
+                            }, this),
+                            openFilters[data.filterType] ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronUp$3e$__["ChevronUp"], {}, void 0, false, {
+                                fileName: "[project]/components/Filters.jsx",
+                                lineNumber: 72,
+                                columnNumber: 45
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {}, void 0, false, {
+                                fileName: "[project]/components/Filters.jsx",
+                                lineNumber: 72,
+                                columnNumber: 61
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/Filters.jsx",
+                        lineNumber: 65,
+                        columnNumber: 11
+                    }, this),
+                    openFilters[data.filterType] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-2 space-y-2",
+                        children: data.options.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        type: "checkbox",
+                                        id: item,
+                                        checked: selectedFilters[data.filterType]?.includes(item),
+                                        onChange: ()=>handleSelection(data.filterType, item),
+                                        className: "mr-2"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/Filters.jsx",
+                                        lineNumber: 78,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                        htmlFor: item,
+                                        className: "text-gray-700 dark:text-gray-300",
+                                        children: item
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/Filters.jsx",
+                                        lineNumber: 85,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, item, true, {
+                                fileName: "[project]/components/Filters.jsx",
+                                lineNumber: 77,
+                                columnNumber: 17
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/components/Filters.jsx",
+                        lineNumber: 75,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, data.filterType, true, {
                 fileName: "[project]/components/Filters.jsx",
-                lineNumber: 63,
-                columnNumber: 7
-            }, this),
-            filterData.map((data)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mb-4",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: ()=>toggleFilter(data.filterType),
-                            className: "flex justify-between items-center w-full py-2 px-4 bg-gray-100 rounded-lg",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                    children: data.filterType
-                                }, void 0, false, {
-                                    fileName: "[project]/components/Filters.jsx",
-                                    lineNumber: 70,
-                                    columnNumber: 13
-                                }, this),
-                                openFilters[data.filterType] ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronUp$3e$__["ChevronUp"], {}, void 0, false, {
-                                    fileName: "[project]/components/Filters.jsx",
-                                    lineNumber: 71,
-                                    columnNumber: 45
-                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {}, void 0, false, {
-                                    fileName: "[project]/components/Filters.jsx",
-                                    lineNumber: 71,
-                                    columnNumber: 61
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/Filters.jsx",
-                            lineNumber: 66,
-                            columnNumber: 11
-                        }, this),
-                        openFilters[data.filterType] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mt-2 space-y-2",
-                            children: data.options.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex items-center",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            type: "checkbox",
-                                            id: item,
-                                            checked: selectedFilters[data.filterType]?.includes(item),
-                                            onChange: ()=>handleSelection(data.filterType, item),
-                                            className: "mr-2"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/Filters.jsx",
-                                            lineNumber: 77,
-                                            columnNumber: 19
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                            htmlFor: item,
-                                            className: "text-gray-700",
-                                            children: item
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/Filters.jsx",
-                                            lineNumber: 84,
-                                            columnNumber: 19
-                                        }, this)
-                                    ]
-                                }, item, true, {
-                                    fileName: "[project]/components/Filters.jsx",
-                                    lineNumber: 76,
-                                    columnNumber: 17
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/components/Filters.jsx",
-                            lineNumber: 74,
-                            columnNumber: 13
-                        }, this)
-                    ]
-                }, data.filterType, true, {
-                    fileName: "[project]/components/Filters.jsx",
-                    lineNumber: 65,
-                    columnNumber: 9
-                }, this))
-        ]
-    }, void 0, true, {
+                lineNumber: 64,
+                columnNumber: 9
+            }, this))
+    }, void 0, false, {
         fileName: "[project]/components/Filters.jsx",
         lineNumber: 62,
         columnNumber: 5
@@ -303,292 +294,207 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// "use client";
-// import { useRouter } from "next/navigation";
-// import { Bookmark } from "lucide-react";
-// import { Button } from "./ui/button";
-// import { Avatar, AvatarImage } from "./ui/avatar";
-// import { Badge } from "./ui/badge";
-// import daysAgoFunction from "@/lib/daysAgoFunction";
-// const Job = ({ job }) => {
-//   const router = useRouter();
-//   const truncateDescription = (description, maxLength) => {
-//     if (description.length <= maxLength) {
-//       return description;
-//     }
-//     return description.substring(0, maxLength) + "...";
-//   };
-//   return (
-//     <section
-//       onClick={() => router.push(`/jobs/${job?._id}`)}
-//       className="p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105"
-//     >
-//       <div className="flex justify-between items-center mb-4">
-//         <span className="text-gray-500 text-sm">
-//           {daysAgoFunction(job?.createdAt) === 0
-//             ? "Today"
-//             : `${daysAgoFunction(job?.createdAt)} days ago`}
-//         </span>
-//         <Button
-//           onClick={(e) => e.stopPropagation()}
-//           variant="outline"
-//           className="px-3 py-1 text-gray-700 hover:bg-purple-600 hover:text-white"
-//         >
-//           <Bookmark /> Save
-//         </Button>
-//       </div>
-//       <div className="flex items-center mb-4">
-//         {job?.company?.logo ? (
-//           <Avatar>
-//             <AvatarImage
-//               src={job?.company?.logo}
-//               alt={job?.company?.name}
-//               className="object-contain"
-//             />
-//           </Avatar>
-//         ) : (
-//           <Avatar>
-//             <span className="text-xl font-semibold">
-//               {job?.company?.name.charAt(0)}
-//             </span>
-//           </Avatar>
-//         )}
-//         <div className="ml-4">
-//           <h3 className="text-lg font-semibold">{job?.company?.name}</h3>
-//           <p className="text-gray-600">{job?.location}</p>
-//         </div>
-//       </div>
-//       <h2 className="text-xl font-bold mb-2">{job?.title}</h2>
-//       <p className="text-gray-700 mb-4">
-//         {truncateDescription(job?.description, 100)}
-//       </p>
-//       <div className="flex flex-wrap gap-2">
-//         <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">
-//           {job?.position} Positions
-//         </Badge>
-//         <Badge className="bg-green-100 text-green-800 hover:bg-green-100">
-//           {job?.jobType}
-//         </Badge>
-//         <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">
-//           {job?.salary} PKR
-//         </Badge>
-//         <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100">
-//           {job?.experienceLevel} Experience
-//         </Badge>
-//       </div>
-//     </section>
-//   );
-// };
-// export default Job;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/button.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/avatar.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/badge.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$daysAgoFunction$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/lib/daysAgoFunction.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bookmark$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Bookmark$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/bookmark.js [app-client] (ecmascript) <export default as Bookmark>");
 ;
-var _s = __turbopack_refresh__.signature();
-"use client";
 ;
 ;
 ;
 ;
 ;
-;
-const Job = ({ job, onSave })=>{
-    _s();
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
+const Job = ({ job })=>{
     const truncateDescription = (description, maxLength)=>{
+        if (!description) return "";
         if (description.length <= maxLength) {
             return description;
         }
         return description.substring(0, maxLength) + "...";
     };
+    const isSaved = false;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        onClick: ()=>router.push(`/jobs/${job?._id}`),
-        className: "p-5 rounded-lg shadow-md bg-white border border-gray-100 hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105",
+        onClick: ()=>router.push(`/jobs/${job._id}`),
+        className: "p-5 rounded-lg shadow-md bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex justify-between items-center mb-4",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "text-gray-500 text-sm",
+                        className: "text-gray-500 dark:text-gray-400 text-sm",
                         children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$daysAgoFunction$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(job?.createdAt) === 0 ? "Today" : `${(0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$daysAgoFunction$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(job?.createdAt)} days ago`
                     }, void 0, false, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 107,
+                        lineNumber: 24,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                         onClick: (e)=>{
                             e.stopPropagation();
-                            onSave();
                         },
                         variant: "outline",
-                        className: "px-3 py-1 text-gray-700 hover:bg-purple-600 hover:text-white",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bookmark$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Bookmark$3e$__["Bookmark"], {}, void 0, false, {
-                                fileName: "[project]/components/Job.jsx",
-                                lineNumber: 120,
-                                columnNumber: 11
-                            }, this),
-                            " Save"
-                        ]
-                    }, void 0, true, {
+                        className: "px-3 py-1 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white",
+                        children: ("TURBOPACK compile-time falsy", 0) ? ("TURBOPACK unreachable", undefined) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bookmark$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Bookmark$3e$__["Bookmark"], {}, void 0, false, {
+                                    fileName: "[project]/components/Job.jsx",
+                                    lineNumber: 42,
+                                    columnNumber: 15
+                                }, this),
+                                " Save"
+                            ]
+                        }, void 0, true)
+                    }, void 0, false, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 112,
+                        lineNumber: 29,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 106,
+                lineNumber: 23,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex items-center mb-4",
                 children: [
-                    job?.company?.logo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Avatar"], {
+                    job.company?.logo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Avatar"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AvatarImage"], {
                             src: job?.company?.logo,
                             alt: job?.company?.name,
                             className: "object-contain"
                         }, void 0, false, {
                             fileName: "[project]/components/Job.jsx",
-                            lineNumber: 126,
+                            lineNumber: 50,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 125,
+                        lineNumber: 49,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Avatar"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            className: "text-xl font-semibold",
+                            className: "text-xl font-semibold text-gray-900 dark:text-gray-100",
                             children: job?.company?.name.charAt(0)
                         }, void 0, false, {
                             fileName: "[project]/components/Job.jsx",
-                            lineNumber: 134,
+                            lineNumber: 58,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 133,
+                        lineNumber: 57,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "ml-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                className: "text-lg font-semibold",
+                                className: "text-lg font-semibold text-gray-900 dark:text-gray-100",
                                 children: job?.company?.name
                             }, void 0, false, {
                                 fileName: "[project]/components/Job.jsx",
-                                lineNumber: 140,
+                                lineNumber: 64,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-gray-600",
+                                className: "text-gray-600 dark:text-gray-400 -mt-1",
                                 children: job?.location
                             }, void 0, false, {
                                 fileName: "[project]/components/Job.jsx",
-                                lineNumber: 141,
+                                lineNumber: 67,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 139,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 123,
+                lineNumber: 47,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: "text-xl font-bold mb-2",
+                className: "text-xl font-bold mb-2 text-gray-900 dark:text-gray-100",
                 children: job?.title
             }, void 0, false, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 144,
+                lineNumber: 72,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-gray-700 mb-4",
+                className: "text-gray-700 dark:text-gray-400 mb-4",
                 children: truncateDescription(job?.description, 100)
             }, void 0, false, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 145,
+                lineNumber: 75,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-wrap gap-2",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
-                        className: "bg-blue-100 text-blue-800 hover:bg-blue-100",
+                        className: "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-800",
                         children: [
                             job?.position,
                             " Positions"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 149,
+                        lineNumber: 79,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
-                        className: "bg-green-100 text-green-800 hover:bg-green-100",
+                        className: "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 hover:bg-green-100 dark:hover:bg-green-800",
                         children: job?.jobType
                     }, void 0, false, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 152,
+                        lineNumber: 82,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
-                        className: "bg-yellow-100 text-yellow-800 hover:bg-yellow-100",
+                        className: "bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300 hover:bg-yellow-100 dark:hover:bg-yellow-800",
                         children: [
                             job?.salary,
                             " PKR"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 155,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
-                        className: "bg-purple-100 text-purple-800 hover:bg-purple-100",
+                        className: "bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-800",
                         children: [
                             job?.experienceLevel,
                             " Experience"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Job.jsx",
-                        lineNumber: 158,
+                        lineNumber: 88,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Job.jsx",
-                lineNumber: 148,
+                lineNumber: 78,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Job.jsx",
-        lineNumber: 102,
+        lineNumber: 19,
         columnNumber: 5
     }, this);
 };
-_s(Job, "fN7XvhJ+p5oE6+Xlo0NJmXpxjC8=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
-    ];
-});
 _c = Job;
 const __TURBOPACK__default__export__ = Job;
 var _c;
@@ -625,7 +531,7 @@ const useGetAllJobs = ()=>{
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"])();
     const fetchAllJobs = async ()=>{
         try {
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constant$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["JOB_API_ENDPOINT"]}/get`, {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].get(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constant$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["JOB_API_ENDPOINT"]}/get?keyword=${searchedQuery}`, {
                 withCredentials: true
             });
             if (res.data.success) {
@@ -665,130 +571,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// "use client";
-// import { ChevronLeft, ChevronRight, ListFilter } from "lucide-react";
-// import Filters from "./Filters";
-// import Job from "./Job";
-// import { useState, useEffect } from "react";
-// import { useSelector } from "react-redux";
-// import useGetAllJobs from "@/hooks/useGetAllJobs";
-// import { Button } from "@/components/ui/button";
-// const Jobs = () => {
-//   const [showFilters, setShowFilters] = useState(false);
-//   const [selectedFilters, setSelectedFilters] = useState({});
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const jobsPerPage = 6;
-//   const { allJobs } = useSelector((state) => state.job);
-//   const { fetchAllJobs } = useGetAllJobs();
-//   useEffect(() => {
-//     fetchAllJobs();
-//   }, []);
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setShowFilters(window.innerWidth >= 1024);
-//     };
-//     handleResize();
-//     window.addEventListener("resize", handleResize);
-//     return () => window.removeEventListener("resize", handleResize);
-//   }, []);
-//   const filteredJobs = allJobs?.filter((job) => {
-//     const locationMatch =
-//       !selectedFilters["Location"]?.length ||
-//       selectedFilters["Location"].includes(job.location);
-//     const jobTypeMatch =
-//       !selectedFilters["Job Type"]?.length ||
-//       selectedFilters["Job Type"].includes(job.jobType);
-//     const experienceMatch =
-//       !selectedFilters["Experience"]?.length ||
-//       selectedFilters["Experience"].includes(`${job.experienceLevel} years`);
-//     const salaryMatch =
-//       !selectedFilters["Salary"]?.length ||
-//       selectedFilters["Salary"].some((salary) => {
-//         const [min] = salary.split("-");
-//         return job.salary >= parseInt(min) * 1000;
-//       });
-//     return locationMatch && jobTypeMatch && experienceMatch && salaryMatch;
-//   });
-//   // Pagination logic
-//   const indexOfLastJob = currentPage * jobsPerPage;
-//   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-//   const currentJobs = filteredJobs?.slice(indexOfFirstJob, indexOfLastJob);
-//   const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
-//   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-//   return (
-//     <section className="wrapper py-8 px-2 xl:px-0">
-//       <div className="">
-//         <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
-//           Job <span className="text-purple-600">Listings</span>
-//         </h1>
-//         <button
-//           onClick={() => setShowFilters((prev) => !prev)}
-//           className="mb-4 flex items-center text-gray-700 cursor-pointer lg:hidden"
-//         >
-//           <ListFilter className="mr-2" />
-//           Filters
-//         </button>
-//       </div>
-//       <div className="lg:flex lg:space-x-8">
-//         {showFilters && <Filters onFilterChange={setSelectedFilters} />}
-//         <div className="flex-1">
-//           {currentJobs.length === 0 ? (
-//             <p className="text-gray-600 text-center py-8">No jobs found</p>
-//           ) : (
-//             <>
-//               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-//                 {currentJobs.map((job) => (
-//                   <Job key={job._id} job={job} />
-//                 ))}
-//               </div>
-//               {/* Pagination controls */}
-//               {totalPages > 1 && (
-//                 <div className="flex justify-center mt-6 space-x-2">
-//                   <Button
-//                     variant="outline"
-//                     size="icon"
-//                     onClick={() =>
-//                       setCurrentPage((prev) => Math.max(prev - 1, 1))
-//                     }
-//                     disabled={currentPage === 1}
-//                   >
-//                     <ChevronLeft />
-//                   </Button>
-//                   {pageNumbers.map((page) => (
-//                     <Button
-//                       key={page}
-//                       variant="outline"
-//                       size="icon"
-//                       onClick={() => setCurrentPage(page)}
-//                       className={`px-4 py-2 ${
-//                         currentPage === page
-//                           ? "bg-purple-600 text-white hover:bg-gray-100"
-//                           : ""
-//                       }`}
-//                     >
-//                       {page}
-//                     </Button>
-//                   ))}
-//                   <Button
-//                     variant="outline"
-//                     size="icon"
-//                     onClick={() =>
-//                       setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-//                     }
-//                     disabled={currentPage === totalPages}
-//                   >
-//                     <ChevronRight />
-//                   </Button>
-//                 </div>
-//               )}
-//             </>
-//           )}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-// export default Jobs;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -798,17 +580,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Job$2e$jsx__$5
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllJobs$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/hooks/useGetAllJobs.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/ui/button.jsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/redux/slices/jobSlice.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/sonner/dist/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$list$2d$filter$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ListFilter$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/list-filter.js [app-client] (ecmascript) <export default as ListFilter>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/x.js [app-client] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/chevron-left.js [app-client] (ecmascript) <export default as ChevronLeft>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-client] (ecmascript) <export default as ChevronRight>");
 ;
 var _s = __turbopack_refresh__.signature();
 "use client";
-;
-;
 ;
 ;
 ;
@@ -822,8 +601,7 @@ const Jobs = ()=>{
     const [selectedFilters, setSelectedFilters] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
     const [currentPage, setCurrentPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
     const jobsPerPage = 6;
-    const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"])();
-    const { allJobs, savedJobs = [] } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
+    const { allJobs } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
         "Jobs.useSelector": (state)=>state.job
     }["Jobs.useSelector"]);
     const { fetchAllJobs } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllJobs$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])();
@@ -846,23 +624,6 @@ const Jobs = ()=>{
             })["Jobs.useEffect"];
         }
     }["Jobs.useEffect"], []);
-    const toggleSaveJob = (job)=>{
-        const isSaved = savedJobs.some((savedJob)=>savedJob._id === job._id);
-        if (isSaved) {
-            // If already saved, remove it and show a removal message
-            const updatedSavedJobs = savedJobs.filter((savedJob)=>savedJob._id !== job._id);
-            dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setSavedJobs"])(updatedSavedJobs));
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error("Job removed from saved list");
-        } else {
-            // If not saved, add it and show a success message
-            const updatedSavedJobs = [
-                ...savedJobs,
-                job
-            ];
-            dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setSavedJobs"])(updatedSavedJobs));
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success("Job saved successfully");
-        }
-    };
     const filteredJobs = allJobs?.filter((job)=>{
         const locationMatch = !selectedFilters["Location"]?.length || selectedFilters["Location"].includes(job.location);
         const jobTypeMatch = !selectedFilters["Job Type"]?.length || selectedFilters["Job Type"].includes(job.jobType);
@@ -882,7 +643,7 @@ const Jobs = ()=>{
         length: totalPages
     }, (_, i)=>i + 1);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "wrapper py-8 px-2 xl:px-0",
+        className: "wrapper py-8 px-4 sm:px-6 xl:px-0",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "",
@@ -896,37 +657,57 @@ const Jobs = ()=>{
                                 children: "Listings"
                             }, void 0, false, {
                                 fileName: "[project]/components/Jobs.jsx",
-                                lineNumber: 227,
+                                lineNumber: 66,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Jobs.jsx",
-                        lineNumber: 226,
+                        lineNumber: 65,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        onClick: ()=>setShowFilters((prev)=>!prev),
-                        className: "mb-4 flex items-center text-gray-700 cursor-pointer lg:hidden",
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mb-4 flex items-center justify-between",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$list$2d$filter$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ListFilter$3e$__["ListFilter"], {
-                                className: "mr-2"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-lg font-semibold",
+                                children: "Filters"
                             }, void 0, false, {
                                 fileName: "[project]/components/Jobs.jsx",
-                                lineNumber: 233,
+                                lineNumber: 69,
                                 columnNumber: 11
                             }, this),
-                            "Filters"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>setShowFilters((prev)=>!prev),
+                                className: "flex items-center text-gray-700 cursor-pointer lg:hidden",
+                                children: showFilters ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
+                                    className: "mr-2"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/Jobs.jsx",
+                                    lineNumber: 75,
+                                    columnNumber: 15
+                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$list$2d$filter$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ListFilter$3e$__["ListFilter"], {
+                                    className: "mr-2"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/Jobs.jsx",
+                                    lineNumber: 77,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/components/Jobs.jsx",
+                                lineNumber: 70,
+                                columnNumber: 11
+                            }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Jobs.jsx",
-                        lineNumber: 229,
+                        lineNumber: 68,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Jobs.jsx",
-                lineNumber: 225,
+                lineNumber: 64,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -936,7 +717,7 @@ const Jobs = ()=>{
                         onFilterChange: setSelectedFilters
                     }, void 0, false, {
                         fileName: "[project]/components/Jobs.jsx",
-                        lineNumber: 238,
+                        lineNumber: 83,
                         columnNumber: 25
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -946,23 +727,22 @@ const Jobs = ()=>{
                             children: "No jobs found"
                         }, void 0, false, {
                             fileName: "[project]/components/Jobs.jsx",
-                            lineNumber: 241,
+                            lineNumber: 86,
                             columnNumber: 13
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-                                    children: currentJobs.map((job)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Job$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                            job: job,
-                                            onSave: ()=>toggleSaveJob(job)
-                                        }, job._id, false, {
+                                    children: currentJobs?.map((job)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Job$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                            job: job
+                                        }, job?._id, false, {
                                             fileName: "[project]/components/Jobs.jsx",
-                                            lineNumber: 246,
+                                            lineNumber: 91,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/Jobs.jsx",
-                                    lineNumber: 244,
+                                    lineNumber: 89,
                                     columnNumber: 15
                                 }, this),
                                 totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -975,23 +755,23 @@ const Jobs = ()=>{
                                             disabled: currentPage === 1,
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__["ChevronLeft"], {}, void 0, false, {
                                                 fileName: "[project]/components/Jobs.jsx",
-                                                lineNumber: 264,
+                                                lineNumber: 105,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Jobs.jsx",
-                                            lineNumber: 256,
+                                            lineNumber: 97,
                                             columnNumber: 19
                                         }, this),
                                         pageNumbers.map((page)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                                 variant: "outline",
                                                 size: "icon",
                                                 onClick: ()=>setCurrentPage(page),
-                                                className: `px-4 py-2 ${currentPage === page ? "bg-purple-600 text-white hover:bg-gray-100" : ""}`,
+                                                className: `px-4 py-2 ${currentPage === page ? "bg-purple-600 text-white hover:bg-gray-100 dark:hover:text-black dark:hover:bg-gray" : ""}`,
                                                 children: page
                                             }, page, false, {
                                                 fileName: "[project]/components/Jobs.jsx",
-                                                lineNumber: 267,
+                                                lineNumber: 108,
                                                 columnNumber: 21
                                             }, this)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1001,43 +781,42 @@ const Jobs = ()=>{
                                             disabled: currentPage === totalPages,
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {}, void 0, false, {
                                                 fileName: "[project]/components/Jobs.jsx",
-                                                lineNumber: 290,
+                                                lineNumber: 131,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Jobs.jsx",
-                                            lineNumber: 282,
+                                            lineNumber: 123,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Jobs.jsx",
-                                    lineNumber: 255,
+                                    lineNumber: 96,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/components/Jobs.jsx",
-                        lineNumber: 239,
+                        lineNumber: 84,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Jobs.jsx",
-                lineNumber: 237,
+                lineNumber: 82,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Jobs.jsx",
-        lineNumber: 224,
+        lineNumber: 63,
         columnNumber: 5
     }, this);
 };
-_s(Jobs, "Eb1y/bHoaH3zd2pyVGQXqiSlUZQ=", false, function() {
+_s(Jobs, "Baw9ydLMpz6WxB7sIsFsb70bImI=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllJobs$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
     ];
@@ -1049,145 +828,6 @@ __turbopack_refresh__.register(_c, "Jobs");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
- // "use client";
- // import { ChevronLeft, ChevronRight, ListFilter } from "lucide-react";
- // import Filters from "./Filters";
- // import Job from "./Job";
- // import { useState, useEffect } from "react";
- // import { useSelector, useDispatch } from "react-redux";
- // import useGetAllJobs from "@/hooks/useGetAllJobs";
- // import { Button } from "@/components/ui/button";
- // import { setSavedJobs } from "@/redux/slices/jobSlice";
- // import { toast } from "sonner";
- // const Jobs = () => {
- //   const [showFilters, setShowFilters] = useState(false);
- //   const [selectedFilters, setSelectedFilters] = useState({});
- //   const [currentPage, setCurrentPage] = useState(1);
- //   const jobsPerPage = 6;
- //   const dispatch = useDispatch();
- //   const { allJobs, savedJobs = [] } = useSelector((state) => state.job);
- //   const { fetchAllJobs } = useGetAllJobs();
- //   useEffect(() => {
- //     fetchAllJobs();
- //   }, []);
- //   useEffect(() => {
- //     const handleResize = () => {
- //       setShowFilters(window.innerWidth >= 1024);
- //     };
- //     handleResize();
- //     window.addEventListener("resize", handleResize);
- //     return () => window.removeEventListener("resize", handleResize);
- //   }, []);
- //   const toggleSaveJob = (job) => {
- //     const isSaved = savedJobs.some((savedJob) => savedJob._id === job._id);
- //     const updatedSavedJobs = isSaved
- //       ? savedJobs.filter((savedJob) => savedJob._id !== job._id)
- //       : [...savedJobs, job];
- //     dispatch(setSavedJobs(updatedSavedJobs));
- //     toast.success("Job saved successfully");
- //   };
- //   const filteredJobs = allJobs?.filter((job) => {
- //     const locationMatch =
- //       !selectedFilters["Location"]?.length ||
- //       selectedFilters["Location"].includes(job.location);
- //     const jobTypeMatch =
- //       !selectedFilters["Job Type"]?.length ||
- //       selectedFilters["Job Type"].includes(job.jobType);
- //     const experienceMatch =
- //       !selectedFilters["Experience"]?.length ||
- //       selectedFilters["Experience"].includes(`${job.experienceLevel} years`);
- //     const salaryMatch =
- //       !selectedFilters["Salary"]?.length ||
- //       selectedFilters["Salary"].some((salary) => {
- //         const [min] = salary.split("-");
- //         return job.salary >= parseInt(min) * 1000;
- //       });
- //     return locationMatch && jobTypeMatch && experienceMatch && salaryMatch;
- //   });
- //   // Pagination logic
- //   const indexOfLastJob = currentPage * jobsPerPage;
- //   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
- //   const currentJobs = filteredJobs?.slice(indexOfFirstJob, indexOfLastJob);
- //   const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
- //   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
- //   return (
- //     <section className="wrapper py-8 px-2 xl:px-0">
- //       <div className="">
- //         <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
- //           Job <span className="text-purple-600">Listings</span>
- //         </h1>
- //         <button
- //           onClick={() => setShowFilters((prev) => !prev)}
- //           className="mb-4 flex items-center text-gray-700 cursor-pointer lg:hidden"
- //         >
- //           <ListFilter className="mr-2" />
- //           Filters
- //         </button>
- //       </div>
- //       <div className="lg:flex lg:space-x-8">
- //         {showFilters && <Filters onFilterChange={setSelectedFilters} />}
- //         <div className="flex-1">
- //           {currentJobs.length === 0 ? (
- //             <p className="text-gray-600 text-center py-8">No jobs found</p>
- //           ) : (
- //             <>
- //               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
- //                 {currentJobs.map((job) => (
- //                   <Job
- //                     key={job._id}
- //                     job={job}
- //                     onSave={() => toggleSaveJob(job)}
- //                   />
- //                 ))}
- //               </div>
- //               {/* Pagination controls */}
- //               {totalPages > 1 && (
- //                 <div className="flex justify-center mt-6 space-x-2">
- //                   <Button
- //                     variant="outline"
- //                     size="icon"
- //                     onClick={() =>
- //                       setCurrentPage((prev) => Math.max(prev - 1, 1))
- //                     }
- //                     disabled={currentPage === 1}
- //                   >
- //                     <ChevronLeft />
- //                   </Button>
- //                   {pageNumbers.map((page) => (
- //                     <Button
- //                       key={page}
- //                       variant="outline"
- //                       size="icon"
- //                       onClick={() => setCurrentPage(page)}
- //                       className={`px-4 py-2 ${
- //                         currentPage === page
- //                           ? "bg-purple-600 text-white hover:bg-gray-100"
- //                           : ""
- //                       }`}
- //                     >
- //                       {page}
- //                     </Button>
- //                   ))}
- //                   <Button
- //                     variant="outline"
- //                     size="icon"
- //                     onClick={() =>
- //                       setCurrentPage((prev) => Math.min(prev + 1, totalPages))
- //                     }
- //                     disabled={currentPage === totalPages}
- //                   >
- //                     <ChevronRight />
- //                   </Button>
- //                 </div>
- //               )}
- //             </>
- //           )}
- //         </div>
- //       </div>
- //     </section>
- //   );
- // };
- // export default Jobs;
 }}),
 "[project]/app/(jobs)/jobs/page.jsx [app-rsc] (ecmascript, Next.js server component, client modules)": ((__turbopack_context__) => {
 

@@ -68,32 +68,36 @@ const PostAJobPage = () => {
   };
 
   return (
-    <section className="flex items-center justify-center w-full min-h-screen bg-gray-50 p-6">
-      <div className="w-full max-w-3xl bg-white shadow-md rounded-lg p-6 md:p-8">
-        <h2 className="text-2xl font-bold mb-6 text-center md:text-3xl">
+    <section className="flex items-center justify-center w-full min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
+      <div className="w-full max-w-3xl bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 md:p-8">
+        <h2 className="text-2xl font-bold mb-6 text-center md:text-3xl text-gray-900 dark:text-gray-100">
           Post a Job
         </h2>
         <form onSubmit={submitHandler} className="space-y-6">
           {/* Title & Location */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label>Title</Label>
+              <Label className="text-gray-900 dark:text-gray-100">Title</Label>
               <Input
                 type="text"
                 name="title"
                 value={input.title}
                 onChange={changeEventHandler}
                 placeholder="Job Title"
+                className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600"
               />
             </div>
             <div>
-              <Label>Location</Label>
+              <Label className="text-gray-900 dark:text-gray-100">
+                Location
+              </Label>
               <Input
                 type="text"
                 name="location"
                 value={input.location}
                 onChange={changeEventHandler}
                 placeholder="Location"
+                className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600"
               />
             </div>
           </div>
@@ -101,31 +105,54 @@ const PostAJobPage = () => {
           {/* Salary & Job Type */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label>Salary</Label>
+              <Label className="text-gray-900 dark:text-gray-100">Salary</Label>
               <Input
                 type="text"
                 name="salary"
                 value={input.salary}
                 onChange={changeEventHandler}
                 placeholder="Salary"
+                className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600"
               />
             </div>
             <div>
-              <Label>Job Type</Label>
+              <Label className="text-gray-900 dark:text-gray-100">
+                Job Type
+              </Label>
               <Select
                 onValueChange={(value) =>
                   setInput({ ...input, jobType: value })
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600">
                   <SelectValue placeholder="Select Job Type" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                   <SelectGroup>
-                    <SelectItem value="Full Time">Full Time</SelectItem>
-                    <SelectItem value="Part Time">Part Time</SelectItem>
-                    <SelectItem value="Contractual">Contractual</SelectItem>
-                    <SelectItem value="Internship">Internship</SelectItem>
+                    <SelectItem
+                      value="Full Time"
+                      className="text-gray-900 dark:text-gray-100"
+                    >
+                      Full Time
+                    </SelectItem>
+                    <SelectItem
+                      value="Part Time"
+                      className="text-gray-900 dark:text-gray-100"
+                    >
+                      Part Time
+                    </SelectItem>
+                    <SelectItem
+                      value="Contractual"
+                      className="text-gray-900 dark:text-gray-100"
+                    >
+                      Contractual
+                    </SelectItem>
+                    <SelectItem
+                      value="Internship"
+                      className="text-gray-900 dark:text-gray-100"
+                    >
+                      Internship
+                    </SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -135,63 +162,76 @@ const PostAJobPage = () => {
           {/* Experience & Position */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label>Experience</Label>
+              <Label className="text-gray-900 dark:text-gray-100">
+                Experience
+              </Label>
               <Input
                 type="text"
                 name="experience"
                 value={input.experience}
                 onChange={changeEventHandler}
                 placeholder="Experience"
+                className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600"
               />
             </div>
             <div>
-              <Label>Position</Label>
+              <Label className="text-gray-900 dark:text-gray-100">
+                Position
+              </Label>
               <Input
                 type="number"
                 name="position"
                 value={input.position}
                 onChange={changeEventHandler}
                 placeholder="Position"
+                className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600"
               />
             </div>
           </div>
 
           {/* Description & Requirements */}
           <div>
-            <Label>Description</Label>
+            <Label className="text-gray-900 dark:text-gray-100">
+              Description
+            </Label>
             <Input
               type="text"
               name="description"
               value={input.description}
               onChange={changeEventHandler}
               placeholder="Job Description"
+              className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600"
             />
           </div>
           <div>
-            <Label>Requirements</Label>
+            <Label className="text-gray-900 dark:text-gray-100">
+              Requirements
+            </Label>
             <Input
               type="text"
               name="requirements"
               value={input.requirements}
               onChange={changeEventHandler}
               placeholder="Job Requirements"
+              className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600"
             />
           </div>
 
           {/* Company Select */}
           <div>
-            <Label>Company</Label>
+            <Label className="text-gray-900 dark:text-gray-100">Company</Label>
             {companies?.length > 0 ? (
               <Select onValueChange={changeSelectHandler}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-600">
                   <SelectValue placeholder="Select a Company" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                   <SelectGroup>
                     {companies.map((company) => (
                       <SelectItem
                         key={company._id}
                         value={company.name.toLowerCase()}
+                        className="text-gray-900 dark:text-gray-100"
                       >
                         {company.name}
                       </SelectItem>
@@ -200,7 +240,9 @@ const PostAJobPage = () => {
                 </SelectContent>
               </Select>
             ) : (
-              <p className="text-sm text-gray-500">No companies available</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                No companies available
+              </p>
             )}
           </div>
 
@@ -208,24 +250,24 @@ const PostAJobPage = () => {
           <div className="flex items-center justify-between">
             <Button
               variant="outline"
-              type="submit"
+              type="button"
               onClick={() => router.back()}
-              className="w-full md:w-auto"
+              className="w-full md:w-auto bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600"
             >
               Cancel
             </Button>
             <Button
               variant="outline"
               type="submit"
-              className="w-full md:w-auto"
+              className="w-full md:w-auto bg-purple-600 hover:text-white dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
             >
-              Post Job
+              Create Job
             </Button>
           </div>
 
           {/* Warning Message */}
           {companies?.length === 0 && (
-            <p className="text-sm text-red-600 font-bold text-center">
+            <p className="text-sm text-red-600 dark:text-red-400 font-bold text-center">
               *Please register a company before posting a job
             </p>
           )}

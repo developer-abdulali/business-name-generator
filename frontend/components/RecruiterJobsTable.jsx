@@ -125,7 +125,7 @@ const RecruiterJobsTable = () => {
                 className="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
               >
                 <TableCell className="p-4 text-gray-900 dark:text-gray-100">
-                  {job?.company.name}
+                  {job?.company?.name}
                 </TableCell>
                 <TableCell className="p-4 text-gray-900 dark:text-gray-100">
                   {job?.title}
@@ -142,16 +142,6 @@ const RecruiterJobsTable = () => {
                       <MoreHorizontal className="hover:text-purple-600 dark:hover:text-purple-400" />
                     </PopoverTrigger>
                     <PopoverContent className="w-fit p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
-                      <div
-                        className="flex items-center gap-2 cursor-pointer hover:bg-purple-600 dark:hover:bg-purple-700 hover:text-white p-2 rounded"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                        }}
-                      >
-                        <Edit2 className="w-4" />
-                        <span>Edit</span>
-                      </div>
-
                       <div
                         onClick={(e) => {
                           e.stopPropagation();

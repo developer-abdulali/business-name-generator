@@ -66,311 +66,6 @@ Input.displayName = "Input";
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
-// "use client";
-// import { useState } from "react";
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import * as yup from "yup";
-// import { Label } from "../ui/label";
-// import { Input } from "../ui/input";
-// import { Button } from "../ui/button";
-// import { Eye, EyeOff, User, Mail, Phone, Lock } from "lucide-react";
-// import Link from "next/link";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useRouter } from "next/navigation";
-// import { USER_API_ENDPOINT } from "@/lib/constant";
-// import { setLoading } from "@/redux/slices/authSlice";
-// import axios from "axios";
-// import { toast } from "sonner";
-// import Image from "next/image";
-// // Define the validation schema using yup
-// const schema = yup.object().shape({
-//   fullname: yup.string().required("Full name is required"),
-//   email: yup.string().email("Invalid email").required("Email is required"),
-//   phoneNumber: yup
-//     .string()
-//     .length(11, "Phone number must be exactly 11 digits")
-//     .matches(/^\d+$/, "Phone number must contain only digits")
-//     .required("Phone number is required"),
-//   password: yup
-//     .string()
-//     .min(6, "Password must be at least 6 characters")
-//     .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-//     .matches(/[a-z]/, "Password must contain at least one lowercase letter")
-//     .matches(/[0-9]/, "Password must contain at least one number")
-//     .matches(
-//       /[^A-Za-z0-9]/,
-//       "Password must contain at least one special character"
-//     )
-//     .required("Password is required"),
-//   role: yup.string().required("Role is required"),
-//   file: yup.mixed().notRequired(),
-// });
-// const Signup = () => {
-//   const [showPassword, setShowPassword] = useState(false);
-//   const { loading } = useSelector((state) => state.auth);
-//   const router = useRouter();
-//   const dispatch = useDispatch();
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//     setValue,
-//     watch,
-//   } = useForm({
-//     resolver: yupResolver(schema),
-//   });
-//   const role = watch("role");
-//   const changeFileHandler = (e) => {
-//     setValue("file", e.target.files?.[0]);
-//   };
-//   const submitHandler = async (data) => {
-//     const formData = new FormData();
-//     formData.append("fullname", data.fullname);
-//     formData.append("email", data.email);
-//     formData.append("phoneNumber", data.phoneNumber);
-//     formData.append("password", data.password);
-//     formData.append("role", data.role);
-//     if (data.file) formData.append("profileImage", data.file);
-//     try {
-//       dispatch(setLoading(true));
-//       const res = await axios.post(`${USER_API_ENDPOINT}/register`, formData, {
-//         headers: { "Content-Type": "multipart/form-data" },
-//         withCredentials: true,
-//       });
-//       if (res.data.success) {
-//         router.push("/login");
-//         toast.success(res.data.message);
-//       }
-//     } catch (error) {
-//       toast.error(error.response?.data?.error || error.message);
-//       console.error("API error:", error.response?.data?.error || error.message);
-//     } finally {
-//       dispatch(setLoading(false));
-//     }
-//   };
-//   return (
-//     <section className="grid min-h-screen lg:grid-cols-2 gap-6 p-6 md:p-10">
-//       {/* Left Section */}
-//       <div className="flex flex-col gap-6 justify-center">
-//         {/* Logo */}
-//         <div className="flex justify-center gap-2 md:mb-24 md:ml-10 md:justify-start">
-//           <Link href="/">
-//             <p className="text-3xl font-bold text-center md:text-left">
-//               Job<span className="text-purple-600">Portal</span>
-//             </p>
-//           </Link>
-//         </div>
-//         {/* <div className="flex justify-center gap-2 mb-6">
-//           <Link href="/">
-//             <p className="text-3xl font-bold text-center md:text-left">
-//               Job<span className="text-customRedColor">Portal</span>
-//             </p>
-//           </Link>
-//         </div> */}
-//         {/* Form Section */}
-//         <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto">
-//           <form
-//             onSubmit={handleSubmit(submitHandler)}
-//             className="flex flex-col gap-6 w-full"
-//           >
-//             {/* Heading */}
-//             <div className="flex flex-col items-center gap-2 text-center mb-8">
-//               <h1 className="text-3xl font-bold text-primary">
-//                 Create an account
-//               </h1>
-//               <p className="text-sm text-muted-foreground">
-//                 Enter your details to create an account
-//               </p>
-//             </div>
-//             {/* Full Name Field */}
-//             <div className="grid space-y-2 w-full">
-//               <Label htmlFor="fullname">Full Name</Label>
-//               <div className="relative">
-//                 <Input
-//                   id="fullname"
-//                   type="text"
-//                   name="fullname"
-//                   placeholder="John Doe"
-//                   {...register("fullname")}
-//                   error={errors.fullname}
-//                   className="input-field pl-10"
-//                 />
-//                 <User
-//                   className="absolute left-3 top-3 text-gray-500"
-//                   size={18}
-//                 />
-//               </div>
-//               {errors.fullname && (
-//                 <p className="text-red-500">{errors.fullname.message}</p>
-//               )}
-//             </div>
-//             {/* Email Field */}
-//             <div className="grid space-y-2 w-full">
-//               <Label htmlFor="email">Email</Label>
-//               <div className="relative">
-//                 <Input
-//                   id="email"
-//                   type="email"
-//                   name="email"
-//                   placeholder="xyz@example.com"
-//                   {...register("email")}
-//                   error={errors.email}
-//                   className="input-field pl-10"
-//                 />
-//                 <Mail
-//                   className="absolute left-3 top-3 text-gray-500"
-//                   size={18}
-//                 />
-//               </div>
-//               {errors.email && (
-//                 <p className="text-red-500">{errors.email.message}</p>
-//               )}
-//             </div>
-//             {/* Phone Number Field */}
-//             <div className="grid space-y-2 w-full">
-//               <Label htmlFor="phoneNumber">Contact Number</Label>
-//               <div className="relative">
-//                 <Input
-//                   id="phoneNumber"
-//                   type="text"
-//                   name="phoneNumber"
-//                   placeholder="0333-xxxxxxx"
-//                   {...register("phoneNumber")}
-//                   error={errors.phoneNumber}
-//                   className="input-field pl-10"
-//                 />
-//                 <Phone
-//                   className="absolute left-3 top-3 text-gray-500"
-//                   size={18}
-//                 />
-//               </div>
-//               {errors.phoneNumber && (
-//                 <p className="text-red-500">{errors.phoneNumber.message}</p>
-//               )}
-//             </div>
-//             {/* Password Field with Toggle Visibility */}
-//             <div className="grid space-y-2 w-full">
-//               <Label htmlFor="password">Password</Label>
-//               <div className="relative">
-//                 <Input
-//                   id="password"
-//                   type={showPassword ? "text" : "password"}
-//                   name="password"
-//                   placeholder="********"
-//                   {...register("password")}
-//                   error={errors.password}
-//                   className="input-field pr-10 pl-10"
-//                 />
-//                 <Lock
-//                   className="absolute left-3 top-3 text-gray-500"
-//                   size={18}
-//                 />
-//                 <button
-//                   type="button"
-//                   className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
-//                   onClick={() => setShowPassword(!showPassword)}
-//                 >
-//                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-//                 </button>
-//               </div>
-//               {errors.password && (
-//                 <p className="text-red-500">{errors.password.message}</p>
-//               )}
-//             </div>
-//             {/* Role Selection */}
-//             <div className="grid gap-2 w-full">
-//               <div className="flex gap-4">
-//                 <div className="flex items-center space-x-2">
-//                   <input
-//                     type="radio"
-//                     id="applicant"
-//                     value="applicant"
-//                     checked={role === "applicant"}
-//                     onChange={(e) => setValue("role", e.target.value)}
-//                     className="custom-radio appearance-none w-5 h-5 border-2 border-purple-600 rounded-full flex items-center justify-center cursor-pointer relative"
-//                   />
-//                   <label htmlFor="applicant" className="ml-2">
-//                     Applicant
-//                   </label>
-//                 </div>
-//                 <div className="flex items-center space-x-2">
-//                   <input
-//                     type="radio"
-//                     id="recruiter"
-//                     value="recruiter"
-//                     checked={role === "recruiter"}
-//                     onChange={(e) => setValue("role", e.target.value)}
-//                     className="custom-radio appearance-none w-5 h-5 border-2 border-purple-600 rounded-full flex items-center justify-center cursor-pointer relative"
-//                   />
-//                   <label htmlFor="recruiter" className="ml-2">
-//                     Recruiter
-//                   </label>
-//                 </div>
-//               </div>
-//               {errors.role && (
-//                 <p className="text-red-500">{errors.role.message}</p>
-//               )}
-//             </div>
-//             {/* Profile Image Upload */}
-//             <div className="grid space-y-2 w-full">
-//               <Label htmlFor="profileImage">Profile Image</Label>
-//               <div className="relative flex items-center space-x-2">
-//                 <Input
-//                   id="profileImage"
-//                   type="file"
-//                   accept="image/*"
-//                   onChange={changeFileHandler}
-//                   className="input-field"
-//                 />
-//                 {watch("file") && (
-//                   <Image
-//                     src={URL.createObjectURL(watch("file"))}
-//                     alt="Profile Preview"
-//                     width={30}
-//                     height={30}
-//                     className="w-10 h-10 rounded-full object-cover"
-//                   />
-//                 )}
-//               </div>
-//             </div>
-//             {/* Submit Button */}
-//             <Button
-//               variant="outline"
-//               type="submit"
-//               className="w-full py-3 text-sm bg-purple-600 text-white hover:text-white hover:bg-purple-700"
-//               disabled={loading}
-//             >
-//               {loading ? "Signing up..." : "Sign Up"}
-//             </Button>
-//             {/* Login Link */}
-//             <div className="text-center text-sm">
-//               Already have an account?{" "}
-//               <Link
-//                 href="/login"
-//                 className="underline text-primary hover:text-purple-600"
-//               >
-//                 Login
-//               </Link>
-//             </div>
-//           </form>
-//         </div>
-//       </div>
-//       {/* Right Section with Background Image */}
-//       <div className="relative hidden lg:block bg-muted">
-//         <Image
-//           src="/login.svg"
-//           alt="Signup Image"
-//           width={200}
-//           height={200}
-//           priority
-//           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale scale-x-[-1]"
-//         />
-//       </div>
-//     </section>
-//   );
-// };
-// export default Signup;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -481,23 +176,23 @@ const Signup = ()=>{
                                         children: "Portal"
                                     }, void 0, false, {
                                         fileName: "[project]/components/auth/Signup.jsx",
-                                        lineNumber: 430,
+                                        lineNumber: 103,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/auth/Signup.jsx",
-                                lineNumber: 428,
+                                lineNumber: 101,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/auth/Signup.jsx",
-                            lineNumber: 427,
+                            lineNumber: 100,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/auth/Signup.jsx",
-                        lineNumber: 426,
+                        lineNumber: 99,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -514,7 +209,7 @@ const Signup = ()=>{
                                             children: "Create an account"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 445,
+                                            lineNumber: 118,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -522,13 +217,13 @@ const Signup = ()=>{
                                             children: "Enter your details to create an account"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 448,
+                                            lineNumber: 121,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 444,
+                                    lineNumber: 117,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -540,7 +235,7 @@ const Signup = ()=>{
                                             children: "Full Name"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 455,
+                                            lineNumber: 128,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -556,7 +251,7 @@ const Signup = ()=>{
                                                     className: "input-field pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 462,
+                                                    lineNumber: 135,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__["User"], {
@@ -564,13 +259,13 @@ const Signup = ()=>{
                                                     size: 18
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 471,
+                                                    lineNumber: 144,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 461,
+                                            lineNumber: 134,
                                             columnNumber: 15
                                         }, this),
                                         errors.fullname && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -578,13 +273,13 @@ const Signup = ()=>{
                                             children: errors.fullname.message
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 477,
+                                            lineNumber: 150,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 454,
+                                    lineNumber: 127,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -596,7 +291,7 @@ const Signup = ()=>{
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 483,
+                                            lineNumber: 156,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -612,7 +307,7 @@ const Signup = ()=>{
                                                     className: "input-field pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 490,
+                                                    lineNumber: 163,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mail$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mail$3e$__["Mail"], {
@@ -620,13 +315,13 @@ const Signup = ()=>{
                                                     size: 18
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 499,
+                                                    lineNumber: 172,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 489,
+                                            lineNumber: 162,
                                             columnNumber: 15
                                         }, this),
                                         errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -634,13 +329,13 @@ const Signup = ()=>{
                                             children: errors.email.message
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 505,
+                                            lineNumber: 178,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 482,
+                                    lineNumber: 155,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -652,7 +347,7 @@ const Signup = ()=>{
                                             children: "Contact Number"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 511,
+                                            lineNumber: 184,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -668,7 +363,7 @@ const Signup = ()=>{
                                                     className: "input-field pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 518,
+                                                    lineNumber: 191,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$phone$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Phone$3e$__["Phone"], {
@@ -676,13 +371,13 @@ const Signup = ()=>{
                                                     size: 18
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 527,
+                                                    lineNumber: 200,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 517,
+                                            lineNumber: 190,
                                             columnNumber: 15
                                         }, this),
                                         errors.phoneNumber && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -690,13 +385,13 @@ const Signup = ()=>{
                                             children: errors.phoneNumber.message
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 533,
+                                            lineNumber: 206,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 510,
+                                    lineNumber: 183,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -708,7 +403,7 @@ const Signup = ()=>{
                                             children: "Password"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 539,
+                                            lineNumber: 212,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -724,7 +419,7 @@ const Signup = ()=>{
                                                     className: "input-field pr-10 pl-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 546,
+                                                    lineNumber: 219,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$lock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Lock$3e$__["Lock"], {
@@ -732,7 +427,7 @@ const Signup = ()=>{
                                                     size: 18
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 555,
+                                                    lineNumber: 228,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -743,24 +438,24 @@ const Signup = ()=>{
                                                         size: 18
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/auth/Signup.jsx",
-                                                        lineNumber: 564,
+                                                        lineNumber: 237,
                                                         columnNumber: 35
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
                                                         size: 18
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/auth/Signup.jsx",
-                                                        lineNumber: 564,
+                                                        lineNumber: 237,
                                                         columnNumber: 58
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 559,
+                                                    lineNumber: 232,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 545,
+                                            lineNumber: 218,
                                             columnNumber: 15
                                         }, this),
                                         errors.password && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -768,13 +463,13 @@ const Signup = ()=>{
                                             children: errors.password.message
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 568,
+                                            lineNumber: 241,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 538,
+                                    lineNumber: 211,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -795,7 +490,7 @@ const Signup = ()=>{
                                                             className: "custom-radio appearance-none w-5 h-5 border-2 border-purple-600 dark:border-purple-400 rounded-full flex items-center justify-center cursor-pointer relative"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/auth/Signup.jsx",
-                                                            lineNumber: 576,
+                                                            lineNumber: 249,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -804,13 +499,13 @@ const Signup = ()=>{
                                                             children: "Applicant"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/auth/Signup.jsx",
-                                                            lineNumber: 584,
+                                                            lineNumber: 257,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 575,
+                                                    lineNumber: 248,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -825,7 +520,7 @@ const Signup = ()=>{
                                                             className: "custom-radio appearance-none w-5 h-5 border-2 border-purple-600 dark:border-purple-400 rounded-full flex items-center justify-center cursor-pointer relative"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/auth/Signup.jsx",
-                                                            lineNumber: 592,
+                                                            lineNumber: 265,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -834,19 +529,19 @@ const Signup = ()=>{
                                                             children: "Recruiter"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/auth/Signup.jsx",
-                                                            lineNumber: 600,
+                                                            lineNumber: 273,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 591,
+                                                    lineNumber: 264,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 574,
+                                            lineNumber: 247,
                                             columnNumber: 15
                                         }, this),
                                         errors.role && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -854,13 +549,13 @@ const Signup = ()=>{
                                             children: errors.role.message
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 609,
+                                            lineNumber: 282,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 573,
+                                    lineNumber: 246,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -872,7 +567,7 @@ const Signup = ()=>{
                                             children: "Profile Image"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 615,
+                                            lineNumber: 288,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -886,7 +581,7 @@ const Signup = ()=>{
                                                     className: "input-field bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 622,
+                                                    lineNumber: 295,
                                                     columnNumber: 17
                                                 }, this),
                                                 watch("file") && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -897,19 +592,19 @@ const Signup = ()=>{
                                                     className: "w-10 h-10 rounded-full object-cover"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/auth/Signup.jsx",
-                                                    lineNumber: 630,
+                                                    lineNumber: 303,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 621,
+                                            lineNumber: 294,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 614,
+                                    lineNumber: 287,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -920,7 +615,7 @@ const Signup = ()=>{
                                     children: loading ? "Signing up..." : "Sign Up"
                                 }, void 0, false, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 642,
+                                    lineNumber: 315,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -934,30 +629,30 @@ const Signup = ()=>{
                                             children: "Login"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/Signup.jsx",
-                                            lineNumber: 654,
+                                            lineNumber: 327,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/Signup.jsx",
-                                    lineNumber: 652,
+                                    lineNumber: 325,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/auth/Signup.jsx",
-                            lineNumber: 439,
+                            lineNumber: 112,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/auth/Signup.jsx",
-                        lineNumber: 438,
+                        lineNumber: 111,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/auth/Signup.jsx",
-                lineNumber: 424,
+                lineNumber: 97,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -971,18 +666,18 @@ const Signup = ()=>{
                     className: "absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale scale-x-[-1]"
                 }, void 0, false, {
                     fileName: "[project]/components/auth/Signup.jsx",
-                    lineNumber: 667,
+                    lineNumber: 340,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/auth/Signup.jsx",
-                lineNumber: 666,
+                lineNumber: 339,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/auth/Signup.jsx",
-        lineNumber: 422,
+        lineNumber: 95,
         columnNumber: 5
     }, this);
 };

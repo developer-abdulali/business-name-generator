@@ -583,6 +583,29 @@ Input.displayName = "Input";
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
+// "use client";
+// import { COMPANY_API_ENDPOINT } from "@/lib/constant";
+// import { setCompanies } from "@/redux/slices/companySlice";
+// import axios from "axios";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// const useGetAllCompanies = () => {
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     const fetchAllCompanies = async () => {
+//       try {
+//         const res = await axios.get(`${COMPANY_API_ENDPOINT}/get`, {
+//           withCredentials: true,
+//         });
+//         if (res.data.success) dispatch(setCompanies(res.data.companies));
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     };
+//     fetchAllCompanies();
+//   }, [dispatch]);
+// };
+// export default useGetAllCompanies;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -599,21 +622,34 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib
 ;
 const useGetAllCompanies = ()=>{
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const fetchAllCompanies = async ()=>{
+            setLoading(true);
+            setError(null);
             try {
                 const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constant$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["COMPANY_API_ENDPOINT"]}/get`, {
                     withCredentials: true
                 });
-                if (res.data.success) dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setCompanies"])(res.data.companies));
+                if (res.data.success) {
+                    dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setCompanies"])(res.data.companies));
+                }
             } catch (error) {
-                console.log(error);
+                console.error(error);
+                setError(error.message);
+            } finally{
+                setLoading(false);
             }
         };
         fetchAllCompanies();
     }, [
         dispatch
     ]);
+    return {
+        loading,
+        error
+    };
 };
 const __TURBOPACK__default__export__ = useGetAllCompanies;
 }}),
@@ -622,6 +658,60 @@ const __TURBOPACK__default__export__ = useGetAllCompanies;
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
+// "use client";
+// import CompaniesTable from "@/components/CompaniesTable";
+// import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input";
+// import { X } from "lucide-react";
+// import useGetAllCompanies from "@/hooks/useGetAllCompanies";
+// import { setSearchCompanyByText } from "@/redux/slices/companySlice";
+// import { useRouter } from "next/navigation";
+// import { useEffect, useState } from "react";
+// import { useDispatch } from "react-redux";
+// const CompaniesPage = () => {
+//   const router = useRouter();
+//   useGetAllCompanies();
+//   const [input, setInput] = useState("");
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     dispatch(setSearchCompanyByText(input));
+//   }, [input, dispatch]);
+//   const handleClearInput = () => {
+//     setInput("");
+//     dispatch(setSearchCompanyByText(""));
+//   };
+//   return (
+//     <section className="max-w-screen-2xl mx-auto my-10">
+//       <div className="flex items-center gap-3 sm:justify-between mx-3 my-5 2xl:mx-0">
+//         <div className="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+//           <Input
+//             value={input}
+//             onChange={(e) => setInput(e.target.value)}
+//             className="pr-10 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-700"
+//             placeholder="Search by name, location"
+//           />
+//           {input && (
+//             <button
+//               className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+//               onClick={handleClearInput}
+//             >
+//               <X className="w-4 h-4" />
+//             </button>
+//           )}
+//         </div>
+//         <Button
+//           variant="outline"
+//           onClick={() => router.push("/recruiter/companies/register-company")}
+//           className="w-auto bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
+//         >
+//           New Company
+//         </Button>
+//       </div>
+//       <CompaniesTable />
+//     </section>
+//   );
+// };
+// export default CompaniesPage;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -633,6 +723,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllCompanies$
 var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/redux/slices/companySlice.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module '@/components/Loader'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/x.js [app-ssr] (ecmascript) <export default as X>");
 "use client";
@@ -646,9 +741,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 ;
 ;
 ;
+;
 const CompaniesPage = ()=>{
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllCompanies$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])();
+    const { companies, loading, error } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllCompanies$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(); // Assume this hook returns loading and error states
     const [input, setInput] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
@@ -661,6 +757,22 @@ const CompaniesPage = ()=>{
         setInput("");
         dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setSearchCompanyByText"])(""));
     };
+    if (loading) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Loader, {}, void 0, false, {
+            fileName: "[project]/app/recruiter/companies/page.jsx",
+            lineNumber: 89,
+            columnNumber: 12
+        }, this); // Display loader when loading
+    }
+    if (error) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            children: "Error loading companies"
+        }, void 0, false, {
+            fileName: "[project]/app/recruiter/companies/page.jsx",
+            lineNumber: 93,
+            columnNumber: 12
+        }, this); // Handle error state
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: "max-w-screen-2xl mx-auto my-10",
         children: [
@@ -677,7 +789,7 @@ const CompaniesPage = ()=>{
                                 placeholder: "Search by name, location"
                             }, void 0, false, {
                                 fileName: "[project]/app/recruiter/companies/page.jsx",
-                                lineNumber: 31,
+                                lineNumber: 100,
                                 columnNumber: 11
                             }, this),
                             input && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -687,18 +799,18 @@ const CompaniesPage = ()=>{
                                     className: "w-4 h-4"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/page.jsx",
-                                    lineNumber: 42,
+                                    lineNumber: 111,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/recruiter/companies/page.jsx",
-                                lineNumber: 38,
+                                lineNumber: 107,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/recruiter/companies/page.jsx",
-                        lineNumber: 30,
+                        lineNumber: 99,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -708,24 +820,26 @@ const CompaniesPage = ()=>{
                         children: "New Company"
                     }, void 0, false, {
                         fileName: "[project]/app/recruiter/companies/page.jsx",
-                        lineNumber: 46,
+                        lineNumber: 115,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/recruiter/companies/page.jsx",
-                lineNumber: 29,
+                lineNumber: 98,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CompaniesTable$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CompaniesTable$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                companies: companies
+            }, void 0, false, {
                 fileName: "[project]/app/recruiter/companies/page.jsx",
-                lineNumber: 54,
+                lineNumber: 123,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/recruiter/companies/page.jsx",
-        lineNumber: 28,
+        lineNumber: 97,
         columnNumber: 5
     }, this);
 };

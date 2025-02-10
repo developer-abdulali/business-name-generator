@@ -46,7 +46,7 @@ const ApplicantsTable = () => {
   return (
     <section>
       <Table className="min-w-full bg-white dark:bg-gray-900 shadow-md rounded-lg overflow-hidden">
-        <TableCaption className="caption-top dark:text-gray-300">
+        <TableCaption className="dark:text-gray-300">
           A list of your recent applied users
         </TableCaption>
         <TableHeader className="dark:bg-gray-800">
@@ -70,53 +70,64 @@ const ApplicantsTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {applicantsArray.map((item, index) => (
-            <TableRow key={index} className="border-b dark:border-gray-700">
-              <TableCell className="px-4 py-2 dark:text-gray-300">
-                {item?.applicant?.fullname}
-              </TableCell>
-              <TableCell className="px-4 py-2 dark:text-gray-300">
-                {item?.applicant?.email}
-              </TableCell>
-              <TableCell className="px-4 py-2 dark:text-gray-300">
-                {item?.applicant?.phoneNumber}
-              </TableCell>
-              <TableCell className="px-4 py-2">
-                <a
-                  href={item?.applicant?.profile?.resume || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline text-blue-600 dark:text-blue-400 cursor-pointer"
-                >
-                  {item?.applicant?.profile?.resume ? "See resume" : "N/A"}
-                </a>
-              </TableCell>
-              <TableCell className="px-4 py-2 dark:text-gray-300">
-                {moment(item?.createdAt).format("DD-MM-YY")}
-              </TableCell>
-              <TableCell className="px-4 py-2 text-right">
-                <Popover>
-                  <PopoverTrigger>
-                    <MoreHorizontal className="cursor-pointer hover:text-purple-600 dark:hover:text-purple-400" />
-                  </PopoverTrigger>
-                  <PopoverContent className="w-fit bg-white dark:bg-gray-800 dark:text-gray-300 border dark:border-gray-700">
-                    {shortlistingStatus.map((status, index) => (
-                      <div
-                        key={index}
-                        onClick={() =>
-                          changeStatusHandler(status.label, item?._id)
-                        }
-                        className="flex items-center gap-2 cursor-pointer hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white p-2 rounded"
-                      >
-                        <status.icon size={20} />
-                        <span className="px-1">{status.label}</span>
-                      </div>
-                    ))}
-                  </PopoverContent>
-                </Popover>
+          {applicantsArray.length === 0 ? (
+            <TableRow className="border-b dark:border-gray-700">
+              <TableCell
+                colSpan="6"
+                className="px-4 py-2 text-center dark:text-gray-300"
+              >
+                No applicants found.
               </TableCell>
             </TableRow>
-          ))}
+          ) : (
+            applicantsArray.map((item, index) => (
+              <TableRow key={index} className="border-b dark:border-gray-700">
+                <TableCell className="px-4 py-2 dark:text-gray-300">
+                  {item?.applicant?.fullname}
+                </TableCell>
+                <TableCell className="px-4 py-2 dark:text-gray-300">
+                  {item?.applicant?.email}
+                </TableCell>
+                <TableCell className="px-4 py-2 dark:text-gray-300">
+                  {item?.applicant?.phoneNumber}
+                </TableCell>
+                <TableCell className="px-4 py-2">
+                  <a
+                    href={item?.applicant?.profile?.resume || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline text-blue-600 dark:text-blue-400 cursor-pointer"
+                  >
+                    {item?.applicant?.profile?.resume ? "See resume" : "N/A"}
+                  </a>
+                </TableCell>
+                <TableCell className="px-4 py-2 dark:text-gray-300">
+                  {moment(item?.createdAt).format("DD-MM-YY")}
+                </TableCell>
+                <TableCell className="px-4 py-2 text-right">
+                  <Popover>
+                    <PopoverTrigger>
+                      <MoreHorizontal className="cursor-pointer hover:text-purple-600 dark:hover:text-purple-400" />
+                    </PopoverTrigger>
+                    <PopoverContent className="w-fit bg-white dark:bg-gray-800 dark:text-gray-300 border dark:border-gray-700">
+                      {shortlistingStatus.map((status, index) => (
+                        <div
+                          key={index}
+                          onClick={() =>
+                            changeStatusHandler(status.label, item?._id)
+                          }
+                          className="flex items-center gap-2 cursor-pointer hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white p-2 rounded"
+                        >
+                          <status.icon size={20} />
+                          <span className="px-1">{status.label}</span>
+                        </div>
+                      ))}
+                    </PopoverContent>
+                  </Popover>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
     </section>

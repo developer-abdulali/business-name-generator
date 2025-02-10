@@ -196,26 +196,32 @@ export const deleteJob = async (req, res) => {
     const userId = req.id;
     const jobId = req.params.id;
 
-    // Check if the user is the owner of the company
-    if (created_by.toString() !== userId) {
-      return res.status(403).json({
-        success: false,
-        message: "You do not have permission to delete this company.",
-      });
-    }
+    // Find the job by its ID
+    const job = await Job.findById(jobId);
 
-    const deletedJob = await Job.findByIdAndDelete(jobId);
-    if (!deletedJob) {
+    if (!job) {
       return res
         .status(404)
         .json({ success: false, message: "Job not found." });
     }
-    res
-      .status(200)
-      .json({ success: true, message: "Job deleted successfully" });
+
+    // Check if the user is the owner of the job
+    if (job.created_by.toString() !== userId) {
+      return res.status(403).json({
+        success: false,
+        message: "You do not have permission to delete this job.",
+      });
+    }
+
+    // Delete the job
+    await Job.findByIdAndDelete(jobId);
+
+    return res.status(200).json({
+      success: true,
+      message: "Job deleted successfully.",
+    });
   } catch (error) {
-    return res
-      .status(500)
-      .json({ success: false, message: "Error while deleting job." });
+    console.error("Error deleting job:", error);
+    return res.status(500).json({ success: false, message: "Server Error" });
   }
 };

@@ -18,7 +18,6 @@ import { USER_API_ENDPOINT } from "@/lib/constant";
 import { setUser } from "@/redux/slices/authSlice";
 import { useRouter, usePathname } from "next/navigation";
 import axios from "axios";
-import { clearAllAppliedJobs, clearSavedJobs } from "@/redux/slices/jobSlice";
 import DarkModeToggle from "../DarkModeToggle";
 
 const Navbar = () => {
@@ -73,56 +72,84 @@ const Navbar = () => {
 
         {/* Menu icon for mobile */}
         <div className="lg:hidden flex items-center gap-2">
+          <DarkModeToggle />
           {user && (
             <Popover>
               <PopoverTrigger>
                 <Avatar className="cursor-pointer">
-                  <AvatarImage
-                    src={
-                      user?.profile?.profileImage ||
-                      "https://cdn-icons-png.flaticon.com/128/15339/15339256.png"
-                    }
-                  />
-                  <AvatarFallback>CN</AvatarFallback>
+                  <AvatarImage src={user?.profile?.profileImage} />
+                  <AvatarFallback>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-8 h-8"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                    </svg>
+                  </AvatarFallback>
                 </Avatar>
               </PopoverTrigger>
               <PopoverContent className="w-fit bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                 <div className="flex items-center gap-4 p-4">
                   <Avatar className="cursor-pointer">
-                    <AvatarImage
-                      src={
-                        user?.profile?.profileImage ||
-                        "https://cdn-icons-png.flaticon.com/128/15339/15339256.png"
-                      }
-                    />
+                    <AvatarImage src={user?.profile?.profileImage} />
+                    <AvatarFallback>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-8 h-8"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h4 className="font-medium">{user?.fullname}</h4>
-                    <p className="-mt-1 text-sm text-muted-foreground">
+                    <h4 className="font-medium text-gray-900 dark:text-gray-100">
+                      {user?.fullname}
+                    </h4>
+                    <p className="-mt-1 text-sm text-muted-foreground dark:text-gray-300">
                       {user?.role}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex flex-col my-2 text-gray-600 dark:text-gray-300">
-                  <div className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <Bookmark />
-                    <Button variant="link">
-                      <Link href="/saved-jobs">Saved Jobs</Link>
-                    </Button>
-                  </div>
-                  <div className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <User2 />
-                    <Button variant="link">
-                      <Link href="/profile">Profile</Link>
-                    </Button>
-                  </div>
+                  <Link
+                    href="/saved-jobs"
+                    className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <Bookmark className="text-gray-600 dark:text-gray-300" />
+                    <span>Saved Job</span>
+                  </Link>
+
+                  <Link
+                    href="/profile"
+                    className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <User2 className="text-gray-600 dark:text-gray-300" />
+                    <span>Profile</span>
+                  </Link>
+
                   <div
                     onClick={logoutHandler}
                     className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <LogOut />
-                    <Button variant="link">Logout</Button>
+                    <LogOut className="text-gray-600 dark:text-gray-300" />
+                    <span>Logout</span>
                   </div>
                 </div>
               </PopoverContent>
@@ -165,7 +192,7 @@ const Navbar = () => {
               <Link href="/login">
                 <Button
                   variant="outline"
-                  className="hover:bg-purple-600 hover:text-white"
+                  className="hover:bg-purple-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-gray-100"
                 >
                   Login
                 </Button>
@@ -173,7 +200,7 @@ const Navbar = () => {
               <Link href="/signup">
                 <Button
                   variant="outline"
-                  className="hover:bg-purple-600 hover:text-white"
+                  className="hover:bg-purple-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-gray-100"
                 >
                   Signup
                 </Button>
@@ -189,7 +216,7 @@ const Navbar = () => {
               <Link href="/login">
                 <Button
                   variant="outline"
-                  className="hover:bg-purple-600 hover:text-white"
+                  className="hover:bg-purple-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-gray-100"
                 >
                   Login
                 </Button>
@@ -197,7 +224,7 @@ const Navbar = () => {
               <Link href="/signup">
                 <Button
                   variant="outline"
-                  className="hover:bg-purple-600 hover:text-white"
+                  className="hover:bg-purple-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-gray-100"
                 >
                   Signup
                 </Button>
@@ -211,52 +238,79 @@ const Navbar = () => {
               <Popover>
                 <PopoverTrigger>
                   <Avatar className="cursor-pointer">
-                    <AvatarImage
-                      src={
-                        user?.profile?.profileImage ||
-                        "https://cdn-icons-png.flaticon.com/128/15339/15339256.png"
-                      }
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
+                    <AvatarImage src={user?.profile?.profileImage} />
+                    <AvatarFallback>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-8 h-8"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </AvatarFallback>
                   </Avatar>
                 </PopoverTrigger>
                 <PopoverContent className="w-fit bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
                   <div className="flex items-center gap-4 p-4">
                     <Avatar className="cursor-pointer">
-                      <AvatarImage
-                        src={
-                          user?.profile?.profileImage ||
-                          "https://cdn-icons-png.flaticon.com/128/15339/15339256.png"
-                        }
-                      />
+                      <AvatarImage src={user?.profile?.profileImage} />
+                      <AvatarFallback>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="w-8 h-8"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                          />
+                        </svg>
+                      </AvatarFallback>
                     </Avatar>
                     <div>
-                      <h4 className="font-medium">{user?.fullname}</h4>
-                      <p className="-mt-1 text-sm text-muted-foreground">
+                      <h4 className="font-medium text-gray-900 dark:text-gray-100">
+                        {user?.fullname}
+                      </h4>
+                      <p className="-mt-1 text-sm text-muted-foreground dark:text-gray-300">
                         {user?.role}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex flex-col my-2 text-gray-600 dark:text-gray-300">
-                    <div className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <Bookmark />
-                      <Button variant="link">
-                        <Link href="/saved-jobs">Saved Jobs</Link>
-                      </Button>
-                    </div>
-                    <div className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <User2 />
-                      <Button variant="link">
-                        <Link href="/profile">Profile</Link>
-                      </Button>
-                    </div>
+                    <Link
+                      href="/saved-jobs"
+                      className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <Bookmark className="text-gray-600 dark:text-gray-300" />
+                      <span>Saved Job</span>
+                    </Link>
+
+                    <Link
+                      href="/profile"
+                      className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <User2 className="text-gray-600 dark:text-gray-300" />
+                      <span>Profile</span>
+                    </Link>
+
                     <div
                       onClick={logoutHandler}
                       className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      <LogOut />
-                      <Button variant="link">Logout</Button>
+                      <LogOut className="text-gray-600 dark:text-gray-300" />
+                      <span>Logout</span>
                     </div>
                   </div>
                 </PopoverContent>

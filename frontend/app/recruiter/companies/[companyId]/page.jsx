@@ -17,6 +17,7 @@ const CompanyDescription = () => {
   const router = useRouter();
   useGetCompanyById(params.companyId);
   const { singleCompany } = useSelector((state) => state.company);
+  const { user } = useSelector((state) => state.auth);
 
   const [input, setInput] = useState({
     name: "",
@@ -108,7 +109,7 @@ const CompanyDescription = () => {
           <Button
             onClick={() => router.push("/recruiter/companies")}
             variant="ghost"
-            className="flex items-center gap-2 font-semibold bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
+            className="flex items-center gap-2 font-semibold bg-purple-600 hover:text-white dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
           >
             <ArrowLeft />
             <span>Back</span>
@@ -200,7 +201,7 @@ const CompanyDescription = () => {
         <Button
           variant="outline"
           type="submit"
-          className="bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
+          className="bg-purple-600 hover:text-white dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
           disabled={loading}
         >
           {loading ? "Saving..." : "Save"}

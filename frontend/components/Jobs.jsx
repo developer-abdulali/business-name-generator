@@ -2,24 +2,17 @@
 
 import { ChevronLeft, ChevronRight, ListFilter, X } from "lucide-react";
 import Filters from "./Filters";
-import Job from "./Job";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import useGetAllJobs from "@/hooks/useGetAllJobs";
 import { Button } from "@/components/ui/button";
-import { setSavedJobs } from "@/redux/slices/jobSlice";
-import { toast } from "sonner";
-import { USER_API_ENDPOINT } from "@/lib/constant";
-import axios from "axios";
+import JobCard from "./JobCard";
 
 const Jobs = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const jobsPerPage = 6;
-  const dispatch = useDispatch();
-
-  const { user } = useSelector((state) => state.auth);
   const { allJobs } = useSelector((state) => state.job);
   const { fetchAllJobs } = useGetAllJobs();
 
@@ -35,28 +28,6 @@ const Jobs = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const toggleSaveJob = async (job) => {
-    if (!user) return toast.info("Please login to save the job.");
-
-    try {
-      const res = await axios.post(
-        `${USER_API_ENDPOINT}/save-job`,
-        { jobId: job._id },
-        { withCredentials: true }
-      );
-
-      if (res.data.success) {
-        dispatch(setSavedJobs(res.data.savedJobs));
-        toast.success("Job saved successfully");
-      } else {
-        toast.error(res.data.message || "An error occurred");
-      }
-    } catch (error) {
-      console.error("Error saving job:", error);
-      toast.error(error.response?.data?.message || "An error occurred");
-    }
-  };
 
   const filteredJobs = allJobs?.filter((job) => {
     const locationMatch =
@@ -117,11 +88,7 @@ const Jobs = () => {
             <>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {currentJobs?.map((job) => (
-                  <Job
-                    key={job?._id}
-                    job={job}
-                    onSave={() => toggleSaveJob(job)}
-                  />
+                  <JobCard key={job?._id} job={job} />
                 ))}
               </div>
               {/* Pagination controls */}

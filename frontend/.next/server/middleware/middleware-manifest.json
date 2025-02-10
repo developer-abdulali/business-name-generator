@@ -1,0 +1,43 @@
+{
+  "sorted_middleware": [],
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge/chunks/_09a70f._.js",
+        "server/edge/chunks/[root of the server]__28202e._.js",
+        "server/edge/chunks/edge-wrapper_5983f8.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/recruiter/companies/register-company{(\\\\.json)}?",
+          "originalSource": "/recruiter/companies/register-company"
+        },
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/recruiter/companies/:path*{(\\\\.json)}?",
+          "originalSource": "/recruiter/companies/:path*"
+        },
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/recruiter/jobs/:path*{(\\\\.json)}?",
+          "originalSource": "/recruiter/jobs/:path*"
+        },
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/profile{(\\\\.json)}?",
+          "originalSource": "/profile"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "GXHaLiYkidHyyUIVkIspu1a8OKQzFA6JlRXwNC1BGc8=",
+        "__NEXT_PREVIEW_MODE_ID": "89e94e51a20aa83677659c28fcfd4eff",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "483fdeeb7e78983787977e71b833b05feb4ae6c6907a82b724b6bb142c5778b8",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "28a3972c832fa197ae204a1aa94b896a57930bbd797f1c83b01cbee30e3657fd"
+      }
+    }
+  },
+  "instrumentation": null,
+  "functions": {}
+}

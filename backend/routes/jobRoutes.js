@@ -17,6 +17,6 @@ jobRouter.get("/get/:id", getJobById);
 
 // routes for recruiters
 jobRouter.get("/getrecruiterjobs", isAuthenticated, getRecruiterJobs);
-jobRouter.delete("/delete", isAuthenticated, deleteJob);
+jobRouter.delete("/delete-job/:id", isAuthenticated, deleteJob);
 
 export default jobRouter;

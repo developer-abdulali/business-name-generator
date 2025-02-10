@@ -1,36 +1,24 @@
 {
   "app": {
+    "[project]/app/page": [
+      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
+    ],
+    "[project]/app/saved-jobs/page": [
+      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
+    ],
     "[project]/app/(auth)/login/page": [
       "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
     ],
-    "[project]/app/(auth)/signup/page": [
-      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
-    ],
-    "[project]/app/page": [
+    "[project]/app/browse/page": [
       "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
     ],
     "[project]/app/(jobs)/jobs/page": [
       "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
     ],
+    "[project]/app/profile/page": [
+      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
+    ],
     "[project]/app/(jobs)/jobs/[jobId]/page": [
-      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
-    ],
-    "[project]/app/recruiter/companies/page": [
-      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
-    ],
-    "[project]/app/recruiter/companies/[companyId]/page": [
-      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
-    ],
-    "[project]/app/recruiter/companies/register-company/page": [
-      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
-    ],
-    "[project]/app/recruiter/jobs/page": [
-      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
-    ],
-    "[project]/app/recruiter/jobs/[jobId]/applicants/page": [
-      "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
-    ],
-    "[project]/app/recruiter/jobs/[jobId]/page": [
       "static/media/QGYvz_MVcBeNP4NJtEtqUYLknw-s.p.17653016.woff2"
     ]
   },

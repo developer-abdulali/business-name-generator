@@ -34,6 +34,29 @@ Input.displayName = "Input";
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
+// "use client";
+// import { JOB_API_ENDPOINT } from "@/lib/constant";
+// import { setAllRecruiterJobs } from "@/redux/slices/jobSlice";
+// import axios from "axios";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// const useGetAllRecruiterJobs = () => {
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     const fetchAllRecruiterJobs = async () => {
+//       try {
+//         const res = await axios.get(`${JOB_API_ENDPOINT}/getrecruiterjobs`, {
+//           withCredentials: true,
+//         });
+//         if (res.data.success) dispatch(setAllRecruiterJobs(res.data.jobs));
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     };
+//     fetchAllRecruiterJobs();
+//   }, []);
+// };
+// export default useGetAllRecruiterJobs;
 __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
@@ -50,19 +73,34 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib
 ;
 const useGetAllRecruiterJobs = ()=>{
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const fetchAllRecruiterJobs = async ()=>{
+            setLoading(true);
+            setError(null);
             try {
                 const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$constant$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["JOB_API_ENDPOINT"]}/getrecruiterjobs`, {
                     withCredentials: true
                 });
-                if (res.data.success) dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setAllRecruiterJobs"])(res.data.jobs));
+                if (res.data.success) {
+                    dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setAllRecruiterJobs"])(res.data.jobs));
+                }
             } catch (error) {
-                console.log(error);
+                console.error(error);
+                setError("Failed to fetch jobs.");
+            } finally{
+                setLoading(false);
             }
         };
         fetchAllRecruiterJobs();
-    }, []);
+    }, [
+        dispatch
+    ]);
+    return {
+        loading,
+        error
+    };
 };
 const __TURBOPACK__default__export__ = useGetAllRecruiterJobs;
 }}),
@@ -197,7 +235,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$jobSlice$
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$ellipsis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MoreHorizontal$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/ellipsis.js [app-ssr] (ecmascript) <export default as MoreHorizontal>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/pen.js [app-ssr] (ecmascript) <export default as Edit2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/trash.js [app-ssr] (ecmascript) <export default as Trash>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/eye.js [app-ssr] (ecmascript) <export default as Eye>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/chevron-left.js [app-ssr] (ecmascript) <export default as ChevronLeft>");
@@ -348,7 +385,7 @@ const RecruiterJobsTable = ()=>{
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
                                         className: "p-4 text-gray-900 dark:text-gray-100",
-                                        children: job?.company.name
+                                        children: job?.company?.name
                                     }, void 0, false, {
                                         fileName: "[project]/components/RecruiterJobsTable.jsx",
                                         lineNumber: 127,
@@ -401,32 +438,6 @@ const RecruiterJobsTable = ()=>{
                                                     className: "w-fit p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center gap-2 cursor-pointer hover:bg-purple-600 dark:hover:bg-purple-700 hover:text-white p-2 rounded",
-                                                            onClick: (e)=>{
-                                                                e.stopPropagation();
-                                                            },
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__["Edit2"], {
-                                                                    className: "w-4"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                                    lineNumber: 151,
-                                                                    columnNumber: 25
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    children: "Edit"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                                    lineNumber: 152,
-                                                                    columnNumber: 25
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                            lineNumber: 145,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             onClick: (e)=>{
                                                                 e.stopPropagation();
                                                                 deleteJobHandler(job?._id);
@@ -437,20 +448,20 @@ const RecruiterJobsTable = ()=>{
                                                                     className: "w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                                    lineNumber: 162,
+                                                                    lineNumber: 152,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Delete"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                                    lineNumber: 163,
+                                                                    lineNumber: 153,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                            lineNumber: 155,
+                                                            lineNumber: 145,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -464,20 +475,20 @@ const RecruiterJobsTable = ()=>{
                                                                     className: "w-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                                    lineNumber: 172,
+                                                                    lineNumber: 162,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Applicants"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                                    lineNumber: 173,
+                                                                    lineNumber: 163,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/RecruiterJobsTable.jsx",
-                                                            lineNumber: 165,
+                                                            lineNumber: 155,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
@@ -525,12 +536,12 @@ const RecruiterJobsTable = ()=>{
                         className: "text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__["ChevronLeft"], {}, void 0, false, {
                             fileName: "[project]/components/RecruiterJobsTable.jsx",
-                            lineNumber: 193,
+                            lineNumber: 183,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/RecruiterJobsTable.jsx",
-                        lineNumber: 186,
+                        lineNumber: 176,
                         columnNumber: 9
                     }, this),
                     pageNumbers.map((page)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -541,7 +552,7 @@ const RecruiterJobsTable = ()=>{
                             children: page
                         }, page, false, {
                             fileName: "[project]/components/RecruiterJobsTable.jsx",
-                            lineNumber: 196,
+                            lineNumber: 186,
                             columnNumber: 11
                         }, this)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -552,18 +563,18 @@ const RecruiterJobsTable = ()=>{
                         className: "text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {}, void 0, false, {
                             fileName: "[project]/components/RecruiterJobsTable.jsx",
-                            lineNumber: 219,
+                            lineNumber: 209,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/RecruiterJobsTable.jsx",
-                        lineNumber: 210,
+                        lineNumber: 200,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/RecruiterJobsTable.jsx",
-                lineNumber: 185,
+                lineNumber: 175,
                 columnNumber: 7
             }, this)
         ]
@@ -663,7 +674,7 @@ const RecruiterJobsPage = ()=>{
                         variant: "outline",
                         onClick: ()=>router.push("/recruiter/jobs/post-job"),
                         className: "w-auto bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600",
-                        children: "New Job"
+                        children: "Create New Job"
                     }, void 0, false, {
                         fileName: "[project]/app/recruiter/jobs/page.jsx",
                         lineNumber: 46,

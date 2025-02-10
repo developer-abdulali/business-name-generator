@@ -7,12 +7,14 @@ import useGetAllCompanies from "@/hooks/useGetAllCompanies";
 import { setSearchCompanyByText } from "@/redux/slices/companySlice";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "@/components/shared/Loading";
 
 const CompaniesPage = () => {
   const router = useRouter();
-  useGetAllCompanies();
+  const { companies, loading, error } = useGetAllCompanies();
   const [input, setInput] = useState("");
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +25,14 @@ const CompaniesPage = () => {
     setInput("");
     dispatch(setSearchCompanyByText(""));
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div>Error loading companies</div>; // Handle error state
+  }
 
   return (
     <section className="max-w-screen-2xl mx-auto my-10">
@@ -46,12 +56,12 @@ const CompaniesPage = () => {
         <Button
           variant="outline"
           onClick={() => router.push("/recruiter/companies/register-company")}
-          className="w-auto bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
+          className="w-auto bg-purple-600 hover:text-white dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
         >
           New Company
         </Button>
       </div>
-      <CompaniesTable />
+      <CompaniesTable companies={companies} />
     </section>
   );
 };

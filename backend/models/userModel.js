@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      // type: Number,
       required: true,
     },
     savedJobs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
@@ -31,7 +30,6 @@ const userSchema = new mongoose.Schema(
       company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" },
       profileImage: {
         type: String,
-        default: "https://cdn-icons-png.flaticon.com/128/15339/15339256.png",
       },
     },
   },

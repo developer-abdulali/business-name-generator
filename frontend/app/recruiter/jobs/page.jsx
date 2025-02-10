@@ -8,10 +8,11 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import useGetAllRecruiterJobs from "@/hooks/useGetAllRecruiterJobs";
 import RecruiterJobsTable from "@/components/RecruiterJobsTable";
+import Loading from "@/components/shared/Loading";
 
 const RecruiterJobsPage = () => {
   const router = useRouter();
-  useGetAllRecruiterJobs();
+  const { loading, error } = useGetAllRecruiterJobs();
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
@@ -23,6 +24,14 @@ const RecruiterJobsPage = () => {
     setInput("");
     dispatch(setSearchJobByText(""));
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div>Error loading jobs: {error}</div>;
+  }
 
   return (
     <section className="max-w-screen-2xl mx-auto my-10">
@@ -46,9 +55,9 @@ const RecruiterJobsPage = () => {
         <Button
           variant="outline"
           onClick={() => router.push("/recruiter/jobs/post-job")}
-          className="w-auto bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
+          className="w-auto bg-purple-600 hover:text-white dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
         >
-          New Job
+          Create New Job
         </Button>
       </div>
       <RecruiterJobsTable />

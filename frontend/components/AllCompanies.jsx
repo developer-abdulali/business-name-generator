@@ -82,12 +82,37 @@ const AllCompanies = () => {
                   <div className="group relative h-full rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 transition-all duration-300 hover:shadow-lg hover:border-purple-200 dark:hover:border-purple-700">
                     <div className="flex flex-col items-center">
                       <div className="relative mb-6 w-full h-48">
-                        <Image
+                        {/* <Image
                           src={company?.logo || "/companyIcon.png"}
                           alt={company?.name}
                           fill
                           className="object-contain transition-transform duration-300 group-hover:scale-105"
-                        />
+                        /> */}
+                        {company?.logo ? (
+                          <Image
+                            src={company?.logo}
+                            alt={company?.name}
+                            fill
+                            className="object-contain transition-transform duration-300 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth="1.5"
+                              stroke="currentColor"
+                              className="size-20 text-black dark:text-white"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"
+                              />
+                            </svg>
+                          </div>
+                        )}
                       </div>
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-2">
                         {company.name}

@@ -145,7 +145,8 @@ export const logOutUser = async (req, res) => {
 
 export const updateUserProfile = async (req, res) => {
   try {
-    const { fullname, email, phoneNumber, bio, skills } = req.body;
+    const { fullname, email, phoneNumber, bio, skills, removeProfileImage } =
+      req.body;
     const userId = req.id; // Authenticated user ID from middleware
 
     const user = await User.findById(userId);
@@ -161,6 +162,8 @@ export const updateUserProfile = async (req, res) => {
         req.files["profileImage"][0],
         "profile_images"
       );
+    } else if (removeProfileImage) {
+      profileImageUrl = ""; // Remove the profile image URL
     }
 
     if (req.files["resume"]) {

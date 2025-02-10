@@ -16,8 +16,9 @@ import axios from "axios";
 import { USER_API_ENDPOINT } from "@/lib/constant";
 import { setUser } from "@/redux/slices/authSlice";
 import Image from "next/image";
+import { Trash } from "lucide-react";
 
-const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
+const UpdateProfileModal = ({ modalOpen, setModalOpen, isDarkMode }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -29,6 +30,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
     skills: user?.profile?.skills?.join(", ") || "",
     profileImage: null,
     resume: null,
+    removeProfileImage: false, // Flag to indicate image removal
   });
 
   const [loading, setLoading] = useState(false);
@@ -46,12 +48,17 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
   const handleFileChange = (e, type) => {
     const file = e.target.files[0];
     if (type === "profileImage") {
-      setInput({ ...input, profileImage: file });
+      setInput({ ...input, profileImage: file, removeProfileImage: false });
       setImagePreview(URL.createObjectURL(file));
     } else if (type === "resume") {
       setInput({ ...input, resume: file });
       setResumePreview(file.name);
     }
+  };
+
+  const handleDeleteImagePreview = () => {
+    setImagePreview("");
+    setInput({ ...input, profileImage: null, removeProfileImage: true });
   };
 
   const handleSubmit = async (e) => {
@@ -66,6 +73,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
     formData.append("skills", input.skills);
     if (input.profileImage) formData.append("profileImage", input.profileImage);
     if (input.resume) formData.append("resume", input.resume);
+    formData.append("removeProfileImage", input.removeProfileImage); // Send the flag
 
     try {
       const response = await axios.post(
@@ -94,96 +102,153 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
 
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-      <DialogContent onInteractOutside={() => setModalOpen(false)}>
+      <DialogContent
+        onInteractOutside={() => setModalOpen(false)}
+        className={isDarkMode ? "dark-mode" : "light-mode"}
+      >
         <DialogHeader>
-          <DialogTitle>Update Profile</DialogTitle>
+          <DialogTitle className="text-gray-800 dark:text-gray-200">
+            Update Profile
+          </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Fullname */}
             <div className="flex flex-col gap-y-2">
-              <Label htmlFor="fullname">Full Name</Label>
+              <Label
+                htmlFor="fullname"
+                className="text-gray-700 dark:text-gray-300"
+              >
+                Full Name
+              </Label>
               <Input
                 id="fullname"
                 name="fullname"
                 value={input.fullname}
                 onChange={handleInputChange}
+                className="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               />
             </div>
             {/* Email */}
             <div className="flex flex-col gap-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label
+                htmlFor="email"
+                className="text-gray-700 dark:text-gray-300"
+              >
+                Email
+              </Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 value={input.email}
                 onChange={handleInputChange}
+                className="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               />
             </div>
             {/* Phone */}
             <div className="flex flex-col gap-y-2">
-              <Label htmlFor="number">Phone Number</Label>
+              <Label
+                htmlFor="number"
+                className="text-gray-700 dark:text-gray-300"
+              >
+                Phone Number
+              </Label>
               <Input
                 id="number"
                 name="number"
                 value={input.number}
                 onChange={handleInputChange}
+                className="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               />
             </div>
             {/* Bio */}
             <div className="flex flex-col gap-y-2">
-              <Label htmlFor="bio">Bio</Label>
+              <Label htmlFor="bio" className="text-gray-700 dark:text-gray-300">
+                Bio
+              </Label>
               <Input
                 id="bio"
                 name="bio"
                 value={input.bio}
                 onChange={handleInputChange}
+                className="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               />
             </div>
             {/* Skills */}
             <div className="flex flex-col gap-y-2">
-              <Label htmlFor="skills">Skills</Label>
+              <Label
+                htmlFor="skills"
+                className="text-gray-700 dark:text-gray-300"
+              >
+                Skills
+              </Label>
               <Input
                 id="skills"
                 name="skills"
                 value={input.skills}
                 onChange={handleInputChange}
                 placeholder="Comma-separated skills"
+                className="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               />
             </div>
             {/* Profile Image */}
             <div className="flex flex-col gap-y-2">
-              <Label htmlFor="profileImage">Profile Image</Label>
+              <Label
+                htmlFor="profileImage"
+                className="text-gray-700 dark:text-gray-300"
+              >
+                Profile Image
+              </Label>
               <Input
                 id="profileImage"
                 name="profileImage"
                 type="file"
                 accept="image/*"
                 onChange={(e) => handleFileChange(e, "profileImage")}
+                className="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               />
               {imagePreview && (
-                <Image
-                  src={imagePreview}
-                  alt="Profile Preview"
-                  width={120}
-                  height={120}
-                  className="mt-2 w-24 h-24 object-cover rounded-full"
-                />
+                <div className="relative mt-2 w-24 h-24">
+                  {imagePreview ? (
+                    <Image
+                      src={imagePreview}
+                      alt="Profile Preview"
+                      width={120}
+                      height={120}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  ) : null}
+                  <button
+                    type="button"
+                    onClick={handleDeleteImagePreview}
+                    className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                  >
+                    <Trash className="w-4 h-4" />
+                  </button>
+                </div>
               )}
             </div>
             {/* Resume */}
             <div className="flex flex-col gap-y-2">
-              <Label htmlFor="resume">Resume</Label>
+              <Label
+                htmlFor="resume"
+                className="text-gray-700 dark:text-gray-300"
+              >
+                Resume
+              </Label>
               <Input
                 id="resume"
                 name="resume"
                 type="file"
                 accept="application/pdf"
                 onChange={(e) => handleFileChange(e, "resume")}
+                className="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               />
               {resumePreview && (
-                <span className="mt-2 text-gray-700">{resumePreview}</span>
+                <span className="mt-2 text-gray-700 dark:text-gray-300">
+                  {resumePreview}
+                </span>
               )}
             </div>
           </div>
@@ -192,7 +257,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
               <Button
                 type="button"
                 variant="outline"
-                className="bg-purple-600 text-white hover:bg-gray-100 hover:text-black"
+                className="bg-purple-600 text-white hover:bg-gray-100 hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
                 onClick={() => setModalOpen(false)}
                 disabled={loading}
               >
@@ -202,7 +267,7 @@ const UpdateProfileModal = ({ modalOpen, setModalOpen }) => {
                 variant="outline"
                 type="submit"
                 disabled={loading}
-                className="bg-purple-600 text-white hover:bg-gray-100 hover:text-black"
+                className="bg-purple-600 text-white hover:bg-gray-100 hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 {loading ? "Saving..." : "Save Changes"}
               </Button>

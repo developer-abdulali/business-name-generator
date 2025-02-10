@@ -57,15 +57,13 @@ const Login = () => {
         toast.success(res.data.message);
 
         // Fetch saved jobs
-        const savedJobsRes = await axios.get(
-          `${USER_API_ENDPOINT}/fetch-saved-jobs`,
-          {
-            withCredentials: true,
-          }
-        );
-        if (savedJobsRes.data.success) {
-          dispatch(setSavedJobs(savedJobsRes.data.savedJobs));
-        }
+        // const savedJobsRes = await axios.get(
+        //   `${USER_API_ENDPOINT}/fetch-saved-jobs`,
+        //   { withCredentials: true }
+        // );
+        // if (savedJobsRes.data.success) {
+        //   dispatch(setSavedJobs(savedJobsRes.data.savedJobs));
+        // }
 
         router.push("/");
       }
@@ -75,6 +73,39 @@ const Login = () => {
       dispatch(setLoading(false));
     }
   };
+
+  // const submitHandler = async (data) => {
+  //   dispatch(setLoading(true));
+
+  //   try {
+  //     const res = await axios.post(`${USER_API_ENDPOINT}/login`, data, {
+  //       headers: { "Content-Type": "application/json" },
+  //       withCredentials: true,
+  //     });
+
+  //     if (res.data.success) {
+  //       dispatch(setUser(res.data.user));
+  //       toast.success(res.data.message);
+
+  //       // Fetch saved jobs
+  //       const savedJobsRes = await axios.get(
+  //         `${USER_API_ENDPOINT}/fetch-saved-jobs`,
+  //         {
+  //           withCredentials: true,
+  //         }
+  //       );
+  //       if (savedJobsRes.data.success) {
+  //         dispatch(setSavedJobs(savedJobsRes.data.savedJobs));
+  //       }
+
+  //       router.push("/");
+  //     }
+  //   } catch (error) {
+  //     toast.error(error.response?.data?.error || "An error occurred");
+  //   } finally {
+  //     dispatch(setLoading(false));
+  //   }
+  // };
 
   return (
     <section className="grid min-h-screen lg:grid-cols-2">
