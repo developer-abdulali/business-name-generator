@@ -27,7 +27,7 @@ const DarkModeToggle = () => {
       onClick={toggleDarkMode}
       className="p-2 rounded-full text-gray-800 dark:text-gray-200"
     >
-      {isDarkMode ? <Sun size={30} /> : <Moon size={30} />}
+      {isDarkMode ? <Sun size={28} /> : <Moon size={28} />}
     </button>
   );
 };

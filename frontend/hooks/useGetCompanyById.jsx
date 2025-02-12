@@ -1,6 +1,6 @@
 "use client";
 
-import { COMPANY_API_ENDPOINT, JOB_API_ENDPOINT } from "@/lib/constant";
+import { COMPANY_API_ENDPOINT } from "@/lib/constant";
 import { setSingleCompany } from "@/redux/slices/companySlice";
 import axios from "axios";
 import { useEffect } from "react";

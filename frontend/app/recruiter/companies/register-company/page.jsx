@@ -65,7 +65,7 @@ const RegisterCompanyPage = () => {
         <Button
           variant="outline"
           onClick={registerCompanyHandler}
-          className="bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
+          className="bg-purple-600 hover:text-white dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
         >
           Continue
         </Button>

@@ -14,8 +14,12 @@ const LatestJobCard = ({ job }) => {
     return description?.substring(0, maxLength) + "...";
   };
 
+  const formatSalary = (salary) => {
+    return salary?.toLocaleString();
+  };
+
   return (
-    <div className="group relative bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-lg hover:border-purple-200 dark:hover:border-purple-700 cursor-pointer">
+    <section className="group relative bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-lg hover:border-purple-200 dark:hover:border-purple-700 cursor-pointer">
       {/* Company Info */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
@@ -59,7 +63,7 @@ const LatestJobCard = ({ job }) => {
         <div className="flex items-center gap-2 text-sm col-span-2">
           <PiggyBank className="w-4 h-4 text-green-600 dark:text-green-400" />
           <span className="text-gray-600 dark:text-gray-400">
-            {job?.salary} PKR
+            {formatSalary(job?.salary)} PKR
           </span>
         </div>
       </div>
@@ -74,7 +78,7 @@ const LatestJobCard = ({ job }) => {
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

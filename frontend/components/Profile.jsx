@@ -24,15 +24,7 @@ const Profile = () => {
   useEffect(() => {
     document.body.classList.toggle("dark-mode", isDarkMode);
     document.body.classList.toggle("light-mode", !isDarkMode);
-
-    if (!user) {
-      router.push("/");
-    }
-  }, [isDarkMode, user, router]);
-
-  if (!user) {
-    return null; // Render nothing while redirecting
-  }
+  }, [isDarkMode, , router]);
 
   return (
     <section className={`px-4 py-8 ${isDarkMode ? "dark-mode" : "light-mode"}`}>
@@ -70,14 +62,16 @@ const Profile = () => {
               </p>
             </div>
           </div>
-          <Button
-            variant="outline"
-            onClick={() => setModalOpen(true)}
-            className="w-auto bg-purple-600 hover:text-white dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
-          >
-            <Pen className="w-5 h-5" />
-            Edit Profile
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setModalOpen(true)}
+              className="w-auto bg-purple-600 hover:text-white dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600"
+            >
+              <Pen className="w-5 h-5" />
+              Edit Profile
+            </Button>
+          </div>
         </div>
 
         <div className="mt-6 flex flex-col sm:flex-row sm:justify-between gap-4">

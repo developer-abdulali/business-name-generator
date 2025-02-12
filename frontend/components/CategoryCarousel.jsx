@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import {
   Carousel,
   CarouselContent,
@@ -7,9 +5,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { setSearchedQuery } from "@/redux/slices/jobSlice";
 import {
   Code,
   Palette,
@@ -21,10 +17,15 @@ import {
 } from "lucide-react";
 
 const CategoryCarousel = () => {
-  const dispatch = useDispatch();
   const router = useRouter();
 
   const categories = [
+    {
+      name: "MERN Stack Developer",
+      icon: <Layers className="w-4 h-4" />,
+      color:
+        "bg-orange-50 text-orange-600 hover:bg-orange-100 border-orange-200 dark:bg-orange-900 dark:text-orange-300 dark:hover:bg-orange-800 dark:border-orange-700",
+    },
     {
       name: "Frontend Developer",
       icon: <Layout className="w-4 h-4" />,
@@ -57,9 +58,8 @@ const CategoryCarousel = () => {
     },
   ];
 
-  const searchJobHandler = (query) => {
-    dispatch(setSearchedQuery(query));
-    router.push(`/browse`);
+  const handleCategoryClick = (categoryName) => {
+    router.push(`/browse?query=${encodeURIComponent(categoryName)}`);
   };
 
   return (
@@ -87,7 +87,7 @@ const CategoryCarousel = () => {
                 className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
               >
                 <button
-                  onClick={() => searchJobHandler(category.name)}
+                  onClick={() => handleCategoryClick(category.name)}
                   className={`w-full group flex items-center justify-between rounded-xl py-3 px-4 border transition-all duration-300 ${category.color}`}
                 >
                   <div className="flex items-center gap-3">
@@ -108,7 +108,7 @@ const CategoryCarousel = () => {
           {categories.map((category, index) => (
             <button
               key={index}
-              onClick={() => searchJobHandler(category.name)}
+              onClick={() => handleCategoryClick(category.name)}
               className={`w-full group flex items-center justify-between rounded-xl py-3 px-4 border transition-all duration-300 ${category.color}`}
             >
               <div className="flex items-center gap-3">
@@ -118,17 +118,6 @@ const CategoryCarousel = () => {
               <ChevronRight className="w-4 h-4" />
             </button>
           ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-8">
-          <button
-            onClick={() => router.push("/browse")}
-            className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors"
-          >
-            View All Categories
-            <ChevronRight className="w-4 h-4" />
-          </button>
         </div>
       </div>
     </section>

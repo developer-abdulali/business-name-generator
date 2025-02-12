@@ -7,7 +7,6 @@ import {
 } from "../controllers/userController.js";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
 import multer from "multer";
-import { getSavedJobs, saveJob } from "../controllers/jobController.js";
 
 const upload = multer();
 const userRouter = express.Router();
@@ -29,9 +28,6 @@ userRouter.post(
   updateUserProfile
 );
 
-userRouter.post("/save-job", isAuthenticated, saveJob);
-
-userRouter.get("/fetch-saved-jobs", isAuthenticated, getSavedJobs);
 userRouter.get("/logout", logOutUser);
 
 export default userRouter;

@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -82,12 +81,6 @@ const AllCompanies = () => {
                   <div className="group relative h-full rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 transition-all duration-300 hover:shadow-lg hover:border-purple-200 dark:hover:border-purple-700">
                     <div className="flex flex-col items-center">
                       <div className="relative mb-6 w-full h-48">
-                        {/* <Image
-                          src={company?.logo || "/companyIcon.png"}
-                          alt={company?.name}
-                          fill
-                          className="object-contain transition-transform duration-300 group-hover:scale-105"
-                        /> */}
                         {company?.logo ? (
                           <Image
                             src={company?.logo}

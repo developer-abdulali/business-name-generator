@@ -180,37 +180,3 @@ export const deleteCompany = async (req, res) => {
     return res.status(500).json({ success: false, message: "Server Error" });
   }
 };
-
-// export const deleteCompany = async (req, res) => {
-//   try {
-//     const userId = req.id; // User ID from authentication middleware
-//     const companyId = req.params.id;
-
-//     // Find the company by its ID
-//     const company = await Company.findById(companyId);
-
-//     if (!company) {
-//       return res
-//         .status(404)
-//         .json({ success: false, message: "Company not found." });
-//     }
-
-//     // Check if the user is the owner of the company
-//     if (company.userId.toString() !== userId) {
-//       return res.status(403).json({
-//         success: false,
-//         message: "You do not have permission to delete this company.",
-//       });
-//     }
-
-//     // Delete the company
-//     await company.deleteOne();
-
-//     return res.status(200).json({
-//       success: true,
-//       message: "Company deleted successfully.",
-//     });
-//   } catch (error) {
-//     return res.status(500).json({ success: false, message: "Server Error" });
-//   }
-// };

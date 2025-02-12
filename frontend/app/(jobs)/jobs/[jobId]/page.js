@@ -33,6 +33,10 @@ const JobDescription = () => {
 
   const dispatch = useDispatch();
 
+  const formatSalary = (salary) => {
+    return salary?.toLocaleString();
+  };
+
   const applyJobHandler = async () => {
     if (!user) {
       router.push("/login");
@@ -165,7 +169,7 @@ const JobDescription = () => {
                       Salary
                     </p>
                     <p className="text-lg font-semibold text-green-700 dark:text-green-300">
-                      {singleJob?.salary} PKR
+                      {formatSalary(singleJob?.salary)} PKR
                     </p>
                   </div>
                 </div>

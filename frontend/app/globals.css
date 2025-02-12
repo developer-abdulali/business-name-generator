@@ -93,7 +93,7 @@ input[type="checkbox"] {
 }
 
 .custom-radio:checked::before {
-  background-color: #9333ea; /* Change this to your desired color */
+  @apply bg-purple-600;
 }
 
 .svg-icon {

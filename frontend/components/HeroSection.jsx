@@ -2,18 +2,20 @@
 import React, { useState } from "react";
 import { Search, Briefcase, ArrowRight, Star } from "lucide-react";
 import { Button } from "./ui/button";
-import { useDispatch } from "react-redux";
-import { setSearchedQuery } from "@/redux/slices/jobSlice";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { setSearchJobByText } from "@/redux/slices/jobSlice";
 
 const HeroSection = () => {
-  const [query, setQuery] = useState("");
-  const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  const searchJobHandler = () => {
-    dispatch(setSearchedQuery(query));
-    router.push(`/browse`);
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      dispatch(setSearchJobByText(searchQuery));
+      router.push("/browse");
+    }
   };
 
   return (
@@ -61,12 +63,13 @@ const HeroSection = () => {
                 <input
                   type="text"
                   placeholder="Search for your dream job..."
-                  onChange={(e) => setQuery(e.target.value)}
                   className="w-full py-3 text-base placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none bg-transparent"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               <Button
-                onClick={searchJobHandler}
+                onClick={handleSearch}
                 className="flex items-center gap-2 rounded-xl bg-purple-600 dark:bg-purple-700 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-purple-700 dark:hover:bg-purple-600"
               >
                 <span className="hidden sm:inline">Search Jobs</span>
@@ -81,6 +84,10 @@ const HeroSection = () => {
                 (term) => (
                   <button
                     key={term}
+                    onClick={() => {
+                      setSearchQuery(term);
+                      handleSearch();
+                    }}
                     className="flex items-center gap-1 rounded-full bg-white dark:bg-gray-800 px-3 py-1 text-gray-600 dark:text-gray-400 shadow-sm transition-all hover:bg-purple-50 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-purple-400"
                   >
                     {term}

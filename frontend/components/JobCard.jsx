@@ -1,5 +1,3 @@
-import { Bookmark, BookmarkMinus } from "lucide-react";
-import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import daysAgoFunction from "@/lib/daysAgoFunction";
@@ -7,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 const JobCard = ({ job }) => {
   const router = useRouter();
+
   const truncateDescription = (description, maxLength) => {
     if (!description) return "";
     if (description.length <= maxLength) {
@@ -15,7 +14,9 @@ const JobCard = ({ job }) => {
     return description.substring(0, maxLength) + "...";
   };
 
-  const isSaved = false;
+  const formatSalary = (salary) => {
+    return salary?.toLocaleString();
+  };
 
   return (
     <section
@@ -28,43 +29,26 @@ const JobCard = ({ job }) => {
             ? "Today"
             : `${daysAgoFunction(job?.createdAt)} days ago`}
         </span>
-        <Button
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          variant="outline"
-          className="px-3 py-1 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white"
-        >
-          {isSaved ? (
-            <>
-              <BookmarkMinus /> Remove
-            </>
-          ) : (
-            <>
-              <Bookmark /> Save
-            </>
-          )}
-        </Button>
       </div>
       <div className="flex items-center mb-4">
         {job.company?.logo ? (
           <Avatar>
             <AvatarImage
               src={job?.company?.logo}
-              alt={job?.company?.name}
+              alt={job?.company?.name || "Company Logo"}
               className="object-contain"
             />
           </Avatar>
         ) : (
           <Avatar>
             <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-              {job?.company?.name.charAt(0)}
+              {job?.company?.name ? job?.company?.name.charAt(0) : "?"}
             </span>
           </Avatar>
         )}
         <div className="ml-4">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-            {job?.company?.name}
+            {job?.company?.name || "Unknown Company"}
           </h3>
           <p className="text-gray-600 dark:text-gray-400 -mt-1">
             {job?.location}
@@ -85,7 +69,7 @@ const JobCard = ({ job }) => {
           {job?.jobType}
         </Badge>
         <Badge className="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300 hover:bg-yellow-100 dark:hover:bg-yellow-800">
-          {job?.salary} PKR
+          {formatSalary(job?.salary)} PKR
         </Badge>
         <Badge className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-800">
           {job?.experienceLevel} Experience

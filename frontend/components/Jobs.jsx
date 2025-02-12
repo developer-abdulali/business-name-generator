@@ -72,9 +72,9 @@ const Jobs = () => {
             className="flex items-center text-gray-700 cursor-pointer lg:hidden"
           >
             {showFilters ? (
-              <X className="mr-2" />
+              <X className="mr-2 dark:text-white" />
             ) : (
-              <ListFilter className="mr-2" />
+              <ListFilter className="mr-2 dark:text-white" />
             )}
           </button>
         </div>
@@ -87,9 +87,9 @@ const Jobs = () => {
           ) : (
             <>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {currentJobs?.map((job) => (
-                  <JobCard key={job?._id} job={job} />
-                ))}
+                {currentJobs?.map((job, i) => {
+                  return <JobCard key={i} job={job} />;
+                })}
               </div>
               {/* Pagination controls */}
               {totalPages > 1 && (

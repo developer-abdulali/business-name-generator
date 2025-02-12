@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { LogOut, User2, Menu, X, Bookmark } from "lucide-react";
+import { LogOut, User2, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -32,19 +32,19 @@ const Navbar = () => {
       const res = await axios.get(`${USER_API_ENDPOINT}/logout`, {
         withCredentials: true,
       });
-      if (res.data.success) {
-        dispatch(setUser(null));
-        dispatch(clearAllAppliedJobs());
-        dispatch(clearSavedJobs());
 
+      if (res && res.data && res.data.success) {
+        dispatch(setUser(null));
         router.push("/");
         toast.success(res.data.message);
       } else {
-        toast.error(res.data.message);
+        toast.error(res.data.message || "Logout failed. Please try again.");
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
+      console.error(error);
+      toast.error(
+        error.response?.data?.message || "An error occurred during logout."
+      );
     }
   };
 
@@ -129,26 +129,18 @@ const Navbar = () => {
 
                 <div className="flex flex-col my-2 text-gray-600 dark:text-gray-300">
                   <Link
-                    href="/saved-jobs"
-                    className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <Bookmark className="text-gray-600 dark:text-gray-300" />
-                    <span>Saved Job</span>
-                  </Link>
-
-                  <Link
                     href="/profile"
-                    className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="group flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-purple-600 hover:text-white"
                   >
-                    <User2 className="text-gray-600 dark:text-gray-300" />
+                    <User2 className="group-hover:text-white text-gray-600 dark:text-gray-300" />
                     <span>Profile</span>
                   </Link>
 
                   <div
                     onClick={logoutHandler}
-                    className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="group flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-purple-600 hover:text-white"
                   >
-                    <LogOut className="text-gray-600 dark:text-gray-300" />
+                    <LogOut className="group-hover:text-white text-gray-600 dark:text-gray-300" />
                     <span>Logout</span>
                   </div>
                 </div>
@@ -209,14 +201,14 @@ const Navbar = () => {
           )}
         </ul>
 
-        {/* Login & Signup Buttons for large screens */}
+        {/* Login & Signup Buttons for large screen */}
         <div className="hidden lg:flex gap-2 items-center">
           {!user ? (
             <div className="flex items-center space-x-2">
               <Link href="/login">
                 <Button
                   variant="outline"
-                  className="hover:bg-purple-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-gray-100"
+                  className="hover:bg-purple-600 hover:text-white"
                 >
                   Login
                 </Button>
@@ -224,7 +216,7 @@ const Navbar = () => {
               <Link href="/signup">
                 <Button
                   variant="outline"
-                  className="hover:bg-purple-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-gray-100"
+                  className="hover:bg-purple-600 hover:text-white"
                 >
                   Signup
                 </Button>
@@ -290,26 +282,18 @@ const Navbar = () => {
 
                   <div className="flex flex-col my-2 text-gray-600 dark:text-gray-300">
                     <Link
-                      href="/saved-jobs"
-                      className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <Bookmark className="text-gray-600 dark:text-gray-300" />
-                      <span>Saved Job</span>
-                    </Link>
-
-                    <Link
                       href="/profile"
-                      className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="group flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-purple-600 hover:text-white"
                     >
-                      <User2 className="text-gray-600 dark:text-gray-300" />
-                      <span>Profile</span>
+                      <User2 className="group-hover:text-white text-gray-600 dark:text-gray-300" />
+                      <span className="">Profile</span>
                     </Link>
 
                     <div
                       onClick={logoutHandler}
-                      className="flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="group flex w-full items-center gap-2 cursor-pointer p-2 hover:bg-purple-600 hover:text-white"
                     >
-                      <LogOut className="text-gray-600 dark:text-gray-300" />
+                      <LogOut className="group-hover:text-white text-gray-600 dark:text-gray-300" />
                       <span>Logout</span>
                     </div>
                   </div>

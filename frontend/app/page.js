@@ -12,12 +12,12 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   useGetAllCompaniesForHome();
-  useGetAllJobs();
+  useGetAllJobs(false); // Call the hook without applying the search query
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (user?.role === "recruiter") redirect("/recruiter/companies");
-  }, []);
+  }, [user]);
 
   return (
     <div className="overflow-hidden">
@@ -28,4 +28,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;

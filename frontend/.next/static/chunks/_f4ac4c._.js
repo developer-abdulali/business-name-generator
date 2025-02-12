@@ -789,17 +789,15 @@ const CompaniesPage = ()=>{
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CompaniesPage.useEffect": ()=>{
             dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setSearchCompanyByText"])(input));
-            // Redirect to home if no user is authenticated
-            if (!user) {
-                router.push("/");
-            }
         }
     }["CompaniesPage.useEffect"], [
         input,
-        dispatch,
-        user,
-        router
+        dispatch
     ]);
+    const handleClearInput = ()=>{
+        setInput("");
+        dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setSearchCompanyByText"])(""));
+    };
     if (loading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$shared$2f$Loading$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
             fileName: "[project]/app/recruiter/companies/page.jsx",
@@ -816,13 +814,6 @@ const CompaniesPage = ()=>{
             columnNumber: 12
         }, this); // Handle error state
     }
-    if (!user) {
-        return null; // Render nothing while redirecting
-    }
-    const handleClearInput = ()=>{
-        setInput("");
-        dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setSearchCompanyByText"])(""));
-    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: "max-w-screen-2xl mx-auto my-10",
         children: [
@@ -839,7 +830,7 @@ const CompaniesPage = ()=>{
                                 placeholder: "Search by name, location"
                             }, void 0, false, {
                                 fileName: "[project]/app/recruiter/companies/page.jsx",
-                                lineNumber: 50,
+                                lineNumber: 41,
                                 columnNumber: 11
                             }, this),
                             input && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -849,18 +840,18 @@ const CompaniesPage = ()=>{
                                     className: "w-4 h-4"
                                 }, void 0, false, {
                                     fileName: "[project]/app/recruiter/companies/page.jsx",
-                                    lineNumber: 61,
+                                    lineNumber: 52,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/recruiter/companies/page.jsx",
-                                lineNumber: 57,
+                                lineNumber: 48,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/recruiter/companies/page.jsx",
-                        lineNumber: 49,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -870,26 +861,26 @@ const CompaniesPage = ()=>{
                         children: "New Company"
                     }, void 0, false, {
                         fileName: "[project]/app/recruiter/companies/page.jsx",
-                        lineNumber: 65,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/recruiter/companies/page.jsx",
-                lineNumber: 48,
+                lineNumber: 39,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CompaniesTable$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 companies: companies
             }, void 0, false, {
                 fileName: "[project]/app/recruiter/companies/page.jsx",
-                lineNumber: 73,
+                lineNumber: 64,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/recruiter/companies/page.jsx",
-        lineNumber: 47,
+        lineNumber: 38,
         columnNumber: 5
     }, this);
 };

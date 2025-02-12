@@ -154,6 +154,9 @@ const JobDescription = ()=>{
     const jobId = params.jobId;
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"])();
+    const formatSalary = (salary)=>{
+        return salary?.toLocaleString();
+    };
     const applyJobHandler = async ()=>{
         if (!user) {
             router.push("/login");
@@ -212,7 +215,7 @@ const JobDescription = ()=>{
             children: "Loading..."
         }, void 0, false, {
             fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-            lineNumber: 83,
+            lineNumber: 87,
             columnNumber: 12
         }, this);
     }
@@ -232,12 +235,12 @@ const JobDescription = ()=>{
                                     className: "h-8 w-8 text-purple-600 dark:text-purple-400"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                    lineNumber: 93,
+                                    lineNumber: 97,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                lineNumber: 92,
+                                lineNumber: 96,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -248,7 +251,7 @@ const JobDescription = ()=>{
                                         children: singleJob?.title
                                     }, void 0, false, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 96,
+                                        lineNumber: 100,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -261,38 +264,11 @@ const JobDescription = ()=>{
                                                         className: "h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                        lineNumber: 101,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        children: singleJob?.location
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                        lineNumber: 102,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 100,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex items-center gap-1",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
-                                                        className: "h-4 w-4"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
                                                         lineNumber: 105,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        children: singleJob?.createdAt ? new Date(singleJob.createdAt).toLocaleDateString("en-US", {
-                                                            day: "numeric",
-                                                            month: "long",
-                                                            year: "numeric"
-                                                        }) : "N/A"
+                                                        children: singleJob?.location
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
                                                         lineNumber: 106,
@@ -303,17 +279,44 @@ const JobDescription = ()=>{
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
                                                 lineNumber: 104,
                                                 columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex items-center gap-1",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
+                                                        className: "h-4 w-4"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
+                                                        lineNumber: 109,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        children: singleJob?.createdAt ? new Date(singleJob.createdAt).toLocaleDateString("en-US", {
+                                                            day: "numeric",
+                                                            month: "long",
+                                                            year: "numeric"
+                                                        }) : "N/A"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
+                                                        lineNumber: 110,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
+                                                lineNumber: 108,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 99,
+                                        lineNumber: 103,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                lineNumber: 95,
+                                lineNumber: 99,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -327,14 +330,14 @@ const JobDescription = ()=>{
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                            lineNumber: 132,
+                                            lineNumber: 136,
                                             columnNumber: 19
                                         }, this),
                                         "Already Applied"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                    lineNumber: 131,
+                                    lineNumber: 135,
                                     columnNumber: 17
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "flex items-center gap-2",
@@ -343,25 +346,25 @@ const JobDescription = ()=>{
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                            lineNumber: 137,
+                                            lineNumber: 141,
                                             columnNumber: 19
                                         }, this),
                                         "Apply Now"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                    lineNumber: 136,
+                                    lineNumber: 140,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                lineNumber: 121,
+                                lineNumber: 125,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                        lineNumber: 91,
+                        lineNumber: 95,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -378,7 +381,7 @@ const JobDescription = ()=>{
                                                 className: "h-5 w-5 text-blue-600 dark:text-blue-400"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 149,
+                                                lineNumber: 153,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -388,7 +391,7 @@ const JobDescription = ()=>{
                                                         children: "Positions"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                        lineNumber: 151,
+                                                        lineNumber: 155,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -396,24 +399,24 @@ const JobDescription = ()=>{
                                                         children: singleJob?.position
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                        lineNumber: 154,
+                                                        lineNumber: 158,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 150,
+                                                lineNumber: 154,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 148,
+                                        lineNumber: 152,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                    lineNumber: 147,
+                                    lineNumber: 151,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -425,7 +428,7 @@ const JobDescription = ()=>{
                                                 className: "h-5 w-5 text-green-600 dark:text-green-400"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 162,
+                                                lineNumber: 166,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -435,35 +438,35 @@ const JobDescription = ()=>{
                                                         children: "Salary"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                        lineNumber: 164,
+                                                        lineNumber: 168,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "text-lg font-semibold text-green-700 dark:text-green-300",
                                                         children: [
-                                                            singleJob?.salary,
+                                                            formatSalary(singleJob?.salary),
                                                             " PKR"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                        lineNumber: 167,
+                                                        lineNumber: 171,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 163,
+                                                lineNumber: 167,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 161,
+                                        lineNumber: 165,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                    lineNumber: 160,
+                                    lineNumber: 164,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -475,7 +478,7 @@ const JobDescription = ()=>{
                                                 className: "h-5 w-5 text-purple-600 dark:text-purple-400"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 175,
+                                                lineNumber: 179,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -485,7 +488,7 @@ const JobDescription = ()=>{
                                                         children: "Job Type"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                        lineNumber: 177,
+                                                        lineNumber: 181,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -493,35 +496,35 @@ const JobDescription = ()=>{
                                                         children: singleJob?.jobType
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                        lineNumber: 180,
+                                                        lineNumber: 184,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 176,
+                                                lineNumber: 180,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 174,
+                                        lineNumber: 178,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                    lineNumber: 173,
+                                    lineNumber: 177,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                            lineNumber: 146,
+                            lineNumber: 150,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                        lineNumber: 145,
+                        lineNumber: 149,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -532,7 +535,7 @@ const JobDescription = ()=>{
                                 children: "Job Details"
                             }, void 0, false, {
                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                lineNumber: 191,
+                                lineNumber: 195,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -546,14 +549,14 @@ const JobDescription = ()=>{
                                                     className: "h-5 w-5 text-gray-400 dark:text-gray-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                    lineNumber: 198,
+                                                    lineNumber: 202,
                                                     columnNumber: 21
                                                 }, void 0),
                                                 label: "Experience Required",
                                                 value: `${singleJob?.experienceLevel} years`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 196,
+                                                lineNumber: 200,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DetailItem, {
@@ -561,20 +564,20 @@ const JobDescription = ()=>{
                                                     className: "h-5 w-5 text-gray-400 dark:text-gray-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                    lineNumber: 205,
+                                                    lineNumber: 209,
                                                     columnNumber: 21
                                                 }, void 0),
                                                 label: "Total Applications",
                                                 value: singleJob?.applications?.length || 0
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 203,
+                                                lineNumber: 207,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 195,
+                                        lineNumber: 199,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -585,14 +588,14 @@ const JobDescription = ()=>{
                                                     className: "h-5 w-5 text-gray-400 dark:text-gray-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                    lineNumber: 214,
+                                                    lineNumber: 218,
                                                     columnNumber: 21
                                                 }, void 0),
                                                 label: "Location",
                                                 value: singleJob?.location
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 212,
+                                                lineNumber: 216,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DetailItem, {
@@ -600,7 +603,7 @@ const JobDescription = ()=>{
                                                     className: "h-5 w-5 text-gray-400 dark:text-gray-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                    lineNumber: 221,
+                                                    lineNumber: 225,
                                                     columnNumber: 21
                                                 }, void 0),
                                                 label: "Posted Date",
@@ -611,19 +614,19 @@ const JobDescription = ()=>{
                                                 }) : "N/A"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                                lineNumber: 219,
+                                                lineNumber: 223,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 211,
+                                        lineNumber: 215,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                lineNumber: 194,
+                                lineNumber: 198,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -634,7 +637,7 @@ const JobDescription = ()=>{
                                         children: "Job Description"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 242,
+                                        lineNumber: 246,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -644,40 +647,40 @@ const JobDescription = ()=>{
                                             children: singleJob?.description
                                         }, void 0, false, {
                                             fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                            lineNumber: 246,
+                                            lineNumber: 250,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                        lineNumber: 245,
+                                        lineNumber: 249,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                                lineNumber: 241,
+                                lineNumber: 245,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                        lineNumber: 190,
+                        lineNumber: 194,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                lineNumber: 89,
+                lineNumber: 93,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-            lineNumber: 88,
+            lineNumber: 92,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-        lineNumber: 87,
+        lineNumber: 91,
         columnNumber: 5
     }, this);
 };
@@ -703,7 +706,7 @@ const DetailItem = ({ icon, label, value })=>/*#__PURE__*/ (0, __TURBOPACK__impo
                         children: label
                     }, void 0, false, {
                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                        lineNumber: 264,
+                        lineNumber: 268,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
@@ -711,19 +714,19 @@ const DetailItem = ({ icon, label, value })=>/*#__PURE__*/ (0, __TURBOPACK__impo
                         children: value
                     }, void 0, false, {
                         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                        lineNumber: 267,
+                        lineNumber: 271,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-                lineNumber: 263,
+                lineNumber: 267,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(jobs)/jobs/[jobId]/page.js",
-        lineNumber: 261,
+        lineNumber: 265,
         columnNumber: 3
     }, this);
 _c1 = DetailItem;
