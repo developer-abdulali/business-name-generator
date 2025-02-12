@@ -7,14 +7,13 @@ import useGetAllCompanies from "@/hooks/useGetAllCompanies";
 import { setSearchCompanyByText } from "@/redux/slices/companySlice";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Loading from "@/components/shared/Loading";
 
 const CompaniesPage = () => {
   const router = useRouter();
   const { companies, loading, error } = useGetAllCompanies();
   const [input, setInput] = useState("");
-  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {

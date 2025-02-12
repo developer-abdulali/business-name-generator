@@ -1,16 +1,5 @@
 {
   "/page": "app/page.js",
-  "/profile/page": "app/profile/page.js",
   "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/recruiter/companies/page": "app/recruiter/companies/page.js",
-  "/recruiter/companies/[companyId]/page": "app/recruiter/companies/[companyId]/page.js",
-  "/recruiter/companies/register-company/page": "app/recruiter/companies/register-company/page.js",
-  "/recruiter/jobs/page": "app/recruiter/jobs/page.js",
-  "/recruiter/jobs/post-job/page": "app/recruiter/jobs/post-job/page.js",
-  "/recruiter/jobs/[jobId]/applicants/page": "app/recruiter/jobs/[jobId]/applicants/page.js",
-  "/(jobs)/jobs/page": "app/(jobs)/jobs/page.js",
-  "/browse/page": "app/browse/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/(jobs)/jobs/[jobId]/page": "app/(jobs)/jobs/[jobId]/page.js",
-  "/(auth)/signup/page": "app/(auth)/signup/page.js"
+  "/(jobs)/jobs/page": "app/(jobs)/jobs/page.js"
 }
