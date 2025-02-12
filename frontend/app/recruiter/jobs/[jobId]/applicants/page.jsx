@@ -14,6 +14,7 @@ const ApplicantsPage = () => {
   const { applicants } = useSelector((state) => state.application);
 
   useEffect(() => {
+    document.title = "MERN Job Portal - All Applications";
     const fetchAllApplicants = async () => {
       try {
         const res = await axios.get(

@@ -22,6 +22,7 @@ const Profile = () => {
   const router = useRouter();
 
   useEffect(() => {
+    document.title = "MERN Job Portal - Profile";
     document.body.classList.toggle("dark-mode", isDarkMode);
     document.body.classList.toggle("light-mode", !isDarkMode);
   }, [isDarkMode, , router]);
@@ -58,7 +59,7 @@ const Profile = () => {
                 {user?.fullname}
               </h2>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                {user?.role}
+                {user?.profile?.bio}
               </p>
             </div>
           </div>

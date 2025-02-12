@@ -17,6 +17,7 @@ const Jobs = () => {
   const { fetchAllJobs } = useGetAllJobs();
 
   useEffect(() => {
+    document.title = "MERN Job Portal - All Jobs";
     fetchAllJobs();
   }, []);
 

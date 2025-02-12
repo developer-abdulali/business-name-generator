@@ -25,6 +25,10 @@
         {
           "regexp": "/:nextData(_next/data/[^/]{1,})?/profile{(\\\\.json)}?",
           "originalSource": "/profile"
+        },
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/recruiter/:path*{(\\\\.json)}?",
+          "originalSource": "/recruiter/:path*"
         }
       ],
       "wasm": [],
@@ -32,9 +36,9 @@
       "env": {
         "__NEXT_BUILD_ID": "development",
         "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "GXHaLiYkidHyyUIVkIspu1a8OKQzFA6JlRXwNC1BGc8=",
-        "__NEXT_PREVIEW_MODE_ID": "faa1d6259ea785a3c19075770a4391d3",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "a4e6bb06c4acf2857e166eb51e5052a8473f2aca57bd84c75637360c03103e31",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "010f2a4afa9879451786b111f98617c85c90692ed4f4bd0baa83295c8acb3344"
+        "__NEXT_PREVIEW_MODE_ID": "529b85c87549214bc5faee60b1fa669d",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "3ea9eb86cd0c1aabd74dd93e3aaa1e73a075e537616ab723226cd7c29d333a25",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "f469c9db4ab6f19084e1303d9045b2063463d49c60d0685b4b8cbc6ed0fb1cba"
       }
     }
   },

@@ -18,6 +18,7 @@ const CompaniesPage = () => {
 
   useEffect(() => {
     dispatch(setSearchCompanyByText(input));
+    document.title = "MERN Job Portal - Companies";
   }, [input, dispatch]);
 
   const handleClearInput = () => {

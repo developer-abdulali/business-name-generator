@@ -1,5 +1,4 @@
 import { Job } from "../models/jobSchema.js";
-import { User } from "../models/userModel.js";
 
 export const postJob = async (req, res) => {
   try {

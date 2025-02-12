@@ -782,13 +782,11 @@ const CompaniesPage = ()=>{
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const { companies, loading, error } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllCompanies$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])();
     const [input, setInput] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
-        "CompaniesPage.useSelector": (state)=>state.auth
-    }["CompaniesPage.useSelector"]);
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CompaniesPage.useEffect": ()=>{
             dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$redux$2f$slices$2f$companySlice$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setSearchCompanyByText"])(input));
+            document.title = "MERN Job Portal - Companies";
         }
     }["CompaniesPage.useEffect"], [
         input,
@@ -884,11 +882,10 @@ const CompaniesPage = ()=>{
         columnNumber: 5
     }, this);
 };
-_s(CompaniesPage, "p82Ud+NGPPmJmQGVOu3qJovcrYU=", false, function() {
+_s(CompaniesPage, "bW73B5sxYftatj+lQoUoje5U+Tg=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$useGetAllCompanies$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"]
     ];
 });

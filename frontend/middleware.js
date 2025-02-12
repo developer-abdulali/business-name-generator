@@ -23,6 +23,7 @@ export const config = {
     "/recruiter/companies/:path*", // Matches all routes under /recruiter/companies
     "/recruiter/jobs/:path*", // Matches all routes under /recruiter/jobs
     "/profile",
+    "/recruiter/:path*",
     // Add more paths as needed
   ],
 };

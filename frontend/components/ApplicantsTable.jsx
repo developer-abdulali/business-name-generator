@@ -74,7 +74,7 @@ const ApplicantsTable = () => {
             <TableRow className="border-b dark:border-gray-700">
               <TableCell
                 colSpan="6"
-                className="px-4 py-2 text-center dark:text-gray-300"
+                className="px-4 py-2 text-gray-500 text-center dark:text-gray-300"
               >
                 No applicants found.
               </TableCell>

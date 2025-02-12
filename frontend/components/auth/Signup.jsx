@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -90,6 +90,10 @@ const Signup = () => {
       dispatch(setLoading(false));
     }
   };
+
+  useEffect(() => {
+    document.title = "MERN Job Portal - Sign Up";
+  }, []);
 
   return (
     <section className="grid min-h-screen lg:grid-cols-2 gap-6 p-6 md:p-10 bg-white dark:bg-gray-900">

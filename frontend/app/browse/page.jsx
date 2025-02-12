@@ -16,6 +16,7 @@ const BrowseJobs = () => {
     if (searchQuery) {
       dispatch(setSearchJobByText(searchQuery));
     }
+    document.title = "MERN Job Portal - Search";
   }, [searchQuery, dispatch]);
 
   useGetAllJobs(true); // Fetch jobs with the search query

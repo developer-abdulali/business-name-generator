@@ -45,7 +45,8 @@ const config = {
         "/recruiter/companies/register-company",
         "/recruiter/companies/:path*",
         "/recruiter/jobs/:path*",
-        "/profile"
+        "/profile",
+        "/recruiter/:path*"
     ]
 };
 }}),

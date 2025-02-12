@@ -6,7 +6,7 @@ import { COMPANY_API_ENDPOINT } from "@/lib/constant";
 import { setSingleCompany } from "@/redux/slices/companySlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 
@@ -33,6 +33,10 @@ const RegisterCompanyPage = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    document.title = "MERN Job Portal - Register Company";
+  }, []);
 
   return (
     <section className="max-w-screen-2xl mx-auto px-4">

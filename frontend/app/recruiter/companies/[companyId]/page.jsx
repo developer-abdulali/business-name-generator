@@ -91,6 +91,7 @@ const CompanyDescription = () => {
   };
 
   useEffect(() => {
+    document.title = "MERN Job Portal - Company Setup";
     setInput({
       name: singleCompany?.name || "",
       description: singleCompany?.description || "",

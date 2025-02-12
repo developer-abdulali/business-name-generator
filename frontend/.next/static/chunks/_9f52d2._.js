@@ -130,6 +130,11 @@ const RegisterCompanyPage = ()=>{
             console.error(error);
         }
     };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "RegisterCompanyPage.useEffect": ()=>{
+            document.title = "MERN Job Portal - Register Company";
+        }
+    }["RegisterCompanyPage.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: "max-w-screen-2xl mx-auto px-4",
         children: [
@@ -141,7 +146,7 @@ const RegisterCompanyPage = ()=>{
                         children: "Your Company Name"
                     }, void 0, false, {
                         fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-                        lineNumber: 40,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -149,13 +154,13 @@ const RegisterCompanyPage = ()=>{
                         children: "What would you like to give your company name? You can change it later."
                     }, void 0, false, {
                         fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-                        lineNumber: 43,
+                        lineNumber: 47,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-                lineNumber: 39,
+                lineNumber: 43,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -163,7 +168,7 @@ const RegisterCompanyPage = ()=>{
                 children: "Company Name"
             }, void 0, false, {
                 fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-                lineNumber: 48,
+                lineNumber: 52,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -174,7 +179,7 @@ const RegisterCompanyPage = ()=>{
                 className: "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
             }, void 0, false, {
                 fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-                lineNumber: 49,
+                lineNumber: 53,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -187,7 +192,7 @@ const RegisterCompanyPage = ()=>{
                         children: "Cancel"
                     }, void 0, false, {
                         fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-                        lineNumber: 58,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -197,23 +202,23 @@ const RegisterCompanyPage = ()=>{
                         children: "Continue"
                     }, void 0, false, {
                         fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-                        lineNumber: 65,
+                        lineNumber: 69,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-                lineNumber: 57,
+                lineNumber: 61,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/recruiter/companies/register-company/page.jsx",
-        lineNumber: 38,
+        lineNumber: 42,
         columnNumber: 5
     }, this);
 };
-_s(RegisterCompanyPage, "8/hDRu7gERt3n3XTFSLEPcGSq1w=", false, function() {
+_s(RegisterCompanyPage, "s7Tp3UXNwrfEo0Uc4ZaZ6X6YGnE=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]

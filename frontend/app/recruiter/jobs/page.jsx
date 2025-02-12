@@ -18,6 +18,7 @@ const RecruiterJobsPage = () => {
 
   useEffect(() => {
     dispatch(setSearchJobByText(input));
+    document.title = "MERN Job Portal - Created Jobs";
   }, [input, dispatch]);
 
   const handleClearInput = () => {

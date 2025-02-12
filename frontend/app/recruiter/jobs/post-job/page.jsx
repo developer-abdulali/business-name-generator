@@ -15,7 +15,7 @@ import { JOB_API_ENDPOINT } from "@/lib/constant";
 import { setSingleJob } from "@/redux/slices/jobSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 
@@ -66,6 +66,10 @@ const PostAJobPage = () => {
       toast.error(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    document.title = "MERN Job Portal - Post A Job";
+  }, []);
 
   return (
     <section className="flex items-center justify-center w-full min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
