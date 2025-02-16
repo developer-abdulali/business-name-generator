@@ -1,6 +1,1 @@
-{
-  "/page": "app/page.js",
-  "/(jobs)/jobs/page": "app/(jobs)/jobs/page.js",
-  "/browse/page": "app/browse/page.js",
-  "/(auth)/login/page": "app/(auth)/login/page.js"
-}
+{}

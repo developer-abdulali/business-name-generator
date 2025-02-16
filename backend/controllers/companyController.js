@@ -40,10 +40,12 @@ export const registerCompany = async (req, res) => {
 export const getCompany = async (req, res) => {
   try {
     const userId = req.id;
-    const companies = await Company.find({ userId }).populate({
-      path: "jobs",
-      model: Job,
-    });
+    const companies = await Company.find({ userId })
+      .populate({
+        path: "jobs",
+        model: Job,
+      })
+      .limit(100);
 
     if (!companies) {
       return res
