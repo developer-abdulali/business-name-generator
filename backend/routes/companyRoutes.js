@@ -25,5 +25,6 @@ companyRouter.post(
   updateCompany
 );
 companyRouter.delete("/delete/:id", isAuthenticated, deleteCompany);
+// companyRouter.delete("/delete/:id", isAuthenticated, deleteCompany);
 
 export default companyRouter;
