@@ -1,7 +1,4 @@
 {
   "/page": "app/page.js",
-  "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/recruiter/companies/page": "app/recruiter/companies/page.js",
-  "/recruiter/companies/[companyId]/page": "app/recruiter/companies/[companyId]/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"
 }
