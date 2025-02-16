@@ -717,10 +717,10 @@ __turbopack_esm__({
     "USER_API_ENDPOINT": (()=>USER_API_ENDPOINT)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-const USER_API_ENDPOINT = `${("TURBOPACK compile-time value", "http://localhost:8080")}/api/user`;
-const JOB_API_ENDPOINT = `${("TURBOPACK compile-time value", "http://localhost:8080")}/api/job`;
-const COMPANY_API_ENDPOINT = `${("TURBOPACK compile-time value", "http://localhost:8080")}/api/company`;
-const APPLICATION_API_ENDPOINT = `${("TURBOPACK compile-time value", "http://localhost:8080")}/api/application`;
+const USER_API_ENDPOINT = `${("TURBOPACK compile-time value", "https://job-portal-server-seven-ruby.vercel.app")}/api/user`;
+const JOB_API_ENDPOINT = `${("TURBOPACK compile-time value", "https://job-portal-server-seven-ruby.vercel.app")}/api/job`;
+const COMPANY_API_ENDPOINT = `${("TURBOPACK compile-time value", "https://job-portal-server-seven-ruby.vercel.app")}/api/company`;
+const APPLICATION_API_ENDPOINT = `${("TURBOPACK compile-time value", "https://job-portal-server-seven-ruby.vercel.app")}/api/application`;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
