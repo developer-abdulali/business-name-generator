@@ -12,6 +12,7 @@ import multer from "multer";
 
 const upload = multer();
 
+// Define the routes for company endpoints
 const companyRouter = express.Router();
 
 companyRouter.post("/register", isAuthenticated, registerCompany);
