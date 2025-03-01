@@ -10,6 +10,7 @@ import {
 } from "../controllers/companyController.js";
 import multer from "multer";
 
+// multer
 const upload = multer();
 
 // Define the routes for company endpoints
