@@ -9,6 +9,7 @@ import {
 
 const applicationRouter = express.Router();
 
+// routes for both applicants and recruiters
 applicationRouter.get("/apply/:id", isAuthenticated, applyJob);
 applicationRouter.get("/get", isAuthenticated, getAppliedJobs);
 applicationRouter.get("/:id/applicants", isAuthenticated, getApplicants);
