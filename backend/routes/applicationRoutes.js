@@ -15,5 +15,5 @@ applicationRouter.get("/get", isAuthenticated, getAppliedJobs);
 applicationRouter.get("/:id/applicants", isAuthenticated, getApplicants);
 applicationRouter.post("/status/:id/update", isAuthenticated, updateJobStatus);
 
-// exporting
+// exporting applicationRouter
 export default applicationRouter;
