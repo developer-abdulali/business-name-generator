@@ -688,10 +688,10 @@ __turbopack_esm__({
     "JOB_API_ENDPOINT": (()=>JOB_API_ENDPOINT),
     "USER_API_ENDPOINT": (()=>USER_API_ENDPOINT)
 });
-const USER_API_ENDPOINT = `${("TURBOPACK compile-time value", "https://job-portal-server-seven-ruby.vercel.app")}/api/user`;
-const JOB_API_ENDPOINT = `${("TURBOPACK compile-time value", "https://job-portal-server-seven-ruby.vercel.app")}/api/job`;
-const COMPANY_API_ENDPOINT = `${("TURBOPACK compile-time value", "https://job-portal-server-seven-ruby.vercel.app")}/api/company`;
-const APPLICATION_API_ENDPOINT = `${("TURBOPACK compile-time value", "https://job-portal-server-seven-ruby.vercel.app")}/api/application`;
+const USER_API_ENDPOINT = `${("TURBOPACK compile-time value", "http://localhost:8080")}/api/user`;
+const JOB_API_ENDPOINT = `${("TURBOPACK compile-time value", "http://localhost:8080")}/api/job`;
+const COMPANY_API_ENDPOINT = `${("TURBOPACK compile-time value", "http://localhost:8080")}/api/company`;
+const APPLICATION_API_ENDPOINT = `${("TURBOPACK compile-time value", "http://localhost:8080")}/api/application`;
 }}),
 "[project]/redux/slices/authSlice.js [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";

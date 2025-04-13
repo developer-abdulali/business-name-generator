@@ -23,7 +23,7 @@ const BrowseJobs = () => {
   const { allJobs } = useSelector((state) => state.job);
 
   return (
-    <section className="wrapper my-10 px-4 sm:px-6 xl:px-0">
+    <section className="wrapper h-screen my-10 px-4 sm:px-6 xl:px-0">
       <h2 className="font-bold text-2xl md:text-3xl my-10 text-center md:text-left text-gray-900 dark:text-gray-100">
         Search Results ({allJobs.length})
       </h2>

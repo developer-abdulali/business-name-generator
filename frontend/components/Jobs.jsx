@@ -61,25 +61,25 @@ const Jobs = () => {
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <section className="wrapper py-8 px-4 sm:px-6 xl:px-0">
-      <div className="">
-        <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
-          Job <span className="text-purple-600">Listings</span>
-        </h1>
-        <div className="mb-4 flex items-center justify-between">
-          <p className="text-lg font-semibold">Filters</p>
-          <button
-            onClick={() => setShowFilters((prev) => !prev)}
-            className="flex items-center text-gray-700 cursor-pointer lg:hidden"
-          >
-            {showFilters ? (
-              <X className="mr-2 dark:text-white" />
-            ) : (
-              <ListFilter className="mr-2 dark:text-white" />
-            )}
-          </button>
-        </div>
+    <section className="wrapper h-screen py-8 px-4 sm:px-6 xl:px-0">
+      {/* <div className=""> */}
+      <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
+        Job <span className="text-purple-600">Listings</span>
+      </h1>
+      <div className="mb-4 flex items-center justify-between">
+        <p className="text-lg font-semibold">Filters</p>
+        <button
+          onClick={() => setShowFilters((prev) => !prev)}
+          className="flex items-center text-gray-700 cursor-pointer lg:hidden"
+        >
+          {showFilters ? (
+            <X className="mr-2 dark:text-white" />
+          ) : (
+            <ListFilter className="mr-2 dark:text-white" />
+          )}
+        </button>
       </div>
+      {/* </div> */}
       <div className="lg:flex lg:space-x-8">
         {showFilters && <Filters onFilterChange={setSelectedFilters} />}
         <div className="flex-1">
