@@ -1,8 +1,0 @@
-{
-  "/recruiter/jobs/page": "app/recruiter/jobs/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/recruiter/companies/page": "app/recruiter/companies/page.js",
-  "/recruiter/jobs/post-job/page": "app/recruiter/jobs/post-job/page.js",
-  "/page": "app/page.js",
-  "/profile/page": "app/profile/page.js"
-}
