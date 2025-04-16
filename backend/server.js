@@ -1,35 +1,42 @@
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import cors from "cors";
 import dotenv from "dotenv";
-// import cors from "cors";
 import { dbConnection } from "./config/dbConnection.js";
 
 // routes
 import userRouter from "./routes/authRoutes.js";
-// import cookieParser from "cookie-parser";
+import pollRouter from "./routes/pollRoutes.js";
 
 dotenv.config();
 
 const app = express();
 
 // Middlewares
-// app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // CORS Configuration
-// const allowedOrigins = ["http://localhost:5173", "https://abdulali.vercel.app"];
+const allowedOrigins = ["http://localhost:5173", "https://abdulali.vercel.app"];
 
-// const corsOptions = {
-//   origin: allowedOrigins,
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   credentials: true, // Allow cookies to be sent
-//   optionsSuccessStatus: 204,
-// };
+const corsOptions = {
+  origin: allowedOrigins,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Allow cookies to be sent
+  optionsSuccessStatus: 204,
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // API Routes
 app.use("/api/v1/auth", userRouter);
+app.use("/api/v1/poll", pollRouter);
+
+// Serve uploads folder
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Connect to the database
 await dbConnection();

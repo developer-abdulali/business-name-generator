@@ -54,8 +54,77 @@ export const registerUser = async (req, res) => {
       token: generateToken(user._id),
       message: "User registered successfully!",
     });
-  } catch (error) {
-    console.error("Error registering user:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error registering user", error: err.message });
+  }
+};
+
+// Login user function
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  // Validation: check for missing fields
+  if (!email || !password) {
+    return res.status(400).json({ message: "All fields are required!" });
+  }
+
+  try {
+    // Find the user by email
+    const user = await User.findOne({ email });
+
+    // Check if user exists
+    if (!user) {
+      return res.status(404).json({ message: "User not found!" });
+    }
+
+    // Compare the provided password with the hashed password in the database
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return res.status(400).json({ message: "Invalid email or password" });
+    }
+
+    res.status(200).json({
+      id: user._id,
+      user: {
+        ...user.toObject(),
+        totalPollsCreated: 0,
+        totalPollsVotes: 0,
+        totalPollsBookmarked: 0,
+      },
+      token: generateToken(user._id),
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error while logging in", error: err.message });
+  }
+};
+
+// Get user info function
+export const getUserInfo = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+
+    // Check if user exists
+    if (!user) {
+      return res.status(404).json({ message: "User not found!" });
+    }
+
+    // Add the new attributes to the response
+    const userInfo = {
+      ...user.toObject(),
+      totalPollsCreated: 0,
+      totalPollsVotes: 0,
+      totalPollsBookmarked: 0,
+    };
+
+    res.status(200).json(userInfo);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error while getting user info", error: err.message });
   }
 };
