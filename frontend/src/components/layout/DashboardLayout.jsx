@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Navbar from "./Navbar";
 import SideMenu from "./SideMenu";
-import UserDeailsCard from "../cards/UserDeailsCard";
 import { UserContext } from "../../context/userContext";
+import UserDetailsCard from "../cards/UserDetailsCard";
 
 const DashboardLayout = ({ children, activeMenu }) => {
   const { user } = useContext(UserContext);
@@ -20,13 +20,13 @@ const DashboardLayout = ({ children, activeMenu }) => {
           <div className="grow mx-5">{children}</div>
 
           <div className="hidden md:block mr-5">
-            <UserDeailsCard
-              profileImageUrl={user && user.profileImageUrl}
-              fullName={user && user.fullName}
-              username={user && user.username}
-              totalPollsVotes={user && user.totalPollsVotes}
-              totalPollsCreated={user && user.totalPollsCreated}
-              totalPollsBookmarked={user && user.totalPollsBookmarked}
+            <UserDetailsCard
+              profileImageUrl={user.profileImageUrl}
+              fullName={user.fullName}
+              username={user.username}
+              totalPollsVotes={user.totalPollsVotes}
+              totalPollsCreated={user.totalPollsCreated}
+              totalPollsBookmarked={user.totalPollsBookmarked}
             />
           </div>
         </div>

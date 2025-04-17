@@ -1,4 +1,5 @@
 import Poll from "../models/pollSchema.js";
+import User from "../models/userSchema.js";
 
 export const createPoll = async (req, res) => {
   const { question, type, options, creatorId } = req.body;
@@ -13,15 +14,20 @@ export const createPoll = async (req, res) => {
   try {
     let processedOptions = [];
 
+    // Ensure options is an array
+    const optionsArray = Array.isArray(options) ? options : [];
+
     // Process options based on poll type
     switch (type) {
       case "single-choice":
-        if (!options || options.length < 2) {
+        if (optionsArray.length < 2) {
           return res.status(400).json({
             message: "Single-choice poll must have at least two options",
           });
         }
-        processedOptions = options.map((option) => ({ optionText: option }));
+        processedOptions = optionsArray.map((option) => ({
+          optionText: option,
+        }));
         break;
 
       case "rating":
@@ -37,12 +43,12 @@ export const createPoll = async (req, res) => {
         break;
 
       case "image-based":
-        if (!options || options.length < 2) {
+        if (optionsArray.length < 2) {
           return res.status(400).json({
-            message: "Image-based poll must hav at least two iamge URLs.",
+            message: "Image-based poll must have at least two image URLs.",
           });
         }
-        processedOptions = options.map((url) => ({ optionText: url }));
+        processedOptions = optionsArray.map((url) => ({ optionText: url }));
         break;
 
       case "open-ended":
@@ -148,37 +154,137 @@ export const getAllPolls = async (req, res) => {
 };
 
 export const getVotedPolls = async (req, res) => {
+  const { page = 1, limit = 10 } = req.query;
+  const userId = req.user._id;
   try {
+    // Calculate pagination parameters
+    const pageNumber = parseInt(page, 10);
+    const pageSize = parseInt(limit, 10);
+    const skip = (pageNumber - 1) * pageSize;
+
+    // Fetch poll where the user has voted.
+    const polls = await Poll.find({ voters: userId })
+      .populate("creator", "fullName profileImageUrl username email")
+      .populate({
+        path: "response.voterId",
+        select: "username profileImageUrl fullName",
+      })
+      .skip(skip)
+      .limit(pageSize);
+
+    // Add hasUserVoted flag for each poll
+    const updatedPolls = polls.map((poll) => {
+      const userHasVoted = poll.voters.some((voterId) =>
+        voterId.equals(userId)
+      );
+      return {
+        ...poll.toObject(),
+        userHasVoted,
+      };
+    });
+
+    // Get total count of voted polls
+    const totalVotedPolls = await Poll.countDocuments({ voters: userId });
+
+    res.status(200).json({
+      polls: updatedPolls,
+      currentPage: pageNumber,
+      totalPages: Math.ceil(totalVotedPolls / pageSize),
+      totalVotedPolls,
+    });
   } catch (err) {
     res.status(500).json({
-      message: "Error getting all polls",
+      message: "Error getting all voted polls",
       error: err.message,
     });
   }
 };
 
 export const getPollById = async (req, res) => {
+  const { id } = req.params;
   try {
+    const poll = await Poll.findById(id).populate("creator", "username email");
+
+    if (!poll) return res.status(404).json({ message: "Poll not found." });
+
+    res.status(200).json(poll);
   } catch (err) {
     res.status(500).json({
-      message: "Error getting all polls",
+      message: "Error getting a poll",
       error: err.message,
     });
   }
 };
 
 export const voteOnPoll = async (req, res) => {
+  const { id } = req.params;
+  const { optionIndex, voterId, responseText } = req.body;
   try {
+    const poll = await Poll.findById(id);
+    if (!poll)
+      return res.stats(404).json({
+        message: "Poll not found.",
+      });
+
+    if (poll.closed)
+      return res.stats(400).json({
+        message: "Poll is closed.",
+      });
+
+    if (poll.voters.includes(voterId)) {
+      return res.status(400).json({
+        message: "You have already voted on this poll.",
+      });
+    }
+
+    if (poll.type === "open-ended") {
+      if (!responseText) {
+        return res.status(400).json({
+          message: "Response text is required for open-ended polls.",
+        });
+      }
+      poll.response.push({ voterId, responseText });
+    } else {
+      if (
+        optionIndex === undefined ||
+        optionIndex < 0 ||
+        optionIndex >= poll.options.length
+      ) {
+        return res.status(400).json({ message: "Invalid option index." });
+      }
+      poll.options[optionIndex].votes += 1;
+    }
+
+    poll.voters.push(voterId);
+    await poll.save();
+
+    res.status(200).json({ message: "Successfully voted on poll.", poll });
   } catch (err) {
     res.status(500).json({
-      message: "Error getting all polls",
+      message: "Error voting on poll.",
       error: err.message,
     });
   }
 };
 
 export const closePoll = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.id;
   try {
+    const poll = await Poll.findById(id);
+
+    if (!poll) return res.status(404).json({ message: "Poll not found." });
+
+    if (poll.creator.toString() !== userId) {
+      return res.status(403).json({
+        message: "You are not authorized to close this poll.",
+      });
+    }
+
+    poll.closed = true;
+    await poll.save();
+
+    res.status(200).json({ message: "Poll closed successfully.", poll });
   } catch (err) {
     res.status(500).json({
       message: "Error getting all polls",
@@ -188,7 +294,36 @@ export const closePoll = async (req, res) => {
 };
 
 export const bookmarkPoll = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.id;
   try {
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found." });
+
+    // Check if poll already bookmarked
+    const idBookmarked = user.bookmarkedPolls.includes(id);
+
+    if (idBookmarked) {
+      // Remove poll from bookmark
+      user.bookmarkedPolls = user.bookmarkedPolls.filter(
+        (pollId) => pollId.toString() !== id
+      );
+
+      await user.save();
+      return res.status(200).json({
+        message: "Poll removed from bookmarks.",
+        bookmarkPoll: user.bookmarkedPolls,
+      });
+    }
+
+    // Add poll to bookmark
+    user.bookmarkedPolls.push(id);
+    await user.save();
+
+    res.status(200).json({
+      message: "Poll bookmarked successfully.",
+      bookmarkPoll: user.bookmarkedPolls,
+    });
   } catch (err) {
     res.status(500).json({
       message: "Error getting all polls",
@@ -198,17 +333,55 @@ export const bookmarkPoll = async (req, res) => {
 };
 
 export const getBookmarkedPolls = async (req, res) => {
+  const userId = req.user.id;
   try {
+    const user = await User.findById(userId).populate({
+      path: "bookmarkedPolls",
+      populate: {
+        path: "creator",
+        select: "fullName, username profileImageUrl",
+      },
+    });
+
+    if (!user) return res.status(404).json({ message: "User not found." });
+
+    const bookmarkedPolls = user.bookmarkedPolls;
+    // Add hasUserVoted flag for each poll
+    const updatedPolls = bookmarkedPolls.map((poll) => {
+      const userHasVoted = poll.voters.some((voterId) =>
+        voterId.equals(userId)
+      );
+      return {
+        ...poll.toObject(),
+        userHasVoted,
+      };
+    });
+
+    res.status(200).json({ bookmarkPolls: updatedPolls });
   } catch (err) {
     res.status(500).json({
-      message: "Error getting all polls",
+      message: "Error getting all bookmarked polls",
       error: err.message,
     });
   }
 };
 
 export const deletePoll = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.id;
   try {
+    const poll = await Poll.findById(id);
+
+    if (!poll) return res.status(404).json({ message: "Poll not found." });
+
+    if (poll.creator.toString() !== userId) {
+      return res.status(403).json({
+        message: "You are not authorized to delete this poll.",
+      });
+    }
+    await Poll.findByIdAndDelete(id);
+
+    res.status(200).json({ message: "Poll deleted successfully." });
   } catch (err) {
     res.status(500).json({
       message: "Error getting all polls",

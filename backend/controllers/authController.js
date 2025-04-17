@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/userSchema.js";
 import bcrypt from "bcryptjs";
+import Poll from "../models/pollSchema.js";
 
 // Generate jwt token
 const generateToken = (id) => {
@@ -86,13 +87,22 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
+    // Count polls created by user
+    const totalPollsCreated = await Poll.countDocuments({ creator: user._id });
+
+    // Count poll user voted in
+    const totalPollsVotes = await Poll.countDocuments({ voters: user._id });
+
+    // Count polls which user bookmarked
+    const totalPollsBookmarked = user.bookmarkedPolls.length;
+
     res.status(200).json({
       id: user._id,
       user: {
         ...user.toObject(),
-        totalPollsCreated: 0,
-        totalPollsVotes: 0,
-        totalPollsBookmarked: 0,
+        totalPollsCreated,
+        totalPollsVotes,
+        totalPollsBookmarked,
       },
       token: generateToken(user._id),
     });
@@ -113,12 +123,21 @@ export const getUserInfo = async (req, res) => {
       return res.status(404).json({ message: "User not found!" });
     }
 
+    // Count polls created by user
+    const totalPollsCreated = await Poll.countDocuments({ creator: user._id });
+
+    // Count poll user voted in
+    const totalPollsVotes = await Poll.countDocuments({ voters: user._id });
+
+    // Count polls which user bookmarked
+    const totalPollsBookmarked = user.bookmarkedPolls.length;
+
     // Add the new attributes to the response
     const userInfo = {
       ...user.toObject(),
-      totalPollsCreated: 0,
-      totalPollsVotes: 0,
-      totalPollsBookmarked: 0,
+      totalPollsCreated,
+      totalPollsVotes,
+      totalPollsBookmarked,
     };
 
     res.status(200).json(userInfo);

@@ -1,4 +1,5 @@
 import React from "react";
+import CharAvatar from "./CharAvatar";
 
 const StatsInfo = ({ label, value }) => {
   return (
@@ -9,7 +10,7 @@ const StatsInfo = ({ label, value }) => {
   );
 };
 
-const UserDeailsCard = ({
+const UserDetailsCard = ({
   profileImageUrl,
   fullName,
   username,
@@ -19,14 +20,22 @@ const UserDeailsCard = ({
 }) => {
   return (
     <div className="bg-slate-100/50 rounded-lg mt-5 overflow-hidden">
-      {/* <div className="bg-slate-100/50 rounded-lg mt-16 overflow-hidden"> */}
       <div className="w-full h-32 bg-profile-bg--img bg-cover flex justify-center bg-sky-500 relative">
         <div className="absolute -bottom-10 rounded-full overflow-hidden border-2 border-primary">
-          <img
-            src={profileImageUrl || ""}
-            alt={fullName || "profile pic"}
-            className="w-20 h-20 bg-slate-400 rounded-full"
-          />
+          {profileImageUrl ? (
+            <img
+              src={profileImageUrl || ""}
+              alt={fullName || "profile pic"}
+              className="w-20 h-20 bg-slate-400 rounded-full"
+            />
+          ) : (
+            <CharAvatar
+              fullName={fullName}
+              width="w-20"
+              height="w-20"
+              style="text-xl"
+            />
+          )}
         </div>
       </div>
 
@@ -53,4 +62,4 @@ const UserDeailsCard = ({
   );
 };
 
-export default UserDeailsCard;
+export default UserDetailsCard;

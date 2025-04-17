@@ -5,11 +5,14 @@ import { UserContext } from "../../context/userContext";
 import { POLL_TYPE } from "../../utils/data";
 import OptionInput from "../../components/input/OptionInput";
 import OptionImageSelector from "../../components/input/OptionImageSelector";
+import toast from "react-hot-toast";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
 
 const CreatePoll = () => {
   useUserAuth();
 
-  const { user } = useContext(UserContext);
+  const { user, onPollCreateOrDelete } = useContext(UserContext);
 
   const [pollData, setPollData] = useState({
     question: "",
@@ -24,6 +27,45 @@ const CreatePoll = () => {
       ...prev,
       [key]: value,
     }));
+  };
+
+  const clearData = () => {
+    setPollData({
+      question: "",
+      type: "",
+      options: [],
+      imageOptions: [],
+      error: "",
+    });
+  };
+
+  const updateImageAndGetLink = async (imageOptions) => {
+    const optionPromises = imageOptions.map(async (imageOption) => {
+      try {
+        const imgUploadRes = await uploadImage(imageOption.file);
+        return imgUploadRes.imageUrl || "";
+      } catch (err) {
+        toast.error(`Error while uploading image: ${imageOption.file.name}`);
+        return "";
+      }
+    });
+
+    const optionArr = await Promise.all(optionPromises);
+    return optionArr;
+  };
+
+  const getOptions = async () => {
+    switch (pollData.type) {
+      case "single-choice":
+        return pollData.options;
+
+      case "image-based":
+        const options = await updateImageAndGetLink(pollData.imageOptions);
+        return options;
+
+      default:
+        return [];
+    }
   };
 
   // Create poll function
@@ -48,6 +90,30 @@ const CreatePoll = () => {
 
     handleValueChange("error", "");
     console.log("NO_ERR", { pollData });
+
+    const optionData = await getOptions(); // Ensure this is an array
+
+    try {
+      const res = await axiosInstance.post(API_PATHS.POLLS.CREATE, {
+        question,
+        type,
+        options: optionData,
+        creatorId: user._id,
+      });
+
+      if (res) {
+        toast.success(res.data.message);
+        clearData();
+        onPollCreateOrDelete("created"); // Update the user's stats
+      }
+    } catch (err) {
+      if (err.message && err.response.data.message) {
+        toast.error(err.response.data.message);
+        handleValueChange("error", err.response.data.message);
+      } else {
+        handleValueChange("error", "Something went wrong, try again");
+      }
+    }
   };
 
   return (
@@ -63,9 +129,9 @@ const CreatePoll = () => {
           <textarea
             placeholder="What's in your mind"
             rows={4}
-            value={pollData.question} // Corrected from 'questions' to 'question'
-            onChange={
-              ({ target }) => handleValueChange("question", target.value) // Corrected from 'questions' to 'question'
+            value={pollData.question}
+            onChange={({ target }) =>
+              handleValueChange("question", target.value)
             }
             className="w-full text-[13px] text-black outline-none bg-slate-200/80 p-2 rounded-md mt-2"
           />
