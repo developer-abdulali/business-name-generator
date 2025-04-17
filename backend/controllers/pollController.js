@@ -71,7 +71,7 @@ export const createPoll = async (req, res) => {
 };
 
 export const getAllPolls = async (req, res) => {
-  const { type, creatorId, page = 1, limit = 30 } = res.query;
+  const { type, creatorId, page = 1, limit = 30 } = req.query;
 
   const filter = {};
   const userId = req.user._id;
@@ -86,7 +86,59 @@ export const getAllPolls = async (req, res) => {
     const skip = (pageNumber - 1) * pageSize;
 
     // Fetch poll with pagination
-    const polls = await Poll.find(filter);
+    const polls = await Poll.find(filter)
+      .populate("creator", "fullName username email profileImageUrl")
+      .populate({
+        path: "response.voterId",
+        select: "username profileImageUrl, fullName",
+      })
+      .skip(skip)
+      .limit(pageSize)
+      .sort({ createdAt: -1 });
+
+    // Add userHasVoted flag for each poll
+    const updatedPolls = polls.map((poll) => {
+      const userHasVoted = poll.voters.some((voterId) =>
+        voterId.equals(userId)
+      );
+      return { ...poll.toObject(), userHasVoted };
+    });
+
+    // Get tottal count of polls for pagination metadata
+    const totalPolls = await Poll.countDocuments(filter);
+
+    const stats = await Poll.aggregate([
+      { $group: { _id: "$type", count: { $sum: 1 } } },
+      { $project: { type: "$_id", count: 1, _id: 0 } },
+    ]);
+
+    // Ensure all type are included in stats, even those with zero count
+    const allTypes = [
+      { type: "sing-choice", label: "Single Choice" },
+      { type: "yes/no", label: "Yes/No" },
+      { type: "rating", label: "Rating" },
+      { type: "image-based", label: "Image Based" },
+      { type: "open-ended", label: "Open Ended" },
+    ];
+
+    const statsWithDefaults = allTypes
+      .map((pollType) => {
+        const stat = stats.find((item) => item.type === pollType.type);
+        return {
+          label: pollType.label,
+          type: pollType.type,
+          count: stat ? stat.count : 0,
+        };
+      })
+      .sort((a, b) => b.count - a.count);
+
+    res.status(200).json({
+      polls: updatedPolls,
+      currentPage: pageNumber,
+      totalPages: Math.ceil(totalPolls / pageSize),
+      totalPolls,
+      stats: statsWithDefaults,
+    });
   } catch (err) {
     res.status(500).json({
       message: "Error getting all polls",
