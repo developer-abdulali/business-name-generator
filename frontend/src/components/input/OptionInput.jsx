@@ -5,7 +5,6 @@ import { HiMiniPlus } from "react-icons/hi2";
 const OptionInput = ({ optionList, setOptionList }) => {
   const [option, setOption] = useState("");
 
-  // Function to handle add an option
   const handleAddOption = () => {
     if (option.trim() && optionList.length < 4) {
       setOptionList([...optionList, option.trim()]);
@@ -13,7 +12,6 @@ const OptionInput = ({ optionList, setOptionList }) => {
     }
   };
 
-  // Function to handle delete an option
   const handleDeleteOption = (index) => {
     const updateArr = optionList.filter((_, idx) => idx !== index);
     setOptionList(updateArr);

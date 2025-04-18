@@ -13,6 +13,7 @@ export const API_PATHS = {
     GET_ALL: "/api/v1/poll/get-all-polls",
     GET_BY_ID: (pollId) => `/api/v1/poll/${pollId}`,
     GET_BOOKMARKED: "/api/v1/poll/user/bookmarked",
+    BOOKMARK: (pollId) => `/api/v1/poll/${pollId}/bookmark`,
     VOTE: (pollId) => `/api/v1/poll/${pollId}/vote`,
     VOTED_POLLS: "/api/v1/polls/voted-poll",
     CLOSE: (pollId) => `/api/v1/poll/${pollId}/close`,

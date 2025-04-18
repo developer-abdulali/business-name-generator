@@ -1,15 +1,12 @@
-import React from "react";
 import { HiOutlineTrash } from "react-icons/hi";
 import { HiMiniPlus } from "react-icons/hi2";
 
 const OptionImageSelector = ({ imageList, setImageList }) => {
-  // Function to handle add img an option
   const handleAddImg = (e) => {
     const file = e.target.files[0];
     if (file && imageList.length < 4) {
       const reader = new FileReader();
       reader.onload = () => {
-        // Add object with base64 file to the array
         setImageList([...imageList, { base64: reader.result, file }]);
       };
       reader.readAsDataURL(file);
@@ -17,7 +14,6 @@ const OptionImageSelector = ({ imageList, setImageList }) => {
     }
   };
 
-  // Function to handle delet img an option
   const handleDeleImg = (index) => {
     const updatedList = imageList?.filter((_, idx) => idx !== index);
     setImageList(updatedList);

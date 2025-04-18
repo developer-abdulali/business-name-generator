@@ -1,21 +1,3 @@
-// export const validateEmail = (email) => {
-//   const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-//   return regex.test(email);
-// };
-
-// export const getInitials = (name) => {
-//   if (!name) return "";
-
-//   const words = name.split(" ");
-//   let initails = "";
-
-//   for (let i = 0; i < Math.min(words.length, 2); i++) {
-//     initails += words[i][0];
-//   }
-
-//   return initails.toUpperCase();
-// };
-
 export const validateEmail = (email) => {
   const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return regex.test(email);
@@ -32,4 +14,10 @@ export const getInitials = (name) => {
   }
 
   return initials.toUpperCase();
+};
+
+export const getPollBookmarked = (pollId, userBookmarks = []) => {
+  return userBookmarks.some(
+    (bookmarkId) => bookmarkId.toString() === pollId.toString()
+  );
 };

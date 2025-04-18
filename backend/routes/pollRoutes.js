@@ -21,7 +21,7 @@ router.get("/:id", isAuthenticated, getPollById);
 router.post("/:id/vote", isAuthenticated, voteOnPoll);
 router.post("/:id/close", isAuthenticated, closePoll);
 router.post("/:id/bookmark", isAuthenticated, bookmarkPoll);
-router.post("/user/bookmarked", isAuthenticated, getBookmarkedPolls);
+router.get("/user/bookmarked", isAuthenticated, getBookmarkedPolls);
 router.delete("/:id/delete", isAuthenticated, deletePoll);
 
 export default router;

@@ -42,13 +42,18 @@ export const createPoll = async (req, res) => {
         }));
         break;
 
+      // In the createPoll controller, modify the image-based case:
       case "image-based":
         if (optionsArray.length < 2) {
           return res.status(400).json({
             message: "Image-based poll must have at least two image URLs.",
           });
         }
-        processedOptions = optionsArray.map((url) => ({ optionText: url }));
+        // Handle both string and object formats
+        processedOptions = optionsArray.map((option) => ({
+          optionText:
+            typeof option === "string" ? option : option.optionText || "",
+        }));
         break;
 
       case "open-ended":
@@ -86,17 +91,17 @@ export const getAllPolls = async (req, res) => {
   if (creatorId) filter.creator = creatorId;
 
   try {
-    // Calculate pagiantion parameters
+    // Calculate pagination parameters
     const pageNumber = parseInt(page, 10);
     const pageSize = parseInt(limit, 10);
     const skip = (pageNumber - 1) * pageSize;
 
-    // Fetch poll with pagination
+    // Fetch polls with pagination
     const polls = await Poll.find(filter)
       .populate("creator", "fullName username email profileImageUrl")
       .populate({
         path: "response.voterId",
-        select: "username profileImageUrl, fullName",
+        select: "username profileImageUrl fullName",
       })
       .skip(skip)
       .limit(pageSize)
@@ -110,7 +115,7 @@ export const getAllPolls = async (req, res) => {
       return { ...poll.toObject(), userHasVoted };
     });
 
-    // Get tottal count of polls for pagination metadata
+    // Get total count of polls for pagination metadata
     const totalPolls = await Poll.countDocuments(filter);
 
     const stats = await Poll.aggregate([
@@ -118,9 +123,9 @@ export const getAllPolls = async (req, res) => {
       { $project: { type: "$_id", count: 1, _id: 0 } },
     ]);
 
-    // Ensure all type are included in stats, even those with zero count
+    // Ensure all types are included in stats, even those with zero count
     const allTypes = [
-      { type: "sing-choice", label: "Single Choice" },
+      { type: "single-choice", label: "Single Choice" },
       { type: "yes/no", label: "Yes/No" },
       { type: "rating", label: "Rating" },
       { type: "image-based", label: "Image Based" },
@@ -146,6 +151,7 @@ export const getAllPolls = async (req, res) => {
       stats: statsWithDefaults,
     });
   } catch (err) {
+    console.error("Error getting all polls:", err); // Log the error
     res.status(500).json({
       message: "Error getting all polls",
       error: err.message,
@@ -301,9 +307,9 @@ export const bookmarkPoll = async (req, res) => {
     if (!user) return res.status(404).json({ message: "User not found." });
 
     // Check if poll already bookmarked
-    const idBookmarked = user.bookmarkedPolls.includes(id);
+    const isBookmarked = user.bookmarkedPolls.includes(id);
 
-    if (idBookmarked) {
+    if (isBookmarked) {
       // Remove poll from bookmark
       user.bookmarkedPolls = user.bookmarkedPolls.filter(
         (pollId) => pollId.toString() !== id
@@ -312,7 +318,7 @@ export const bookmarkPoll = async (req, res) => {
       await user.save();
       return res.status(200).json({
         message: "Poll removed from bookmarks.",
-        bookmarkPoll: user.bookmarkedPolls,
+        bookmarkedPolls: user.bookmarkedPolls,
       });
     }
 
@@ -322,7 +328,7 @@ export const bookmarkPoll = async (req, res) => {
 
     res.status(200).json({
       message: "Poll bookmarked successfully.",
-      bookmarkPoll: user.bookmarkedPolls,
+      bookmarkedPolls: user.bookmarkedPolls,
     });
   } catch (err) {
     res.status(500).json({
@@ -357,7 +363,7 @@ export const getBookmarkedPolls = async (req, res) => {
       };
     });
 
-    res.status(200).json({ bookmarkPolls: updatedPolls });
+    res.status(200).json({ bookmarkedPolls: updatedPolls });
   } catch (err) {
     res.status(500).json({
       message: "Error getting all bookmarked polls",

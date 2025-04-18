@@ -24,7 +24,6 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Response Interceptor
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
@@ -47,19 +46,4 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-// axiosInstance.interceptors.response.use(
-//   (response) => response,
-//   (error) => {
-//     if (error.response) {
-//       if (error.response.status === 401) {
-//         // Only redirect if we're not already on the login page
-//         if (!window.location.pathname.includes("/login")) {
-//           localStorage.removeItem("token");
-//           window.location.href = "/login";
-//         }
-//       }
-//     }
-//     return Promise.reject(error);
-//   }
-// );
 export default axiosInstance;

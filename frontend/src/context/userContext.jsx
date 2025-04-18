@@ -10,6 +10,12 @@ const UserProvider = ({ children }) => {
     setUser(userData);
   };
 
+  // Update totalPollsVotes count locally
+  const onUserVoted = () => {
+    const totalPollsVotes = user.totalPollsVotes || 0;
+    updateUserStats("totalPollsVotes", totalPollsVotes + 1);
+  };
+
   // Function to clear user data
   const clearUser = () => {
     setUser(null);
@@ -33,9 +39,44 @@ const UserProvider = ({ children }) => {
     }
   };
 
+  // Add or Remove poll id from bookmark poll
+  const toggleBookmarkId = (id) => {
+    const bookmarks = user.bookmarkedPolls || [];
+
+    // Convert all to string for comparison
+    const index = bookmarks.findIndex(
+      (bookmarkId) => bookmarkId.toString() === id.toString()
+    );
+
+    if (index === -1) {
+      // Add the ID if it's not in the array
+      setUser((prev) => ({
+        ...prev,
+        bookmarkedPolls: [...bookmarks, id],
+        totalPollsBookmarked: (prev.totalPollsBookmarked || 0) + 1,
+      }));
+    } else {
+      // Remove the ID if it's already in the array
+      setUser((prev) => ({
+        ...prev,
+        bookmarkedPolls: bookmarks.filter(
+          (item) => item.toString() !== id.toString()
+        ),
+        totalPollsBookmarked: Math.max((prev.totalPollsBookmarked || 0) - 1, 0),
+      }));
+    }
+  };
+
   return (
     <UserContext.Provider
-      value={{ user, updateUser, clearUser, onPollCreateOrDelete }}
+      value={{
+        user,
+        updateUser,
+        clearUser,
+        onPollCreateOrDelete,
+        onUserVoted,
+        toggleBookmarkId,
+      }}
     >
       {children}
     </UserContext.Provider>

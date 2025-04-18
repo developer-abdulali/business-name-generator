@@ -3,7 +3,6 @@ import axiosInstance from "./axiosInstance";
 
 const uploadImage = async (imageFile) => {
   const formData = new FormData();
-  // Append img file to form data
   formData.append("image", imageFile);
 
   try {
@@ -11,9 +10,13 @@ const uploadImage = async (imageFile) => {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
+    if (!res.data.imageUrl) {
+      throw new Error("Image upload failed");
+    }
+
     return res.data;
   } catch (error) {
-    console.log("Error uploading the image:", error);
+    console.error("Error uploading the image:", error);
     throw error;
   }
 };
