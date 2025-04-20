@@ -7,6 +7,7 @@ import PollContent from "./PollContent";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { toast } from "react-hot-toast";
+import PollingResultContent from "./PollingResultContent";
 
 const PollCard = ({
   pollId,
@@ -20,6 +21,7 @@ const PollCard = ({
   creatorUsername,
   userHasVoted,
   isPollClosed,
+  isMyPoll,
   createdAt,
 }) => {
   const { user, onUserVoted, toggleBookmarkId } = useContext(UserContext);
@@ -54,12 +56,11 @@ const PollCard = ({
       return { responseText: userResponse, voterId: user._id };
     }
     if (type === "rating") {
-      return { optionIndex: selectedOptionIndex, voterId: user._id };
+      return { rating: rating, voterId: user._id }; // Send rating instead of optionIndex
     }
     return { optionIndex: selectedOptionIndex, voterId: user._id };
-  }, [type, userResponse, rating, selectedOptionIndex, user]);
+  }, [type, userResponse, rating, selectedOptionIndex, user._id]);
 
-  // Get poll details by id
   const getPollDetail = async () => {
     try {
       const res = await axiosInstance.get(API_PATHS.POLLS.GET_BY_ID(pollId));
@@ -80,6 +81,24 @@ const PollCard = ({
   // Handles the submisstion of votes
   const handleVoteSubmit = async () => {
     try {
+      // Add validation for rating polls
+      if (type === "rating" && rating === 0) {
+        toast.error("Please select a rating");
+        return;
+      }
+      if (
+        type !== "rating" &&
+        type !== "open-ended" &&
+        selectedOptionIndex === -1
+      ) {
+        toast.error("Please select an option");
+        return;
+      }
+      if (type === "open-ended" && !userResponse.trim()) {
+        toast.error("Please enter your response");
+        return;
+      }
+
       const res = await axiosInstance.post(
         API_PATHS.POLLS.VOTE(pollId),
         getPostData()
@@ -90,11 +109,11 @@ const PollCard = ({
       onUserVoted();
       toast.success(res.data.message);
     } catch (error) {
-      console.log(error.response.data.message || "Error submitting vote.");
+      console.error("Vote error:", error);
+      toast.error(error.response?.data?.message || "Error submitting vote.");
     }
   };
 
-  // Toggle the bookmark status of a poll
   const toggleBookmark = async () => {
     try {
       const res = await axiosInstance.post(API_PATHS.POLLS.BOOKMARK(pollId));
@@ -105,6 +124,20 @@ const PollCard = ({
     } catch (error) {
       console.error(error.response?.data?.message || "Error bookmarking poll.");
       toast.error(error.response?.data?.message || "Error bookmarking poll.");
+    }
+  };
+
+  // Close poll function
+  const closePoll = async () => {
+    try {
+      const res = await axiosInstance.get(API_PATHS.POLLS.CLOSE(pollId));
+      if (res.data) {
+        setPollClosed(true);
+        toast.success(res.data.message || "Poll Closed Successfully.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong, Please try again.");
+      console.log("Something went wrong. Please try again.", error);
     }
   };
 
@@ -128,10 +161,9 @@ const PollCard = ({
             onVoteSubmit={handleVoteSubmit}
             isBookmarked={pollBookmarked}
             toggleBookmark={toggleBookmark}
-            isMyPoll={() => {}}
-            // isMyPoll={isMyPoll}
+            isMyPoll={isMyPoll}
             pollClosed={pollClosed}
-            onClosePoll={() => {}}
+            onClosePoll={closePoll}
             onDeletePoll={() => {}}
           />
         </div>
@@ -140,7 +172,12 @@ const PollCard = ({
           <p className="text-[15px] text-black leading-8">{question}</p>
           <div className="mt-4">
             {isVoteComplete || isPollClosed ? (
-              <>Show Result</>
+              <PollingResultContent
+                type={type}
+                options={pollResult.options || []}
+                voters={pollResult.voters}
+                response={pollResult.response || []}
+              />
             ) : (
               <PollContent
                 type={type}

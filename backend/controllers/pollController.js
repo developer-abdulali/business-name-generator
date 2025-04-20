@@ -209,7 +209,12 @@ export const getVotedPolls = async (req, res) => {
 export const getPollById = async (req, res) => {
   const { id } = req.params;
   try {
-    const poll = await Poll.findById(id).populate("creator", "username email");
+    const poll = await Poll.findById(id)
+      .populate("creator", "username email")
+      .populate({
+        path: "response.voterId",
+        select: "username profileImageUrl fullName",
+      });
 
     if (!poll) return res.status(404).json({ message: "Poll not found." });
 
@@ -224,16 +229,18 @@ export const getPollById = async (req, res) => {
 
 export const voteOnPoll = async (req, res) => {
   const { id } = req.params;
-  const { optionIndex, voterId, responseText } = req.body;
+  const { optionIndex, voterId, responseText, rating } = req.body; // Add rating to destructuring
   try {
     const poll = await Poll.findById(id);
     if (!poll)
-      return res.stats(404).json({
+      return res.status(404).json({
+        // Fix typo: stats -> status
         message: "Poll not found.",
       });
 
     if (poll.closed)
-      return res.stats(400).json({
+      return res.status(400).json({
+        // Fix typo: stats -> status
         message: "Poll is closed.",
       });
 
@@ -250,6 +257,14 @@ export const voteOnPoll = async (req, res) => {
         });
       }
       poll.response.push({ voterId, responseText });
+    } else if (poll.type === "rating") {
+      if (!rating || rating < 1) {
+        return res.status(400).json({
+          message: "Please select a valid rating.",
+        });
+      }
+      // Assuming your rating options are 1-5 or similar
+      poll.options[rating - 1].votes += 1; // Adjust index if needed
     } else {
       if (
         optionIndex === undefined ||

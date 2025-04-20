@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 
 const PollActions = ({
-  pollId,
+  // pollId,
   isVoteComplete,
   inputCaptured,
   onVoteSubmit,
@@ -30,6 +30,16 @@ const PollActions = ({
         <div className="text-[11px] font-medium text-slate-600 bg-sky-700/10 px-3 py-1 rounded-md">
           {pollClosed ? "Closed" : "Voted"}
         </div>
+      )}
+
+      {isMyPoll && !pollClosed && (
+        <button
+          onClick={onClosePoll}
+          disabled={loading}
+          className="btn-small text-orange-500 bg-orange-500/20 hover:bg-orange-500 hover:text-white hover:border-orange-100"
+        >
+          Close
+        </button>
       )}
 
       <button onClick={toggleBookmark} className="icon-btn">

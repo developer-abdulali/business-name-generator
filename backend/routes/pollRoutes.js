@@ -19,7 +19,7 @@ router.get("/get-all-polls", isAuthenticated, getAllPolls);
 router.get("/voted-polls", isAuthenticated, getVotedPolls);
 router.get("/:id", isAuthenticated, getPollById);
 router.post("/:id/vote", isAuthenticated, voteOnPoll);
-router.post("/:id/close", isAuthenticated, closePoll);
+router.get("/:id/close", isAuthenticated, closePoll);
 router.post("/:id/bookmark", isAuthenticated, bookmarkPoll);
 router.get("/user/bookmarked", isAuthenticated, getBookmarkedPolls);
 router.delete("/:id/delete", isAuthenticated, deletePoll);
