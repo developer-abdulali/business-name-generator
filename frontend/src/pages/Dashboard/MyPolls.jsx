@@ -110,6 +110,7 @@ const MyPolls = () => {
               userHasVoted={poll.userHasVoted || false}
               isPollClosed={poll.closed || false}
               createdAt={poll.createdAt || false}
+              creatorId={poll.creator._id}
             />
           ))}
         </InfiniteScroll>

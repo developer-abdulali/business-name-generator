@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import { UserContext } from "../../context/userContext";
 
 const PollActions = ({
-  // pollId,
+  pollId,
+  creatorId,
   isVoteComplete,
   inputCaptured,
   onVoteSubmit,
@@ -13,6 +15,7 @@ const PollActions = ({
   onClosePoll,
   onDeletePoll,
 }) => {
+  const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
   const handleVoteClick = async () => {
@@ -32,13 +35,23 @@ const PollActions = ({
         </div>
       )}
 
-      {isMyPoll && !pollClosed && (
+      {user._id === creatorId && !pollClosed && (
         <button
           onClick={onClosePoll}
           disabled={loading}
           className="btn-small text-orange-500 bg-orange-500/20 hover:bg-orange-500 hover:text-white hover:border-orange-100"
         >
           Close
+        </button>
+      )}
+
+      {isMyPoll && (
+        <button
+          onClick={onDeletePoll}
+          disabled={loading}
+          className="btn-small text-red-500 bg-red-500/10 hover:bg-red-500 hover:text-white hover:border-orange-100"
+        >
+          Delete
         </button>
       )}
 

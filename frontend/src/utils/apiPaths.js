@@ -15,7 +15,7 @@ export const API_PATHS = {
     GET_BOOKMARKED: "/api/v1/poll/user/bookmarked",
     BOOKMARK: (pollId) => `/api/v1/poll/${pollId}/bookmark`,
     VOTE: (pollId) => `/api/v1/poll/${pollId}/vote`,
-    VOTED_POLLS: "/api/v1/polls/voted-poll",
+    VOTED_POLLS: "/api/v1/poll/voted-polls",
     CLOSE: (pollId) => `/api/v1/poll/${pollId}/close`,
     DELETE: (pollId) => `/api/v1/poll/${pollId}/delete`,
   },

@@ -64,7 +64,8 @@ const Home = () => {
     if (page !== 1) {
       fetchAllPolls();
     }
-  }, [page, filterType]);
+  }, [page]);
+  // }, [page, filterType]);
 
   return (
     <DashboardLayout activeMenu="Dashboard">
