@@ -1,24 +1,17 @@
 import { Router } from "express";
-import {
-  checkAdmin,
-  createAlbum,
-  createSong,
-  deleteAlbum,
-  deleteSong,
-} from "../controllers/admin.controller.js";
-import {
-  isAdminOrNot,
-  isAuthenticated,
-} from "../middlewares/auth.middleware.js";
+import { checkAdmin, createAlbum, createSong, deleteAlbum, deleteSong } from "../controller/admin.controller.js";
+import { protectRoute, requireAdmin } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
-router.get("/check", isAuthenticated, isAdminOrNot, checkAdmin);
+router.use(protectRoute, requireAdmin);
 
-router.post("/songs", isAuthenticated, isAdminOrNot, createSong);
-router.delete("/songs/:id", isAuthenticated, isAdminOrNot, deleteSong);
+router.get("/check", checkAdmin);
 
-router.post("/albums", isAuthenticated, isAdminOrNot, createAlbum);
-router.delete("/albums/:id", isAuthenticated, isAdminOrNot, deleteAlbum);
+router.post("/songs", createSong);
+router.delete("/songs/:id", deleteSong);
+
+router.post("/albums", createAlbum);
+router.delete("/albums/:id", deleteAlbum);
 
 export default router;

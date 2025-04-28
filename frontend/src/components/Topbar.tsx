@@ -1,42 +1,42 @@
-import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react";
+import { SignedOut, UserButton } from "@clerk/clerk-react";
 import { LayoutDashboardIcon } from "lucide-react";
 import { Link } from "react-router-dom";
-import SignInAuthBtn from "./SignInAuthBtn";
+import SignInOAuthButtons from "./SignInOAuthButtons";
+import { useAuthStore } from "@/stores/useAuthStore";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./ui/button";
 
 const Topbar = () => {
-  const isAdmin = false;
+  const { isAdmin } = useAuthStore();
 
   return (
-    <div className="flex items-center justify-between p-4 sticky top-0 bg-zinc-900/75 backdrop-blur-md z-10">
-      <div className="flex gap-2 items-center text-white font-semibold text-lg">
+    <div
+      className="flex items-center justify-between p-4 sticky top-0 bg-zinc-900/75 
+      backdrop-blur-md z-10
+    "
+    >
+      <div className="flex gap-2 items-center">
+        <img src="/spotify.png" className="size-8" alt="Spotify logo" />
         Spotify
       </div>
-
       <div className="flex items-center gap-4">
         {isAdmin && (
           <Link
-            to="/admin"
-            className="flex items-center text-white hover:underline"
+            to={"/admin"}
+            className={cn(buttonVariants({ variant: "outline" }))}
           >
-            <LayoutDashboardIcon className="size-4 mr-2" />
+            <LayoutDashboardIcon className="size-4  mr-2" />
             Admin Dashboard
           </Link>
         )}
 
-        <SignedIn>
-          <SignOutButton>
-            <button className="text-white px-3 py-1 rounded-md hover:bg-zinc-800 transition">
-              Sign Out
-            </button>
-          </SignOutButton>
-        </SignedIn>
-
         <SignedOut>
-          <SignInAuthBtn />
+          <SignInOAuthButtons />
         </SignedOut>
+
+        <UserButton />
       </div>
     </div>
   );
 };
-
 export default Topbar;
