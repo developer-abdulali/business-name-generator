@@ -14,8 +14,8 @@ const FriendsActivity = () => {
   }, [fetchUsers, user]);
 
   return (
-    <div className="h-full bg-zinc-900 rounded-lg flex flex-col">
-      <div className="p-4 flex justify-between items-center border-b border-zinc-800">
+    <div className="h-full bg-zinc-900 rounded-lg flex flex-col p-2 md:p-4">
+      <div className="p-2 xl:p-4 flex justify-between items-center border-b border-zinc-800">
         <div className="flex items-center gap-2">
           <Users className="size-5 shrink-0" />
           <h2 className="font-semibold">What they're listening to</h2>
@@ -25,8 +25,9 @@ const FriendsActivity = () => {
       {!user && <LoginPrompt />}
 
       <ScrollArea className="flex-1">
-        <div className="p-4 space-y-4">
-          {users.map((user) => {
+        <div className="p-2 space-y-4">
+          {users?.map((user) => {
+            console.log("USER", user);
             const activity = userActivities.get(user.clerkId);
             const isPlaying = activity && activity !== "Idle";
 
@@ -42,9 +43,13 @@ const FriendsActivity = () => {
                       <AvatarFallback>{user.fullName[0]}</AvatarFallback>
                     </Avatar>
                     <div
-                      className={`absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-zinc-900 
-												${onlineUsers.has(user.clerkId) ? "bg-green-500" : "bg-zinc-500"}
-												`}
+                      className={`absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-zinc-900
+                        ${
+                          onlineUsers.has(user.clerkId)
+                            ? "bg-green-500"
+                            : "bg-zinc-500"
+                        }
+                      `}
                       aria-hidden="true"
                     />
                   </div>
