@@ -30,6 +30,10 @@ const AddAlbumDialog = () => {
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        toast.error("File size exceeds 10MB limit");
+        return;
+      }
       setImageFile(file);
     }
   };
@@ -39,8 +43,18 @@ const AddAlbumDialog = () => {
 
     try {
       if (!imageFile) {
-        return toast.error("Please upload an image");
+        toast.error("Please upload an image");
+        setIsLoading(false);
+        return;
       }
+
+      if (!newAlbum.title || !newAlbum.artist) {
+        toast.error("Please fill in all required fields");
+        setIsLoading(false);
+        return;
+      }
+
+      console.log("Uploading file:", imageFile.name, imageFile.size);
 
       const formData = new FormData();
       formData.append("title", newAlbum.title);
@@ -62,8 +76,17 @@ const AddAlbumDialog = () => {
       setImageFile(null);
       setAlbumDialogOpen(false);
       toast.success("Album created successfully");
-    } catch (error: any) {
-      toast.error("Failed to create album: " + error.message);
+    } catch (error) {
+      console.error("Frontend error:", error);
+      toast.error(
+        "Failed to create album: " +
+          ((error as any).response?.data?.message || (error as any).message)
+      );
+
+      // toast.error(
+      //   ("Failed to create album: " +
+      //     (error.response?.data?.message || error.message)) as any
+      // );
     } finally {
       setIsLoading(false);
     }
@@ -78,7 +101,6 @@ const AddAlbumDialog = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="bg-zinc-900 border-zinc-700 max-h-[80vh] overflow-auto w-[95vw] max-w-[95vw] sm:w-[90vw] sm:max-w-[90vw] md:w-[80vw] md:max-w-[80vw] lg:max-w-[50vw]">
-        {/* <DialogContent className="bg-zinc-900 border-zinc-700"> */}
         <DialogHeader>
           <DialogTitle>Add New Album</DialogTitle>
           <DialogDescription>
@@ -90,7 +112,7 @@ const AddAlbumDialog = () => {
             type="file"
             ref={fileInputRef}
             onChange={handleImageSelect}
-            accept="image/*"
+            accept="image/jpeg,image/png,image/gif"
             className="hidden"
           />
           <div
@@ -142,7 +164,7 @@ const AddAlbumDialog = () => {
                   releaseYear: parseInt(e.target.value),
                 })
               }
-              className="bg-zinc-800 border-zinc-700"
+              className="bg zinc-800 border-zinc-700"
               placeholder="Enter release year"
               min={1900}
               max={new Date().getFullYear()}
@@ -171,4 +193,5 @@ const AddAlbumDialog = () => {
     </Dialog>
   );
 };
+
 export default AddAlbumDialog;

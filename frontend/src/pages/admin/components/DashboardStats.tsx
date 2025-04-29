@@ -38,17 +38,8 @@ const DashboardStats = () => {
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
-      {/* // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 "> */}
       {statsData.map((stat) => (
         <StatsCard key={stat.label} {...stat} />
-        // <StatsCard
-        //   key={stat.label}
-        //   icon={stat.icon}
-        //   label={stat.label}
-        //   value={stat.value}
-        //   bgColor={stat.bgColor}
-        //   iconColor={stat.iconColor}
-        // />
       ))}
     </div>
   );
