@@ -107,7 +107,6 @@ const AddSongDialog = () => {
       </DialogTrigger>
 
       <DialogContent className="bg-zinc-900 border-zinc-700 max-h-[80vh] overflow-auto w-[95vw] max-w-[95vw] sm:w-[90vw] sm:max-w-[90vw] md:w-[80vw] md:max-w-[80vw] lg:max-w-[50vw]">
-        {/* <DialogContent className="bg-zinc-900 border-zinc-700 max-h-[80vh] overflow-auto"> */}
         <DialogHeader>
           <DialogTitle>Add New Song</DialogTitle>
           <DialogDescription>

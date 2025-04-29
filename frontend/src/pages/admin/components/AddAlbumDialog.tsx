@@ -54,7 +54,7 @@ const AddAlbumDialog = () => {
         return;
       }
 
-      console.log("Uploading file:", imageFile.name, imageFile.size);
+      // console.log("Uploading file:", imageFile.name, imageFile.size);
 
       const formData = new FormData();
       formData.append("title", newAlbum.title);
