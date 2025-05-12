@@ -1,12 +1,12 @@
-import { Toaster } from "@/components/ui/sonner";
-import { Afacad_Flux } from "next/font/google";
+import { Afacad } from "next/font/google"; // Correct font import
 import "./globals.css";
 import { BusinessNameContext } from "@/context/BusinessNameContext";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "@/components/ui/sonner";
 
-const afacad = Afacad_Flux({
+const afacad = Afacad({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -18,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${afacad.className}`}>
+      <body className={afacad.className}>
         <BusinessNameContext>
           <Navbar />
           <Toaster />
